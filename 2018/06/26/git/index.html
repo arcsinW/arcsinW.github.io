@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>git | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="摘要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/git/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="摘要">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/26/git/git_1.png">
+<meta property="og:updated_time" content="2018-06-26T05:42:21.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git">
+<meta name="twitter:description" content="摘要">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/26/git/git_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/26/git/" class="article-date">
+  <time datetime="2018-06-26T04:53:41.000Z" itemprop="datePublished">2018-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>摘要</p>
+<a id="more"></a>
+<h2 id="1-配置git客户端"><a href="#1-配置git客户端" class="headerlink" title="1.配置git客户端"></a>1.配置git客户端</h2><h3 id="1-1-设置ssh-Key"><a href="#1-1-设置ssh-Key" class="headerlink" title="1.1 设置ssh Key"></a>1.1 设置ssh Key</h3><p>查看是否有ssh key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>没有则生成ssh key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>将生成的公钥 (.pub为后缀) 上传到git网站上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">eval $(ssh-agent -s) //确定ssh-agent正在运行</span><br><span class="line"></span><br><span class="line">ssh-add ~/.ssh/id_rsa //添加ssh私钥到客户端</span><br><span class="line"></span><br><span class="line">ssh git@github.com //测试</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-设置用户名和邮箱"><a href="#1-2-设置用户名和邮箱" class="headerlink" title="1.2 设置用户名和邮箱"></a>1.2 设置用户名和邮箱</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;NAME HERE&quot;</span><br><span class="line">git config --global user.email &quot;aaa@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="2-管理项目"><a href="#2-管理项目" class="headerlink" title="2.管理项目"></a>2.管理项目</h2><h3 id="2-1-本地已有项目"><a href="#2-1-本地已有项目" class="headerlink" title="2.1 本地已有项目"></a>2.1 本地已有项目</h3><ol>
+<li>在项目的目录下执行以下命令（git bash)初始化仓库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>项目下会多出.git文件夹（默认隐藏）</p>
+<ol start="2">
+<li>将项目与远程仓库关联</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:arcsinW/OpenHelloCDUTUWP.git</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>提交更改</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -a -m &quot;Initial commit&quot;</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -a <span class="comment"># 接着在git bash 里的文本编辑器里写Commit message</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-从远程仓库获取项目"><a href="#2-2-从远程仓库获取项目" class="headerlink" title="2.2 从远程仓库获取项目"></a>2.2 从远程仓库获取项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/libgit2/libgit2</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-分支"><a href="#2-3-分支" class="headerlink" title="2.3 分支"></a>2.3 分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev <span class="comment"># 新建并切换到dev分支</span></span><br><span class="line"></span><br><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line"></span><br><span class="line">git branch -a <span class="comment"># 查看远程分支</span></span><br><span class="line"></span><br><span class="line">git checkout master <span class="comment"># 切换到master分支</span></span><br><span class="line"></span><br><span class="line">git merge dev <span class="comment"># 合并dev分支到当前分支</span></span><br><span class="line"></span><br><span class="line">git branch -d dev <span class="comment"># 删除dev分支</span></span><br><span class="line"></span><br><span class="line">git push origin --delete dev <span class="comment"># 删除远程dev分支</span></span><br><span class="line"></span><br><span class="line">git checkout -b dev origin/dev <span class="comment"># 从远程仓库拉取本地不存在的dev分支</span></span><br></pre></td></tr></table></figure>
+<p>下面是在当前分支为signle_edition时执行<br><code>git merge master</code>时出现冲突的情况</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 到 =======的部分是当前分支single_edition的版本</p>
+<p>======= 到 &gt;&gt;&gt;&gt;&gt;&gt;&gt; master是master中的版本</p>
+<!-- ![conflict](git/git_1.png) -->
+<img src="/2018/06/26/git/git_1.png" title="a picture of conflict">
+<h3 id="2-4-版本控制"><a href="#2-4-版本控制" class="headerlink" title="2.4 版本控制"></a>2.4 版本控制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 查看提交日志</span></span><br><span class="line"></span><br><span class="line">git --no-pager <span class="built_in">log</span> <span class="comment"># log不分页</span></span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^ <span class="comment"># 回退到上一commit</span></span><br><span class="line"></span><br><span class="line">git reset --hard [commit_id] <span class="comment"># 回退到指定commit，commit_id只需写前几位，能唯一确定这个commit即可</span></span><br></pre></td></tr></table></figure>
+<h3 id="some-solutions"><a href="#some-solutions" class="headerlink" title="some solutions"></a>some solutions</h3><ol>
+<li>refusing to merge unrelated histories</li>
+</ol>
+<p>加上<code>--allow-unrelated-histories</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改提交到远程仓库的commit信息</li>
+</ol>
+<p>查看本地仓库的log信息，找到要修改的commit之前一个commit的id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i [commit_id]</span><br></pre></td></tr></table></figure>
+<p>将要修改的commit信息前的pick改成edit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend <span class="comment">#修改commit信息</span></span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br><span class="line">git push -f origin master <span class="comment">#覆盖远程仓库commit信息（也会覆盖其他人的提交）</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>重新添加 .gitignore</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"add .gitignore file"</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>查看版本控制下的文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://git-scm.com/docs/" target="_blank" rel="noopener">https://git-scm.com/docs/</a></li>
+<li><a href="https://www.jianshu.com/p/94e79e17baf6" target="_blank" rel="noopener">git提交commit后push到远程仓库，如何修改commit信息</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjiv8edgl0001xog2a61qgdwd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/07/Octave/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Octave</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/26/git/">git</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/07/Octave/">Octave</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/07/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
