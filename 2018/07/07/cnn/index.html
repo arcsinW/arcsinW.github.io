@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>cnn | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Introduce Convolutional neural networks (CNNs) are the current state-of-the-art model architecture for image classification tasks. CNNs apply a series of filters to the raw pixel data of an image to e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cnn">
+<meta property="og:url" content="http://yoursite.com/2018/07/07/cnn/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="Introduce Convolutional neural networks (CNNs) are the current state-of-the-art model architecture for image classification tasks. CNNs apply a series of filters to the raw pixel data of an image to e">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-08T05:08:02.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cnn">
+<meta name="twitter:description" content="Introduce Convolutional neural networks (CNNs) are the current state-of-the-art model architecture for image classification tasks. CNNs apply a series of filters to the raw pixel data of an image to e">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cnn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/cnn/" class="article-date">
+  <time datetime="2018-07-07T03:17:04.000Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cnn
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h2><blockquote>
+<p>Convolutional neural networks (CNNs) are the current state-of-the-art model architecture for image classification tasks. CNNs apply a series of filters to the raw pixel data of an image to extract and learn higher-level features, which the model can then use for classification.</p>
+</blockquote>
+<p>卷积神经网络是目前图片分类任务中最先进的模型架构，卷积神经网络对图片的原始像素数据应用一系列的过滤器来提取和学习更高级的特征，而这正是模型作分类时要用到的</p>
+<h2 id="Layers"><a href="#Layers" class="headerlink" title="Layers"></a>Layers</h2><h3 id="1-input-layer"><a href="#1-input-layer" class="headerlink" title="1. input layer"></a>1. input layer</h3><p>原始的图片数据</p>
+<h3 id="2-Convolutional-layers-卷积层"><a href="#2-Convolutional-layers-卷积层" class="headerlink" title="2. Convolutional layers (卷积层)"></a>2. Convolutional layers (卷积层)</h3><p>将原始的图片数据提取成<code>feature map</code></p>
+<p>对图片作卷积操作，常常会加上一个ReLU激活函数对卷积层的输出进行一个非线性映射</p>
+<p>$$f(x) = max(x, 0)$$</p>
+<p>一个卷积核对应一个<code>feature map</code></p>
+<p>in tensorflow <code>tf.layers.conv2d()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">tf.layers.conv2d(</span><br><span class="line">    inputs,</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    padding=<span class="string">'valid'</span>,</span><br><span class="line">    data_format=<span class="string">'channels_last'</span>,</span><br><span class="line">    dilation_rate=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    activation=<span class="keyword">None</span>,</span><br><span class="line">    use_bias=<span class="keyword">True</span>,</span><br><span class="line">    kernel_initializer=<span class="keyword">None</span>,</span><br><span class="line">    bias_initializer=tf.zeros_initializer(),</span><br><span class="line">    kernel_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    bias_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    activity_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    kernel_constraint=<span class="keyword">None</span>,</span><br><span class="line">    bias_constraint=<span class="keyword">None</span>,</span><br><span class="line">    trainable=<span class="keyword">True</span>,</span><br><span class="line">    name=<span class="keyword">None</span>,</span><br><span class="line">    reuse=<span class="keyword">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>inputs:</li>
+<li>filters: filter的数量</li>
+<li>kernel_size: 卷积窗口大小（感受视野？）</li>
+<li>strides:  步长，(高，宽) (纵向，横向)</li>
+<li>padding: <code>valid</code> or <code>same</code></li>
+<li>data_format:</li>
+</ul>
+<p><code>channels_last</code>: shape(batch_size, height, width, channels)<br><code>channels_first</code>: shape(batch_size, channels, height, width)</p>
+<ul>
+<li>activation: 激活函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">keras.layers.convolutional.Convolution2D(</span><br><span class="line">    nb_filter,</span><br><span class="line">    nb_row,</span><br><span class="line">    nb_col,</span><br><span class="line">    init=<span class="string">'glorot_uniform'</span>,</span><br><span class="line">    activation=<span class="keyword">None</span>,</span><br><span class="line">    weights=<span class="keyword">None</span>,</span><br><span class="line">    border_mode=<span class="string">'valid'</span>,</span><br><span class="line">    subsample=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    dim_ordering=<span class="string">'default'</span>,</span><br><span class="line">    W_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    b_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    activity_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    W_constraint=<span class="keyword">None</span>,</span><br><span class="line">    b_constraint=<span class="keyword">None</span>,</span><br><span class="line">    bias=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>dim_ordering</code>: ‘th’ or ‘tf’. In ‘th’ mode, the channels dimension (the depth) is at index 1, in ‘tf’ mode is it at index 3. It defaults to the image_dim_ordering value found in your Keras config file at ~/.keras/keras.json. If you never set it, then it will be “tf”.</li>
+</ul>
+<h3 id="3-Pooling-layers-池化层"><a href="#3-Pooling-layers-池化层" class="headerlink" title="3. Pooling layers (池化层)"></a>3. Pooling layers (池化层)</h3><p>in tensorflow <code>tf.layers.max_pooling2d()</code></p>
+<p>将<code>feature map</code>降维以减少处理时间</p>
+<p>池化层有与卷积层视野大小类似的东西，在tensorflow中叫pool_size</p>
+<ul>
+<li><p>max pooling</p>
+</li>
+<li><p>average pooling</p>
+</li>
+</ul>
+<h3 id="4-Dense-fully-connected-layers-全连接层"><a href="#4-Dense-fully-connected-layers-全连接层" class="headerlink" title="4. Dense (fully connected) layers(全连接层)"></a>4. Dense (fully connected) layers(全连接层)</h3><p>in tensorflow <code>tf.layers.dense()</code></p>
+<p>通常，CNN由一堆提取特征的卷积模块组成，每个卷积模块包括一个<code>卷积层</code>和紧接着的一个<code>池化层</code>，最后一个卷积模块后跟着一个或多个<code>全连接层</code>，CNN中的最后一个<code>全连接层</code>可以用来预测</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://blog.csdn.net/cxmscb/article/details/71023576" target="_blank" rel="noopener">https://blog.csdn.net/cxmscb/article/details/71023576</a></li>
+</ol>
+<p>2.<a href="https://www.tensorflow.org/tutorials/layers?hl=zh-cn" target="_blank" rel="noopener">https://www.tensorflow.org/tutorials/layers?hl=zh-cn</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/cnn/" data-id="cjjgn3ood0001rsg2ib4woqzt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/09/neural-network/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          neural_network
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/04/tensorflow-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">tensorflow_1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/11/php-1/">php apache PhpStorm</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/10/numpy/">numpy</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/09/neural-network/">neural_network</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/07/cnn/">cnn</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/tensorflow-1/">tensorflow_1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
