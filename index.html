@@ -62,6 +62,99 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-537" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/leetcode-537/" class="article-date">
+  <time datetime="2018-07-20T09:16:01.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/leetcode-537/">leetcode-537</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="537">
+<li>Complex Number Multiplication</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/07/20/leetcode-537/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjjtsqbva0002z4g2a2oeaksf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/leetcode/" class="article-date">
+  <time datetime="2018-07-20T09:01:27.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/leetcode/">leetcode</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="537">
+<li>Complex Number Multiplication</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;1+1i&quot;, &quot;1+1i&quot;</span><br><span class="line">Output: &quot;0+2i&quot;</span><br><span class="line">Explanation: (1 + i) * (1 + i) = 1 + i2 + 2 * i = 2i, and you need convert it to the form of 0+2i.</span><br></pre></td></tr></table></figure>
+<p>大部分时间都花在写正则匹配实部和虚部了</p>
+<p>两个复数<br>$a + bi$, $c + di$</p>
+<p>$(a + bi) * (c + di) = (ac - bd) + (bc + ad)i$</p>
+<p>使用三个辅助变量</p>
+<p>$$\begin{cases}<br>t_1 = (a - b) <em> (c + d) \<br>t_2 = a </em> d             \<br>t_3 = b * c             \<br>\end{cases},$$</p>
+<p>$(a + bi) * (c + di) = (t_1 - t_2 + t_3) + (t_2 + t_3)i$</p>
+<p>这样可以把四次乘法减少到三次</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">complexNumberMultiply</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="function">regex <span class="title">complex_regex</span><span class="params">(<span class="string">"(.*?)\\+(.*?)i"</span>)</span></span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> a_real = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> a_imaginary = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> b_real = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> b_imaginary = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        smatch a_complex_match;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">std</span>::regex_search(a, a_complex_match, complex_regex))</span><br><span class="line">        &#123;</span><br><span class="line">            a_real = stoi(a_complex_match[<span class="number">1</span>]);</span><br><span class="line">            a_imaginary  = stoi(a_complex_match[<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        smatch b_complex_match;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">std</span>::regex_search(b, b_complex_match, complex_regex))</span><br><span class="line">        &#123;</span><br><span class="line">            b_real = stoi(b_complex_match[<span class="number">1</span>]);</span><br><span class="line">            b_imaginary  = stoi(b_complex_match[<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> t1 = (a_real - a_imaginary) * (b_real + b_imaginary);</span><br><span class="line">        <span class="keyword">int</span> t2 = (a_real * b_imaginary);</span><br><span class="line">        <span class="keyword">int</span> t3 = (a_imaginary * b_real);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> to_string(t1 - t2 + t3) + <span class="string">"+"</span> + to_string(t2 + t3) + <span class="string">"i"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>再看看大佬写的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">complexNumberMultiply</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> </span>&#123;</span><br><span class="line">        stringstream aa(a), bb(b), ans;</span><br><span class="line">        <span class="keyword">int</span> ra, ia, rb, ib;</span><br><span class="line">        <span class="keyword">char</span> buff;</span><br><span class="line">        aa &gt;&gt; ra &gt;&gt; buff &gt;&gt; ia &gt;&gt; buff;</span><br><span class="line">        bb &gt;&gt; rb &gt;&gt; buff &gt;&gt; ib &gt;&gt; buff;</span><br><span class="line">        ans &lt;&lt; ra * rb - ia * ib &lt;&lt;<span class="string">"+"</span> &lt;&lt; ra * ib + rb * ia &lt;&lt; <span class="string">"i"</span>;</span><br><span class="line">        <span class="keyword">return</span> ans.str();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="cjjtsqbvg0005z4g2lfk8cjan" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-804" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/20/leetcode-804/" class="article-date">
@@ -93,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjjtfjqdd0000uwg25u5fv609" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjjtsqbvc0003z4g27fqk03ag" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="cjjtfjqdp0001uwg2lycpodbo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="cjjtsqbvp000az4g2q7hxnw92" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/php-2/" data-id="cjjtfjqeh000cuwg2ew39pck1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/php-2/" data-id="cjjtsqbvu000cz4g2534803g0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Ubuntu-1/" data-id="cjjtfjqe20006uwg2e7pl72uc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/Ubuntu-1/" data-id="cjjtsqbux0000z4g2npur9l4w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cjjtfjqeb0009uwg2321eubbg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cjjtsqbvx000dz4g2xd1jt6yk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/10/numpy/" data-id="cjjtfjqdy0004uwg274yqirq3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/10/numpy/" data-id="cjjtsqbvj0007z4g266g1vjn5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -354,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="cjjtfjqe40007uwg2ralzsu9k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="cjjtsqbvh0006z4g229jza5l1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,111 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/cnn/" data-id="cjjtfjqe00005uwg2u4fhfdsa" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tensorflow-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/04/tensorflow-1/" class="article-date">
-  <time datetime="2018-07-04T12:23:20.000Z" itemprop="datePublished">2018-07-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/04/tensorflow-1/">tensorflow_1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow</span><br></pre></td></tr></table></figure>
-<p>##</p>
-<p><code>tf.constant</code> 定义常量<br><code>tf.Variable</code> 定义变量<br><code>tf.placeholder</code> 占位符，用于填充数据</p>
-<ul>
-<li><p>定义一个矩阵</p>
-</li>
-<li><p>sigmoid</p>
-</li>
-</ul>
-<h2 id="Tensorboard"><a href="#Tensorboard" class="headerlink" title="Tensorboard"></a>Tensorboard</h2><ol>
-<li>把计算过程用<code>tf.name_scope</code>包装起来</li>
-<li>使用<code>tf.summary.FileWriter</code>输出到目标文件夹</li>
-<li>启动Tensorboard</li>
-</ol>
-<p>如果一个op中只有直接的赋值，那么这个op不会显示在Tensorboard中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir=/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">'TF_CPP_MIN_LOG_LEVEL'</span>] = <span class="string">'2'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    const_A = tf.constant(<span class="number">10</span>, name = <span class="string">'const_A'</span>, dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    const_B = tf.constant(<span class="number">20</span>, name = <span class="string">'const_B'</span>, dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    placeholder_C = tf.placeholder(dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.name_scope(<span class="string">'Add'</span>):</span><br><span class="line">        _sum = const_A + const_B</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">        session.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line">        const_sum = session.run(_sum)</span><br><span class="line">        print(const_sum)</span><br><span class="line"></span><br><span class="line">    train_writer = tf.summary.FileWriter(<span class="string">'/test'</span>, session.graph)</span><br><span class="line">    train_writer.close()</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="https://dotblogs.com.tw/shaynling/2017/11/14/173025" target="_blank" rel="noopener">https://dotblogs.com.tw/shaynling/2017/11/14/173025</a></p>
-<p>2.<a href="https://www.tensorflow.org/api_docs/python/tf/matmul" target="_blank" rel="noopener">https://www.tensorflow.org/api_docs/python/tf/matmul</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/04/tensorflow-1/" data-id="cjjtfjqex000euwg26f57ajaa" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/02/opencv/" class="article-date">
-  <time datetime="2018-07-02T12:03:42.000Z" itemprop="datePublished">2018-07-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/02/opencv/">opencv</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>scaleFactor</code> – Parameter specifying how much the image size is reduced at each image scale.</p>
-</li>
-<li><p><code>minNeighbors</code> – Parameter specifying how many neighbors each candidate rectangle should have to retain it.</p>
-</li>
-<li><p><code>flags</code> – Parameter with the same meaning for an old cascade as in the function cvHaarDetectObjects. It is not used for a new cascade.</p>
-</li>
-<li><p><code>minSize</code> – Minimum possible object size. Objects smaller than that are ignored.</p>
-</li>
-<li><p><code>maxSize</code> – Maximum possible object size. Objects larger than that are ignored.</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.HaarDetectObjects(image, cascade, storage, scale_factor=<span class="number">1.1</span>, min_neighbors=<span class="number">3</span>, flags=<span class="number">0</span>, min_size=(<span class="number">0</span>, <span class="number">0</span>)) → detectedObjects</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/02/opencv/" data-id="cjjtfjqec000auwg2z3yx9mh5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/cnn/" data-id="cjjtsqbve0004z4g2s4kvynom" class="article-share-link">Share</a>
       
       
     </footer>
@@ -580,6 +569,14 @@
       <ul>
         
           <li>
+            <a href="/2018/07/20/leetcode-537/">leetcode-537</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/20/leetcode/">leetcode</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/20/leetcode-804/">leetcode-804</a>
           </li>
         
@@ -589,14 +586,6 @@
         
           <li>
             <a href="/2018/07/13/php-2/">php快速入门</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/13/Ubuntu-1/">Ubuntu_1</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/11/php-1/">php apache PhpStorm</a>
           </li>
         
       </ul>
