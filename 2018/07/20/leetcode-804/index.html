@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-804 | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="804.Unique Morse Code Words">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-804">
+<meta property="og:url" content="http://yoursite.com/2018/07/20/leetcode-804/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="804.Unique Morse Code Words">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-20T03:32:55.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-804">
+<meta name="twitter:description" content="804.Unique Morse Code Words">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-804" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/leetcode-804/" class="article-date">
+  <time datetime="2018-07-20T02:38:47.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-804
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>804.Unique Morse Code Words</p>
+<a id="more"></a>
+<p>International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows: “a” maps to “.-“, “b” maps to “-…”, “c” maps to “-.-.”, and so on.</p>
+<p>For convenience, the full table for the 26 letters of the English alphabet is given below:</p>
+<p>[“.-“,”-…”,”-.-.”,”-..”,”.”,”..-.”,”–.”,”….”,”..”,”.—“,”-.-“,”.-..”,”–”,”-.”,”—“,”.–.”,”–.-“,”.-.”,”…”,”-“,”..-“,”…-“,”.–”,”-..-“,”-.–”,”–..”]<br>Now, given a list of words, each word can be written as a concatenation of the Morse code of each letter. For example, “cab” can be written as “-.-.-….-“, (which is the concatenation “-.-.” + “-…” + “.-“). We’ll call such a concatenation, the transformation of a word.</p>
+<p>Return the number of different transformations among all words we have.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: words = [&quot;gin&quot;, &quot;zen&quot;, &quot;gig&quot;, &quot;msg&quot;]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">The transformation of each word is:</span><br><span class="line">&quot;gin&quot; -&gt; &quot;--...-.&quot;</span><br><span class="line">&quot;zen&quot; -&gt; &quot;--...-.&quot;</span><br><span class="line">&quot;gig&quot; -&gt; &quot;--...--.&quot;</span><br><span class="line">&quot;msg&quot; -&gt; &quot;--...--.&quot;</span><br><span class="line"></span><br><span class="line">There are 2 different transformations, &quot;--...-.&quot; and &quot;--...--.&quot;.</span><br></pre></td></tr></table></figure>
+<p>先通过Morse Code的字典把输入的words变成Morse Code,<br>接下来给存放着Morse Code的list去重，得到Morse Code的种类</p>
+<p>1.union + erase去重</p>
+<p>主要是下面这两段代码</p>
+<p>先排序</p>
+<p><code>unique(morse_codes.begin(), morse_codes.end())</code>这段代码会将相邻的重复的数据挤到末尾并返回一个指向倒数第二个<code>one</code>的迭代器</p>
+<p>one one two three two<br>变成<br>one two three <code>one</code> two</p>
+<p>接下来使用<code>erase</code>函数删除倒数第二个<code>one</code>到整个vector末尾的元素，去重就完成了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sort(morse_codes.begin(), morse_codes.end());</span><br><span class="line">morse_codes.erase(unique(morse_codes.begin(), morse_codes.end()), morse_codes.end());</span><br></pre></td></tr></table></figure>
+<p>完整代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniqueMorseRepresentations</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> dic[] = &#123;<span class="string">".-"</span>,<span class="string">"-..."</span>,<span class="string">"-.-."</span>,<span class="string">"-.."</span>,<span class="string">"."</span>,<span class="string">"..-."</span>,<span class="string">"--."</span>,<span class="string">"...."</span>,<span class="string">".."</span>,<span class="string">".---"</span>,<span class="string">"-.-"</span>,<span class="string">".-.."</span>,<span class="string">"--"</span>,<span class="string">"-."</span>,<span class="string">"---"</span>,<span class="string">".--."</span>,<span class="string">"--.-"</span>,<span class="string">".-."</span>,<span class="string">"..."</span>,<span class="string">"-"</span>,<span class="string">"..-"</span>,<span class="string">"...-"</span>,<span class="string">".--"</span>,<span class="string">"-..-"</span>,<span class="string">"-.--"</span>,<span class="string">"--.."</span>&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; morse_codes;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;::iterator iter = words.begin(); iter &lt; words.end(); iter++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> tmp = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (*iter).length(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> index = (<span class="keyword">int</span>)((*iter).at(i) - <span class="string">'a'</span>);</span><br><span class="line">                tmp.append(dic[index]);</span><br><span class="line">            &#125;</span><br><span class="line">            morse_codes.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sort(morse_codes.begin(), morse_codes.end());</span><br><span class="line">        morse_codes.erase(unique(morse_codes.begin(), morse_codes.end()), morse_codes.end());</span><br><span class="line">        <span class="keyword">return</span> morse_codes.size();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>2.使用<code>unordered_set</code></p>
+<blockquote>
+<p>Sets are containers that store unique elements following a specific order.</p>
+<p>Unordered sets are containers that store unique elements in no particular order, and which allow for fast retrieval of individual elements based on their value.</p>
+</blockquote>
+<p><code>set</code> 中每个元素的值唯一且有序<br><code>unordered_set</code> 中每个元素的值唯一且无序，这题不需要排序，用这个比较好，但leetcode上<code>set</code>用的时间反而短一些</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">uniqueMorseRepresentations</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> dic[] = &#123;<span class="string">".-"</span>,<span class="string">"-..."</span>,<span class="string">"-.-."</span>,<span class="string">"-.."</span>,<span class="string">"."</span>,<span class="string">"..-."</span>,<span class="string">"--."</span>,<span class="string">"...."</span>,<span class="string">".."</span>,<span class="string">".---"</span>,<span class="string">"-.-"</span>,<span class="string">".-.."</span>,<span class="string">"--"</span>,<span class="string">"-."</span>,<span class="string">"---"</span>,<span class="string">".--."</span>,<span class="string">"--.-"</span>,<span class="string">".-."</span>,<span class="string">"..."</span>,<span class="string">"-"</span>,<span class="string">"..-"</span>,<span class="string">"...-"</span>,<span class="string">".--"</span>,<span class="string">"-..-"</span>,<span class="string">"-.--"</span>,<span class="string">"--.."</span>&#125;;</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt; morse_codes;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;::iterator iter = words.begin(); iter &lt; words.end(); iter++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> tmp = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (*iter).length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> index = (<span class="keyword">int</span>)((*iter).at(i) - <span class="string">'a'</span>);</span><br><span class="line">            tmp.append(dic[index]);</span><br><span class="line">        &#125;</span><br><span class="line">        morse_codes.insert(tmp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> morse_codes.size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://www.cplusplus.com/reference/unordered_set/unordered_set/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/unordered_set/unordered_set/</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjjtfjqdd0000uwg25u5fv609" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/19/leetcode-807/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode_807</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/20/leetcode-804/">leetcode-804</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/19/leetcode-807/">leetcode_807</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/13/php-2/">php快速入门</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/13/Ubuntu-1/">Ubuntu_1</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/11/php-1/">php apache PhpStorm</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
