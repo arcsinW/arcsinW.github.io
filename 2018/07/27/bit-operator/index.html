@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>bit-operator | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0.基础      &amp;amp; \  ^     0 0 0 0 0   0 1 0 1 1   1 0 0 1 1   1 1 1 1 0    1.变量交换（无临时变量） 123456x = 0x10111101;y = 0x00101110;x = x ^ y;y = x ^ y;x = x ^ y; (x ^ y) ^ y = x  Poor at exploiting instructi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bit-operator">
+<meta property="og:url" content="http://yoursite.com/2018/07/27/bit-operator/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="0.基础      &amp;amp; \  ^     0 0 0 0 0   0 1 0 1 1   1 0 0 1 1   1 1 1 1 0    1.变量交换（无临时变量） 123456x = 0x10111101;y = 0x00101110;x = x ^ y;y = x ^ y;x = x ^ y; (x ^ y) ^ y = x  Poor at exploiting instructi">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-30T12:58:12.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bit-operator">
+<meta name="twitter:description" content="0.基础      &amp;amp; \  ^     0 0 0 0 0   0 1 0 1 1   1 0 0 1 1   1 1 1 1 0    1.变量交换（无临时变量） 123456x = 0x10111101;y = 0x00101110;x = x ^ y;y = x ^ y;x = x ^ y; (x ^ y) ^ y = x  Poor at exploiting instructi">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-bit-operator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/27/bit-operator/" class="article-date">
+  <time datetime="2018-07-27T15:51:53.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      bit-operator
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>0.基础</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">&amp;</th>
+<th style="text-align:center">\</th>
+<th style="text-align:center"></th>
+<th>^</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>1.变量交换（无临时变量）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0x10111101</span>;</span><br><span class="line">y = <span class="number">0x00101110</span>;</span><br><span class="line"></span><br><span class="line">x = x ^ y;</span><br><span class="line">y = x ^ y;</span><br><span class="line">x = x ^ y;</span><br></pre></td></tr></table></figure>
+<p>(x ^ y) ^ y = x</p>
+<blockquote>
+<p>Poor at exploiting instruction-level parallelism(ILP)</p>
+</blockquote>
+<p>2.取两数的较小值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &lt; y)</span><br><span class="line">&#123;</span><br><span class="line">    r = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    r = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">r = (x &lt; y) ? x : y;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A mispredicted branch empties the processor pipeline<br>• ~16 cycles on the cloud facility’s Intel Core i7’s.<br>The compiler might be smart enough to avoid the<br>unpredictable branch, but maybe not.</p>
+</blockquote>
+<p>无分支获取取最小值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = y ^ ((x ^ y) &amp; -(x &lt; y));</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>x &lt; y, -(x &lt; y) = -1, -1的二进制的所有位为1，(x ^ y) &amp; -1 = (x ^ y), y ^ (x ^ y) = x</p>
+</li>
+<li><p>x &gt; y, -(x &lt; y) = 0, (x ^ y) &amp; 0 = 0, y ^ 0 = y</p>
+</li>
+</ul>
+<p>3.取模(x + y) mod n</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = (x + y) % n;</span><br><span class="line"></span><br><span class="line">z = x + y;</span><br><span class="line">r = (z &lt; n) ? z : z-n;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x + y;</span><br><span class="line">r = z - (n &amp; -(z &gt;= n)); <span class="comment">//这里用到了上面取较小值类似的思路</span></span><br></pre></td></tr></table></figure>
+<p>4.找到二进制中最后一个1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = x &amp; (-x);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">0010000001010000</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">1101111110110000</td>
+</tr>
+<tr>
+<td style="text-align:center">x &amp; (-x)</td>
+<td style="text-align:center">0000000000010000</td>
+</tr>
+</tbody>
+</table>
+<p>5.获取二进制中1的位置</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><p><a href="https://www.youtube.com/watch?v=xc9DDSbf0NQ&amp;app=desktop" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (Video)</a></p>
+</li>
+<li><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2010/video-lectures/lecture-2-bit-hacks/MIT6_172F10_lec02.pdf" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (PPT)</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjk8bxlm60001r4g2qn5ji2sk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/30/leetcode-461/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          leetcode-461
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/25/leetcode-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/27/bit-operator/">bit-operator</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/25/leetcode-1/">leetcode-1</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/24/leetcode-520/">leetcode-520</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/24/leetcode-856/">leetcode-856</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

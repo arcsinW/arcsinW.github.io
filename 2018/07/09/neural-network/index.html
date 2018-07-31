@@ -12,10 +12,12 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="Neural Network1. Variables’ definitions$a_i^{(j)}$ : “activation” of unit $i$ in layer $j$ $\theta^{(j)}$ : matrix mapping from layer $j$ to layer $j+1$, with size of $S_{j+1}$ x $(S_j + 1)$ $L$ : lay">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-09T15:23:05.394Z">
+<meta property="og:image" content="http://yoursite.com/2018/07/09/neural-network/neural-network/neural_network.png">
+<meta property="og:updated_time" content="2018-07-26T09:01:09.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="neural_network">
 <meta name="twitter:description" content="Neural Network1. Variables’ definitions$a_i^{(j)}$ : “activation” of unit $i$ in layer $j$ $\theta^{(j)}$ : matrix mapping from layer $j$ to layer $j+1$, with size of $S_{j+1}$ x $(S_j + 1)$ $L$ : lay">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/09/neural-network/neural-network/neural_network.png">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -92,11 +94,14 @@
 <p>$S_l$ : count of units (exclude bias count) in layer $l$</p>
 <p>$\delta_j^{l}$ : error of unit $j$ in layer $l$</p>
 <p>sigmoid function : $g(z) = \frac{1}{1 + e^{-z}}$</p>
-<p><img src="" alt="a neural network picture here"></p>
+<p>$J(\theta)$: cost function</p>
+<p><img src="neural-network/neural_network.png" alt="a neural network picture here"></p>
 <h3 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h3><p>$a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3)$</p>
 <p>$a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3)$</p>
 <p>$a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3)$</p>
 <p>$h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0^{(2)} + \theta_{11}^{(2)}a_1^{(2)} + \theta_{12}^{(2)}a_2^{(2)} + \theta_{13}^{(2)}a_3^{(2)})$</p>
+<p>$z^{(2)} = \theta^{(1)}x$</p>
+<p>$\theta^{(1)}$ is a matrix $S_{j+1}$x$(S_j+1)$  (bias unit for +1)</p>
 <p>$$J(\theta) = \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K [-y^{(i)}<em>k log((h</em>\theta(x^{(i)}))_k) - (1 - y^{(i)}<em>k) log(1 - (h</em>\theta(x^{(i)}))<em>k)] + \frac{\lambda}{2m} \sum</em>{l=1}^{l-1} \sum_{i=1}^{S_l} \sum_{j=1}^{S_{l+1}} (\theta_{ji}^{(l)})^2$$</p>
 <p>find $\theta$ to minimize $J(\theta)$</p>
 <p>$$\frac{\partial J(\theta)}{\partial \theta} = a_j^{(l)} \zeta_i^{(l+1)}$$</p>
@@ -109,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="cjjva83pp000fjcg25z0rki56" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="cjk8bxlod000hr4g2xwnlcnap" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,23 +172,23 @@
       <ul>
         
           <li>
-            <a href="/2018/07/21/leetcode-791/">leetcode-791</a>
+            <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
           </li>
         
           <li>
-            <a href="/2018/07/20/leetcode-537/">leetcode-537</a>
+            <a href="/2018/07/27/bit-operator/">bit-operator</a>
           </li>
         
           <li>
-            <a href="/2018/07/20/leetcode/">leetcode</a>
+            <a href="/2018/07/25/leetcode-1/">leetcode-1</a>
           </li>
         
           <li>
-            <a href="/2018/07/20/leetcode-804/">leetcode-804</a>
+            <a href="/2018/07/24/leetcode-520/">leetcode-520</a>
           </li>
         
           <li>
-            <a href="/2018/07/19/leetcode-807/">leetcode_807</a>
+            <a href="/2018/07/24/leetcode-856/">leetcode-856</a>
           </li>
         
       </ul>
