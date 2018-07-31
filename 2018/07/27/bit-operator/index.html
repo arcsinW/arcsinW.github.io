@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="0.基础      &amp;amp; \  ^     0 0 0 0 0   0 1 0 1 1   1 0 0 1 1   1 1 1 1 0    1.变量交换（无临时变量） 123456x = 0x10111101;y = 0x00101110;x = x ^ y;y = x ^ y;x = x ^ y; (x ^ y) ^ y = x  Poor at exploiting instructi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-30T12:58:12.950Z">
+<meta property="og:updated_time" content="2018-07-31T06:34:53.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bit-operator">
 <meta name="twitter:description" content="0.基础      &amp;amp; \  ^     0 0 0 0 0   0 1 0 1 1   1 0 0 1 1   1 1 1 1 0    1.变量交换（无临时变量） 123456x = 0x10111101;y = 0x00101110;x = x ^ y;y = x ^ y;x = x ^ y; (x ^ y) ^ y = x  Poor at exploiting instructi">
@@ -175,7 +175,9 @@
 </tr>
 </tbody>
 </table>
-<p>5.获取二进制中1的位置</p>
+<p>5.获取二进制中最后一个1的位置</p>
+<p>可以从右向左看最后一位是不是1，不是就右移一位</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOfLastOne</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; <span class="number">1</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><p><a href="https://www.youtube.com/watch?v=xc9DDSbf0NQ&amp;app=desktop" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (Video)</a></p>
 </li>
@@ -186,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjk8bxlm60001r4g2qn5ji2sk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjk9od5ab0001o0g255p9q0uf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -244,6 +246,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/31/leetcode-876/">leetcode-876</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
           </li>
         
@@ -257,10 +263,6 @@
         
           <li>
             <a href="/2018/07/24/leetcode-520/">leetcode-520</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/24/leetcode-856/">leetcode-856</a>
           </li>
         
       </ul>

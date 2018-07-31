@@ -62,6 +62,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-876" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/31/leetcode-876/" class="article-date">
+  <time datetime="2018-07-31T10:47:01.000Z" itemprop="datePublished">2018-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/31/leetcode-876/">leetcode-876</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="876">
+<li>Middle of the Linked List</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/07/31/leetcode-876/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjk9od5bg000fo0g28x5voh54" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-461" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/30/leetcode-461/" class="article-date">
@@ -95,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/30/leetcode-461/" data-id="cjk8bxlme0005r4g2b1a0zh5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/30/leetcode-461/" data-id="cjk9od5b8000bo0g2s2lu1jpl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +259,9 @@
 </tr>
 </tbody>
 </table>
-<p>5.获取二进制中1的位置</p>
+<p>5.获取二进制中最后一个1的位置</p>
+<p>可以从右向左看最后一位是不是1，不是就右移一位</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOfLastOne</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; <span class="number">1</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><p><a href="https://www.youtube.com/watch?v=xc9DDSbf0NQ&amp;app=desktop" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (Video)</a></p>
 </li>
@@ -227,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjk8bxlm60001r4g2qn5ji2sk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjk9od5ab0001o0g255p9q0uf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -270,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjk8bxlmh0007r4g2uoohmfux" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjk9od5ax0006o0g2lnulcsbo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjk8bxlmj0008r4g2p7959dl3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjk9od5b30009o0g2xotq8tox" class="article-share-link">Share</a>
       
       
     </footer>
@@ -354,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="cjk8bxlo7000er4g2kz0h3ica" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="cjk9od5ba000co0g2q0a5se8n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjk8bxlma0002r4g26tm8seop" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjk9od5ae0002o0g262kchk89" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjk8bxlok000kr4g2cq6lym2j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjk9od5bo000ko0g2q3vvy1oq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -477,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjk8bxlo3000cr4g2uc3lylos" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjk9od5bc000do0g2x5jva84v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -520,43 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjk8bxlmm000ar4g267glzm6f" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/20/leetcode/" class="article-date">
-  <time datetime="2018-07-20T09:01:27.000Z" itemprop="datePublished">2018-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/leetcode/">leetcode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="cjk8bxlo9000fr4g2t0tdhmwu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjk9od5b20008o0g2b6e8exkl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -600,6 +609,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/31/leetcode-876/">leetcode-876</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
           </li>
         
@@ -613,10 +626,6 @@
         
           <li>
             <a href="/2018/07/24/leetcode-520/">leetcode-520</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/24/leetcode-856/">leetcode-856</a>
           </li>
         
       </ul>
