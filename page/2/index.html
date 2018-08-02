@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/21/sql/" class="article-date">
+  <time datetime="2018-07-21T12:35:15.000Z" itemprop="datePublished">2018-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/21/sql/">sql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h3 id="1-把每一行的’m’-‘f’互换"><a href="#1-把每一行的’m’-‘f’互换" class="headerlink" title="1. 把每一行的’m’ ‘f’互换"></a>1. 把每一行的’m’ ‘f’互换</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> salary <span class="keyword">set</span> sex = <span class="keyword">IF</span> (sex = <span class="string">'m'</span>, <span class="string">'f'</span>, <span class="string">'m'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> salary</span><br><span class="line"><span class="keyword">set</span> sex = (<span class="keyword">case</span></span><br><span class="line"><span class="keyword">when</span> sex = <span class="string">'m'</span> <span class="keyword">then</span> <span class="string">'f'</span></span><br><span class="line"><span class="keyword">ELSE</span> <span class="string">'m'</span></span><br><span class="line"><span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
+<p>LeetCode在sql语句上的执行时间真是玄学，一段一样的sql语句执行时间差几百ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | m   | 2500   |</span><br><span class="line">| 2  | B    | f   | 1500   |</span><br><span class="line">| 3  | C    | m   | 5500   |</span><br><span class="line">| 4  | D    | f   | 500    |</span><br></pre></td></tr></table></figure>
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjkck3rmc000ql4g2tcnxy7ws" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-791" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/21/leetcode-791/" class="article-date">
@@ -95,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjkcgcudn000ao4g2sxb9dvwd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjkck3rl1000dl4g2mvaeagw4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjkcgcuhg000po4g271yj5ug1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjkck3rkc000al4g2dm2jum2l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="cjkcgcugn000ho4g2wsv45930" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="cjkck3rlh000il4g2ipgg02a9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjkcgcufr000do4g2zppb75cg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjkck3rl4000el4g27xnhinor" class="article-share-link">Share</a>
       
       
     </footer>
@@ -256,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="cjkcgcugs000io4g2foruuba2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="cjkck3rl7000fl4g2g2yhxvos" class="article-share-link">Share</a>
       
       
     </footer>
@@ -297,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/php-2/" data-id="cjkcgcuh4000lo4g2x9qv4qvy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/php-2/" data-id="cjkck3rm0000nl4g2rgg1bqa7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Ubuntu-1/" data-id="cjkcgcu8n0000o4g2isvoyw6d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/Ubuntu-1/" data-id="cjkck3rj80001l4g24vybd1x8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cjkcgcugw000jo4g2l59rhkk5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cjkck3rlw000ml4g2ohmomg4r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -421,66 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/10/numpy/" data-id="cjkcgcug7000fo4g2kv8i3l9x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-neural-network" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/09/neural-network/" class="article-date">
-  <time datetime="2018-07-09T15:22:00.000Z" itemprop="datePublished">2018-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/09/neural-network/">neural_network</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<h1 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h1><h2 id="1-Variables’-definitions"><a href="#1-Variables’-definitions" class="headerlink" title="1. Variables’ definitions"></a>1. Variables’ definitions</h2><p>$a_i^{(j)}$ : “activation” of unit $i$ in layer $j$</p>
-<p>$\theta^{(j)}$ : matrix mapping from layer $j$ to layer $j+1$, with size of $S_{j+1}$ x $(S_j + 1)$</p>
-<p>$L$ : layers’ count</p>
-<p>$S_l$ : count of units (exclude bias count) in layer $l$</p>
-<p>$\delta_j^{l}$ : error of unit $j$ in layer $l$</p>
-<p>sigmoid function : $g(z) = \frac{1}{1 + e^{-z}}$</p>
-<p>$J(\theta)$: cost function</p>
-<p><img src="neural-network/neural_network.png" alt="a neural network picture here"></p>
-<h3 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h3><p>$a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3)$</p>
-<p>$a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3)$</p>
-<p>$a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3)$</p>
-<p>$h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0^{(2)} + \theta_{11}^{(2)}a_1^{(2)} + \theta_{12}^{(2)}a_2^{(2)} + \theta_{13}^{(2)}a_3^{(2)})$</p>
-<p>$z^{(2)} = \theta^{(1)}x$</p>
-<p>$\theta^{(1)}$ is a matrix $S_{j+1}$x$(S_j+1)$  (bias unit for +1)</p>
-<p>$$J(\theta) = \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K [-y^{(i)}<em>k log((h</em>\theta(x^{(i)}))_k) - (1 - y^{(i)}<em>k) log(1 - (h</em>\theta(x^{(i)}))<em>k)] + \frac{\lambda}{2m} \sum</em>{l=1}^{l-1} \sum_{i=1}^{S_l} \sum_{j=1}^{S_{l+1}} (\theta_{ji}^{(l)})^2$$</p>
-<p>find $\theta$ to minimize $J(\theta)$</p>
-<p>$$\frac{\partial J(\theta)}{\partial \theta} = a_j^{(l)} \zeta_i^{(l+1)}$$</p>
-<h3 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h3><p>$$\delta_j = a_j - y_j$$</p>
-<p>for example</p>
-<p>$\delta_j^{(4)} = a_j^{(4)} - y_i$</p>
-<p>$\delta_j^{(3)} = (\theta^{(3)})^T\delta^{(4)}.*g’(z^{(3)})$</p>
-<p>$\delta_j^{(2)} = (\theta^{(2)})^T\delta^{(3)}.*g’(z^{(2)})$</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="cjkcgcufz000eo4g20pzcdbfa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/10/numpy/" data-id="cjkck3rlo000kl4g2shh6h38t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -524,6 +506,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/02/leetcode-617/">leetcode-617</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/01/leetcode-654/">leetcode-654</a>
           </li>
         
@@ -537,10 +523,6 @@
         
           <li>
             <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/27/bit-operator/">bit-operator</a>
           </li>
         
       </ul>

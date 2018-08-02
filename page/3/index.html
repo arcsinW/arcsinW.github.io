@@ -62,6 +62,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-neural-network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/09/neural-network/" class="article-date">
+  <time datetime="2018-07-09T15:22:00.000Z" itemprop="datePublished">2018-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/09/neural-network/">neural_network</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h1 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h1><h2 id="1-Variables’-definitions"><a href="#1-Variables’-definitions" class="headerlink" title="1. Variables’ definitions"></a>1. Variables’ definitions</h2><p>$a_i^{(j)}$ : “activation” of unit $i$ in layer $j$</p>
+<p>$\theta^{(j)}$ : matrix mapping from layer $j$ to layer $j+1$, with size of $S_{j+1}$ x $(S_j + 1)$</p>
+<p>$L$ : layers’ count</p>
+<p>$S_l$ : count of units (exclude bias count) in layer $l$</p>
+<p>$\delta_j^{l}$ : error of unit $j$ in layer $l$</p>
+<p>sigmoid function : $g(z) = \frac{1}{1 + e^{-z}}$</p>
+<p>$J(\theta)$: cost function</p>
+<p><img src="neural-network/neural_network.png" alt="a neural network picture here"></p>
+<h3 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h3><p>$a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3)$</p>
+<p>$a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3)$</p>
+<p>$a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3)$</p>
+<p>$h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0^{(2)} + \theta_{11}^{(2)}a_1^{(2)} + \theta_{12}^{(2)}a_2^{(2)} + \theta_{13}^{(2)}a_3^{(2)})$</p>
+<p>$z^{(2)} = \theta^{(1)}x$</p>
+<p>$\theta^{(1)}$ is a matrix $S_{j+1}$x$(S_j+1)$  (bias unit for +1)</p>
+<p>$$J(\theta) = \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K [-y^{(i)}<em>k log((h</em>\theta(x^{(i)}))_k) - (1 - y^{(i)}<em>k) log(1 - (h</em>\theta(x^{(i)}))<em>k)] + \frac{\lambda}{2m} \sum</em>{l=1}^{l-1} \sum_{i=1}^{S_l} \sum_{j=1}^{S_{l+1}} (\theta_{ji}^{(l)})^2$$</p>
+<p>find $\theta$ to minimize $J(\theta)$</p>
+<p>$$\frac{\partial J(\theta)}{\partial \theta} = a_j^{(l)} \zeta_i^{(l+1)}$$</p>
+<h3 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h3><p>$$\delta_j = a_j - y_j$$</p>
+<p>for example</p>
+<p>$\delta_j^{(4)} = a_j^{(4)} - y_i$</p>
+<p>$\delta_j^{(3)} = (\theta^{(3)})^T\delta^{(4)}.*g’(z^{(3)})$</p>
+<p>$\delta_j^{(2)} = (\theta^{(2)})^T\delta^{(3)}.*g’(z^{(2)})$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="cjkck3rlk000jl4g21udzi4gn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cnn" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/07/cnn/" class="article-date">
@@ -130,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/07/cnn/" data-id="cjkcgcud00007o4g2b9pjs05g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/07/cnn/" data-id="cjkck3rjk0003l4g2igz1u5rp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/04/tensorflow-1/" data-id="cjkcgcuhd000oo4g2cpivf1ib" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/04/tensorflow-1/" data-id="cjkck3rme000rl4g26t37q1bc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/02/opencv/" data-id="cjkcgcuh0000ko4g2dmiup3mt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/02/opencv/" data-id="cjkck3rls000ll4g28eoio2wn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/29/spark-intallation/" data-id="cjkcgcuhm000qo4g239k5oglh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/29/spark-intallation/" data-id="cjkck3rm7000pl4g2yjyr6vbs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -329,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/27/scrapy/" data-id="cjkcgcuh6000mo4g2sjt1wshm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/27/scrapy/" data-id="cjkck3rm4000ol4g273kr1a64" class="article-share-link">Share</a>
       
       
     </footer>
@@ -370,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjkcgcu9w0001o4g2yw0y3ay4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjkck3rjt0005l4g2b0svwt1e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="cjkcgcuak0002o4g2uyv3scri" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="cjkck3rip0000l4g2zcy15grz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -478,6 +537,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/02/leetcode-617/">leetcode-617</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/01/leetcode-654/">leetcode-654</a>
           </li>
         
@@ -491,10 +554,6 @@
         
           <li>
             <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/27/bit-operator/">bit-operator</a>
           </li>
         
       </ul>
