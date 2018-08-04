@@ -3,23 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>php apache PhpStorm安装与配置 | X</title>
+  <title>php, apache, VS Code安装与配置 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="摘要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php apache PhpStorm安装与配置">
+<meta property="og:title" content="php, apache, VS Code安装与配置">
 <meta property="og:url" content="http://yoursite.com/2018/07/11/php-1/index.html">
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/07/11/php-1/php-1/php_1.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/11/php-1/php-1/php_2.png">
-<meta property="og:image" content="http://yoursite.com/2018/07/11/php-1/php-1/php_3.png">
-<meta property="og:updated_time" content="2018-08-01T04:13:23.204Z">
+<meta property="og:updated_time" content="2018-08-03T13:44:42.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php apache PhpStorm安装与配置">
+<meta name="twitter:title" content="php, apache, VS Code安装与配置">
 <meta name="twitter:description" content="摘要">
-<meta name="twitter:image" content="http://yoursite.com/2018/07/11/php-1/php-1/php_1.png">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -82,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      php apache PhpStorm安装与配置
+      php, apache, VS Code安装与配置
     </h1>
   
 
@@ -96,29 +92,24 @@
 <thead>
 <tr>
 <th style="text-align:center">😂</th>
-<th style="text-align:center"></th>
 <th style="text-align:center">🚀</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">PhpStorm</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"><code>https://download.jetbrains.8686c.com/webide/PhpStorm-2018.1.6.exe</code></td>
+<td style="text-align:center">VS Code</td>
+<td style="text-align:center"><code>https://go.microsoft.com/fwlink/?Linkid=852157</code></td>
 </tr>
 <tr>
 <td style="text-align:center">apache2.4.33</td>
-<td style="text-align:center"></td>
 <td style="text-align:center"><code>https://www.apachelounge.com/download/VC14/binaries/httpd-2.4.33-win32-VC14.zip</code></td>
 </tr>
 <tr>
 <td style="text-align:center">php7.1.19</td>
-<td style="text-align:center"></td>
 <td style="text-align:center"><code>https://windows.php.net/downloads/releases/php-7.1.19-Win32-VC14-x86.zip</code></td>
 </tr>
 <tr>
 <td style="text-align:center">vc_redist.x86</td>
-<td style="text-align:center"></td>
 <td style="text-align:center"><code>https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x86.exe</code></td>
 </tr>
 </tbody>
@@ -149,19 +140,27 @@
 <li>启动和关闭服务</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net start Apache</span><br><span class="line">net stop Apache</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-PhpStorm"><a href="#2-3-PhpStorm" class="headerlink" title="2.3 PhpStorm"></a>2.3 PhpStorm</h3><p>Tools -&gt; Deployment -&gt; Configuration</p>
-<p><img src="php-1/php_1.png" alt=""></p>
-<p><img src="php-1/php_2.png" alt=""></p>
-<p><img src="php-1/php_3.png" alt=""></p>
-<p>安装<code>XDebug</code></p>
+<h3 id="2-3-VS-Code"><a href="#2-3-VS-Code" class="headerlink" title="2.3 VS Code"></a>2.3 VS Code</h3><ol>
+<li><p>安装插件<code>PHP Debug</code>, <code>PHP IntelliSense</code></p>
+</li>
+<li><p><code>File-&gt;Preference-&gt;Settings</code></p>
+</li>
+</ol>
+<p>修改这三项, php的路径修改为自己的路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;php.executablePath&quot;: &quot;c:/php/php.exe&quot;,</span><br><span class="line">&quot;php.validate.executablePath&quot;: &quot;c:/php/php.exe&quot;,</span><br><span class="line">&quot;php.suggest.basic&quot;: false,</span><br></pre></td></tr></table></figure>
+<p>3.安装<code>XDebug</code></p>
 <p><a href="https://xdebug.org/files/php_xdebug-2.6.0-7.1-vc14.dll" target="_blank" rel="noopener">https://xdebug.org/files/php_xdebug-2.6.0-7.1-vc14.dll</a></p>
 <p>将下载下来的dll扔到<code>c:/php/ext</code>中</p>
 <p>修改<code>php.ini</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[xdebug]</span></span><br><span class="line"><span class="attr">zend_extension</span> = <span class="string">"C:\php\ext\php_xdebug-2.6.0-7.1-vc14.dll"</span></span><br><span class="line"></span><br><span class="line">xdebug.remote_enable = On</span><br><span class="line"><span class="comment">;启用性能检测分析</span></span><br><span class="line"><span class="comment">;xdebug.profiler_enable = On</span></span><br><span class="line"><span class="comment">;启用代码自动跟踪</span></span><br><span class="line">xdebug.auto_trace=On</span><br><span class="line">xdebug.profiler_enable_trigger = On</span><br><span class="line">xdebug.profiler_output_name = cachegrind.out.%t.%p</span><br><span class="line"><span class="comment">;指定性能分析文件的存放目录</span></span><br><span class="line"><span class="comment">;xdebug.profiler_output_dir ="C:/wamp64/tmp"</span></span><br><span class="line">xdebug.show_local_vars=0</span><br><span class="line"></span><br><span class="line"><span class="comment">;配置端口和监听的域名</span></span><br><span class="line">xdebug.remote_port=9000</span><br><span class="line">xdebug.remote_host="localhost"</span><br></pre></td></tr></table></figure>
+<p>第一次运行项目的时候选择<code>PHP</code></p>
+<p>会出现<code>Listen for XDebug</code>,<br><code>Launch currently open script</code>两种运行方式，选择<code>Listen for XDebug</code>就可以进行调试了</p>
+<p>调试的时候如果无法命中断点，应该想想此断点处的代码是否会被执行到</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cjkck3rlw000ml4g2ohmomg4r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cjkf6bd8o000nhkg29d3q9ai2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,6 +218,14 @@
       <ul>
         
           <li>
+            <a href="/2018/08/04/leetcode-728/">leetcode-728</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/03/leetcode-852/">leetcode-852</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/02/leetcode-617/">leetcode-617</a>
           </li>
         
@@ -228,14 +235,6 @@
         
           <li>
             <a href="/2018/08/01/codeigniter-1/">codeigniter-1</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/31/leetcode-876/">leetcode-876</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
           </li>
         
       </ul>

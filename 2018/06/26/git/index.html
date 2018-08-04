@@ -13,7 +13,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/06/26/git/git_1.png">
-<meta property="og:updated_time" content="2018-08-02T11:02:19.937Z">
+<meta property="og:updated_time" content="2018-08-02T12:51:05.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="摘要">
@@ -117,8 +117,8 @@
 <p>下面是在当前分支为signle_edition时执行<br><code>git merge master</code>时出现冲突的情况</p>
 <p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 到 =======的部分是当前分支single_edition的版本</p>
 <p>======= 到 &gt;&gt;&gt;&gt;&gt;&gt;&gt; master是master中的版本<br>处理冲突就是手动选择保存哪个版本的代码<br><!-- ![conflict](git/git_1.png) --><br><img src="/2018/06/26/git/git_1.png" title="a picture of conflict"></p>
-<p>处理好冲突后</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>处理好冲突后，使用<code>add</code>将该文件标记为已解决状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add filename</span><br></pre></td></tr></table></figure>
 <h3 id="2-4-版本控制"><a href="#2-4-版本控制" class="headerlink" title="2.4 版本控制"></a>2.4 版本控制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git rm --cahced readme.txt <span class="comment"># 将文件untrack，不删除文件</span></span><br><span class="line"></span><br><span class="line">git rm readme.txt <span class="comment"># 将文件untrack并删除</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 查看提交日志</span></span><br><span class="line"></span><br><span class="line">git --no-pager <span class="built_in">log</span> <span class="comment"># log不分页</span></span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^ <span class="comment"># 回退到上一commit</span></span><br><span class="line"></span><br><span class="line">git reset --hard [commit_id] <span class="comment"># 回退到指定commit，commit_id只需写前几位，能唯一确定这个commit即可</span></span><br></pre></td></tr></table></figure>
 <h3 id="some-solutions"><a href="#some-solutions" class="headerlink" title="some solutions"></a>some solutions</h3><ol>
 <li>refusing to merge unrelated histories</li>
@@ -148,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjkck3rjt0005l4g2b0svwt1e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjkf6bd7p0004hkg2efp1qdiu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,6 +206,14 @@
       <ul>
         
           <li>
+            <a href="/2018/08/04/leetcode-728/">leetcode-728</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/03/leetcode-852/">leetcode-852</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/02/leetcode-617/">leetcode-617</a>
           </li>
         
@@ -215,14 +223,6 @@
         
           <li>
             <a href="/2018/08/01/codeigniter-1/">codeigniter-1</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/31/leetcode-876/">leetcode-876</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/30/leetcode-461/">leetcode-461</a>
           </li>
         
       </ul>
