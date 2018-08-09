@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>c++ | X</title>
+  <title>leetcode-867 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="静态类">
+  <meta name="description" content="矩阵转置，行列下标互换就行了，简单题 算法复杂度$O(n^2)$ 123456789101112131415161718vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; transpose(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; A)&amp;#123;    int shape = A.at(0).size();    cout &amp;lt;&amp;lt; &quot;Sha">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++">
-<meta property="og:url" content="http://yoursite.com/2018/07/22/c/index.html">
+<meta property="og:title" content="leetcode-867">
+<meta property="og:url" content="http://yoursite.com/2018/08/05/leetcode-867/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="静态类">
+<meta property="og:description" content="矩阵转置，行列下标互换就行了，简单题 算法复杂度$O(n^2)$ 123456789101112131415161718vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; transpose(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; A)&amp;#123;    int shape = A.at(0).size();    cout &amp;lt;&amp;lt; &quot;Sha">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-22T07:08:36.961Z">
+<meta property="og:updated_time" content="2018-08-05T09:15:24.528Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="c++">
-<meta name="twitter:description" content="静态类">
+<meta name="twitter:title" content="leetcode-867">
+<meta name="twitter:description" content="矩阵转置，行列下标互换就行了，简单题 算法复杂度$O(n^2)$ 123456789101112131415161718vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; transpose(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; A)&amp;#123;    int shape = A.at(0).size();    cout &amp;lt;&amp;lt; &quot;Sha">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-c" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-leetcode-867" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/22/c/" class="article-date">
-  <time datetime="2018-07-22T05:56:00.000Z" itemprop="datePublished">2018-07-22</time>
+    <a href="/2018/08/05/leetcode-867/" class="article-date">
+  <time datetime="2018-08-05T09:12:46.000Z" itemprop="datePublished">2018-08-05</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      c++
+      leetcode-867
     </h1>
   
 
@@ -86,14 +86,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>静态类</li>
-</ol>
-
+        <p>矩阵转置，行列下标互换就行了，简单题</p>
+<p>算法复杂度$O(n^2)$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; transpose(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> shape = A.at(<span class="number">0</span>).size();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Shape: "</span> &lt;&lt; shape &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; shape; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = A.at(i).at(j);</span><br><span class="line">            A.at(i).at(j) = A.at(j).at(i);</span><br><span class="line">            A.at(j).at(i) = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjkmbp5mh0002zwg28uasf2ob" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/05/leetcode-867/" data-id="cjkmbp5n7000izwg24c12ci82" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,19 +101,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/07/24/leetcode-856/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/06/the-method-of-programming-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          leetcode-856
+          the-method-of-programming-1
         
       </div>
     </a>
   
   
-    <a href="/2018/07/21/sql/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/04/leetcode-728/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">sql</div>
+      <div class="article-nav-title">leetcode-728</div>
     </a>
   
 </nav>

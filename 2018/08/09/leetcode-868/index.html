@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-868 | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Binary Gap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-868">
+<meta property="og:url" content="http://yoursite.com/2018/08/09/leetcode-868/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="Binary Gap">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-09T08:25:29.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-868">
+<meta name="twitter:description" content="Binary Gap">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-868" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/09/leetcode-868/" class="article-date">
+  <time datetime="2018-08-09T06:54:49.000Z" itemprop="datePublished">2018-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-868
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="868">
+<li>Binary Gap</li>
+</ol>
+<a id="more"></a>
+<blockquote>
+<p>Given a positive integer N, find and return the longest distance between two consecutive 1’s in the binary representation of N.</p>
+<p>If there aren’t two consecutive 1’s, return 0.</p>
+</blockquote>
+<blockquote>
+<p>Example 1:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: 22</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">22 in binary is 0b10110.</span><br><span class="line">In the binary representation of 22, there are three ones, and two consecutive pairs of 1&apos;s.</span><br><span class="line">The first consecutive pair of 1&apos;s have distance 2.</span><br><span class="line">The second consecutive pair of 1&apos;s have distance 1.</span><br><span class="line">The answer is the largest of these two distances, which is 2.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Example 2:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">5 in binary is 0b101.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Example 3:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: 6</span><br><span class="line">Output: 1</span><br><span class="line">Explanation:</span><br><span class="line">6 in binary is 0b110.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Example 4:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: 8</span><br><span class="line">Output: 0</span><br><span class="line">Explanation:</span><br><span class="line">8 in binary is 0b1000.</span><br><span class="line">There aren&apos;t any consecutive pairs of 1&apos;s in the binary representation of 8, so we return 0.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note:</p>
+</blockquote>
+<ul>
+<li><code>1 &lt;= N &lt;= 10^9</code></li>
+</ul>
+<hr>
+<p>找一个数的二进制中连续的两个1的最大距离，这里的连续(<code>consecutive</code>)很明显不用相邻，不然也没有最大距离了，两个1之间可以有很多个0</p>
+<p>我的做法中规中矩，通过&amp;1来判断最后一位是不是1，第一次碰到1做个记录，第二次碰到1的时候就算出距离并与max比较，最后得到最大的距离</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binaryGap</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">-1</span>, distance = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (N != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (N &amp; <span class="number">1</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 第一次遇到1</span></span><br><span class="line">            <span class="keyword">if</span> (cur == <span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                cur = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//第二次遇到1，算距离</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                max = cur &gt; max ? cur : max;</span><br><span class="line">                cur = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 不是0且前面已经遇到1</span></span><br><span class="line">            <span class="keyword">if</span> (cur != <span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ++cur;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        N = N &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看看LeetCode上的其他写法</p>
+<p><code>__builtin_ctz</code>返回一个数二进制位右边第一个1的位置</p>
+<p>感觉和我的思路差不多，但代码比我的简洁<br>直接用内置函数拿到右边第一个1的位置，再遇到一个1的时候就可以直接算距离并和<code>max_distance</code>比较赋值，然后将当前的<code>index</code>设置为<code>last_one</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binaryGap</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max_distance = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> last_one = __builtin_ctz(N); <span class="comment">//右边第一个1的位置</span></span><br><span class="line">    <span class="keyword">int</span> test_bit = <span class="number">1</span>; <span class="comment">// 一个mask，用来对二进制的某一位做判断</span></span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(N &amp;&amp; test_bit &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (N &amp; test_bit)</span><br><span class="line">        &#123;</span><br><span class="line">            max_distance = max(index - last_one, max_distance);</span><br><span class="line">            last_one = index;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        N &amp;= ~test_bit;</span><br><span class="line">        test_bit &lt;&lt;= <span class="number">1</span>; <span class="comment">//修改mask，下一个循环对下一个二进制位做判断</span></span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> max_distance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/09/leetcode-868/" data-id="cjkmbp5n6000hzwg2atp1nt5c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/09/leetcode-806/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-806</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/09/leetcode-868/">leetcode-868</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/09/leetcode-806/">leetcode-806</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/06/the-method-of-programming-1/">the-method-of-programming-1</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/05/leetcode-867/">leetcode-867</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/04/leetcode-728/">leetcode-728</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
