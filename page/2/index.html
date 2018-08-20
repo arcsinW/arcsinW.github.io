@@ -62,6 +62,190 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-868" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/09/leetcode-868/" class="article-date">
+  <time datetime="2018-08-09T06:54:49.000Z" itemprop="datePublished">2018-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/09/leetcode-868/">leetcode-868</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="868">
+<li>Binary Gap</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/09/leetcode-868/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/09/leetcode-868/" data-id="cjl1orjuh000vucg2qfqzy42a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-806" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/09/leetcode-806/" class="article-date">
+  <time datetime="2018-08-09T02:42:59.000Z" itemprop="datePublished">2018-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/09/leetcode-806/">leetcode-806</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="806">
+<li>Number of Lines To Write String</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/09/leetcode-806/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/09/leetcode-806/" data-id="cjl1orju2000mucg20rt8r9hk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-the-method-of-programming-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/06/the-method-of-programming-1/" class="article-date">
+  <time datetime="2018-08-06T13:16:54.000Z" itemprop="datePublished">2018-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/06/the-method-of-programming-1/">the-method-of-programming-1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>1.1的举一反三</p>
+<p>单词翻转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input：&quot;I am a student.&quot;</span><br><span class="line">Output: &quot;student. a am I&quot;</span><br></pre></td></tr></table></figure>
+<p>尝试使用<code>三步反转</code>，按空格分词，先对每个词反转再整体反转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I am a student.</span><br><span class="line">I ma a .tneduts</span><br><span class="line">student. a am I</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">reverseWord</span><span class="params">(<span class="built_in">string</span> str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">stringstream</span> <span class="title">ss</span><span class="params">(str)</span></span>;</span><br><span class="line">    <span class="built_in">string</span> tmp;</span><br><span class="line">    <span class="built_in">string</span> result;</span><br><span class="line">    ss &gt;&gt; tmp;</span><br><span class="line">    reverse(tmp.begin(), tmp.end());</span><br><span class="line">    result += tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (ss &gt;&gt; tmp)</span><br><span class="line">    &#123;</span><br><span class="line">        reverse(tmp.begin(), tmp.end());</span><br><span class="line">        result += <span class="string">" "</span>;</span><br><span class="line">        result += tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    reverse(result.begin(), result.end());</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.4</p>
+<p>in a word, 临时变量溢出</p>
+<p>计算机对int溢出的处理</p>
+<p>比如一个4字节的int类型<code>1052254545</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">1052254545</span>;</span><br><span class="line"><span class="keyword">int</span> m = n * <span class="number">10</span>; <span class="comment">//1932610858</span></span><br></pre></td></tr></table></figure>
+<p>正常情况下<code>m</code>应该为<code>10522545450</code>,但这个数的二进制位有34位，int在这里只能保存32位，所以只会保留后32位</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//10522545450</span></span><br><span class="line">‭<span class="number">10</span> <span class="number">0111</span> <span class="number">0011</span> <span class="number">0011</span> <span class="number">0001</span> <span class="number">0100</span> <span class="number">1101</span> <span class="number">0010</span> <span class="number">1010</span>‬</span><br><span class="line"></span><br><span class="line"><span class="comment">//1932610858</span></span><br><span class="line">   <span class="number">0111</span> <span class="number">0011</span> <span class="number">0011</span> <span class="number">0001</span> <span class="number">0100</span> <span class="number">1101</span> <span class="number">0010</span> <span class="number">1010</span>‬</span><br></pre></td></tr></table></figure>
+<p>1.6 Manacher算法</p>
+<p><code>12212321</code></p>
+<p><code>$#1#2#2#1#2#3#2#1#</code></p>
+<p>S[i] # 1 # 2 # 2 # 1 # 2 # 3 # 2 # 1 #<br>P[i] 1 2 1 2 5 2 1 4 1 2 1 6 1 2 1 2 1</p>
+<p>max(P[i] - 1)是原字符串中最长回文子串的长度</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/06/the-method-of-programming-1/" data-id="cjl1orjv70017ucg2nfopcr0l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-867" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/05/leetcode-867/" class="article-date">
+  <time datetime="2018-08-05T09:12:46.000Z" itemprop="datePublished">2018-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/05/leetcode-867/">leetcode-867</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="867">
+<li>Transpose Matrix</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/05/leetcode-867/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/05/leetcode-867/" data-id="cjl1orju8000pucg2tqt09p9f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-728" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/04/leetcode-728/" class="article-date">
@@ -95,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/04/leetcode-728/" data-id="cjkt7q5pp000i6wg2qi108hi7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/04/leetcode-728/" data-id="cjl1orjtx000jucg2vtrag3mb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/03/leetcode-852/" data-id="cjkt7q5pv000m6wg2b8pjnr4f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/03/leetcode-852/" data-id="cjl1orju6000oucg29j7370oq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/02/leetcode-617/" data-id="cjkt7q5pn000g6wg2f4dw8osd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/02/leetcode-617/" data-id="cjl1orjtt000hucg2ihv4k7in" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/leetcode-654/" data-id="cjkt7q5po000h6wg2orrjox1r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/01/leetcode-654/" data-id="cjl1orjtz000kucg2sdmgwbbt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +442,7 @@
       
         <a id="more"></a>
 <p>1.去除url中的<code>index.php</code></p>
-<p>2.js,css,images的存放于路径填写</p>
+<p>2.js,css,images的存放路径填写</p>
 <p>3.路由</p>
 <p>4.出现<code>http://[::1]</code></p>
 <p><code>application/config/config.php</code>下的<code>base_url</code>不要设置为空</p>
@@ -273,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/codeigniter-1/" data-id="cjkt7q5ot00016wg2cgiml28z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/01/codeigniter-1/" data-id="cjl1orjsk0000ucg2ogc9mv2c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,271 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjkt7q5q8000u6wg2wvygu000" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-461" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/30/leetcode-461/" class="article-date">
-  <time datetime="2018-07-30T13:34:40.000Z" itemprop="datePublished">2018-07-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/leetcode-461/">leetcode-461</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="461">
-<li>Hamming Distance</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/07/30/leetcode-461/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/30/leetcode-461/" data-id="cjkt7q5pk000e6wg2zgoiz5qw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-bit-operator" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/27/bit-operator/" class="article-date">
-  <time datetime="2018-07-27T15:51:53.000Z" itemprop="datePublished">2018-07-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/27/bit-operator/">bit-operator</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<p>0.基础</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center">&amp;</th>
-<th style="text-align:center">\</th>
-<th style="text-align:center"></th>
-<th>^</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0</td>
-</tr>
-</tbody>
-</table>
-<p>1.变量交换（无临时变量）</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0x10111101</span>;</span><br><span class="line">y = <span class="number">0x00101110</span>;</span><br><span class="line"></span><br><span class="line">x = x ^ y;</span><br><span class="line">y = x ^ y;</span><br><span class="line">x = x ^ y;</span><br></pre></td></tr></table></figure>
-<p>(x ^ y) ^ y = x</p>
-<blockquote>
-<p>Poor at exploiting instruction-level parallelism(ILP)</p>
-</blockquote>
-<p>2.取两数的较小值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &lt; y)</span><br><span class="line">&#123;</span><br><span class="line">    r = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    r = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">r = (x &lt; y) ? x : y;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>A mispredicted branch empties the processor pipeline<br>• ~16 cycles on the cloud facility’s Intel Core i7’s.<br>The compiler might be smart enough to avoid the<br>unpredictable branch, but maybe not.</p>
-</blockquote>
-<p>无分支获取取最小值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = y ^ ((x ^ y) &amp; -(x &lt; y));</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>x &lt; y, -(x &lt; y) = -1, -1的二进制的所有位为1，(x ^ y) &amp; -1 = (x ^ y), y ^ (x ^ y) = x</p>
-</li>
-<li><p>x &gt; y, -(x &lt; y) = 0, (x ^ y) &amp; 0 = 0, y ^ 0 = y</p>
-</li>
-</ul>
-<p>3.取模(x + y) mod n</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = (x + y) % n;</span><br><span class="line"></span><br><span class="line">z = x + y;</span><br><span class="line">r = (z &lt; n) ? z : z-n;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x + y;</span><br><span class="line">r = z - (n &amp; -(z &gt;= n)); <span class="comment">//这里用到了上面取较小值类似的思路</span></span><br></pre></td></tr></table></figure>
-<p>4.找到二进制中最后一个1</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = x &amp; (-x);</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">x</td>
-<td style="text-align:center">0010000001010000</td>
-</tr>
-<tr>
-<td style="text-align:center">-x</td>
-<td style="text-align:center">1101111110110000</td>
-</tr>
-<tr>
-<td style="text-align:center">x &amp; (-x)</td>
-<td style="text-align:center">0000000000010000</td>
-</tr>
-</tbody>
-</table>
-<p>5.获取二进制中最后一个1的位置</p>
-<p>可以从右向左看最后一位是不是1，不是就右移一位</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOfLastOne</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; <span class="number">1</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><p><a href="https://www.youtube.com/watch?v=xc9DDSbf0NQ&amp;app=desktop" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (Video)</a></p>
-</li>
-<li><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2010/video-lectures/lecture-2-bit-hacks/MIT6_172F10_lec02.pdf" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (PPT)</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjkt7q5ow00026wg23h72y36h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/25/leetcode-1/" class="article-date">
-  <time datetime="2018-07-25T05:31:53.000Z" itemprop="datePublished">2018-07-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/leetcode-1/">leetcode-1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>Two Sum</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/07/25/leetcode-1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjkt7q5pm000f6wg2s1shdzlw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-520" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/24/leetcode-520/" class="article-date">
-  <time datetime="2018-07-24T11:09:10.000Z" itemprop="datePublished">2018-07-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/24/leetcode-520/">leetcode-520</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="520">
-<li>Detect Capital</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/07/24/leetcode-520/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjkt7q5pc000a6wg2uxq0dngc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjl1orjul000yucg21xei6f5e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -593,7 +513,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -624,23 +544,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/19/leetcode-2/">leetcode-2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/18/leetcode-566/">leetcode-566</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/leetcode-811/">leetcode-811</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/vector/">vector</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/14/leetcode-412/">leetcode-412</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/14/leetcode-476/">leetcode-476</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/leetcode-500/">leetcode-500</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/leetcode-383/">leetcode-383</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/12/uwp/">uwp</a>
           </li>
         
       </ul>

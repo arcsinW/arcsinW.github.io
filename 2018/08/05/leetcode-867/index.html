@@ -5,17 +5,17 @@
   
   <title>leetcode-867 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="矩阵转置，行列下标互换就行了，简单题 算法复杂度$O(n^2)$ 123456789101112131415161718vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; transpose(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; A)&amp;#123;    int shape = A.at(0).size();    cout &amp;lt;&amp;lt; &quot;Sha">
+  <meta name="description" content="Transpose Matrix">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-867">
 <meta property="og:url" content="http://yoursite.com/2018/08/05/leetcode-867/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="矩阵转置，行列下标互换就行了，简单题 算法复杂度$O(n^2)$ 123456789101112131415161718vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; transpose(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; A)&amp;#123;    int shape = A.at(0).size();    cout &amp;lt;&amp;lt; &quot;Sha">
+<meta property="og:description" content="Transpose Matrix">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-05T09:15:24.528Z">
+<meta property="og:updated_time" content="2018-08-15T06:34:58.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-867">
-<meta name="twitter:description" content="矩阵转置，行列下标互换就行了，简单题 算法复杂度$O(n^2)$ 123456789101112131415161718vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; transpose(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; A)&amp;#123;    int shape = A.at(0).size();    cout &amp;lt;&amp;lt; &quot;Sha">
+<meta name="twitter:description" content="Transpose Matrix">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,13 +86,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>矩阵转置，行列下标互换就行了，简单题</p>
+        <ol start="867">
+<li>Transpose Matrix</li>
+</ol>
+<a id="more"></a>
+<p>Given a matrix <code>A</code>, return the transpose of <code>A</code>.</p>
+<p>The transpose of a matrix is the matrix flipped over it’s main diagonal, switching the row and column indices of the matrix.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">Output: [[1,4,7],[2,5,8],[3,6,9]]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2,3],[4,5,6]]</span><br><span class="line">Output: [[1,4],[2,5],[3,6]]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>1 &lt;= A.length &lt;= 1000</li>
+<li>1 &lt;= A[0].length &lt;= 1000</li>
+</ol>
+<hr>
+<p>矩阵转置，行列下标互换就行了，简单题</p>
+<p>不过原来的二维vector在行列数不相同的情况下会出现空间不够的情况，所以用个新的二维vector存数据</p>
 <p>算法复杂度$O(n^2)$</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; transpose(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> shape = A.at(<span class="number">0</span>).size();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Shape: "</span> &lt;&lt; shape &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; shape; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = A.at(i).at(j);</span><br><span class="line">            A.at(i).at(j) = A.at(j).at(i);</span><br><span class="line">            A.at(j).at(i) = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; transpose(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> row = A.size();</span><br><span class="line">    <span class="keyword">int</span> col = A.at(<span class="number">0</span>).size();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Row: "</span> &lt;&lt; row &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Column: "</span> &lt;&lt; col &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; col; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; row; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            tmp.push_back(A.at(j).at(i));</span><br><span class="line">        &#125;</span><br><span class="line">        result.push_back(tmp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/05/leetcode-867/" data-id="cjkt7q5px000n6wg2yx4vde3a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/05/leetcode-867/" data-id="cjl1orju8000pucg2tqt09p9f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,23 +167,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/19/leetcode-2/">leetcode-2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/18/leetcode-566/">leetcode-566</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/leetcode-811/">leetcode-811</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/vector/">vector</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/14/leetcode-412/">leetcode-412</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/14/leetcode-476/">leetcode-476</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/leetcode-500/">leetcode-500</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/leetcode-383/">leetcode-383</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/12/uwp/">uwp</a>
           </li>
         
       </ul>

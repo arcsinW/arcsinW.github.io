@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-811 | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Subdomain Visit Count">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-811">
+<meta property="og:url" content="http://yoursite.com/2018/08/16/leetcode-811/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="Subdomain Visit Count">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-17T05:24:13.006Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-811">
+<meta name="twitter:description" content="Subdomain Visit Count">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-811" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/16/leetcode-811/" class="article-date">
+  <time datetime="2018-08-16T03:30:38.000Z" itemprop="datePublished">2018-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-811
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="811">
+<li>Subdomain Visit Count</li>
+</ol>
+<a id="more"></a>
+<p>A website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.leetcode.com”. When we visit a domain like “discuss.leetcode.com”, we will also visit the parent domains “leetcode.com” and “com” implicitly.</p>
+<p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p>
+<p>We are given a list <code>cpdomains</code> of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;, &quot;9001 leetcode.com&quot;, &quot;9001 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We only have one website domain: &quot;discuss.leetcode.com&quot;. As discussed above, the subdomain &quot;leetcode.com&quot; and &quot;com&quot; will also be visited. So they will all be visited 9001 times.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: </span><br><span class="line">[&quot;900 google.mail.com&quot;, &quot;50 yahoo.com&quot;, &quot;1 intel.mail.com&quot;, &quot;5 wiki.org&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;901 mail.com&quot;,&quot;50 yahoo.com&quot;,&quot;900 google.mail.com&quot;,&quot;5 wiki.org&quot;,&quot;5 org&quot;,&quot;1 intel.mail.com&quot;,&quot;951 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We will visit &quot;google.mail.com&quot; 900 times, &quot;yahoo.com&quot; 50 times, &quot;intel.mail.com&quot; once and &quot;wiki.org&quot; 5 times. For the subdomains, we will visit &quot;mail.com&quot; 900 + 1 = 901 times, &quot;com&quot; 900 + 50 + 1 = 951 times, and &quot;org&quot; 5 times.</span><br></pre></td></tr></table></figure>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>The length of <code>cpdomains</code> will not exceed <code>100</code>.</li>
+<li>The length of each domain name will not exceed <code>100</code>.</li>
+<li>Each address will have either 1 or 2 “.” characters.</li>
+<li>The input count in any count-paired domain will not exceed <code>10000</code>.</li>
+<li>The answer output can be returned in any order.</li>
+</ul>
+<hr>
+<p>分两步，<br>第一步将域名字符串分解成子域名，每次从<code>.</code>的右边一位<code>substr</code>到字符串的末尾就行了<br>第二步计数，使用<code>map</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">subDomain</span><span class="params">(<span class="built_in">string</span> domain, <span class="keyword">int</span> count, <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; *_map)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    (*_map)[domain] += count;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; domain.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (domain.at(i) == <span class="string">'.'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            (*_map)[domain.substr(i+<span class="number">1</span>)] += count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; subdomainVisits(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; cpdomains)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; _map;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; result;</span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    <span class="built_in">string</span> domain;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cpdomains.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        stringstream ss(cpdomains.at(i));</span><br><span class="line"></span><br><span class="line">        ss &gt;&gt; count &gt;&gt; domain;</span><br><span class="line">        subDomain(domain, count, &amp;_map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;::iterator iter = _map.begin(); iter != _map.end(); iter++)</span><br><span class="line">    &#123;</span><br><span class="line">        result.push_back(to_string(iter-&gt;second) + <span class="string">" "</span> + iter-&gt;first);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而这个解法代码长而且不是最优解，看看LeetCode上其他的解法</p>
+<p>也是一样的思路，但代码要精简，没有使用stringstream，直接遍历字符串取出num和domain</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; subdomainVisits(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; cpdomains) &#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">string</span> str : cpdomains) &#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>, i = <span class="number">0</span>, n = str.size();</span><br><span class="line">        <span class="keyword">while</span> (str[i] != <span class="string">' '</span>) num = num * <span class="number">10</span> + str[i++] - <span class="string">'0'</span>;</span><br><span class="line">        m[str.substr(++i)] += num;</span><br><span class="line">        <span class="keyword">for</span> ( ; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] == <span class="string">'.'</span>) m[str.substr(i+<span class="number">1</span>)] += num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> e : m)</span><br><span class="line">        res.push_back(to_string(e.second) + <span class="string">" "</span> + e.first);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/16/leetcode-811/" data-id="cjl1orjuc000rucg2wcmz4g7a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/18/leetcode-566/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          leetcode-566
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/15/vector/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vector</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/19/leetcode-2/">leetcode-2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/18/leetcode-566/">leetcode-566</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/leetcode-811/">leetcode-811</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/vector/">vector</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/14/leetcode-412/">leetcode-412</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -5,17 +5,17 @@
   
   <title>uwp | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="修改PivotHeaderItem的颜色   14393  12&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundSelected&quot; Color=&quot;Red&quot; /&amp;gt;&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundUnselected&quot; Color=&quot;#66FFFFFF&quot; /&amp;gt;">
+  <meta name="description" content="1. 修改PivotHeaderItem的颜色 14393  12&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundSelected&quot; Color=&quot;Red&quot; /&amp;gt;&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundUnselected&quot; Color=&quot;#66FFFFFF&quot; /&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="uwp">
 <meta property="og:url" content="http://yoursite.com/2018/08/12/uwp/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="修改PivotHeaderItem的颜色   14393  12&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundSelected&quot; Color=&quot;Red&quot; /&amp;gt;&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundUnselected&quot; Color=&quot;#66FFFFFF&quot; /&amp;gt;">
+<meta property="og:description" content="1. 修改PivotHeaderItem的颜色 14393  12&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundSelected&quot; Color=&quot;Red&quot; /&amp;gt;&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundUnselected&quot; Color=&quot;#66FFFFFF&quot; /&amp;gt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-12T15:25:39.522Z">
+<meta property="og:updated_time" content="2018-08-17T11:15:14.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="uwp">
-<meta name="twitter:description" content="修改PivotHeaderItem的颜色   14393  12&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundSelected&quot; Color=&quot;Red&quot; /&amp;gt;&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundUnselected&quot; Color=&quot;#66FFFFFF&quot; /&amp;gt;">
+<meta name="twitter:description" content="1. 修改PivotHeaderItem的颜色 14393  12&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundSelected&quot; Color=&quot;Red&quot; /&amp;gt;&amp;lt;SolidColorBrush x:Key=&quot;PivotHeaderItemForegroundUnselected&quot; Color=&quot;#66FFFFFF&quot; /&amp;gt;">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,19 +86,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>修改<code>PivotHeaderItem</code>的颜色</li>
-</ol>
-<ul>
+        <h3 id="1-修改PivotHeaderItem的颜色"><a href="#1-修改PivotHeaderItem的颜色" class="headerlink" title="1. 修改PivotHeaderItem的颜色"></a>1. 修改<code>PivotHeaderItem</code>的颜色</h3><ul>
 <li>14393</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">SolidColorBrush</span> <span class="attr">x:Key</span>=<span class="string">"PivotHeaderItemForegroundSelected"</span> <span class="attr">Color</span>=<span class="string">"Red"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">SolidColorBrush</span> <span class="attr">x:Key</span>=<span class="string">"PivotHeaderItemForegroundUnselected"</span> <span class="attr">Color</span>=<span class="string">"#66FFFFFF"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以在这里路径下找到到一个<code>Generic.xaml</code>，系统控件的样式都在里面，可以复制到项目里，做一些自定义样式的操作</p>
+<p>可以在下面这个路径下找到到一个<code>Generic.xaml</code>，系统控件的样式都在里面，复制到项目里，做一些自定义样式的操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files (x86)\Windows Kits\10\DesignTime\CommonConfiguration\Neutral\UAP\10.0.14393.0\Generic</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用PowerShell删除和安装UWP应用"><a href="#2-使用PowerShell删除和安装UWP应用" class="headerlink" title="2. 使用PowerShell删除和安装UWP应用"></a>2. 使用<code>PowerShell</code>删除和安装UWP应用</h3><p>管理员权限打开<code>PowerShell</code>，这种方式比较霸道，系统自带的应用也可以删除</p>
+<p><code>Add-AppxPackage</code>用来安装UWP应用，生成应用时会自动生成一个ps文件用来安装UWP应用</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-AppxPackage -Path <span class="string">"C:\Users\user1\Desktop\MyApp.appx"</span> -DependencyPath <span class="string">"C:\Users\user1\Desktop\winjs.appx"</span></span><br></pre></td></tr></table></figure>
+<p><code>Get-AppxPackage</code>可以按应用名和Publisher查找应用的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-AppxPackage [[-Name] &lt;String&gt; ] [[-Publisher] &lt;String&gt; ] [-AllUsers] [-User &lt;String&gt; ] [ &lt;CommonParameters&gt;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Get-AppxPackage -AllUsers -Name <span class="string">"Package17"</span> –User <span class="string">"Contoso\EvanNarvaez"</span></span><br></pre></td></tr></table></figure>
+<p><code>Remove-AppxPackage</code>用来删除UWP应用，参数里要使用<code>PackageFullName</code>才能正确删除应用</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Remove-AppxPackage -Package <span class="string">"package1_1.0.0.0_neutral__8wekyb3d8bbwe"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="https://docs.microsoft.com/en-us/powershell/module/appx/add-appxpackage?view=winserver2012-ps" target="_blank" rel="noopener">Add-AppxPackage (appx)</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/12/uwp/" data-id="cjkt7q5qe000z6wg2o0bd71cl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/12/uwp/" data-id="cjl1orjv20015ucg2fvib1mgh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,23 +163,23 @@
       <ul>
         
           <li>
+            <a href="/2018/08/19/leetcode-2/">leetcode-2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/18/leetcode-566/">leetcode-566</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/leetcode-811/">leetcode-811</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/15/vector/">vector</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/14/leetcode-412/">leetcode-412</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/14/leetcode-476/">leetcode-476</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/leetcode-500/">leetcode-500</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/leetcode-383/">leetcode-383</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/12/uwp/">uwp</a>
           </li>
         
       </ul>
