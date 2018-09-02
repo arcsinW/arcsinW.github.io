@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="1. 把每一行的’m’ ‘f’互换1update salary set sex = IF (sex = &apos;m&apos;, &apos;f&apos;, &apos;m&apos;) 12345update salaryset sex = (casewhen sex = &apos;m&apos; then &apos;f&apos;ELSE &apos;m&apos;end) LeetCode在sql语句上的执行时间真是玄学，一段一样的sql语句执行时间差几百ms 123456| id | name">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-21T12:45:54.918Z">
+<meta property="og:updated_time" content="2018-08-20T11:13:03.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql">
 <meta name="twitter:description" content="1. 把每一行的’m’ ‘f’互换1update salary set sex = IF (sex = &apos;m&apos;, &apos;f&apos;, &apos;m&apos;) 12345update salaryset sex = (casewhen sex = &apos;m&apos; then &apos;f&apos;ELSE &apos;m&apos;end) LeetCode在sql语句上的执行时间真是玄学，一段一样的sql语句执行时间差几百ms 123456| id | name">
@@ -91,11 +91,11 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> salary</span><br><span class="line"><span class="keyword">set</span> sex = (<span class="keyword">case</span></span><br><span class="line"><span class="keyword">when</span> sex = <span class="string">'m'</span> <span class="keyword">then</span> <span class="string">'f'</span></span><br><span class="line"><span class="keyword">ELSE</span> <span class="string">'m'</span></span><br><span class="line"><span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
 <p>LeetCode在sql语句上的执行时间真是玄学，一段一样的sql语句执行时间差几百ms</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| id | name | sex | salary |</span><br><span class="line">|----|------|-----|--------|</span><br><span class="line">| 1  | A    | m   | 2500   |</span><br><span class="line">| 2  | B    | f   | 1500   |</span><br><span class="line">| 3  | C    | m   | 5500   |</span><br><span class="line">| 4  | D    | f   | 500    |</span><br></pre></td></tr></table></figure>
-<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3>
+<h3 id="2-MySQL-LIMIT"><a href="#2-MySQL-LIMIT" class="headerlink" title="2. MySQL LIMIT"></a>2. MySQL LIMIT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span> <span class="keyword">limit</span> <span class="keyword">offset</span>,<span class="keyword">count</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> table1 <span class="keyword">limit</span> <span class="number">2</span> #从第一行开始开始取两行</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> table1 <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">2</span> #从第一行开始开始取两行</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjl1orjun000zucg25cj33bj2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjlkp4dyf0016dgg2usoo8tl5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +140,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -153,23 +153,23 @@
       <ul>
         
           <li>
+            <a href="/2018/09/02/leetcode-66/">leetcode-66</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/24/leetcode-27/">leetcode-27</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/leetcode-8/">leetcode-8 String to Integer (atoi)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/21/leetcode-7/">leetcode-7</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/19/leetcode-2/">leetcode-2</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/18/leetcode-566/">leetcode-566</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/16/leetcode-811/">leetcode-811</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/15/vector/">vector</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/14/leetcode-412/">leetcode-412</a>
           </li>
         
       </ul>

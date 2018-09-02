@@ -13,7 +13,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/06/26/git/git_1.png">
-<meta property="og:updated_time" content="2018-08-02T12:51:05.687Z">
+<meta property="og:updated_time" content="2018-08-22T12:44:16.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="摘要">
@@ -112,7 +112,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -a -m &quot;Initial commit&quot;</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -a <span class="comment"># 接着在git bash 里的文本编辑器里写Commit message</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-从远程仓库获取项目"><a href="#2-2-从远程仓库获取项目" class="headerlink" title="2.2 从远程仓库获取项目"></a>2.2 从远程仓库获取项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/libgit2/libgit2</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-从远程仓库获取项目"><a href="#2-2-从远程仓库获取项目" class="headerlink" title="2.2 从远程仓库获取项目"></a>2.2 从远程仓库获取项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/libgit2/libgit2 //获取master分支</span><br><span class="line"></span><br><span class="line">git clone -b dev https://github.com/libgit2/libgit2 // 获取dev分支</span><br></pre></td></tr></table></figure>
 <h3 id="2-3-分支"><a href="#2-3-分支" class="headerlink" title="2.3 分支"></a>2.3 分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev <span class="comment"># 新建并切换到dev分支</span></span><br><span class="line"></span><br><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line"></span><br><span class="line">git branch -a <span class="comment"># 查看远程分支</span></span><br><span class="line"></span><br><span class="line">git checkout master <span class="comment"># 切换到master分支</span></span><br><span class="line"></span><br><span class="line">git merge dev <span class="comment"># 合并dev分支到当前分支</span></span><br><span class="line"></span><br><span class="line">git merge --abort <span class="comment"># 撤销合并</span></span><br><span class="line"></span><br><span class="line">git branch -d dev <span class="comment"># 删除dev分支</span></span><br><span class="line"></span><br><span class="line">git push origin --delete dev <span class="comment"># 删除远程dev分支</span></span><br><span class="line"></span><br><span class="line">git checkout -b dev origin/dev <span class="comment"># 从远程仓库拉取本地不存在的dev分支</span></span><br></pre></td></tr></table></figure>
 <p>下面是在当前分支为signle_edition时执行<br><code>git merge master</code>时出现冲突的情况</p>
 <p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 到 =======的部分是当前分支single_edition的版本</p>
@@ -120,7 +120,7 @@
 <p>处理好冲突后，使用<code>add</code>将该文件标记为已解决状态</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add filename</span><br></pre></td></tr></table></figure>
 <h3 id="2-4-版本控制"><a href="#2-4-版本控制" class="headerlink" title="2.4 版本控制"></a>2.4 版本控制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git rm --cahced readme.txt <span class="comment"># 将文件untrack，不删除文件</span></span><br><span class="line"></span><br><span class="line">git rm readme.txt <span class="comment"># 将文件untrack并删除</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 查看提交日志</span></span><br><span class="line"></span><br><span class="line">git --no-pager <span class="built_in">log</span> <span class="comment"># log不分页</span></span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^ <span class="comment"># 回退到上一commit</span></span><br><span class="line"></span><br><span class="line">git reset --hard [commit_id] <span class="comment"># 回退到指定commit，commit_id只需写前几位，能唯一确定这个commit即可</span></span><br></pre></td></tr></table></figure>
-<h3 id="some-solutions"><a href="#some-solutions" class="headerlink" title="some solutions"></a>some solutions</h3><ol>
+<h3 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3. 其他操作"></a>3. 其他操作</h3><ol>
 <li>refusing to merge unrelated histories</li>
 </ol>
 <p>加上<code>--allow-unrelated-histories</code></p>
@@ -140,6 +140,11 @@
 <li>查看版本控制下的文件</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>git stash</li>
+</ol>
+<p>当你想切换分支，但工作区还有未提交的代码，而这个代码还没写完不想提交，这时候可以把当前的工作状态暂时存储起来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git stash  // 存储当前的变更</span><br><span class="line"></span><br><span class="line">git status // 工作区此时clean了</span><br><span class="line"></span><br><span class="line">git stash list // 查看所有的stash</span><br><span class="line"></span><br><span class="line">git stash apply stash@&#123;0&#125; // 恢复stash@&#123;0&#125;这个stash(由上一步获得)</span><br><span class="line"></span><br><span class="line">git stash show -p stash@&#123;0&#125; | git apply -R // 取消一个stash</span><br><span class="line"></span><br><span class="line">git stash branch testchanges // 在新分支中查看stash</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><a href="https://git-scm.com/docs/" target="_blank" rel="noopener">https://git-scm.com/docs/</a></li>
 <li><a href="https://www.jianshu.com/p/94e79e17baf6" target="_blank" rel="noopener">git提交commit后push到远程仓库，如何修改commit信息</a></li>
@@ -148,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjl1orjti000cucg2e7iytnw7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjlkp4dw3000adgg2z6d6tt45" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -206,23 +211,23 @@
       <ul>
         
           <li>
+            <a href="/2018/09/02/leetcode-66/">leetcode-66</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/24/leetcode-27/">leetcode-27</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/leetcode-8/">leetcode-8 String to Integer (atoi)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/21/leetcode-7/">leetcode-7</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/19/leetcode-2/">leetcode-2</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/18/leetcode-566/">leetcode-566</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/16/leetcode-811/">leetcode-811</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/15/vector/">vector</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/14/leetcode-412/">leetcode-412</a>
           </li>
         
       </ul>
