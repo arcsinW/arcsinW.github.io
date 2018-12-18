@@ -62,6 +62,140 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-929" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/18/leetcode-929/" class="article-date">
+  <time datetime="2018-12-18T08:31:59.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/18/leetcode-929/">leetcode-929</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="929">
+<li>Unique Email Addresses</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/18/leetcode-929/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/18/leetcode-929/" data-id="cjptpoxfk0016ngg2apiv7t0w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-uci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/03/uci/" class="article-date">
+  <time datetime="2018-12-03T02:51:03.000Z" itemprop="datePublished">2018-12-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/03/uci/">Universal Chess Interface</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h3 id="info"><a href="#info" class="headerlink" title="info"></a>info</h3><pre><code>* depth 
+    search depth in plies
+* seldepth 
+    selective search depth in plies,
+    if the engine sends seldepth there must also a &quot;depth&quot; be present in the same string.
+* time 
+    the time searched in ms, this should be sent together with the pv.
+* nodes 
+    x nodes searched, the engine should send this info regularly
+* pv  ... 
+    the best line found
+* multipv 
+    this for the multi pv mode.
+    for the best move/pv add &quot;multipv 1&quot; in the string when you send the pv.
+    in k-best mode always send all k variants in k strings together.
+* score
+    * cp 引擎优势 winrate
+        the score from the engine&apos;s point of view in centipawns.
+    * mate 
+        mate in y moves, not plies.
+        If the engine is getting mated use negativ values for y.
+    * lowerbound
+      the score is just a lower bound.
+    * upperbound
+       the score is just an upper bound.
+* currmove 
+    currently searching this move
+* currmovenumber 
+    currently searching move number x, for the first move x should be 1 not 0.
+* hashfull 
+    the hash is x permill full, the engine should send this info regularly
+* nps 
+    x nodes per second searched, the engine should send this info regularly
+* tbhits 
+    x positions where found in the endgame table bases
+* cpuload 
+    the cpu usage of the engine is x permill.
+* string 
+    any string str which will be displayed be the engine,
+    if there is a string command the rest of the line will be interpreted as .
+* refutation   ... 
+   move  is refuted by the line  ... , i can be any number &gt;= 1.
+   Example: after move d1h5 is searched, the engine can send
+   &quot;info refutation d1h5 g6h5&quot;
+   if g6h5 is the best answer after d1h5 or if g6h5 refutes the move d1h5.
+   if there is norefutation for d1h5 found, the engine should just send
+   &quot;info refutation d1h5&quot;
+    The engine should only send this if the option &quot;UCI_ShowRefutations&quot; is set to true.
+* currline   ... 
+   this is the current line the engine is calculating.  is the number of the cpu if
+   the engine is running on more than one cpu.  = 1,2,3....
+   if the engine is just using one cpu,  can be omitted.
+   If  is greater than 1, always send all k lines in k strings together.
+    The engine should only send this if the option &quot;UCI_ShowCurrLine&quot; is set to true.
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/03/uci/" data-id="cjptpoxfz001ingg21pqt0sql" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-905" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/16/leetcode-905/" class="article-date">
@@ -95,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/leetcode-905/" data-id="cjnb34jhf000wv8g2yrsgnsh7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/leetcode-905/" data-id="cjptpoxf80011ngg2l5d5vubk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/leetcode-921/" data-id="cjnb34jhm000zv8g2jjczjc6r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/leetcode-921/" data-id="cjptpoxf70010ngg2ssquuslx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/21/php-4/" data-id="cjnb34jhx0015v8g2cunnvrtn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/21/php-4/" data-id="cjptpoxfn0019ngg2c6jtkesp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/14/leetcode-167/" data-id="cjnb34jf60007v8g24ipn1h97" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/14/leetcode-167/" data-id="cjptpoxd90009ngg2s90f4h8u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/php-3/" data-id="cjnb34ji10018v8g286cxz272" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/php-3/" data-id="cjptpoxfq001cngg21ehtun7i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/leetcode-66/" data-id="cjnb34jh2000ov8g26tkj3qrt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/leetcode-66/" data-id="cjptpoxei000qngg2leopwc7f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/24/leetcode-27/" data-id="cjnb34jgl000fv8g245c1t3pu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/24/leetcode-27/" data-id="cjptpoxdy000engg2mqzu47vk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -392,93 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/leetcode-8/" data-id="cjnb34jh3000pv8g2pnn7ol0q" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-7" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/21/leetcode-7/" class="article-date">
-  <time datetime="2018-08-21T05:16:37.000Z" itemprop="datePublished">2018-08-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/leetcode-7/">leetcode-7</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="7">
-<li>Reverse Integer</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/21/leetcode-7/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/leetcode-7/" data-id="cjnb34jh1000nv8g2tx9fwp23" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/19/leetcode-2/" class="article-date">
-  <time datetime="2018-08-19T09:46:01.000Z" itemprop="datePublished">2018-08-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/leetcode-2/">leetcode-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="2">
-<li>Add Two Numbers</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/19/leetcode-2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/19/leetcode-2/" data-id="cjnb34jfa000av8g240q1r3sq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/22/leetcode-8/" data-id="cjptpoxek000rngg2foxu0orh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -509,7 +557,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -522,6 +570,14 @@
       <ul>
         
           <li>
+            <a href="/2018/12/18/leetcode-929/">leetcode-929</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/03/uci/">Universal Chess Interface</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/16/leetcode-905/">leetcode-905</a>
           </li>
         
@@ -531,14 +587,6 @@
         
           <li>
             <a href="/2018/09/21/php-4/">php-4</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/14/leetcode-167/">leetcode-167</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/04/php-3/">php-3</a>
           </li>
         
       </ul>

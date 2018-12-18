@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>opencv | X</title>
+  <title>Universal Chess Interface | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects  scaleFactor – Parameter specifying how much the image size is reduced at each im">
+  <meta name="description" content="info* depth      search depth in plies * seldepth      selective search depth in plies,     if the engine sends seldepth there must also a &amp;quot;depth&amp;quot; be present in the same string. * time">
 <meta property="og:type" content="article">
-<meta property="og:title" content="opencv">
-<meta property="og:url" content="http://yoursite.com/2018/07/02/opencv/index.html">
+<meta property="og:title" content="Universal Chess Interface">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/uci/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="1cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects  scaleFactor – Parameter specifying how much the image size is reduced at each im">
+<meta property="og:description" content="info* depth      search depth in plies * seldepth      selective search depth in plies,     if the engine sends seldepth there must also a &amp;quot;depth&amp;quot; be present in the same string. * time">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-02T12:18:52.474Z">
+<meta property="og:updated_time" content="2018-12-03T03:20:41.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="opencv">
-<meta name="twitter:description" content="1cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects  scaleFactor – Parameter specifying how much the image size is reduced at each im">
+<meta name="twitter:title" content="Universal Chess Interface">
+<meta name="twitter:description" content="info* depth      search depth in plies * seldepth      selective search depth in plies,     if the engine sends seldepth there must also a &amp;quot;depth&amp;quot; be present in the same string. * time">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-uci" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/02/opencv/" class="article-date">
-  <time datetime="2018-07-02T12:03:42.000Z" itemprop="datePublished">2018-07-02</time>
+    <a href="/2018/12/03/uci/" class="article-date">
+  <time datetime="2018-12-03T02:51:03.000Z" itemprop="datePublished">2018-12-03</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      opencv
+      Universal Chess Interface
     </h1>
   
 
@@ -86,24 +86,66 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>scaleFactor</code> – Parameter specifying how much the image size is reduced at each image scale.</p>
-</li>
-<li><p><code>minNeighbors</code> – Parameter specifying how many neighbors each candidate rectangle should have to retain it.</p>
-</li>
-<li><p><code>flags</code> – Parameter with the same meaning for an old cascade as in the function cvHaarDetectObjects. It is not used for a new cascade.</p>
-</li>
-<li><p><code>minSize</code> – Minimum possible object size. Objects smaller than that are ignored.</p>
-</li>
-<li><p><code>maxSize</code> – Maximum possible object size. Objects larger than that are ignored.</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.HaarDetectObjects(image, cascade, storage, scale_factor=<span class="number">1.1</span>, min_neighbors=<span class="number">3</span>, flags=<span class="number">0</span>, min_size=(<span class="number">0</span>, <span class="number">0</span>)) → detectedObjects</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+<h3 id="info"><a href="#info" class="headerlink" title="info"></a>info</h3><pre><code>* depth 
+    search depth in plies
+* seldepth 
+    selective search depth in plies,
+    if the engine sends seldepth there must also a &quot;depth&quot; be present in the same string.
+* time 
+    the time searched in ms, this should be sent together with the pv.
+* nodes 
+    x nodes searched, the engine should send this info regularly
+* pv  ... 
+    the best line found
+* multipv 
+    this for the multi pv mode.
+    for the best move/pv add &quot;multipv 1&quot; in the string when you send the pv.
+    in k-best mode always send all k variants in k strings together.
+* score
+    * cp 引擎优势 winrate
+        the score from the engine&apos;s point of view in centipawns.
+    * mate 
+        mate in y moves, not plies.
+        If the engine is getting mated use negativ values for y.
+    * lowerbound
+      the score is just a lower bound.
+    * upperbound
+       the score is just an upper bound.
+* currmove 
+    currently searching this move
+* currmovenumber 
+    currently searching move number x, for the first move x should be 1 not 0.
+* hashfull 
+    the hash is x permill full, the engine should send this info regularly
+* nps 
+    x nodes per second searched, the engine should send this info regularly
+* tbhits 
+    x positions where found in the endgame table bases
+* cpuload 
+    the cpu usage of the engine is x permill.
+* string 
+    any string str which will be displayed be the engine,
+    if there is a string command the rest of the line will be interpreted as .
+* refutation   ... 
+   move  is refuted by the line  ... , i can be any number &gt;= 1.
+   Example: after move d1h5 is searched, the engine can send
+   &quot;info refutation d1h5 g6h5&quot;
+   if g6h5 is the best answer after d1h5 or if g6h5 refutes the move d1h5.
+   if there is norefutation for d1h5 found, the engine should just send
+   &quot;info refutation d1h5&quot;
+    The engine should only send this if the option &quot;UCI_ShowRefutations&quot; is set to true.
+* currline   ... 
+   this is the current line the engine is calculating.  is the number of the cpu if
+   the engine is running on more than one cpu.  = 1,2,3....
+   if the engine is just using one cpu,  can be omitted.
+   If  is greater than 1, always send all k lines in k strings together.
+    The engine should only send this if the option &quot;UCI_ShowCurrLine&quot; is set to true.
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/02/opencv/" data-id="cjptpoxfl0017ngg2jescozyp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/03/uci/" data-id="cjptpoxfz001ingg21pqt0sql" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,19 +154,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/07/04/tensorflow-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/18/leetcode-929/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          tensorflow_1
+          leetcode-929
         
       </div>
     </a>
   
   
-    <a href="/2018/06/29/spark-intallation/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/16/leetcode-905/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">spark_intallation</div>
+      <div class="article-nav-title">leetcode-905</div>
     </a>
   
 </nav>
