@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="1.去除url中的index.php Apache24/conf/httpd.conf 去除下面这行的注释 1LoadModule rewrite_module modules/mod_rewrite.so 改下下面这个部分(原来是AllowOverride None) 12345# AllowOverride controls what directives may be placed in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-30T01:59:54.230Z">
+<meta property="og:updated_time" content="2019-01-13T06:25:56.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="codeigniter-1">
 <meta name="twitter:description" content="1.去除url中的index.php Apache24/conf/httpd.conf 去除下面这行的注释 1LoadModule rewrite_module modules/mod_rewrite.so 改下下面这个部分(原来是AllowOverride None) 12345# AllowOverride controls what directives may be placed in">
@@ -95,7 +95,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># AllowOverride controls what directives may be placed in .htaccess files.</span><br><span class="line">    # It can be &quot;All&quot;, &quot;None&quot;, or any combination of the keywords:</span><br><span class="line">    #   AllowOverride FileInfo AuthConfig Limit</span><br><span class="line">    #</span><br><span class="line">    AllowOverride All</span><br></pre></td></tr></table></figure>
 <p><code>system</code>同级目录下的<code>.htaccess</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ /index.php/$1 [L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
-<p>如果不是<code>www</code>或<code>htdocs</code>的根目录就加上项目名</p>
+<p>如果不是<code>www</code>或<code>htdocs</code>的根目录就加上项目名，如这里的<code>tutorial</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^(.*)$ /tutorial/index.php/$1 [L]</span><br></pre></td></tr></table></figure>
 <p><code>application/config/config.php</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$config[<span class="string">'index_page'</span>] = <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
@@ -104,6 +104,9 @@
 <p>4.出现<code>http://[::1]</code></p>
 <p><code>application/config/config.php</code>下的<code>base_url</code>不要设置为空</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$config[<span class="string">'base_url'</span>] = <span class="string">'http://localhost/projectname/'</span>;</span><br><span class="line"></span><br><span class="line">$config[<span class="string">'base_url'</span>] = <span class="string">'http://www.example.com/'</span>;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>连接数据库</li>
+</ol>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
 <li><p><a href="https://blog.csdn.net/k8080880/article/details/77451307" target="_blank" rel="noopener">https://blog.csdn.net/k8080880/article/details/77451307</a></p>
 </li>
@@ -114,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/codeigniter-1/" data-id="cjptpoxd00005ngg2igf7n71o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/01/codeigniter-1/" data-id="cjqz8xmt50008y4g28p7i2pi2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +162,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -172,23 +175,23 @@
       <ul>
         
           <li>
-            <a href="/2018/12/18/leetcode-929/">leetcode-929</a>
+            <a href="/2019/01/16/tensorflow-0/">tensorflow-0</a>
           </li>
         
           <li>
-            <a href="/2018/12/03/uci/">Universal Chess Interface</a>
+            <a href="/2019/01/16/leetcode-938/">leetcode-938</a>
           </li>
         
           <li>
-            <a href="/2018/10/16/leetcode-905/">leetcode-905</a>
+            <a href="/2019/01/11/scala/">scala</a>
           </li>
         
           <li>
-            <a href="/2018/10/14/leetcode-921/">leetcode-921</a>
+            <a href="/2019/01/10/node/">node</a>
           </li>
         
           <li>
-            <a href="/2018/09/21/php-4/">php-4</a>
+            <a href="/2018/12/31/ultraman-1/">ultraman-1</a>
           </li>
         
       </ul>
@@ -203,7 +206,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 ARCSINW<br>
+      &copy; 2019 ARCSINW<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

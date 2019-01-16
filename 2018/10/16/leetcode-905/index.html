@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="Sort Array By Parity">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-16T02:02:20.929Z">
+<meta property="og:updated_time" content="2018-12-20T11:13:53.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-905">
 <meta name="twitter:description" content="Sort Array By Parity">
@@ -100,7 +100,7 @@
 <li>0 &lt;= A[i] &lt;= 5000</li>
 </ol>
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>把数组中的所有偶数放到奇数前面去</p>
-<p>两个index， <code>even</code>指向最右的偶数，<code>odd</code>指向最左的奇数，两个index向中间运动</p>
+<p>参考快排，两个index， <code>even</code>指向最右的偶数，<code>odd</code>指向最左的奇数，两个index向中间运动，初始<code>even</code>为0，<code>odd</code>指向最右</p>
 <p>从左到右遍历数组<br>    当前元素是偶数，++<code>even</code><br>    当前元素是奇数，与<code>odd</code>指向的元素swap，–<code>odd</code></p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortArrayByParity(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> even = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> odd = A.size()<span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (even &lt; odd)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (A[even] % <span class="number">2</span> != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(A[even], A[odd]);</span><br><span class="line">            --odd;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ++even;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><blockquote>
@@ -110,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/leetcode-905/" data-id="cjptpoxf80011ngg2l5d5vubk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/leetcode-905/" data-id="cjqz8xmv0000zy4g2g846yhun" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,7 +155,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -168,23 +168,23 @@
       <ul>
         
           <li>
-            <a href="/2018/12/18/leetcode-929/">leetcode-929</a>
+            <a href="/2019/01/16/tensorflow-0/">tensorflow-0</a>
           </li>
         
           <li>
-            <a href="/2018/12/03/uci/">Universal Chess Interface</a>
+            <a href="/2019/01/16/leetcode-938/">leetcode-938</a>
           </li>
         
           <li>
-            <a href="/2018/10/16/leetcode-905/">leetcode-905</a>
+            <a href="/2019/01/11/scala/">scala</a>
           </li>
         
           <li>
-            <a href="/2018/10/14/leetcode-921/">leetcode-921</a>
+            <a href="/2019/01/10/node/">node</a>
           </li>
         
           <li>
-            <a href="/2018/09/21/php-4/">php-4</a>
+            <a href="/2018/12/31/ultraman-1/">ultraman-1</a>
           </li>
         
       </ul>
@@ -199,7 +199,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 ARCSINW<br>
+      &copy; 2019 ARCSINW<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
