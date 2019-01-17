@@ -62,6 +62,141 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-bit-operator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/27/bit-operator/" class="article-date">
+  <time datetime="2018-07-27T15:51:53.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/27/bit-operator/">bit-operator</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>0.基础</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">&amp;</th>
+<th style="text-align:center">\</th>
+<th style="text-align:center"></th>
+<th>^</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>1.变量交换（无临时变量）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0x10111101</span>;</span><br><span class="line">y = <span class="number">0x00101110</span>;</span><br><span class="line"></span><br><span class="line">x = x ^ y;</span><br><span class="line">y = x ^ y;</span><br><span class="line">x = x ^ y;</span><br></pre></td></tr></table></figure>
+<p>(x ^ y) ^ y = x</p>
+<blockquote>
+<p>Poor at exploiting instruction-level parallelism(ILP)</p>
+</blockquote>
+<p>2.取两数的较小值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &lt; y)</span><br><span class="line">&#123;</span><br><span class="line">    r = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    r = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">r = (x &lt; y) ? x : y;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A mispredicted branch empties the processor pipeline<br>• ~16 cycles on the cloud facility’s Intel Core i7’s.<br>The compiler might be smart enough to avoid the<br>unpredictable branch, but maybe not.</p>
+</blockquote>
+<p>无分支获取取最小值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = y ^ ((x ^ y) &amp; -(x &lt; y));</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>x &lt; y, -(x &lt; y) = -1, -1的二进制的所有位为1，(x ^ y) &amp; -1 = (x ^ y), y ^ (x ^ y) = x</p>
+</li>
+<li><p>x &gt; y, -(x &lt; y) = 0, (x ^ y) &amp; 0 = 0, y ^ 0 = y</p>
+</li>
+</ul>
+<p>3.取模(x + y) mod n</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = (x + y) % n;</span><br><span class="line"></span><br><span class="line">z = x + y;</span><br><span class="line">r = (z &lt; n) ? z : z-n;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x + y;</span><br><span class="line">r = z - (n &amp; -(z &gt;= n)); <span class="comment">//这里用到了上面取较小值类似的思路</span></span><br></pre></td></tr></table></figure>
+<p>4.找到二进制中最后一个1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = x &amp; (-x);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">0010000001010000</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">1101111110110000</td>
+</tr>
+<tr>
+<td style="text-align:center">x &amp; (-x)</td>
+<td style="text-align:center">0000000000010000</td>
+</tr>
+</tbody>
+</table>
+<p>5.获取二进制中最后一个1的位置</p>
+<p>可以从右向左看最后一位是不是1，不是就右移一位</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOfLastOne</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; <span class="number">1</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><p><a href="https://www.youtube.com/watch?v=xc9DDSbf0NQ&amp;app=desktop" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (Video)</a></p>
+</li>
+<li><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2010/video-lectures/lecture-2-bit-hacks/MIT6_172F10_lec02.pdf" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (PPT)</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjr0ks1kh0002rcg2o9efu1ea" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/25/leetcode-1/" class="article-date">
@@ -95,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjqz8xmt80009y4g2d6zllxq9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjr0ks1kp0007rcg2yx3z946m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjqz8xmu7000jy4g2yyt195c4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjr0ks1lo000prcg23n1lqlhe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="cjqz8xmv50013y4g2hbec8mvk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="cjr0ks1m80012rcg26getbvji" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjqz8xmrx0001y4g2lz56166p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjr0ks1ke0001rcg2g7gd0p46" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjqz8xmvk001ey4g26iuikn4k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjr0ks1mt001ircg2ta6hbc10" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjqz8xmuo000ry4g2jd0b3yes" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjr0ks1ly000wrcg2e14vb80q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjqz8xmu4000iy4g2z79dloxz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjr0ks1ll000nrcg2tizfrp43" class="article-share-link">Share</a>
       
       
     </footer>
@@ -382,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="cjqz8xmv80015y4g2ymdi26gz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="cjr0ks1mc0015rcg2bvy9dzlv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -423,48 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjqz8xmup000sy4g2lhmh0pmp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-807" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/19/leetcode-807/" class="article-date">
-  <time datetime="2018-07-19T10:13:16.000Z" itemprop="datePublished">2018-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/leetcode-807/">leetcode_807</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/07/19/leetcode-807/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="cjqz8xmur000ty4g2u8jkoejd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjr0ks1lw000vrcg2cdcn3jhc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -487,9 +581,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Fibonacci/" style="font-size: 10px;">Fibonacci</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -508,6 +616,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/17/leetcode-509/">leetcode-509 Fibonacci Number</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/16/tensorflow-0/">tensorflow-0</a>
           </li>
         
@@ -521,10 +633,6 @@
         
           <li>
             <a href="/2019/01/10/node/">node</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/31/ultraman-1/">ultraman-1</a>
           </li>
         
       </ul>
