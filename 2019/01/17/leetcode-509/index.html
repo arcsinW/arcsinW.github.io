@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="Fibonacci Number">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-17T12:12:06.957Z">
+<meta property="og:updated_time" content="2019-01-17T12:15:57.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-509 Fibonacci Number">
 <meta name="twitter:description" content="Fibonacci Number">
@@ -102,6 +102,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 4</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
 <p>0 ≤ <code>N</code> ≤ 30.</p>
+<hr>
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>Fibonacci数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F(0) = 0,   F(1) = 1</span><br><span class="line">F(N) = F(N - 1) + F(N - 2), for N &gt; 1.</span><br></pre></td></tr></table></figure>
 <p>可以很快地写出一个递归的版本，时间复杂度为$O(n^2)$</p>
@@ -119,13 +120,13 @@
 <p>动态规划（不确定算不算），用个数组存储已经计算过的结果</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *vec = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>];</span><br><span class="line">    vec[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    vec[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        vec[i] = vec[i<span class="number">-1</span>] + vec[i<span class="number">-2</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> vec[N];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://blog.csdn.net/liu_zhen_kai/article/details/82630060" target="_blank" rel="noopener">https://blog.csdn.net/liu_zhen_kai/article/details/82630060</a></li>
+<li><a href="https://blog.csdn.net/liu_zhen_kai/article/details/82630060" target="_blank" rel="noopener">斐波那契时间复杂度和空间复杂度分析</a></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/leetcode-509/" data-id="cjr0ks1l5000grcg2l7pr0kil" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/leetcode-509/" data-id="cjr1z8pv0000gv4g22jjgik6g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
@@ -135,6 +136,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/01/18/leetcode-701/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          leetcode-701 Insert into a Binary Search Tree
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/16/tensorflow-0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -190,6 +200,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/18/leetcode-701/">leetcode-701 Insert into a Binary Search Tree</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/17/leetcode-509/">leetcode-509 Fibonacci Number</a>
           </li>
         
@@ -203,10 +217,6 @@
         
           <li>
             <a href="/2019/01/11/scala/">scala</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/node/">node</a>
           </li>
         
       </ul>
