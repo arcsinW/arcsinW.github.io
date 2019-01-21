@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vector | X</title>
+  <title>leetcode-977 Squares of a Sorted Array | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
+  <meta name="description" content="Squares of a Sorted Array">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vector">
-<meta property="og:url" content="http://yoursite.com/2018/08/15/vector/index.html">
+<meta property="og:title" content="leetcode-977 Squares of a Sorted Array">
+<meta property="og:url" content="http://yoursite.com/2019/01/21/leetcode-977/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
+<meta property="og:description" content="Squares of a Sorted Array">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-18T12:34:23.746Z">
+<meta property="og:updated_time" content="2019-01-21T03:39:15.523Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vector">
-<meta name="twitter:description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
+<meta name="twitter:title" content="leetcode-977 Squares of a Sorted Array">
+<meta name="twitter:description" content="Squares of a Sorted Array">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vector" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-leetcode-977" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/15/vector/" class="article-date">
-  <time datetime="2018-08-15T05:34:02.000Z" itemprop="datePublished">2018-08-15</time>
+    <a href="/2019/01/21/leetcode-977/" class="article-date">
+  <time datetime="2019-01-21T03:08:24.000Z" itemprop="datePublished">2019-01-21</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vector
+      leetcode-977 Squares of a Sorted Array
     </h1>
   
 
@@ -86,27 +86,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="vector的初始化"><a href="#vector的初始化" class="headerlink" title="vector的初始化"></a><code>vector</code>的初始化</h3><ul>
-<li>通过数组初始化</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(a, a+<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>带初值的初始化</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(<span class="number">10</span>, <span class="number">0</span>); <span class="comment">//10个元素的vector，每个元素都是0</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>vector&lt;vector&lt;int&gt;&gt;</code> 的初始化</li>
-</ul>
-<p>和上面一维的一对照就能明白</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vec(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://blog.csdn.net/yjunyu/article/details/77728410" target="_blank" rel="noopener">vector的几种初始化及赋值方式</a></li>
+        <ol start="977">
+<li>Squares of a Sorted Array</li>
 </ol>
-
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers <code>A</code> sorted in non-decreasing order, return an array of the squares of each number, also in sorted non-decreasing order.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [-4,-1,0,3,10]</span><br><span class="line">Output: [0,1,9,16,100]</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">-7</span>,<span class="number">-3</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">11</span>]</span><br><span class="line">Output: [<span class="number">4</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">49</span>,<span class="number">121</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>1 &lt;= A.length &lt;= 10000</li>
+<li>-10000 &lt;= A[i] &lt;= 10000</li>
+<li><code>A</code> is sorted in non-decreasing order.</li>
+</ol>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>输入一个非递减的序列，输出这个序列的平方的非递减排序</p>
+<p>主要考虑之前的负数平方后会使排序改变，先将整个序列求绝对值再排序，然后输入序列的平方</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortedSquares(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        A[i] = <span class="built_in">abs</span>(A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort(A.begin(), A.end());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        A[i] = A[i] * A[i] ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/vector/" data-id="cjr5s8an7001suwg2re69d8r2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/leetcode-977/" data-id="cjr5s8amc0016uwg2vse5024w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,19 +116,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/08/16/leetcode-811/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          leetcode-811
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/14/leetcode-412/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/18/leetcode-961/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">leetcode-412</div>
+      <div class="article-nav-title">leetcode-961 N-Repeated Element in Size 2N Array</div>
     </a>
   
 </nav>

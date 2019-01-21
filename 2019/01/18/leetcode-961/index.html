@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-961 N-Repeated Element in Size 2N Array | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="N-Repeated Element in Size 2N Array">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-961 N-Repeated Element in Size 2N Array">
+<meta property="og:url" content="http://yoursite.com/2019/01/18/leetcode-961/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="N-Repeated Element in Size 2N Array">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-21T03:09:55.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-961 N-Repeated Element in Size 2N Array">
+<meta name="twitter:description" content="N-Repeated Element in Size 2N Array">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-961" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/18/leetcode-961/" class="article-date">
+  <time datetime="2019-01-18T13:33:06.000Z" itemprop="datePublished">2019-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-961 N-Repeated Element in Size 2N Array
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="961">
+<li>N-Repeated Element in Size 2N Array</li>
+</ol>
+<a id="more"></a>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>In a array <code>A</code> of size <code>2N</code>, there are <code>N+1</code> unique elements, and exactly one of these elements is repeated N times.</p>
+<p>Return the element repeated <code>N</code> times.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,3]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,1,2,5,3,2]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,1,5,2,5,3,5,4]</span><br><span class="line">Output: 5</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>4 &lt;= A.length &lt;= 10000</li>
+<li>0 &lt;= A[i] &lt; 10000</li>
+<li>A.length is even</li>
+</ol>
+<hr>
+<h2 id="Analyse-1"><a href="#Analyse-1" class="headerlink" title="Analyse"></a>Analyse</h2><p>数组<code>A</code>一共<code>2N</code>个数，其中一个数出现了<code>N</code>次，整个数组<code>A</code>中共有<code>N+1</code>个不一样的数</p>
+<p>很容易用map写出一个版本，使用map计数，返回数量为N的那个数</p>
+<p>时间复杂度 $O(n)$，n是A的size()</p>
+<p>空间复杂度 $O(n)$，n是A的size()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; _map;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> val : A)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (++_map[val] == (A.size()/<span class="number">2</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再进一步，要找到重复出现<code>N</code>次的那个数，由于其他数都是唯一的，只要找到重复出现2次的数就行了</p>
+<p>这个比之前的版本快那么一点点，本质上差异并不大</p>
+<p>时间复杂度 $O(n)$，n是A的size()</p>
+<p>空间复杂度 $O(n)$，n是A的size()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; _map;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> val : A)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (++_map[val] == <span class="number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一种办法是比较，从LeetCode上看到的</p>
+<blockquote>
+<p>If we ever find a repeated element, it must be the answer. Let’s call this answer the major element.</p>
+<p>Consider all subarrays of length 4. There must be a major element in at least one such subarray.</p>
+<p>This is because either:</p>
+<ul>
+<li>There is a major element in a length 2 subarray, or;</li>
+<li>Every length 2 subarray has exactly 1 major element, which means that a length 4 subarray that begins at a major element will have 2 major elements.</li>
+</ul>
+<p>Thus, we only have to compare elements with their neighbors that are distance 1, 2, or 3 away.</p>
+</blockquote>
+<p>只要找到一个重复的值，这个值就是要找的</p>
+<p>至少有一个长度为4的子序列中存在重复的值</p>
+<p>时间复杂度 $O(n)$，n是A的size()</p>
+<p>空间复杂度 $O(1)$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= A.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] == A[i+<span class="number">1</span>] || A[i] == A[i+<span class="number">2</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> A[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A[A.size()<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LeetCode的讨论区回答说需要检查的子序列的长度可以减小到3</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.length<span class="number">-2</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (A[i] == A[i+<span class="number">1</span>] || A[i] == A[i+<span class="number">2</span>])</span><br><span class="line">            <span class="keyword">return</span> A[i];</span><br><span class="line">    <span class="comment">// this is only for input size 4 and duplicates found in last indeces</span></span><br><span class="line">    <span class="keyword">return</span> A[A.length<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solution/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/18/leetcode-961/" data-id="cjr5s8ama0014uwg2s75cflf5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/21/leetcode-977/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          leetcode-977 Squares of a Sorted Array
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/18/leetcode-701/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-701 Insert into a Binary Search Tree</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Fibonacci/" style="font-size: 10px;">Fibonacci</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/21/leetcode-977/">leetcode-977 Squares of a Sorted Array</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/leetcode-961/">leetcode-961 N-Repeated Element in Size 2N Array</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/leetcode-701/">leetcode-701 Insert into a Binary Search Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/17/leetcode-509/">leetcode-509 Fibonacci Number</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/16/tensorflow-0/">tensorflow-0</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
