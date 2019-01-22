@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-561 Array Partition I | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Array Partition I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-561 Array Partition I">
+<meta property="og:url" content="http://yoursite.com/2019/01/21/leetcode-561/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="Array Partition I">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-22T08:40:26.844Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-561 Array Partition I">
+<meta name="twitter:description" content="Array Partition I">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-561" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/21/leetcode-561/" class="article-date">
+  <time datetime="2019-01-21T07:02:35.000Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-561 Array Partition I
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="561">
+<li>Array Partition I</li>
+</ol>
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of <strong>2n</strong> integers, your task is to group these integers into <strong>n</strong> pairs of integer, say (a1, b1), (a2, b2), …, (an, bn) which makes sum of min(ai, bi) for all i from 1 to n as large as possible.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,4,3,2]</span><br><span class="line"></span><br><span class="line">Output: 4</span><br><span class="line">Explanation: n is 2, and the maximum sum of pairs is 4 = min(1, 2) + min(3, 4).</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><strong>n</strong> is a positive integer, which is in the range of [1, 10000].</li>
+<li>All the integers in the array will be in the range of [-10000, 10000].</li>
+</ol>
+<hr>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>将输入的序列分为两部分，a和b</p>
+<p>最大化 $\sum_i min(a_i, b_i)$</p>
+<p>取序列里一半的数，比另一半小，最大的数不能取，于是取第二大的，第三大的不能取，取第四大的，以此类推就能得到这个分组</p>
+<p>先将<code>nums</code>排序，然后取第0，2，4，6，…，2n个元素，加起来就是最大的$\sum_i min(a_i, b_i)$</p>
+<p>时间复杂度<br>sort排序，没有研究过代码实现，据各种博客说是多种排序算法的混合，时间复杂度可以算成 $O(nlogn)$</p>
+<p>整个函数的时间复杂度 $O(nlogn)$</p>
+<p>空间复杂度 $O(n)$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">arrayPairSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    sort(nums.begin(), nums.end());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i+=<span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看了下LeetCode上用时最短的版本，可以看到这位大佬的第一个版本和我的思路一样，但注释了然后写出了一个更快的版本</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">arrayPairSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1, 2, 3, 11</span></span><br><span class="line">    <span class="comment">// sort(nums.begin(), nums.end());</span></span><br><span class="line">    <span class="comment">// int s = 0;</span></span><br><span class="line">    <span class="comment">// for (int i = 0; i &lt; nums.size(); i += 2)</span></span><br><span class="line">    <span class="comment">//     s += nums[i];</span></span><br><span class="line">    <span class="comment">// return s;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> f[<span class="number">20001</span>] = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) ++f[<span class="number">10000</span> + nums[i]]; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; c &lt; nums.size() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> k = (f[i] + <span class="number">1</span> - (c &amp; <span class="number">0x01</span>)) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        sum += (i - <span class="number">10000</span>)*k;</span><br><span class="line">        c += f[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不太明白，举个例子看看效果 nums = {1，2，3，11}</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> f[<span class="number">20001</span>] = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) ++f[<span class="number">10000</span> + nums[i]];</span><br></pre></td></tr></table></figure>
+<p>f的长度为20001是因为<code>nums</code>中元素的取值范围是[-10000, 10000]</p>
+<p>f的后10000位存储nums中各个元素出现的次数</p>
+<p>f[10001] = 1<br>f[10002] = 1<br>f[10003] = 1<br>f[10011] = 1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; c &lt; nums.size() - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">int</span> k = (f[i] + <span class="number">1</span> - (c &amp; <span class="number">0x01</span>)) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    sum += (i - <span class="number">10000</span>)*k;</span><br><span class="line">    c += f[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个例子{1，2，3，11}中都是正数，直接从f[10000]开始看，之前的循环都是0</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">i</th>
+<th style="text-align:center">k</th>
+<th style="text-align:center">sum</th>
+<th style="text-align:center">c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">9999</td>
+<td style="text-align:center">(f[9999] + 1 - (0 &amp; 0x01)) &gt;&gt; 1 = 0</td>
+<td style="text-align:center">sum = sum + (9999 - 10000) * 0 = 0</td>
+<td style="text-align:center">c = c + f[9999] = 0</td>
+</tr>
+<tr>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">(f[10000] + 1 - (0 &amp; 0x01)) &gt;&gt; 1 = 0</td>
+<td style="text-align:center">sum = sum + (10000 - 10000) * 0 = 0</td>
+<td style="text-align:center">c = c + f[10000] = 0</td>
+</tr>
+<tr>
+<td style="text-align:center">10001</td>
+<td style="text-align:center">(f[10001] + 1 - (0 &amp; 0x01)) &gt;&gt; 1 = 1</td>
+<td style="text-align:center">sum = sum + (10001 - 10000) * 1 = 1</td>
+<td style="text-align:center">c = c + f[10001] = 1</td>
+</tr>
+<tr>
+<td style="text-align:center">10002</td>
+<td style="text-align:center">(f[10002] + 1 - (1 &amp; 0x01)) &gt;&gt; 1 = 0</td>
+<td style="text-align:center">sum = sum + (10002 - 10000) * 0 = 1</td>
+<td style="text-align:center">c = c + f[10002] = 2</td>
+</tr>
+<tr>
+<td style="text-align:center">10003</td>
+<td style="text-align:center">(f[10003] + 1 - (2 &amp; 0x01)) &gt;&gt; 1 = 1</td>
+<td style="text-align:center">sum = sum + (10003 - 10000) * 1 = 4</td>
+<td style="text-align:center">c = c + f[10003] = 3</td>
+</tr>
+</tbody>
+</table>
+<p>到这里<code>c</code>的值为3，退出循环，输出<code>sum</code> = 4</p>
+<p>我终于看明白了，和我写的一个意思</p>
+<p>注意到在<code>i</code>为1，2，3的时候<code>k</code>为1，0，1，乘起来求和就是<code>sum</code>，<code>c</code>用来记录已经检测的<code>nums</code>里的值的个数, <code>c &lt; nums.size() - 1</code>时就可以结束了，最后一个值不用看，最后返回<code>sum</code></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://www.cplusplus.com/reference/algorithm/sort/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/algorithm/sort/</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/21/leetcode-561/" data-id="cjr7l2q21000kq4g254ge2src" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/21/leetcode-965/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-965</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Fibonacci/" style="font-size: 10px;">Fibonacci</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/21/leetcode-561/">leetcode-561 Array Partition I</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/leetcode-965/">leetcode-965</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/leetcode-977/">leetcode-977 Squares of a Sorted Array</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/leetcode-961/">leetcode-961 N-Repeated Element in Size 2N Array</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/leetcode-701/">leetcode-701 Insert into a Binary Search Tree</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

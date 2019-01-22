@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="N-Repeated Element in Size 2N Array">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T03:09:55.618Z">
+<meta property="og:updated_time" content="2019-01-21T08:19:27.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-961 N-Repeated Element in Size 2N Array">
 <meta name="twitter:description" content="N-Repeated Element in Size 2N Array">
@@ -128,17 +128,16 @@
 </blockquote>
 <p>只要找到一个重复的值，这个值就是要找的</p>
 <p>至少有一个长度为4的子序列中存在重复的值</p>
+<p>LeetCode的讨论区回答说需要检查的子序列的长度可以减小到3</p>
 <p>时间复杂度 $O(n)$，n是A的size()</p>
 <p>空间复杂度 $O(1)$</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= A.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] == A[i+<span class="number">1</span>] || A[i] == A[i+<span class="number">2</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> A[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A[A.size()<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>LeetCode的讨论区回答说需要检查的子序列的长度可以减小到3</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.length<span class="number">-2</span>; i++)</span><br><span class="line">        <span class="keyword">if</span> (A[i] == A[i+<span class="number">1</span>] || A[i] == A[i+<span class="number">2</span>])</span><br><span class="line">            <span class="keyword">return</span> A[i];</span><br><span class="line">    <span class="comment">// this is only for input size 4 and duplicates found in last indeces</span></span><br><span class="line">    <span class="keyword">return</span> A[A.length<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size()<span class="number">-2</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(A[i] == A[i+<span class="number">1</span>] || A[i] == A[i+<span class="number">2</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> A[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A[A.size()<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/n-repeated-element-in-size-2n-array/solution/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/18/leetcode-961/" data-id="cjr5s8ama0014uwg2s75cflf5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/18/leetcode-961/" data-id="cjr7l2q2w001bq4g228sg0tlj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,6 +209,14 @@
       <ul>
         
           <li>
+            <a href="/2019/01/21/leetcode-561/">leetcode-561 Array Partition I</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/leetcode-965/">leetcode-965</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/21/leetcode-977/">leetcode-977 Squares of a Sorted Array</a>
           </li>
         
@@ -219,14 +226,6 @@
         
           <li>
             <a href="/2019/01/18/leetcode-701/">leetcode-701 Insert into a Binary Search Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/17/leetcode-509/">leetcode-509 Fibonacci Number</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/16/tensorflow-0/">tensorflow-0</a>
           </li>
         
       </ul>
