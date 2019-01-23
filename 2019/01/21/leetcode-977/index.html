@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="Squares of a Sorted Array">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T03:39:15.523Z">
+<meta property="og:updated_time" content="2019-01-22T14:28:03.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-977 Squares of a Sorted Array">
 <meta name="twitter:description" content="Squares of a Sorted Array">
@@ -101,13 +101,14 @@
 <li>-10000 &lt;= A[i] &lt;= 10000</li>
 <li><code>A</code> is sorted in non-decreasing order.</li>
 </ol>
+<hr>
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>输入一个非递减的序列，输出这个序列的平方的非递减排序</p>
-<p>主要考虑之前的负数平方后会使排序改变，先将整个序列求绝对值再排序，然后输入序列的平方</p>
+<p>主要考虑之前的负数平方后会使排序改变，先将整个序列求绝对值再排序，然后输出序列的平方</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortedSquares(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        A[i] = <span class="built_in">abs</span>(A[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sort(A.begin(), A.end());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        A[i] = A[i] * A[i] ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/leetcode-977/" data-id="cjr7l2q3c001jq4g2kdpea5j9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/leetcode-977/" data-id="cjr9alr61001figg2uw2fpf2r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -120,7 +121,7 @@
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          leetcode-965
+          leetcode-965 Univalued Binary Tree
         
       </div>
     </a>
@@ -179,23 +180,23 @@
       <ul>
         
           <li>
+            <a href="/2019/01/23/leetcode-822/">leetcode-822</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/leetcode-922/">leetcode-922 Sort Array By Parity II</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/tree-1/">tree-1</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/21/leetcode-561/">leetcode-561 Array Partition I</a>
           </li>
         
           <li>
-            <a href="/2019/01/21/leetcode-965/">leetcode-965</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/21/leetcode-977/">leetcode-977 Squares of a Sorted Array</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/18/leetcode-961/">leetcode-961 N-Repeated Element in Size 2N Array</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/18/leetcode-701/">leetcode-701 Insert into a Binary Search Tree</a>
+            <a href="/2019/01/21/leetcode-965/">leetcode-965 Univalued Binary Tree</a>
           </li>
         
       </ul>

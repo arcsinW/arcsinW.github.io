@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>leetcode-965 | X</title>
+  <title>leetcode-965 Univalued Binary Tree | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-965">
+  <meta name="description" content="Univalued Binary Tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-965 Univalued Binary Tree">
 <meta property="og:url" content="http://yoursite.com/2019/01/21/leetcode-965/index.html">
 <meta property="og:site_name" content="X">
+<meta property="og:description" content="Univalued Binary Tree">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T03:45:08.297Z">
+<meta property="og:updated_time" content="2019-01-22T14:27:13.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-965">
+<meta name="twitter:title" content="leetcode-965 Univalued Binary Tree">
+<meta name="twitter:description" content="Univalued Binary Tree">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -75,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode-965
+      leetcode-965 Univalued Binary Tree
     </h1>
   
 
@@ -83,11 +86,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol start="965">
+<li>Univalued Binary Tree</li>
+</ol>
+<a id="more"></a>
+<p>A binary tree is univalued if every node in the tree has the same value.</p>
+<p>Return true if and only if the given tree is univalued.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1,1,1,null,1]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,2,2,5,2]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li>The number of nodes in the given tree will be in the range [1, 100].</li>
+<li>Each node’s value will be an integer in the range [0, 99].</li>
+</ol>
+<hr>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>判断一棵树是不是所有节点的值都相同</p>
+<p>这里用的层序遍历</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isUnivalTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> value = root-&gt;val;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">    que.push(root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        TreeNode* node = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;val != value)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (node-&gt;left)</span><br><span class="line">            &#123;</span><br><span class="line">                que.push(node-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (node-&gt;right)</span><br><span class="line">            &#123;</span><br><span class="line">                que.push(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就4ms faster than 100.00%了</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/leetcode-965/" data-id="cjr7l2q2w0019q4g2zzvfb5l9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/leetcode-965/" data-id="cjr9alr64001gigg2upv5lt63" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,23 +182,23 @@
       <ul>
         
           <li>
+            <a href="/2019/01/23/leetcode-822/">leetcode-822</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/leetcode-922/">leetcode-922 Sort Array By Parity II</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/tree-1/">tree-1</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/21/leetcode-561/">leetcode-561 Array Partition I</a>
           </li>
         
           <li>
-            <a href="/2019/01/21/leetcode-965/">leetcode-965</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/21/leetcode-977/">leetcode-977 Squares of a Sorted Array</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/18/leetcode-961/">leetcode-961 N-Repeated Element in Size 2N Array</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/18/leetcode-701/">leetcode-701 Insert into a Binary Search Tree</a>
+            <a href="/2019/01/21/leetcode-965/">leetcode-965 Univalued Binary Tree</a>
           </li>
         
       </ul>
