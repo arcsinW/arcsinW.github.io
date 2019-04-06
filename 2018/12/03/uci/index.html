@@ -5,17 +5,17 @@
   
   <title>Universal Chess Interface | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="info* depth      search depth in plies * seldepth      selective search depth in plies,     if the engine sends seldepth there must also a &amp;quot;depth&amp;quot; be present in the same string. * time">
+  <meta name="description" content="positioninfo1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980* depth	search depth in plies	当前搜索到的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Universal Chess Interface">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/uci/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="info* depth      search depth in plies * seldepth      selective search depth in plies,     if the engine sends seldepth there must also a &amp;quot;depth&amp;quot; be present in the same string. * time">
+<meta property="og:description" content="positioninfo1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980* depth	search depth in plies	当前搜索到的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-03T03:20:41.624Z">
+<meta property="og:updated_time" content="2019-03-21T07:44:07.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Universal Chess Interface">
-<meta name="twitter:description" content="info* depth      search depth in plies * seldepth      selective search depth in plies,     if the engine sends seldepth there must also a &amp;quot;depth&amp;quot; be present in the same string. * time">
+<meta name="twitter:description" content="positioninfo1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980* depth	search depth in plies	当前搜索到的">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -87,65 +87,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <a id="more"></a>
-<h3 id="info"><a href="#info" class="headerlink" title="info"></a>info</h3><pre><code>* depth 
-    search depth in plies
-* seldepth 
-    selective search depth in plies,
-    if the engine sends seldepth there must also a &quot;depth&quot; be present in the same string.
-* time 
-    the time searched in ms, this should be sent together with the pv.
-* nodes 
-    x nodes searched, the engine should send this info regularly
-* pv  ... 
-    the best line found
-* multipv 
-    this for the multi pv mode.
-    for the best move/pv add &quot;multipv 1&quot; in the string when you send the pv.
-    in k-best mode always send all k variants in k strings together.
-* score
-    * cp 引擎优势 winrate
-        the score from the engine&apos;s point of view in centipawns.
-    * mate 
-        mate in y moves, not plies.
-        If the engine is getting mated use negativ values for y.
-    * lowerbound
-      the score is just a lower bound.
-    * upperbound
-       the score is just an upper bound.
-* currmove 
-    currently searching this move
-* currmovenumber 
-    currently searching move number x, for the first move x should be 1 not 0.
-* hashfull 
-    the hash is x permill full, the engine should send this info regularly
-* nps 
-    x nodes per second searched, the engine should send this info regularly
-* tbhits 
-    x positions where found in the endgame table bases
-* cpuload 
-    the cpu usage of the engine is x permill.
-* string 
-    any string str which will be displayed be the engine,
-    if there is a string command the rest of the line will be interpreted as .
-* refutation   ... 
-   move  is refuted by the line  ... , i can be any number &gt;= 1.
-   Example: after move d1h5 is searched, the engine can send
-   &quot;info refutation d1h5 g6h5&quot;
-   if g6h5 is the best answer after d1h5 or if g6h5 refutes the move d1h5.
-   if there is norefutation for d1h5 found, the engine should just send
-   &quot;info refutation d1h5&quot;
-    The engine should only send this if the option &quot;UCI_ShowRefutations&quot; is set to true.
-* currline   ... 
-   this is the current line the engine is calculating.  is the number of the cpu if
-   the engine is running on more than one cpu.  = 1,2,3....
-   if the engine is just using one cpu,  can be omitted.
-   If  is greater than 1, always send all k lines in k strings together.
-    The engine should only send this if the option &quot;UCI_ShowCurrLine&quot; is set to true.
-</code></pre>
+<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">* depth</span><br><span class="line">	search depth in plies</span><br><span class="line">	当前搜索到的深度</span><br><span class="line"></span><br><span class="line">* seldepth</span><br><span class="line">	selective search depth in plies,</span><br><span class="line">	if the engine sends seldepth there must also a &quot;depth&quot; be present in the same string.</span><br><span class="line">	选择性搜索达到的深度</span><br><span class="line"></span><br><span class="line">* time</span><br><span class="line">	the time searched in ms, this should be sent together with the pv.</span><br><span class="line">	已经搜索的时间</span><br><span class="line"></span><br><span class="line">* nodes</span><br><span class="line">	x nodes searched, the engine should send this info regularly</span><br><span class="line">	已经搜索的节点数</span><br><span class="line"></span><br><span class="line">* pv</span><br><span class="line">	the best line found</span><br><span class="line">	已经搜索到的最佳路线</span><br><span class="line"></span><br><span class="line">* multipv</span><br><span class="line">	this for the multi pv mode.</span><br><span class="line">	for the best move/pv add &quot;multipv 1&quot; in the string when you send the pv.</span><br><span class="line">	in k-best mode always send all k variants in k strings together.</span><br><span class="line"></span><br><span class="line">* score</span><br><span class="line">	* cp 引擎优势 winrate</span><br><span class="line">		the score from the engine&apos;s point of view in centipawns.</span><br><span class="line">	* mate</span><br><span class="line">		mate in y moves, not plies.</span><br><span class="line">		If the engine is getting mated use negativ values for y.</span><br><span class="line">		在y步内形成杀棋</span><br><span class="line">	* lowerbound</span><br><span class="line">		the score is just a lower bound.</span><br><span class="line">	* upperbound</span><br><span class="line">		the score is just an upper bound.</span><br><span class="line"></span><br><span class="line">* currmove</span><br><span class="line">	currently searching this move</span><br><span class="line">	当前搜索的走法</span><br><span class="line"></span><br><span class="line">* currmovenumber</span><br><span class="line">	currently searching move number x, for the first move x should be 1 not 0.</span><br><span class="line">	当前搜索的走法的序号</span><br><span class="line"></span><br><span class="line">* hashfull</span><br><span class="line">	the hash is x permill full, the engine should send this info regularly</span><br><span class="line">	hash表的占用率 （单位千分之一）</span><br><span class="line"></span><br><span class="line">* nps</span><br><span class="line">	x nodes per second searched, the engine should send this info regularly</span><br><span class="line">	每秒搜索的节点数</span><br><span class="line"></span><br><span class="line">* tbhits</span><br><span class="line">	x positions where found in the endgame table bases</span><br><span class="line"></span><br><span class="line">* cpuload</span><br><span class="line">	the cpu usage of the engine is x permill.</span><br><span class="line">	处理器占用率</span><br><span class="line"></span><br><span class="line">* string</span><br><span class="line">	any string str which will be displayed be the engine,</span><br><span class="line">	if there is a string command the rest of the line will be interpreted as .</span><br><span class="line"></span><br><span class="line">* refutation</span><br><span class="line">	move  is refuted by the line  ... , i can be any number &gt;= 1.</span><br><span class="line">	Example: after move d1h5 is searched, the engine can send</span><br><span class="line">	&quot;info refutation d1h5 g6h5&quot;</span><br><span class="line">	if g6h5 is the best answer after d1h5 or if g6h5 refutes the move d1h5.</span><br><span class="line">	if there is norefutation for d1h5 found, the engine should just send</span><br><span class="line">	&quot;info refutation d1h5&quot;</span><br><span class="line">	The engine should only send this if the option &quot;UCI_ShowRefutations&quot; is set to true.</span><br><span class="line"></span><br><span class="line">* currline</span><br><span class="line">	this is the current line the engine is calculating.  is the number of the cpu if</span><br><span class="line">	the engine is running on more than one cpu.  = 1,2,3....</span><br><span class="line">	if the engine is just using one cpu,  can be omitted.</span><br><span class="line">	If  is greater than 1, always send all k lines in k strings together.</span><br><span class="line">	The engine should only send this if the option &quot;UCI_ShowCurrLine&quot; is set to true.</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://www.xqbase.com/protocol/uci.htm" target="_blank" rel="noopener">http://www.xqbase.com/protocol/uci.htm</a></li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/03/uci/" data-id="cjsbu7zm20021dog2xlcmo2a1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/03/uci/" data-id="cju575rcp002bdog2c0ovb9iy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +154,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -217,23 +167,23 @@
       <ul>
         
           <li>
-            <a href="/2019/01/28/android/">android</a>
+            <a href="/2019/04/05/leetcode-665/">leetcode-665</a>
           </li>
         
           <li>
-            <a href="/2019/01/26/bing-wallpaper-api/">bing-wallpaper-api</a>
+            <a href="/2019/03/31/android-event-handle/">android-event-handle</a>
           </li>
         
           <li>
-            <a href="/2019/01/25/android-studio/">android-studio</a>
+            <a href="/2019/03/24/logistic-regression/">logistic-regression</a>
           </li>
         
           <li>
-            <a href="/2019/01/25/leetcode-136/">leetcode-136 Single Number</a>
+            <a href="/2019/03/18/computer-vision/">computer-vision</a>
           </li>
         
           <li>
-            <a href="/2019/01/24/vim/">vim</a>
+            <a href="/2019/03/09/android-backgroundtask/">android-backgroundtask</a>
           </li>
         
       </ul>

@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-18T12:34:23.746Z">
+<meta property="og:updated_time" content="2019-04-05T13:23:04.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vector">
 <meta name="twitter:description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
@@ -99,6 +99,7 @@
 </ul>
 <p>和上面一维的一对照就能明白</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vec(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = nums.begin(); it != nums.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    nums.erase(it, it+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><a href="https://blog.csdn.net/yjunyu/article/details/77728410" target="_blank" rel="noopener">vector的几种初始化及赋值方式</a></li>
 </ol>
@@ -106,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/vector/" data-id="cjsbu7zl5001xdog26ahzc6e1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/vector/" data-id="cju575rck0029dog2r8gucaz6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +166,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -178,23 +179,23 @@
       <ul>
         
           <li>
-            <a href="/2019/01/28/android/">android</a>
+            <a href="/2019/04/05/leetcode-665/">leetcode-665</a>
           </li>
         
           <li>
-            <a href="/2019/01/26/bing-wallpaper-api/">bing-wallpaper-api</a>
+            <a href="/2019/03/31/android-event-handle/">android-event-handle</a>
           </li>
         
           <li>
-            <a href="/2019/01/25/android-studio/">android-studio</a>
+            <a href="/2019/03/24/logistic-regression/">logistic-regression</a>
           </li>
         
           <li>
-            <a href="/2019/01/25/leetcode-136/">leetcode-136 Single Number</a>
+            <a href="/2019/03/18/computer-vision/">computer-vision</a>
           </li>
         
           <li>
-            <a href="/2019/01/24/vim/">vim</a>
+            <a href="/2019/03/09/android-backgroundtask/">android-backgroundtask</a>
           </li>
         
       </ul>

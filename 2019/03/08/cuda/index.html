@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>cuda | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cuda">
+<meta property="og:url" content="http://yoursite.com/2019/03/08/cuda/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;T">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-31T10:55:56.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cuda">
+<meta name="twitter:description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;T">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cuda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/08/cuda/" class="article-date">
+  <time datetime="2019-03-08T00:49:06.000Z" itemprop="datePublished">2019-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cuda
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nvidia-smi 显示GPU信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CPUFunction</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the CPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">GPUFunction</span><span class="params">()</span> <span class="comment">//__global__的返回值为void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the GPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CPUFunction();</span><br><span class="line"></span><br><span class="line">  GPUFunction&lt;&lt;&lt;<span class="number">2</span>, <span class="number">4</span>&gt;&gt;&gt;(); <span class="comment">// 2 blocks, 4 threads / block</span></span><br><span class="line">  cudaDeviceSynchronize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核函数启动方式为<strong>异步</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt; NUMBER_OF_BLOCKS, NUMBER_OF_THREADS_PER_BLOCK&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p><code>gridDim.x</code> grid中的block数量<br><code>blockIdx.x</code> grid中当前block的index（从0开始）<br><code>blockDim.x</code> block中线程数量<br><code>threadIdx.x</code> block中线程的index（从0开始）</p>
+<p>32个线程一个wrap</p>
+<blockquote>
+<p>鉴于 GPU 的硬件特性，所含线程的数量为 32 的倍数的线程块是为理想的选择</p>
+</blockquote>
+<p>动态计算block的数量，<code>N</code>为问题规模</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">size_t</span> number_of_blocks = (N + threads_per_block - <span class="number">1</span>) / threads_per_block;</span><br></pre></td></tr></table></figure>
+<p>grid中的线程数小于问题规模N的情况</p>
+<p>在核函数中加入<code>网格跨度循环</code>, 一个线程完成index, index + threads_per_grid, index + threads_per_grid*2 …的任务</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__<span class="function">global <span class="keyword">void</span> <span class="title">kernel</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> indexWithinTheGrid = threadIdx.x + blockIdx.x * blockDim.x;</span><br><span class="line">  <span class="keyword">int</span> gridStride = gridDim.x * blockDim.x;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = indexWithinTheGrid; i &lt; N; i += gridStride)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// do work on a[i];</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>错误处理</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cudaError_t err;</span><br><span class="line">err = cudaMallocManaged(&amp;a, N)                    <span class="comment">// Assume the existence of `a` and `N`.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (err != cudaSuccess)                           <span class="comment">// `cudaSuccess` is provided by CUDA.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Error: %s\n"</span>, cudaGetErrorString(err)); <span class="comment">// `cudaGetErrorString` is provided by CUDA.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">someKernel&lt;&lt;&lt;<span class="number">1</span>, <span class="number">-1</span>&gt;&gt;&gt;();  <span class="comment">// -1 is not a valid number of threads.</span></span><br><span class="line"></span><br><span class="line">cudaError_t err;</span><br><span class="line">err = cudaGetLastError(); <span class="comment">// `cudaGetLastError` will return the error from above.</span></span><br><span class="line"><span class="keyword">if</span> (err != cudaSuccess)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Error: %s\n"</span>, cudaGetErrorString(err));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>封装成宏</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> cudaError_t <span class="title">checkCuda</span><span class="params">(cudaError_t result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (result != cudaSuccess) &#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"CUDA Runtime Error: %s\n"</span>, cudaGetErrorString(result));</span><br><span class="line">    assert(result == cudaSuccess);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>流</p>
+<p>核函数在流中运行，<br>cuda中有一个默认流和多个非默认流<br>流中的核函数顺序执行，<br>不同的非默认流中的核函数可以同时运行（无法保证顺序）<br>默认流中的核函数不能与其他非默认流的核函数同时运行<br>默认流会受到阻碍，并在其他所有流完成之后方可运行，但其亦会阻碍其他流的运行直至其自身已运行完毕</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cudaStream_t stream;</span><br><span class="line">cudaStreamCreate(&amp;stream);</span><br><span class="line"></span><br><span class="line">kernel&lt;&lt;&lt;number_of_blocks, threads_per_block, bytes_of_shared_memory, stream&gt;&gt;&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// some things to do</span></span><br><span class="line"></span><br><span class="line">cudaStreamDestroy(stream);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">number_of_blocks/threads_per_block</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+<th style="text-align:center">1024</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">256</td>
+<td style="text-align:center">129.34ms</td>
+<td style="text-align:center">106.04ms</td>
+<td style="text-align:center">113.95ms</td>
+</tr>
+<tr>
+<td style="text-align:center">512</td>
+<td style="text-align:center">100.13ms</td>
+<td style="text-align:center">129.93ms</td>
+<td style="text-align:center">109.08ms</td>
+</tr>
+<tr>
+<td style="text-align:center">1024</td>
+<td style="text-align:center">106.67ms</td>
+<td style="text-align:center">102.97ms</td>
+<td style="text-align:center">104.36ms</td>
+</tr>
+<tr>
+<td style="text-align:center">2048</td>
+<td style="text-align:center">100.05ms</td>
+<td style="text-align:center">99.280ms</td>
+<td style="text-align:center">109.68ms</td>
+</tr>
+<tr>
+<td style="text-align:center">4096</td>
+<td style="text-align:center">100.65ms</td>
+<td style="text-align:center">102.35ms</td>
+<td style="text-align:center">113.03ms</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/08/cuda/" data-id="cju575r7z000idog2f37pe1n5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/09/android-backgroundtask/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          android-backgroundtask
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/06/android-listview/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">android-listview</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Fibonacci/" style="font-size: 10px;">Fibonacci</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/05/leetcode-665/">leetcode-665</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/android-event-handle/">android-event-handle</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/24/logistic-regression/">logistic-regression</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/18/computer-vision/">computer-vision</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/09/android-backgroundtask/">android-backgroundtask</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

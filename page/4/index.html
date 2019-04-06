@@ -62,6 +62,344 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-uci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/03/uci/" class="article-date">
+  <time datetime="2018-12-03T02:51:03.000Z" itemprop="datePublished">2018-12-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/03/uci/">Universal Chess Interface</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">* depth</span><br><span class="line">	search depth in plies</span><br><span class="line">	当前搜索到的深度</span><br><span class="line"></span><br><span class="line">* seldepth</span><br><span class="line">	selective search depth in plies,</span><br><span class="line">	if the engine sends seldepth there must also a &quot;depth&quot; be present in the same string.</span><br><span class="line">	选择性搜索达到的深度</span><br><span class="line"></span><br><span class="line">* time</span><br><span class="line">	the time searched in ms, this should be sent together with the pv.</span><br><span class="line">	已经搜索的时间</span><br><span class="line"></span><br><span class="line">* nodes</span><br><span class="line">	x nodes searched, the engine should send this info regularly</span><br><span class="line">	已经搜索的节点数</span><br><span class="line"></span><br><span class="line">* pv</span><br><span class="line">	the best line found</span><br><span class="line">	已经搜索到的最佳路线</span><br><span class="line"></span><br><span class="line">* multipv</span><br><span class="line">	this for the multi pv mode.</span><br><span class="line">	for the best move/pv add &quot;multipv 1&quot; in the string when you send the pv.</span><br><span class="line">	in k-best mode always send all k variants in k strings together.</span><br><span class="line"></span><br><span class="line">* score</span><br><span class="line">	* cp 引擎优势 winrate</span><br><span class="line">		the score from the engine&apos;s point of view in centipawns.</span><br><span class="line">	* mate</span><br><span class="line">		mate in y moves, not plies.</span><br><span class="line">		If the engine is getting mated use negativ values for y.</span><br><span class="line">		在y步内形成杀棋</span><br><span class="line">	* lowerbound</span><br><span class="line">		the score is just a lower bound.</span><br><span class="line">	* upperbound</span><br><span class="line">		the score is just an upper bound.</span><br><span class="line"></span><br><span class="line">* currmove</span><br><span class="line">	currently searching this move</span><br><span class="line">	当前搜索的走法</span><br><span class="line"></span><br><span class="line">* currmovenumber</span><br><span class="line">	currently searching move number x, for the first move x should be 1 not 0.</span><br><span class="line">	当前搜索的走法的序号</span><br><span class="line"></span><br><span class="line">* hashfull</span><br><span class="line">	the hash is x permill full, the engine should send this info regularly</span><br><span class="line">	hash表的占用率 （单位千分之一）</span><br><span class="line"></span><br><span class="line">* nps</span><br><span class="line">	x nodes per second searched, the engine should send this info regularly</span><br><span class="line">	每秒搜索的节点数</span><br><span class="line"></span><br><span class="line">* tbhits</span><br><span class="line">	x positions where found in the endgame table bases</span><br><span class="line"></span><br><span class="line">* cpuload</span><br><span class="line">	the cpu usage of the engine is x permill.</span><br><span class="line">	处理器占用率</span><br><span class="line"></span><br><span class="line">* string</span><br><span class="line">	any string str which will be displayed be the engine,</span><br><span class="line">	if there is a string command the rest of the line will be interpreted as .</span><br><span class="line"></span><br><span class="line">* refutation</span><br><span class="line">	move  is refuted by the line  ... , i can be any number &gt;= 1.</span><br><span class="line">	Example: after move d1h5 is searched, the engine can send</span><br><span class="line">	&quot;info refutation d1h5 g6h5&quot;</span><br><span class="line">	if g6h5 is the best answer after d1h5 or if g6h5 refutes the move d1h5.</span><br><span class="line">	if there is norefutation for d1h5 found, the engine should just send</span><br><span class="line">	&quot;info refutation d1h5&quot;</span><br><span class="line">	The engine should only send this if the option &quot;UCI_ShowRefutations&quot; is set to true.</span><br><span class="line"></span><br><span class="line">* currline</span><br><span class="line">	this is the current line the engine is calculating.  is the number of the cpu if</span><br><span class="line">	the engine is running on more than one cpu.  = 1,2,3....</span><br><span class="line">	if the engine is just using one cpu,  can be omitted.</span><br><span class="line">	If  is greater than 1, always send all k lines in k strings together.</span><br><span class="line">	The engine should only send this if the option &quot;UCI_ShowCurrLine&quot; is set to true.</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://www.xqbase.com/protocol/uci.htm" target="_blank" rel="noopener">http://www.xqbase.com/protocol/uci.htm</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/03/uci/" data-id="cju575rcp002bdog2c0ovb9iy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-905" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/16/leetcode-905/" class="article-date">
+  <time datetime="2018-10-15T16:21:19.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/16/leetcode-905/">leetcode-905</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="905">
+<li>Sort Array By Parity</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/10/16/leetcode-905/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/16/leetcode-905/" data-id="cju575ray001ldog2pmgidolt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-921" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/14/leetcode-921/" class="article-date">
+  <time datetime="2018-10-14T15:39:49.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/14/leetcode-921/">leetcode-921</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="921">
+<li>Minimum Add to Make Parentheses Valid</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/10/14/leetcode-921/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/14/leetcode-921/" data-id="cju575rat001idog2rpzlkdma" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/21/php-4/" class="article-date">
+  <time datetime="2018-09-21T12:49:48.000Z" itemprop="datePublished">2018-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/21/php-4/">php-4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Code Igniter</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/21/php-4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/21/php-4/" data-id="cju575rbm001xdog2ay3msou0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-167" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/14/leetcode-167/" class="article-date">
+  <time datetime="2018-09-14T11:58:41.000Z" itemprop="datePublished">2018-09-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/14/leetcode-167/">leetcode-167</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="167">
+<li>Two Sum II - Input array is sorted</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/14/leetcode-167/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/14/leetcode-167/" data-id="cju575r83000jdog254umcapq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/04/php-3/" class="article-date">
+  <time datetime="2018-09-04T02:43:38.000Z" itemprop="datePublished">2018-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/04/php-3/">php-3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CodeIgniter on CentOS</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/04/php-3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/04/php-3/" data-id="cju575rbp001ydog2epmnlbr9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-66" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/02/leetcode-66/" class="article-date">
+  <time datetime="2018-09-02T03:15:39.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/leetcode-66/">leetcode-66</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="66">
+<li>Plus One</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/02/leetcode-66/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/02/leetcode-66/" data-id="cju575r9m0012dog2uk9ny01n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-27" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/24/leetcode-27/" class="article-date">
+  <time datetime="2018-08-24T14:15:09.000Z" itemprop="datePublished">2018-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/24/leetcode-27/">leetcode-27</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="27">
+<li>Remove Element</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/24/leetcode-27/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/24/leetcode-27/" data-id="cju575r88000mdog23zcfcii7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-8" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/22/leetcode-8/" class="article-date">
@@ -95,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/leetcode-8/" data-id="cjsbu7zd0000udog28eg45pjp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/22/leetcode-8/" data-id="cju575ra00016dog2d6qalkwi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,360 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/leetcode-7/" data-id="cjsbu7zcw000tdog2dpi1conc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/19/leetcode-2/" class="article-date">
-  <time datetime="2018-08-19T09:46:01.000Z" itemprop="datePublished">2018-08-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/leetcode-2/">leetcode-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="2">
-<li>Add Two Numbers</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/19/leetcode-2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/19/leetcode-2/" data-id="cjsbu7zb8000edog29wlsx3zj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-566" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/18/leetcode-566/" class="article-date">
-  <time datetime="2018-08-18T12:28:20.000Z" itemprop="datePublished">2018-08-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/18/leetcode-566/">leetcode-566</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="566">
-<li>Reshape the Matrix</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/18/leetcode-566/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/18/leetcode-566/" data-id="cjsbu7zc7000ndog2ztessjiv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-811" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/16/leetcode-811/" class="article-date">
-  <time datetime="2018-08-16T03:30:38.000Z" itemprop="datePublished">2018-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/16/leetcode-811/">leetcode-811</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="811">
-<li>Subdomain Visit Count</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/16/leetcode-811/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/16/leetcode-811/" data-id="cjsbu7zdb000ydog2gbbkkmsn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vector" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/15/vector/" class="article-date">
-  <time datetime="2018-08-15T05:34:02.000Z" itemprop="datePublished">2018-08-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/vector/">vector</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="vector的初始化"><a href="#vector的初始化" class="headerlink" title="vector的初始化"></a><code>vector</code>的初始化</h3><ul>
-<li>通过数组初始化</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(a, a+<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>带初值的初始化</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(<span class="number">10</span>, <span class="number">0</span>); <span class="comment">//10个元素的vector，每个元素都是0</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>vector&lt;vector&lt;int&gt;&gt;</code> 的初始化</li>
-</ul>
-<p>和上面一维的一对照就能明白</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vec(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://blog.csdn.net/yjunyu/article/details/77728410" target="_blank" rel="noopener">vector的几种初始化及赋值方式</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/vector/" data-id="cjsbu7zl5001xdog26ahzc6e1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-412" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/14/leetcode-412/" class="article-date">
-  <time datetime="2018-08-14T04:24:26.000Z" itemprop="datePublished">2018-08-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/14/leetcode-412/">leetcode-412</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="412">
-<li>Fizz Buzz</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/14/leetcode-412/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/14/leetcode-412/" data-id="cjsbu7zbd000gdog238mbv5ix" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-476" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/14/leetcode-476/" class="article-date">
-  <time datetime="2018-08-14T02:40:48.000Z" itemprop="datePublished">2018-08-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/14/leetcode-476/">leetcode-476</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="476">
-<li>Number Complement</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/14/leetcode-476/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/14/leetcode-476/" data-id="cjsbu7zbt000kdog26guhke52" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-500" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/13/leetcode-500/" class="article-date">
-  <time datetime="2018-08-13T08:58:54.000Z" itemprop="datePublished">2018-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/13/leetcode-500/">leetcode-500</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="500">
-<li>Keyboard Row</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/leetcode-500/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/13/leetcode-500/" data-id="cjsbu7zcg000qdog21yid9ya5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-383" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/13/leetcode-383/" class="article-date">
-  <time datetime="2018-08-13T07:46:36.000Z" itemprop="datePublished">2018-08-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/13/leetcode-383/">leetcode-383</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol start="383">
-<li>Ransom Note</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/leetcode-383/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/13/leetcode-383/" data-id="cjsbu7zbo000idog2rortbjvz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/leetcode-7/" data-id="cju575r9y0015dog24ldrddyk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -504,7 +489,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -536,7 +521,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -549,23 +534,23 @@
       <ul>
         
           <li>
-            <a href="/2019/01/28/android/">android</a>
+            <a href="/2019/04/05/leetcode-665/">leetcode-665</a>
           </li>
         
           <li>
-            <a href="/2019/01/26/bing-wallpaper-api/">bing-wallpaper-api</a>
+            <a href="/2019/03/31/android-event-handle/">android-event-handle</a>
           </li>
         
           <li>
-            <a href="/2019/01/25/android-studio/">android-studio</a>
+            <a href="/2019/03/24/logistic-regression/">logistic-regression</a>
           </li>
         
           <li>
-            <a href="/2019/01/25/leetcode-136/">leetcode-136 Single Number</a>
+            <a href="/2019/03/18/computer-vision/">computer-vision</a>
           </li>
         
           <li>
-            <a href="/2019/01/24/vim/">vim</a>
+            <a href="/2019/03/09/android-backgroundtask/">android-backgroundtask</a>
           </li>
         
       </ul>
