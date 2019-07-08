@@ -5,17 +5,17 @@
   
   <title>leetcode-922 Sort Array By Parity II | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Sort Array By Parity II">
+  <meta name="description" content="922. Sort Array By Parity II">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-922 Sort Array By Parity II">
 <meta property="og:url" content="http://yoursite.com/2019/01/22/leetcode-922/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="Sort Array By Parity II">
+<meta property="og:description" content="922. Sort Array By Parity II">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-23T14:29:37.332Z">
+<meta property="og:updated_time" content="2019-07-08T03:24:33.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-922 Sort Array By Parity II">
-<meta name="twitter:description" content="Sort Array By Parity II">
+<meta name="twitter:description" content="922. Sort Array By Parity II">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,9 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="922">
-<li>Sort Array By Parity II</li>
-</ol>
+        <p>922. Sort Array By Parity II</p>
 <a id="more"></a>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array <code>A</code> of non-negative integers, half of the integers in A are odd, and half of the integers are even.</p>
 <p>Sort the array so that whenever <code>A[i]</code> is odd, i is odd; and whenever <code>A[i]</code> is even, <code>i</code> is even.</p>
@@ -116,10 +114,11 @@
 <p>继续写第二个版本，思考循环终止条件，循环终止的时候每个奇数位都是奇数，偶数位都是偶数了</p>
 <p>再计算<code>even</code>或<code>odd</code>的时候就会大于<code>A.size()</code>，使用这个当作循环结束的条件（copy了LeetCode上的代码）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortArrayByParityII(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A) &#123;</span><br><span class="line">    <span class="keyword">int</span> even = <span class="number">0</span>; <span class="comment">// first even position with a odd</span></span><br><span class="line">    <span class="keyword">int</span> odd = <span class="number">1</span>;  <span class="comment">// first odd position with a even</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ((even &lt; A.size() - <span class="number">1</span>) &amp;&amp; odd &lt; A.size())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> ((A[even] % <span class="number">2</span> == <span class="number">0</span>) &amp;&amp; (even &lt; A.size() - <span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            even += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (even &gt;= A.size() - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((A[odd] % <span class="number">2</span> != <span class="number">0</span>) &amp;&amp; (odd &lt; A.size()))</span><br><span class="line">        &#123;</span><br><span class="line">            odd += <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (odd &gt;= A.size())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> tmp = A[even];</span><br><span class="line">        A[even] = A[odd];</span><br><span class="line">        A[odd] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/leetcode-922/" data-id="cjuo1w7do001q8wg2yzinsacg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/leetcode-922/" data-id="cjxtsje4w001vgkg2pfz5fdw6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -191,23 +190,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

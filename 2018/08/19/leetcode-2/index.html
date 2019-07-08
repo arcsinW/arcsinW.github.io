@@ -5,17 +5,17 @@
   
   <title>leetcode-2 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Add Two Numbers">
+  <meta name="description" content="2. Add Two Numbers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-2">
 <meta property="og:url" content="http://yoursite.com/2018/08/19/leetcode-2/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="Add Two Numbers">
+<meta property="og:description" content="2. Add Two Numbers">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T13:34:10.599Z">
+<meta property="og:updated_time" content="2019-07-08T03:10:24.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-2">
-<meta name="twitter:description" content="Add Two Numbers">
+<meta name="twitter:description" content="2. Add Two Numbers">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,9 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="2">
-<li>Add Two Numbers</li>
-</ol>
+        <p>2. Add Two Numbers</p>
 <a id="more"></a>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
 <p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
@@ -100,10 +98,11 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (! (l1 &amp;&amp; l2))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> l1 ? l2: l1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    ListNode* root = <span class="keyword">new</span> ListNode(l1-&gt;val + l2-&gt;val);</span><br><span class="line">    carry = root-&gt;val / <span class="number">10</span>;</span><br><span class="line">    root-&gt;val %= <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    ListNode* l3 = root;</span><br><span class="line"></span><br><span class="line">    l1 = l1-&gt;next;</span><br><span class="line">    l2 = l2-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (l1 || l2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v1 = l1 ? l1-&gt;val : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> v2 = l2 ? l2-&gt;val : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        ListNode* tmp = <span class="keyword">new</span> ListNode(v1 + v2 + carry);</span><br><span class="line">        carry = tmp-&gt;val / <span class="number">10</span>;</span><br><span class="line">        tmp-&gt;val %= <span class="number">10</span>;</span><br><span class="line">        root-&gt;next = tmp;</span><br><span class="line">        root = root-&gt;next;</span><br><span class="line"></span><br><span class="line">        l1 = l1 ? l1-&gt;next : <span class="literal">NULL</span>;</span><br><span class="line">        l2 = l2 ? l2-&gt;next : <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (carry != <span class="number">0</span>) <span class="comment">//l1 l2都没了，但有进位，需加一个ListNode</span></span><br><span class="line">    &#123;</span><br><span class="line">        ListNode * tmp = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line">        root-&gt;next = tmp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我看了LeetCode上最好的那份代码，比我的好多了，于是新的代码如下（copy &amp; paste）</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    ListNode *root = <span class="literal">nullptr</span>, *l3 = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (l1 || l2 || carry)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1)</span><br><span class="line">        &#123;</span><br><span class="line">            carry += l1-&gt;val;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (l2)</span><br><span class="line">        &#123;</span><br><span class="line">            carry += l2-&gt;val;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (l3)</span><br><span class="line">        &#123;</span><br><span class="line">            l3-&gt;next = <span class="keyword">new</span> ListNode(carry % <span class="number">10</span>);</span><br><span class="line">            l3 = l3-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            root = <span class="keyword">new</span> ListNode(carry % <span class="number">10</span>);</span><br><span class="line">            l3 = root;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        carry /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/19/leetcode-2/" data-id="cjuo1w7b6000m8wg2kg6p579l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/19/leetcode-2/" data-id="cjxtsje37000pgkg2n555ro1b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +161,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -175,23 +174,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

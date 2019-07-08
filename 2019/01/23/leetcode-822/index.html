@@ -5,17 +5,17 @@
   
   <title>leetcode-822 Card Flipping Game | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Card Flipping Game">
+  <meta name="description" content="822. Card Flipping Game">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-822 Card Flipping Game">
 <meta property="og:url" content="http://yoursite.com/2019/01/23/leetcode-822/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="Card Flipping Game">
+<meta property="og:description" content="822. Card Flipping Game">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T13:33:09.424Z">
+<meta property="og:updated_time" content="2019-07-08T03:25:59.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-822 Card Flipping Game">
-<meta name="twitter:description" content="Card Flipping Game">
+<meta name="twitter:description" content="822. Card Flipping Game">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,12 +86,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="822">
-<li>Card Flipping Game</li>
-</ol>
+        <p>822. Card Flipping Game</p>
 <a id="more"></a>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>On a table are <code>N</code> cards, with a positive integer printed on the front and back of each card (possibly different).</p>
-<p>We flip any number of cards, and after we choose one card. </p>
+<p>We flip any number of cards, and after we choose one card.</p>
 <p>If the number <code>X</code> on the back of the chosen card is not on the front of any card, then this number X is good.</p>
 <p>What is the smallest number that is good?  If no number is good, output <code>0</code>.</p>
 <p>Here, <code>fronts[i]</code> and <code>backs[i]</code> represent the number on the front and back of card <code>i</code>.</p>
@@ -115,7 +113,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">flipgame</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; fronts, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; backs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> min = <span class="number">2001</span>;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; intersect = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fronts.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (fronts[i] == backs[i])</span><br><span class="line">        &#123;</span><br><span class="line">            intersect.insert(fronts[i]);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fronts.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (intersect.count(fronts[i]) == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            min = min &lt; fronts[i] ? min : fronts[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (intersect.count(backs[i]) == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            min = min &lt; backs[i] ? min : backs[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> min == <span class="number">2001</span> ? <span class="number">0</span> : min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>看看LeetCode上评价最高的版本</p>
 <p>思路是差不多的，改成了用数组存储，有点bitmap的思想，</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">flipgame</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; fronts, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; backs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res[<span class="number">2002</span>] = &#123;<span class="number">0</span>&#125;;  <span class="comment">// -1: bad. 1:exist. </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fronts.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (fronts[i] == backs[i])</span><br><span class="line">        &#123;</span><br><span class="line">            res[fronts[i]] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (res[fronts[i]] != <span class="number">-1</span>)</span><br><span class="line">                res[fronts[i]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (res[backs[i]] != <span class="number">-1</span>)</span><br><span class="line">                res[backs[i]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2002</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (res[i] == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">flipgame</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; fronts, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; backs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res[<span class="number">2002</span>] = &#123;<span class="number">0</span>&#125;;  <span class="comment">// -1: bad. 1:exist.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fronts.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (fronts[i] == backs[i])</span><br><span class="line">        &#123;</span><br><span class="line">            res[fronts[i]] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (res[fronts[i]] != <span class="number">-1</span>)</span><br><span class="line">                res[fronts[i]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (res[backs[i]] != <span class="number">-1</span>)</span><br><span class="line">                res[backs[i]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2002</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (res[i] == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>比如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fronts = [1,2,4,4,7]</span><br><span class="line">backs  = [1,3,4,1,3]</span><br></pre></td></tr></table></figure>
 <p>res[1] = -1;<br>res[2] = 1;<br>res[3] = 1;<br>res[4] = -1;<br>res[7] = 1;</p>
@@ -130,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/23/leetcode-822/" data-id="cjuo1w7dd001l8wg2wvo0bi4e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/23/leetcode-822/" data-id="cjxtsje4p001pgkg28rgenpv1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +187,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -202,23 +200,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

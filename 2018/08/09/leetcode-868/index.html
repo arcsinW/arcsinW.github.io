@@ -5,17 +5,17 @@
   
   <title>leetcode-868 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Binary Gap">
+  <meta name="description" content="868. Binary Gap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-868">
 <meta property="og:url" content="http://yoursite.com/2018/08/09/leetcode-868/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="Binary Gap">
+<meta property="og:description" content="868. Binary Gap">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-09T08:25:29.821Z">
+<meta property="og:updated_time" content="2019-07-08T03:25:45.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-868">
-<meta name="twitter:description" content="Binary Gap">
+<meta name="twitter:description" content="868. Binary Gap">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,15 +86,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="868">
-<li>Binary Gap</li>
-</ol>
+        <p>868. Binary Gap</p>
 <a id="more"></a>
 <blockquote>
 <p>Given a positive integer N, find and return the longest distance between two consecutive 1’s in the binary representation of N.</p>
 <p>If there aren’t two consecutive 1’s, return 0.</p>
-</blockquote>
-<blockquote>
 <p>Example 1:</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: 22</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">22 in binary is 0b10110.</span><br><span class="line">In the binary representation of 22, there are three ones, and two consecutive pairs of 1&apos;s.</span><br><span class="line">The first consecutive pair of 1&apos;s have distance 2.</span><br><span class="line">The second consecutive pair of 1&apos;s have distance 1.</span><br><span class="line">The answer is the largest of these two distances, which is 2.</span><br></pre></td></tr></table></figure>
@@ -124,10 +120,11 @@
 <p><code>__builtin_ctz</code>返回一个数二进制位右边第一个1的位置</p>
 <p>感觉和我的思路差不多，但代码比我的简洁<br>直接用内置函数拿到右边第一个1的位置，再遇到一个1的时候就可以直接算距离并和<code>max_distance</code>比较赋值，然后将当前的<code>index</code>设置为<code>last_one</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binaryGap</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max_distance = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> last_one = __builtin_ctz(N); <span class="comment">//右边第一个1的位置</span></span><br><span class="line">    <span class="keyword">int</span> test_bit = <span class="number">1</span>; <span class="comment">// 一个mask，用来对二进制的某一位做判断</span></span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(N &amp;&amp; test_bit &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (N &amp; test_bit)</span><br><span class="line">        &#123;</span><br><span class="line">            max_distance = max(index - last_one, max_distance);</span><br><span class="line">            last_one = index;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        N &amp;= ~test_bit;</span><br><span class="line">        test_bit &lt;&lt;= <span class="number">1</span>; <span class="comment">//修改mask，下一个循环对下一个二进制位做判断</span></span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> max_distance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/09/leetcode-868/" data-id="cjuo1w7d9001i8wg2l2tkqiac" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/09/leetcode-868/" data-id="cjxtsje4s001rgkg24g1qn9id" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +183,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -199,23 +196,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

@@ -5,17 +5,17 @@
   
   <title>leetcode-811 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Subdomain Visit Count">
+  <meta name="description" content="811. Subdomain Visit Count">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-811">
 <meta property="og:url" content="http://yoursite.com/2018/08/16/leetcode-811/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="Subdomain Visit Count">
+<meta property="og:description" content="811. Subdomain Visit Count">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-17T05:24:13.006Z">
+<meta property="og:updated_time" content="2019-07-08T03:22:43.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-811">
-<meta name="twitter:description" content="Subdomain Visit Count">
+<meta name="twitter:description" content="811. Subdomain Visit Count">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,15 +86,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="811">
-<li>Subdomain Visit Count</li>
-</ol>
+        <p>811. Subdomain Visit Count</p>
 <a id="more"></a>
-<p>A website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.leetcode.com”. When we visit a domain like “discuss.leetcode.com”, we will also visit the parent domains “leetcode.com” and “com” implicitly.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.leetcode.com”. When we visit a domain like “discuss.leetcode.com”, we will also visit the parent domains “leetcode.com” and “com” implicitly.</p>
 <p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p>
 <p>We are given a list <code>cpdomains</code> of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;, &quot;9001 leetcode.com&quot;, &quot;9001 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We only have one website domain: &quot;discuss.leetcode.com&quot;. As discussed above, the subdomain &quot;leetcode.com&quot; and &quot;com&quot; will also be visited. So they will all be visited 9001 times.</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: </span><br><span class="line">[&quot;900 google.mail.com&quot;, &quot;50 yahoo.com&quot;, &quot;1 intel.mail.com&quot;, &quot;5 wiki.org&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;901 mail.com&quot;,&quot;50 yahoo.com&quot;,&quot;900 google.mail.com&quot;,&quot;5 wiki.org&quot;,&quot;5 org&quot;,&quot;1 intel.mail.com&quot;,&quot;951 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We will visit &quot;google.mail.com&quot; 900 times, &quot;yahoo.com&quot; 50 times, &quot;intel.mail.com&quot; once and &quot;wiki.org&quot; 5 times. For the subdomains, we will visit &quot;mail.com&quot; 900 + 1 = 901 times, &quot;com&quot; 900 + 50 + 1 = 951 times, and &quot;org&quot; 5 times.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input:</span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;]</span><br><span class="line">Output:</span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;, &quot;9001 leetcode.com&quot;, &quot;9001 com&quot;]</span><br><span class="line">Explanation:</span><br><span class="line">We only have one website domain: &quot;discuss.leetcode.com&quot;. As discussed above, the subdomain &quot;leetcode.com&quot; and &quot;com&quot; will also be visited. So they will all be visited 9001 times.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input:</span><br><span class="line">[&quot;900 google.mail.com&quot;, &quot;50 yahoo.com&quot;, &quot;1 intel.mail.com&quot;, &quot;5 wiki.org&quot;]</span><br><span class="line">Output:</span><br><span class="line">[&quot;901 mail.com&quot;,&quot;50 yahoo.com&quot;,&quot;900 google.mail.com&quot;,&quot;5 wiki.org&quot;,&quot;5 org&quot;,&quot;1 intel.mail.com&quot;,&quot;951 com&quot;]</span><br><span class="line">Explanation:</span><br><span class="line">We will visit &quot;google.mail.com&quot; 900 times, &quot;yahoo.com&quot; 50 times, &quot;intel.mail.com&quot; once and &quot;wiki.org&quot; 5 times. For the subdomains, we will visit &quot;mail.com&quot; 900 + 1 = 901 times, &quot;com&quot; 900 + 50 + 1 = 951 times, and &quot;org&quot; 5 times.</span><br></pre></td></tr></table></figure>
 <p><strong>Notes:</strong></p>
 <ul>
 <li>The length of <code>cpdomains</code> will not exceed <code>100</code>.</li>
@@ -104,15 +102,16 @@
 <li>The answer output can be returned in any order.</li>
 </ul>
 <hr>
-<p>分两步，<br>第一步将域名字符串分解成子域名，每次从<code>.</code>的右边一位<code>substr</code>到字符串的末尾就行了<br>第二步计数，使用<code>map</code></p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>分两步，<br>第一步将域名字符串分解成子域名，每次从<code>.</code>的右边一位<code>substr</code>到字符串的末尾就行了<br>第二步计数，使用<code>map</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">subDomain</span><span class="params">(<span class="built_in">string</span> domain, <span class="keyword">int</span> count, <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; *_map)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    (*_map)[domain] += count;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; domain.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (domain.at(i) == <span class="string">'.'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            (*_map)[domain.substr(i+<span class="number">1</span>)] += count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; subdomainVisits(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; cpdomains)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; _map;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; result;</span><br><span class="line">    <span class="keyword">int</span> count;</span><br><span class="line">    <span class="built_in">string</span> domain;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cpdomains.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        stringstream ss(cpdomains.at(i));</span><br><span class="line"></span><br><span class="line">        ss &gt;&gt; count &gt;&gt; domain;</span><br><span class="line">        subDomain(domain, count, &amp;_map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;::iterator iter = _map.begin(); iter != _map.end(); iter++)</span><br><span class="line">    &#123;</span><br><span class="line">        result.push_back(to_string(iter-&gt;second) + <span class="string">" "</span> + iter-&gt;first);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然而这个解法代码长而且不是最优解，看看LeetCode上其他的解法</p>
 <p>也是一样的思路，但代码要精简，没有使用stringstream，直接遍历字符串取出num和domain</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; subdomainVisits(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; cpdomains) &#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">string</span> str : cpdomains) &#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>, i = <span class="number">0</span>, n = str.size();</span><br><span class="line">        <span class="keyword">while</span> (str[i] != <span class="string">' '</span>) num = num * <span class="number">10</span> + str[i++] - <span class="string">'0'</span>;</span><br><span class="line">        m[str.substr(++i)] += num;</span><br><span class="line">        <span class="keyword">for</span> ( ; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span> (str[i] == <span class="string">'.'</span>) m[str.substr(i+<span class="number">1</span>)] += num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> e : m)</span><br><span class="line">        res.push_back(to_string(e.second) + <span class="string">" "</span> + e.first);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/16/leetcode-811/" data-id="cjuo1w7cw001d8wg2isu06ucp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/16/leetcode-811/" data-id="cjxtsje4i001jgkg2fsh9keno" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -184,23 +183,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

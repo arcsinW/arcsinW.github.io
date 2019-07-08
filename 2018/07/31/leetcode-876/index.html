@@ -5,17 +5,17 @@
   
   <title>leetcode-876 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Middle of the Linked List">
+  <meta name="description" content="876. Middle of the Linked List">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-876">
 <meta property="og:url" content="http://yoursite.com/2018/07/31/leetcode-876/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="Middle of the Linked List">
+<meta property="og:description" content="876. Middle of the Linked List">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-31T12:36:45.636Z">
+<meta property="og:updated_time" content="2019-07-08T03:25:38.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-876">
-<meta name="twitter:description" content="Middle of the Linked List">
+<meta name="twitter:description" content="876. Middle of the Linked List">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,15 +86,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="876">
-<li>Middle of the Linked List</li>
-</ol>
+        <p>876. Middle of the Linked List</p>
 <a id="more"></a>
 <blockquote>
 <p>Given a non-empty, singly linked list with head node head, return a middle node of linked list.</p>
 <p>If there are two middle nodes, return the second middle node.</p>
-</blockquote>
-<blockquote>
 <p>Example 1:</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5]</span><br><span class="line">Output: Node 3 from this list (Serialization: [3,4,5])</span><br><span class="line">The returned node has value 3.  (The judge&apos;s serialization of this node is [3,4,5]).</span><br><span class="line">Note that we returned a ListNode object ans, such that:</span><br><span class="line">ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.</span><br></pre></td></tr></table></figure>
@@ -104,13 +100,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,6]</span><br><span class="line">Output: Node 4 from this list (Serialization: [4,5,6])</span><br><span class="line">Since the list has two middle nodes with values 3 and 4, we return the second one.</span><br></pre></td></tr></table></figure>
 <p>找单链表中点，一看到题就想到快慢指针</p>
 <p>我的思路是开始fast, slow两个指针都在<code>head</code>处，fast每次走两步，slow每次走一步，再考虑到链表长度的奇偶可能导致fast走不了两步，加了个判断</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">middleNode</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ListNode* fast = head;</span><br><span class="line">    ListNode* slow = head;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (fast-&gt;next &amp;&amp; fast-&gt;next-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        fast = fast-&gt;next-&gt;next;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (fast-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">middleNode</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode* fast = head;</span><br><span class="line">    ListNode* slow = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (fast-&gt;next &amp;&amp; fast-&gt;next-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        fast = fast-&gt;next-&gt;next;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fast-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>中间遇到下面这个问题，加上了几个NULL的判断就通过编译了</p>
 <blockquote>
 <p>member access within null pointer of type ‘struct ListNode’</p>
 </blockquote>
 <p>再看看leetcode上其他人写的快慢指针，同样的快慢指针，这个明显要更好，不用考虑链表长度</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">middleNode</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="literal">NULL</span> || head-&gt;next==<span class="literal">NULL</span>) </span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* slow=head;</span><br><span class="line">    ListNode* fast=head;</span><br><span class="line">    fast=fast-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(fast!=<span class="literal">NULL</span> &amp;&amp; fast-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        slow=slow-&gt;next;</span><br><span class="line">        fast=fast-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">middleNode</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head==<span class="literal">NULL</span> || head-&gt;next==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    ListNode* slow=head;</span><br><span class="line">    ListNode* fast=head;</span><br><span class="line">    fast=fast-&gt;next-&gt;next;</span><br><span class="line">    <span class="keyword">while</span>(fast!=<span class="literal">NULL</span> &amp;&amp; fast-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        slow=slow-&gt;next;</span><br><span class="line">        fast=fast-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
 <li><a href="https://blog.csdn.net/zy2317878/article/details/79115498" target="_blank" rel="noopener">LeetCodeBug-member access within null pointer of type ‘struct ListNode’</a></li>
 </ol>
@@ -118,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjuo1w7dl001o8wg2npu1qduy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjxtsje4t001sgkg2gqusndpc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +173,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -190,23 +186,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

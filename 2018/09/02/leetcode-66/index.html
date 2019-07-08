@@ -5,17 +5,17 @@
   
   <title>leetcode-66 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Plus One">
+  <meta name="description" content="66. Plus One">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-66">
 <meta property="og:url" content="http://yoursite.com/2018/09/02/leetcode-66/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="Plus One">
+<meta property="og:description" content="66. Plus One">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T13:35:41.987Z">
+<meta property="og:updated_time" content="2019-07-08T03:13:13.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-66">
-<meta name="twitter:description" content="Plus One">
+<meta name="twitter:description" content="66. Plus One">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,9 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="66">
-<li>Plus One</li>
-</ol>
+        <p>66. Plus One</p>
 <a id="more"></a>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a <strong>non-empty</strong> array of digits representing a non-negative integer, plus one to the integer.</p>
 <p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
@@ -105,10 +103,11 @@
 <p>再看看LeetCode上其他代码，很简洁，但不是我现在能想出来的代码</p>
 <p>由于是+1，<code>digits[i]</code>进位完后肯定是0，<code>carry</code>为1，所以循环里直接<code>digits[i]++</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; plusOne(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;digits) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i --)&#123;</span><br><span class="line">        digits[i] ++;</span><br><span class="line">        <span class="keyword">if</span>(digits[i] &lt; <span class="number">10</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        digits[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(digits[<span class="number">0</span>] == <span class="number">0</span>)&#123; <span class="comment">// 99 + 1 = 100这种</span></span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        digits.push_back(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> digits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/leetcode-66/" data-id="cjuo1w7cj00168wg22z0drfdy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/leetcode-66/" data-id="cjxtsje49001cgkg2ixvjydyh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +166,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -180,23 +179,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

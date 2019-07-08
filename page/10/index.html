@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="[page]-Octave" class="article article-type-[page]" itemscope itemprop="blogPost">
+    <article id="post-php-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/07/Octave/" class="article-date">
-  <time datetime="2018-05-07T05:30:54.000Z" itemprop="datePublished">2018-05-07</time>
+    <a href="/2018/07/13/php-2/" class="article-date">
+  <time datetime="2018-07-13T12:47:28.000Z" itemprop="datePublished">2018-07-13</time>
 </a>
     
   </div>
@@ -76,7 +76,186 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/Octave/">Octave</a>
+      <a class="article-title" href="/2018/07/13/php-2/">php快速入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>摘要</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/07/13/php-2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/13/php-2/" data-id="cjxtsje5m002agkg2fwu45xhl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/13/Ubuntu-1/" class="article-date">
+  <time datetime="2018-07-13T07:05:36.000Z" itemprop="datePublished">2018-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/13/Ubuntu-1/">Ubuntu_1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##</p>
+<ol>
+<li>Linux中的<code>$PATH</code>和<code>$HOME</code></li>
+</ol>
+<p><code>$PATH</code>: 指当前的环境变量<br><code>$HOME</code>: 用户目录  /home/arcsinw，也就是<code>~</code></p>
+<p>以上都可以在bash中用<code>echo</code>打印出来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$HOME</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Ubuntu 安装golang时配置<code>GOROOT</code>和<code>GOPATH</code>的问题</li>
+</ol>
+<p><code>GOROOT</code>:<br><code>GOPATH</code>:</p>
+<ol start="3">
+<li>sudo: unable to resolve host ubuntu</li>
+</ol>
+<p>原因是主机名与host中的不对应</p>
+<p>修改主机名为ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hostname</span><br></pre></td></tr></table></figure>
+<p>或修改host，增加一条</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1| ubuntu</span><br></pre></td></tr></table></figure>
+<p>再reboot</p>
+<ol start="4">
+<li>VMware 扩展Ubuntu虚拟机磁盘</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gparted</span><br></pre></td></tr></table></figure>
+<p>扩展的<code>unallocated</code>空间在分区最右边的的位置，无法直接被合并到<code>sda1</code>，<br>先把<code>unallocated</code>空间和左边相邻的分区（如<code>sda2</code>合并，合并后交换<code>unallocated</code>和<code>sda2</code>的位置（resize/move里鼠标拖动），再resize把<code>unallocated</code>这部分空间排挤出来，这样<code>unallocated</code>就和<code>sda1</code>相邻了，可以合并到<code>sda1</code>中</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/13/Ubuntu-1/" data-id="cjxtsje1y0006gkg27f24k2jj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/11/php-1/" class="article-date">
+  <time datetime="2018-07-11T03:28:37.000Z" itemprop="datePublished">2018-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/11/php-1/">php, apache, VS Code安装与配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>摘要</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/07/11/php-1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cjxtsje5q002dgkg29fr6ttbi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-numpy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/10/numpy/" class="article-date">
+  <time datetime="2018-07-10T01:31:22.000Z" itemprop="datePublished">2018-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/10/numpy/">numpy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/10/numpy/" data-id="cjxtsje5k0028gkg21z65jj8d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-neural-network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/09/neural-network/" class="article-date">
+  <time datetime="2018-07-09T15:22:00.000Z" itemprop="datePublished">2018-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/09/neural-network/">neural_network</a>
     </h1>
   
 
@@ -85,38 +264,310 @@
     <div class="article-entry" itemprop="articleBody">
       
         <a id="more"></a>
-<h2 id="1-format-display"><a href="#1-format-display" class="headerlink" title="1. format display"></a>1. format display</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; a = <span class="built_in">pi</span>;</span><br><span class="line">&gt;&gt; a</span><br><span class="line">a =  <span class="number">3.1416</span></span><br><span class="line">&gt;&gt; <span class="built_in">disp</span>(sprintf(<span class="string">'2 decimals : %0.2f'</span>, a))</span><br><span class="line"><span class="number">2</span> decimals : <span class="number">3.14</span></span><br></pre></td></tr></table></figure>
-<p><code>format long|short</code> ones been set, will work for all next command untill terminal been closed or <code>format</code> again</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; a = <span class="built_in">pi</span></span><br><span class="line">a =  <span class="number">3.1416</span></span><br><span class="line">&gt;&gt; format long</span><br><span class="line">&gt;&gt; a</span><br><span class="line">a =  <span class="number">3.141592653589793</span></span><br><span class="line">&gt;&gt; b = <span class="built_in">pi</span></span><br><span class="line">b =  <span class="number">3.141592653589793</span></span><br><span class="line">&gt;&gt; format short</span><br><span class="line">&gt;&gt; a</span><br><span class="line">a =  <span class="number">3.1416</span></span><br><span class="line">&gt;&gt; b</span><br><span class="line">b =  <span class="number">3.1416</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-generator"><a href="#2-generator" class="headerlink" title="2. generator"></a>2. generator</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; v = <span class="number">1</span>:<span class="number">1</span>:<span class="number">5</span></span><br><span class="line">v =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span>   <span class="number">4</span>   <span class="number">5</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-declare-a-matrix"><a href="#3-declare-a-matrix" class="headerlink" title="3. declare a matrix"></a>3. declare a matrix</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; matrix = [<span class="number">1</span> <span class="number">2</span>; <span class="number">3</span> <span class="number">4</span>; <span class="number">5</span> <span class="number">6</span>]</span><br><span class="line">matrix =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">2</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">4</span></span><br><span class="line">   <span class="number">5</span>   <span class="number">6</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; matrix = [<span class="number">1</span>,<span class="number">2</span>; <span class="number">3</span>,<span class="number">4</span>; <span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">matrix =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">2</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">4</span></span><br><span class="line">   <span class="number">5</span>   <span class="number">6</span></span><br></pre></td></tr></table></figure>
-<p>vector is a Nx1 or 1xN matrix</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = <span class="built_in">ones</span>(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A = <span class="built_in">rand</span>(<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">0.87477</span>   <span class="number">0.94144</span>   <span class="number">0.57762</span></span><br><span class="line">   <span class="number">0.34669</span>   <span class="number">0.54274</span>   <span class="number">0.89587</span></span><br><span class="line">   <span class="number">0.16017</span>   <span class="number">0.26238</span>   <span class="number">0.86232</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A = <span class="built_in">randn</span>(<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">  <span class="number">-0.7941526</span>  <span class="number">-0.0018799</span>   <span class="number">2.0211357</span></span><br><span class="line">  <span class="number">-0.7958727</span>  <span class="number">-0.3035248</span>   <span class="number">0.9248759</span></span><br><span class="line">   <span class="number">0.7920713</span>  <span class="number">-2.4600881</span>   <span class="number">0.1848283</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A = <span class="built_in">magic</span>(<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; C = <span class="built_in">eye</span>(<span class="number">3</span>)</span><br><span class="line">C =</span><br><span class="line"></span><br><span class="line">Diagonal Matrix</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">0</span>   <span class="number">0</span></span><br><span class="line">   <span class="number">0</span>   <span class="number">1</span>   <span class="number">0</span></span><br><span class="line">   <span class="number">0</span>   <span class="number">0</span>   <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h2 id="4-property-and-functions-of-matrix"><a href="#4-property-and-functions-of-matrix" class="headerlink" title="4. property and functions of matrix"></a>4. property and functions of matrix</h2><h3 id="1-reshape"><a href="#1-reshape" class="headerlink" title="1. reshape"></a>1. <code>reshape</code></h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>; <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">c =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">5</span>   <span class="number">6</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; <span class="built_in">reshape</span>(c, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">5</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">3</span></span><br><span class="line">   <span class="number">2</span>   <span class="number">6</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-size"><a href="#2-size" class="headerlink" title="2. size"></a>2. <code>size</code></h3><p>return a 1x2 matrix</p>
-<p>size(c, 1) get size of row<br>size(c, 2) get size of column</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; c = <span class="built_in">ones</span>(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">c =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; <span class="built_in">size</span>(c)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">2</span>   <span class="number">3</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; <span class="built_in">size</span>(c, <span class="number">1</span>)</span><br><span class="line"><span class="built_in">ans</span> =  <span class="number">2</span></span><br><span class="line">&gt;&gt; <span class="built_in">size</span>(c, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">ans</span> =  <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-length"><a href="#3-length" class="headerlink" title="3. length"></a>3. <code>length</code></h3><p>return max of dimension</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; v = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>]</span><br><span class="line">v =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span>   <span class="number">4</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; <span class="built_in">length</span>(v)</span><br><span class="line"><span class="built_in">ans</span> =  <span class="number">4</span></span><br><span class="line">&gt;&gt; <span class="built_in">length</span>(c)</span><br><span class="line"><span class="built_in">ans</span> =  <span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-transpose"><a href="#4-transpose" class="headerlink" title="4. transpose"></a>4. transpose</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; c = <span class="built_in">magic</span>(<span class="number">3</span>)</span><br><span class="line">c =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; c'</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">3</span>   <span class="number">4</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">5</span>   <span class="number">9</span></span><br><span class="line">   <span class="number">6</span>   <span class="number">7</span>   <span class="number">2</span></span><br></pre></td></tr></table></figure>
-<h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3><p><code>.</code><br>make function behave on every element</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = <span class="built_in">magic</span>(<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A = <span class="number">1</span> ./ A</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">0.12500</span>   <span class="number">1.00000</span>   <span class="number">0.16667</span></span><br><span class="line">   <span class="number">0.33333</span>   <span class="number">0.20000</span>   <span class="number">0.14286</span></span><br><span class="line">   <span class="number">0.25000</span>   <span class="number">0.11111</span>   <span class="number">0.50000</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A = <span class="number">2</span> .* A</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">0.25000</span>   <span class="number">2.00000</span>   <span class="number">0.33333</span></span><br><span class="line">   <span class="number">0.66667</span>   <span class="number">0.40000</span>   <span class="number">0.28571</span></span><br><span class="line">   <span class="number">0.50000</span>   <span class="number">0.22222</span>   <span class="number">1.00000</span></span><br></pre></td></tr></table></figure>
-<h3 id="6-max"><a href="#6-max" class="headerlink" title="6. max"></a>6. <code>max</code></h3><p>max(A,[],1)</p>
-<p>return the max number of every column</p>
-<p>max(A,[],2)</p>
-<p>return the max number of every row</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; max(A,[],<span class="number">1</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">9</span>   <span class="number">7</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; max(A,[],<span class="number">2</span>)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span></span><br><span class="line">   <span class="number">7</span></span><br><span class="line">   <span class="number">9</span></span><br></pre></td></tr></table></figure>
-<h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = <span class="built_in">magic</span>(<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; <span class="built_in">log</span>(A)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">2.07944</span>   <span class="number">0.00000</span>   <span class="number">1.79176</span></span><br><span class="line">   <span class="number">1.09861</span>   <span class="number">1.60944</span>   <span class="number">1.94591</span></span><br><span class="line">   <span class="number">1.38629</span>   <span class="number">2.19722</span>   <span class="number">0.69315</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; <span class="built_in">exp</span>(A)</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">2980.9580</span>      <span class="number">2.7183</span>    <span class="number">403.4288</span></span><br><span class="line">     <span class="number">20.0855</span>    <span class="number">148.4132</span>   <span class="number">1096.6332</span></span><br><span class="line">     <span class="number">54.5982</span>   <span class="number">8103.0839</span>      <span class="number">7.3891</span></span><br></pre></td></tr></table></figure>
-<h2 id="5-function-between-matrixs"><a href="#5-function-between-matrixs" class="headerlink" title="5. function between matrixs"></a>5. function between matrixs</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; a = <span class="built_in">magic</span>(<span class="number">3</span>)</span><br><span class="line">a =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; a = <span class="number">2</span> * a</span><br><span class="line">a =</span><br><span class="line"></span><br><span class="line">   <span class="number">16</span>    <span class="number">2</span>   <span class="number">12</span></span><br><span class="line">    <span class="number">6</span>   <span class="number">10</span>   <span class="number">14</span></span><br><span class="line">    <span class="number">8</span>   <span class="number">18</span>    <span class="number">4</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>; <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>; <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">a =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">5</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">7</span>   <span class="number">8</span>   <span class="number">9</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; b = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>; <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b =</span><br><span class="line"></span><br><span class="line">   <span class="number">7</span>   <span class="number">8</span>   <span class="number">9</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">5</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">2</span>   <span class="number">3</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; a .* b</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">    <span class="number">7</span>   <span class="number">16</span>   <span class="number">27</span></span><br><span class="line">   <span class="number">16</span>   <span class="number">25</span>   <span class="number">36</span></span><br><span class="line">    <span class="number">7</span>   <span class="number">16</span>   <span class="number">27</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; a * b</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">    <span class="number">18</span>    <span class="number">24</span>    <span class="number">30</span></span><br><span class="line">    <span class="number">54</span>    <span class="number">69</span>    <span class="number">84</span></span><br><span class="line">    <span class="number">90</span>   <span class="number">114</span>   <span class="number">138</span></span><br></pre></td></tr></table></figure>
-<h2 id="6-Miscellaneous"><a href="#6-Miscellaneous" class="headerlink" title="6. Miscellaneous"></a>6. Miscellaneous</h2><h3 id="1-convert-a-matrix-to-vector"><a href="#1-convert-a-matrix-to-vector" class="headerlink" title="1. convert a matrix to vector"></a>1. convert a matrix to vector</h3><p>suppose A is a 3x3 Matrix</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = A(:)</span><br><span class="line"></span><br><span class="line"><span class="built_in">reshape</span>(A, <span class="number">9</span> ,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="2-invert-a-matrix"><a href="#2-invert-a-matrix" class="headerlink" title="2. invert a matrix"></a>2. invert a matrix</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = <span class="built_in">magic</span>(<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; temp = pinv(A)</span><br><span class="line">temp =</span><br><span class="line"></span><br><span class="line">   <span class="number">0.147222</span>  <span class="number">-0.144444</span>   <span class="number">0.063889</span></span><br><span class="line">  <span class="number">-0.061111</span>   <span class="number">0.022222</span>   <span class="number">0.105556</span></span><br><span class="line">  <span class="number">-0.019444</span>   <span class="number">0.188889</span>  <span class="number">-0.102778</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; temp * A</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">1.00000</span>   <span class="number">0.00000</span>  <span class="number">-0.00000</span></span><br><span class="line">  <span class="number">-0.00000</span>   <span class="number">1.00000</span>   <span class="number">0.00000</span></span><br><span class="line">   <span class="number">0.00000</span>   <span class="number">0.00000</span>   <span class="number">1.00000</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-flipud"><a href="#3-flipud" class="headerlink" title="3. flipud"></a>3. <code>flipud</code></h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = <span class="built_in">eye</span>(<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">Diagonal Matrix</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">0</span>   <span class="number">0</span></span><br><span class="line">   <span class="number">0</span>   <span class="number">1</span>   <span class="number">0</span></span><br><span class="line">   <span class="number">0</span>   <span class="number">0</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; A = <span class="built_in">flipud</span>(A)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">Permutation Matrix</span><br><span class="line"></span><br><span class="line">   <span class="number">0</span>   <span class="number">0</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">0</span>   <span class="number">1</span>   <span class="number">0</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">0</span>   <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; A = <span class="built_in">magic</span>(<span class="number">3</span>)</span><br><span class="line">A =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; B = <span class="built_in">ones</span>(<span class="number">3</span>)</span><br><span class="line">B =</span><br><span class="line"></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; [A; B]</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; [A B]</span><br><span class="line"><span class="built_in">ans</span> =</span><br><span class="line"></span><br><span class="line">   <span class="number">8</span>   <span class="number">1</span>   <span class="number">6</span>   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">3</span>   <span class="number">5</span>   <span class="number">7</span>   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">9</span>   <span class="number">2</span>   <span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h1 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h1><h2 id="1-Variables’-definitions"><a href="#1-Variables’-definitions" class="headerlink" title="1. Variables’ definitions"></a>1. Variables’ definitions</h2><p>$a_i^{(j)}$ : “activation” of unit $i$ in layer $j$</p>
+<p>$\theta^{(j)}$ : matrix mapping from layer $j$ to layer $j+1$, with size of $S_{j+1}$ x $(S_j + 1)$</p>
+<p>$L$ : layers’ count</p>
+<p>$S_l$ : count of units (exclude bias count) in layer $l$</p>
+<p>$\delta_j^{l}$ : error of unit $j$ in layer $l$</p>
+<p>sigmoid function : $g(z) = \frac{1}{1 + e^{-z}}$</p>
+<p>$J(\theta)$: cost function</p>
+<p><img src="neural-network/neural_network.png" alt="a neural network picture here"></p>
+<h3 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h3><p>$a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3)$</p>
+<p>$a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3)$</p>
+<p>$a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3)$</p>
+<p>$h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0^{(2)} + \theta_{11}^{(2)}a_1^{(2)} + \theta_{12}^{(2)}a_2^{(2)} + \theta_{13}^{(2)}a_3^{(2)})$</p>
+<p>$z^{(2)} = \theta^{(1)}x$</p>
+<p>$\theta^{(1)}$ is a matrix $S_{j+1}$x$(S_j+1)$  (bias unit for +1)</p>
+<p>$$J(\theta) = \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K [-y^{(i)}<em>k log((h</em>\theta(x^{(i)}))_k) - (1 - y^{(i)}<em>k) log(1 - (h</em>\theta(x^{(i)}))<em>k)] + \frac{\lambda}{2m} \sum</em>{l=1}^{l-1} \sum_{i=1}^{S_l} \sum_{j=1}^{S_{l+1}} (\theta_{ji}^{(l)})^2$$</p>
+<p>find $\theta$ to minimize $J(\theta)$</p>
+<p>$$\frac{\partial J(\theta)}{\partial \theta} = a_j^{(l)} \zeta_i^{(l+1)}$$</p>
+<h3 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h3><p>$$\delta_j = a_j - y_j$$</p>
+<p>for example</p>
+<p>$\delta_j^{(4)} = a_j^{(4)} - y_i$</p>
+<p>$\delta_j^{(3)} = (\theta^{(3)})^T\delta^{(4)}.*g’(z^{(3)})$</p>
+<p>$\delta_j^{(2)} = (\theta^{(2)})^T\delta^{(3)}.*g’(z^{(2)})$</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="cjuo1w79w00058wg2cigcomqo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="cjxtsje5l0029gkg20jci8yaf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cnn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/cnn/" class="article-date">
+  <time datetime="2018-07-07T03:17:04.000Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/cnn/">cnn</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h2><blockquote>
+<p>Convolutional neural networks (CNNs) are the current state-of-the-art model architecture for image classification tasks. CNNs apply a series of filters to the raw pixel data of an image to extract and learn higher-level features, which the model can then use for classification.</p>
+</blockquote>
+<p>卷积神经网络是目前图片分类任务中最先进的模型架构，卷积神经网络对图片的原始像素数据应用一系列的过滤器来提取和学习更高级的特征，而这正是模型作分类时要用到的</p>
+<h2 id="Layers"><a href="#Layers" class="headerlink" title="Layers"></a>Layers</h2><h3 id="1-input-layer"><a href="#1-input-layer" class="headerlink" title="1. input layer"></a>1. input layer</h3><p>原始的图片数据</p>
+<h3 id="2-Convolutional-layers-卷积层"><a href="#2-Convolutional-layers-卷积层" class="headerlink" title="2. Convolutional layers (卷积层)"></a>2. Convolutional layers (卷积层)</h3><p>将原始的图片数据提取成<code>feature map</code></p>
+<p>对图片作卷积操作，常常会加上一个ReLU激活函数对卷积层的输出进行一个非线性映射</p>
+<p>$$f(x) = max(x, 0)$$</p>
+<p>一个卷积核对应一个<code>feature map</code></p>
+<p>in tensorflow <code>tf.layers.conv2d()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">tf.layers.conv2d(</span><br><span class="line">    inputs,</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    padding=<span class="string">'valid'</span>,</span><br><span class="line">    data_format=<span class="string">'channels_last'</span>,</span><br><span class="line">    dilation_rate=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    activation=<span class="keyword">None</span>,</span><br><span class="line">    use_bias=<span class="keyword">True</span>,</span><br><span class="line">    kernel_initializer=<span class="keyword">None</span>,</span><br><span class="line">    bias_initializer=tf.zeros_initializer(),</span><br><span class="line">    kernel_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    bias_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    activity_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    kernel_constraint=<span class="keyword">None</span>,</span><br><span class="line">    bias_constraint=<span class="keyword">None</span>,</span><br><span class="line">    trainable=<span class="keyword">True</span>,</span><br><span class="line">    name=<span class="keyword">None</span>,</span><br><span class="line">    reuse=<span class="keyword">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>inputs:</li>
+<li>filters: filter的数量</li>
+<li>kernel_size: 卷积窗口大小（感受视野？）</li>
+<li>strides:  步长，(高，宽) (纵向，横向)</li>
+<li>padding: <code>valid</code> or <code>same</code></li>
+<li>data_format:</li>
+</ul>
+<p><code>channels_last</code>: shape(batch_size, height, width, channels)<br><code>channels_first</code>: shape(batch_size, channels, height, width)</p>
+<ul>
+<li>activation: 激活函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">keras.layers.convolutional.Convolution2D(</span><br><span class="line">    nb_filter,</span><br><span class="line">    nb_row,</span><br><span class="line">    nb_col,</span><br><span class="line">    init=<span class="string">'glorot_uniform'</span>,</span><br><span class="line">    activation=<span class="keyword">None</span>,</span><br><span class="line">    weights=<span class="keyword">None</span>,</span><br><span class="line">    border_mode=<span class="string">'valid'</span>,</span><br><span class="line">    subsample=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    dim_ordering=<span class="string">'default'</span>,</span><br><span class="line">    W_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    b_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    activity_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    W_constraint=<span class="keyword">None</span>,</span><br><span class="line">    b_constraint=<span class="keyword">None</span>,</span><br><span class="line">    bias=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>dim_ordering</code>: ‘th’ or ‘tf’. In ‘th’ mode, the channels dimension (the depth) is at index 1, in ‘tf’ mode is it at index 3. It defaults to the image_dim_ordering value found in your Keras config file at ~/.keras/keras.json. If you never set it, then it will be “tf”.</li>
+</ul>
+<h3 id="3-Pooling-layers-池化层"><a href="#3-Pooling-layers-池化层" class="headerlink" title="3. Pooling layers (池化层)"></a>3. Pooling layers (池化层)</h3><p>in tensorflow <code>tf.layers.max_pooling2d()</code></p>
+<p>将<code>feature map</code>降维以减少处理时间</p>
+<p>池化层有与卷积层视野大小类似的东西，在tensorflow中叫pool_size</p>
+<ul>
+<li><p>max pooling</p>
+</li>
+<li><p>average pooling</p>
+</li>
+</ul>
+<h3 id="4-Dense-fully-connected-layers-全连接层"><a href="#4-Dense-fully-connected-layers-全连接层" class="headerlink" title="4. Dense (fully connected) layers(全连接层)"></a>4. Dense (fully connected) layers(全连接层)</h3><p>in tensorflow <code>tf.layers.dense()</code></p>
+<p>通常，CNN由一堆提取特征的卷积模块组成，每个卷积模块包括一个<code>卷积层</code>和紧接着的一个<code>池化层</code>，最后一个卷积模块后跟着一个或多个<code>全连接层</code>，CNN中的最后一个<code>全连接层</code>可以用来预测</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://blog.csdn.net/cxmscb/article/details/71023576" target="_blank" rel="noopener">https://blog.csdn.net/cxmscb/article/details/71023576</a></li>
+</ol>
+<p>2.<a href="https://www.tensorflow.org/tutorials/layers?hl=zh-cn" target="_blank" rel="noopener">https://www.tensorflow.org/tutorials/layers?hl=zh-cn</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/cnn/" data-id="cjxtsje2a000cgkg215pean98" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-tensorflow-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/04/tensorflow-1/" class="article-date">
+  <time datetime="2018-07-04T12:23:20.000Z" itemprop="datePublished">2018-07-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/04/tensorflow-1/">tensorflow_1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow</span><br></pre></td></tr></table></figure>
+<p>显示tensorflow的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">tf.__version__</span><br></pre></td></tr></table></figure>
+<p>##</p>
+<p><code>tf.constant</code> 定义常量<br><code>tf.Variable</code> 定义变量<br><code>tf.placeholder</code> 占位符，用于填充数据</p>
+<ul>
+<li><p>定义一个矩阵</p>
+</li>
+<li><p>sigmoid</p>
+</li>
+</ul>
+<h2 id="Tensorboard"><a href="#Tensorboard" class="headerlink" title="Tensorboard"></a>Tensorboard</h2><ol>
+<li>把计算过程用<code>tf.name_scope</code>包装起来</li>
+<li>使用<code>tf.summary.FileWriter</code>输出到目标文件夹</li>
+<li>启动Tensorboard</li>
+</ol>
+<p>如果一个op中只有直接的赋值，那么这个op不会显示在Tensorboard中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir=/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">'TF_CPP_MIN_LOG_LEVEL'</span>] = <span class="string">'2'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    const_A = tf.constant(<span class="number">10</span>, name = <span class="string">'const_A'</span>, dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    const_B = tf.constant(<span class="number">20</span>, name = <span class="string">'const_B'</span>, dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    placeholder_C = tf.placeholder(dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.name_scope(<span class="string">'Add'</span>):</span><br><span class="line">        _sum = const_A + const_B</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">        session.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line">        const_sum = session.run(_sum)</span><br><span class="line">        print(const_sum)</span><br><span class="line"></span><br><span class="line">    train_writer = tf.summary.FileWriter(<span class="string">'/test'</span>, session.graph)</span><br><span class="line">    train_writer.close()</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="https://dotblogs.com.tw/shaynling/2017/11/14/173025" target="_blank" rel="noopener">https://dotblogs.com.tw/shaynling/2017/11/14/173025</a></p>
+<p>2.<a href="https://www.tensorflow.org/api_docs/python/tf/matmul" target="_blank" rel="noopener">https://www.tensorflow.org/api_docs/python/tf/matmul</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/04/tensorflow-1/" data-id="cjxtsje6d002qgkg2t87mmfdq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/02/opencv/" class="article-date">
+  <time datetime="2018-07-02T12:03:42.000Z" itemprop="datePublished">2018-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/02/opencv/">opencv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>scaleFactor</code> – Parameter specifying how much the image size is reduced at each image scale.</p>
+</li>
+<li><p><code>minNeighbors</code> – Parameter specifying how many neighbors each candidate rectangle should have to retain it.</p>
+</li>
+<li><p><code>flags</code> – Parameter with the same meaning for an old cascade as in the function cvHaarDetectObjects. It is not used for a new cascade.</p>
+</li>
+<li><p><code>minSize</code> – Minimum possible object size. Objects smaller than that are ignored.</p>
+</li>
+<li><p><code>maxSize</code> – Maximum possible object size. Objects larger than that are ignored.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.HaarDetectObjects(image, cascade, storage, scale_factor=<span class="number">1.1</span>, min_neighbors=<span class="number">3</span>, flags=<span class="number">0</span>, min_size=(<span class="number">0</span>, <span class="number">0</span>)) → detectedObjects</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/02/opencv/" data-id="cjxtsje5v002hgkg2zgy39o56" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spark-intallation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/29/spark-intallation/" class="article-date">
+  <time datetime="2018-06-29T11:06:28.000Z" itemprop="datePublished">2018-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/29/spark-intallation/">spark_intallation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>下载</li>
+</ol>
+<p>下载spark</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://www.apache.org/dyn/closer.lua/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz</span><br></pre></td></tr></table></figure>
+<p>下载 JAVA JDK</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -c --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie"</span> http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>如果解压出错，可能是问下下载的不完整，试试删了重新下载</p>
+<p>安装JDK</p>
+<p>将下载的jdk解压到<code>/usr/java</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr</span><br><span class="line">mkdir java</span><br><span class="line">tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/java</span><br></pre></td></tr></table></figure>
+<p>修改环境变量</p>
+<p>在<code>/etc/profile</code>文件末尾加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Set java environment</span><br><span class="line">JAVA_HOME=/usr/java/jdk1.8.0_171</span><br><span class="line">JRE_HOME=/usr/java/jdk1.8.0_171/jre</span><br><span class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br><span class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</span><br></pre></td></tr></table></figure>
+<p>使配置文件生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>现在java命令能正确相应</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">"1.8.0_171"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_171-b11)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/29/spark-intallation/" data-id="cjxtsje60002kgkg22g3eag8z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-scrapy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/27/scrapy/" class="article-date">
+  <time datetime="2018-06-27T13:02:03.000Z" itemprop="datePublished">2018-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/scrapy/">scrapy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>使用scrapy提交一个表单</p>
+<p>一些登录界面提交的参数除了用户名和密码还有一些参数是隐藏的，如<br><code>&lt;input type=&quot;hidden&quot; value = &quot;aaa&quot;&gt;</code>，通过<code>FormRequest.from_response</code>可以自动提取要提交的参数，再添加上用户名和密码</p>
+<p>如官网文档中的例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'example.com'</span></span><br><span class="line">    start_urls = [<span class="string">'http://www.example.com/users/login.php'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> scrapy.FormRequest.from_response(</span><br><span class="line">            response,</span><br><span class="line">            formdata=&#123;<span class="string">'username'</span>: <span class="string">'john'</span>, <span class="string">'password'</span>: <span class="string">'secret'</span>&#125;,</span><br><span class="line">            callback=self.after_login</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_login</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># check login succeed before going on</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"authentication failed"</span> <span class="keyword">in</span> response.body:</span><br><span class="line">            self.logger.error(<span class="string">"Login failed"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># continue scraping with authenticated session...</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/27/scrapy/" data-id="cjxtsje64002mgkg2kbz2hugt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +580,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -161,7 +612,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -174,23 +625,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

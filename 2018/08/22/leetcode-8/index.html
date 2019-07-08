@@ -5,17 +5,17 @@
   
   <title>leetcode-8 String to Integer (atoi) | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="String to Integer (atoi)">
+  <meta name="description" content="8. String to Integer (atoi)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-8 String to Integer (atoi)">
 <meta property="og:url" content="http://yoursite.com/2018/08/22/leetcode-8/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="String to Integer (atoi)">
+<meta property="og:description" content="8. String to Integer (atoi)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T13:34:47.897Z">
+<meta property="og:updated_time" content="2019-07-08T03:11:58.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-8 String to Integer (atoi)">
-<meta name="twitter:description" content="String to Integer (atoi)">
+<meta name="twitter:description" content="8. String to Integer (atoi)">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,9 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol start="8">
-<li>String to Integer (atoi)</li>
-</ol>
+        <p>8. String to Integer (atoi)</p>
 <a id="more"></a>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Implement <code>atoi</code> which converts a string to an integer.</p>
 <p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
@@ -103,13 +101,13 @@
 <p><strong>Example 1:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;42&quot;</span><br><span class="line">Output: 42</span><br></pre></td></tr></table></figure>
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;   -42&quot;</span><br><span class="line">Output: -42</span><br><span class="line">Explanation: The first non-whitespace character is &apos;-&apos;, which is the minus sign.</span><br><span class="line">             Then take as many numerical digits as possible, which gets 42.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;   -42&quot;</span><br><span class="line">Output: -42</span><br><span class="line">Explanation: The first non-whitespace character is &apos;-&apos;, which is the minus sign. Then take as many numerical digits as possible, which gets 42.</span><br></pre></td></tr></table></figure>
 <p><strong>Example 3:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;4193 with words&quot;</span><br><span class="line">Output: 4193</span><br><span class="line">Explanation: Conversion stops at digit &apos;3&apos; as the next character is not a numerical digit.</span><br></pre></td></tr></table></figure>
 <p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;words and 987&quot;</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: The first non-whitespace character is &apos;w&apos;, which is not a numerical </span><br><span class="line">             digit or a +/- sign. Therefore no valid conversion could be performed.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;words and 987&quot;</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: The first non-whitespace character is &apos;w&apos;, which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.</span><br></pre></td></tr></table></figure>
 <p><strong>Example 5:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;-91283472332&quot;</span><br><span class="line">Output: -2147483648</span><br><span class="line">Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.</span><br><span class="line">             Thefore INT_MIN (−231) is returned.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;-91283472332&quot;</span><br><span class="line">Output: -2147483648</span><br><span class="line">Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer. Thefore INT_MIN (−231) is returned.</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>偷懒写了个这样的代码，没想到AC了</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="built_in">stringstream</span> <span class="title">ss</span><span class="params">(str)</span></span>;</span><br><span class="line">    ss &gt;&gt; result;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -117,10 +115,11 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> __ = []() &#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
 <p>还是得好好写，不然就学不到东西了</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/leetcode-8/" data-id="cjuo1w7da001j8wg27m278loo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/22/leetcode-8/" data-id="cjxtsje4f001hgkg2hya3jqz9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +178,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -192,23 +191,23 @@
       <ul>
         
           <li>
-            <a href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
-            <a href="/2019/04/13/leetcode-724/">leetcode-724</a>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
           <li>
-            <a href="/2019/04/12/matlab/">matlab</a>
+            <a href="/2019/06/16/processing-0/">processing-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
+            <a href="/2019/06/13/cuda-0/">cuda-0</a>
           </li>
         
           <li>
-            <a href="/2019/04/08/html-3/">html-3</a>
+            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>
