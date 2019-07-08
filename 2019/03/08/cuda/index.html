@@ -5,17 +5,17 @@
   
   <title>cuda | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;T">
+  <meta name="description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cuda">
 <meta property="og:url" content="http://yoursite.com/2019/03/08/cuda/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;T">
+<meta property="og:description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T10:55:56.604Z">
+<meta property="og:updated_time" content="2019-07-08T06:28:09.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cuda">
-<meta name="twitter:description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;T">
+<meta name="twitter:description" content="nvidia-smi 显示GPU信息 1234567891011121314151617void CPUFunction()&amp;#123;  printf(&quot;This function is defined to run on the CPU.\n&quot;);&amp;#125;__global__ void GPUFunction() //__global__的返回值为void&amp;#123;  printf(&quot;">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,7 +86,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>nvidia-smi 显示GPU信息</p>
+        <a id="more"></a>
+<p>nvidia-smi 显示GPU信息</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CPUFunction</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the CPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">GPUFunction</span><span class="params">()</span> <span class="comment">//__global__的返回值为void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the GPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CPUFunction();</span><br><span class="line"></span><br><span class="line">  GPUFunction&lt;&lt;&lt;<span class="number">2</span>, <span class="number">4</span>&gt;&gt;&gt;(); <span class="comment">// 2 blocks, 4 threads / block</span></span><br><span class="line">  cudaDeviceSynchronize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>核函数启动方式为<strong>异步</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt; NUMBER_OF_BLOCKS, NUMBER_OF_THREADS_PER_BLOCK&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
@@ -154,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/08/cuda/" data-id="cjxtwhj4d000gp0g2ygt1a2wf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/08/cuda/" data-id="cjxu09vu2000fccg2k0cpxtwx" class="article-share-link">Share</a>
       
       
     </footer>
