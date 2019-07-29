@@ -62,6 +62,133 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-latex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/07/latex/" class="article-date">
+  <time datetime="2019-04-07T14:29:32.000Z" itemprop="datePublished">2019-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/07/latex/">latex</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数学符号的输入</p>
+<h2 id="插入矩阵"><a href="#插入矩阵" class="headerlink" title="插入矩阵"></a>插入矩阵</h2><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><h3 id="插入单张图片"><a href="#插入单张图片" class="headerlink" title="插入单张图片"></a>插入单张图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[h]%%图</span><br><span class="line">    \centering  %插入的图片居中表示</span><br><span class="line">    \includegraphics[width=0.7\linewidth]&#123;figures/mcmthesis-logo&#125;  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下</span><br><span class="line">    \caption&#123;this is a figure.&#125;  %图片的名称</span><br><span class="line">    \label&#123;fig:mcmthesis-logo&#125;   %标签，用作引用</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多张图片并排"><a href="#多张图片并排" class="headerlink" title="多张图片并排"></a>多张图片并排</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[h]%%图</span><br><span class="line">    \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;%并排放两张图片，每张占行的0.4</span><br><span class="line">        \centering</span><br><span class="line">        \includegraphics[width=1.2\textwidth]&#123;a.png&#125;</span><br><span class="line">        \caption&#123;母图&#125;</span><br><span class="line">    \end&#123;minipage&#125;</span><br><span class="line">    \hfill</span><br><span class="line">    \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;</span><br><span class="line">        \centering  %插入的图片居中表示</span><br><span class="line">        \includegraphics[width=1.2\textwidth]&#123;b.png&#125;  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下</span><br><span class="line">        \caption&#123;子图&#125;  %图片的名称</span><br><span class="line">        \label&#123;fig:mcmthesis-logo&#125;   %标签，用作引用</span><br><span class="line">    \end&#123;minipage&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">    \centering</span><br><span class="line">    \subfigure[]&#123;</span><br><span class="line">        \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;</span><br><span class="line">        \centering</span><br><span class="line">        \includegraphics[width=0.8\linewidth]&#123;28_a.png&#125;</span><br><span class="line">        \end&#123;minipage&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    \subfigure[pic2.]&#123;</span><br><span class="line">        \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;</span><br><span class="line">        \centering</span><br><span class="line">        \includegraphics[width=0.8\linewidth]&#123;28_b.png&#125;</span><br><span class="line">        \end&#123;minipage&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    \centering</span><br><span class="line">    \caption&#123;&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<p>equation公式跨页</p>
+<p>改用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;align*&#125;</span><br><span class="line">\end&#123;align*&#125;</span><br></pre></td></tr></table></figure>
+<p>顶部增加 <code>\allowdisplaybreaks[4]</code></p>
+<p><a href="https://www.geogebra.org/graphing" target="_blank" rel="noopener">https://www.geogebra.org/graphing</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="cjyo3n12s000mmsg2nonajavr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-665" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/05/leetcode-665/" class="article-date">
+  <time datetime="2019-04-05T13:29:27.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/05/leetcode-665/">leetcode-665</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>665. Non-decreasing Array</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/04/05/leetcode-665/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/05/leetcode-665/" data-id="cjyo3n155001dmsg2mlnzczxb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android-event-handle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/android-event-handle/" class="article-date">
+  <time datetime="2019-03-31T10:56:40.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/android-event-handle/">android-event-handle</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android事件处理</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/03/31/android-event-handle/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/android-event-handle/" data-id="cjyo3n11b0000msg23u4mhkde" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-logistic-regression" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/24/logistic-regression/" class="article-date">
@@ -93,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/logistic-regression/" data-id="cjxu09vwt0025ccg2f0vi3gxm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/logistic-regression/" data-id="cjyo3n16g0028msg29yzc5n5q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/computer-vision/" data-id="cjxu09vtx000cccg24ets9es0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/computer-vision/" data-id="cjyo3n12c000amsg2uw4xj2f4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/android-backgroundtask/" data-id="cjxu09vta0002ccg25d09x6xv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/android-backgroundtask/" data-id="cjyo3n11q0001msg2lygem6t8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -294,7 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/08/cuda/" data-id="cjxu09vu2000fccg2k0cpxtwx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/08/cuda/" data-id="cjyo3n12c000dmsg2g4smy0sp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +463,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/06/android-listview/" data-id="cjxu09vth0004ccg21uaiulvs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/06/android-listview/" data-id="cjyo3n11q0002msg2ltf8ha3q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -377,7 +504,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/leetcode-897/" data-id="cjxu09vw5001sccg2ms0604wu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/leetcode-897/" data-id="cjyo3n160001vmsg28tlsae8v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -414,125 +541,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/28/android/" data-id="cjxu09vtk0006ccg2z6sym95v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-bing-wallpaper-api" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/26/bing-wallpaper-api/" class="article-date">
-  <time datetime="2019-01-26T05:32:52.000Z" itemprop="datePublished">2019-01-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/26/bing-wallpaper-api/">bing-wallpaper-api</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1&amp;mkt=zh-cn</span><br></pre></td></tr></table></figure>
-<p>idx: index 默认为0（今天）  -1~18<br>n：数量</p>
-<p>mkt: 地区<br>zh-CN<br>en-US<br>ja-JP<br>en-CA<br>de-DE</p>
-<p>一个获取图片的示例链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://www.bing.com/&#123;baseUrl&#125;_&#123;resolution&#125;.jpg</span><br><span class="line"></span><br><span class="line">https://www.bing.com/az/hprichbg/rb/FortRajgad_ZH-CN7621203821_1080x1920.jpg</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/bing-wallpaper-api/" data-id="cjxu09vtm0007ccg26yobb7uu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android-studio" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/25/android-studio/" class="article-date">
-  <time datetime="2019-01-25T05:26:36.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/android-studio/">android-studio</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="cjxu09vti0005ccg2vtv07fab" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-136" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/25/leetcode-136/" class="article-date">
-  <time datetime="2019-01-25T02:40:28.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/leetcode-136/">leetcode-136 Single Number</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>136. Single Number</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/25/leetcode-136/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/leetcode-136/" data-id="cjxu09vuh000qccg262yb09nc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/28/android/" data-id="cjyo3n11q0005msg2w6n0pnnu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -590,23 +599,23 @@
       <ul>
         
           <li>
+            <a href="/2019/07/26/leetcode-21/">leetcode-21</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/24/leetcode-38/">leetcode-38</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/leetcode-1108/">leetcode-1108</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
           <li>
             <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/16/processing-0/">processing-0</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/13/cuda-0/">cuda-0</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/08/leetcode-206/">leetcode-206</a>
           </li>
         
       </ul>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-21 | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="21. Merge Two Sorted Lists">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-21">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/leetcode-21/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="21. Merge Two Sorted Lists">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-29T07:56:39.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-21">
+<meta name="twitter:description" content="21. Merge Two Sorted Lists">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-21" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/26/leetcode-21/" class="article-date">
+  <time datetime="2019-07-26T08:26:11.000Z" itemprop="datePublished">2019-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-21
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>21. Merge Two Sorted Lists</p>
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>合并两个有序的链表<code>l1</code>，<code>l2</code></p>
+<p>最简单的做法是新建一个链表<code>l3</code>，从<code>l1</code>和<code>l2</code>中获取最小的元素，插入新链表，其中一个链表的元素用完后，将另一个链表全部插入<code>l3</code></p>
+<p>时间复杂度O(m+n)    (m,n为<code>l1</code>，<code>l2</code>长度)</p>
+<p>最大比较次数<br>    m + n - 1<br>    <code>l3</code>长度为m+n，每比较一次<code>l3</code>长度+1，最后一个元素不用比较</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1   3   5  7</span><br><span class="line">| / | / | /</span><br><span class="line">2   4   6</span><br></pre></td></tr></table></figure>
+<p>最小比较次数<br>    min(m, n)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1   3</span><br><span class="line">| /</span><br><span class="line">4   5   6</span><br></pre></td></tr></table></figure>
+<p>写出第一个版本，这个版本耗时长，消耗的内存也大，原因是新链表<code>l3</code>中的每个节点都是新建的，这其实没必要，可以改为重复使用<code>l1</code>,<code>l2</code>中的节点</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">    ListNode* l3 = <span class="keyword">new</span> ListNode(<span class="literal">NULL</span>);</span><br><span class="line">    ListNode* cur = l3;</span><br><span class="line">    <span class="keyword">while</span> (l1 || l2)</span><br><span class="line">    &#123;</span><br><span class="line">        ListNode *tmp = <span class="keyword">new</span> ListNode(<span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!l1) &#123;cur-&gt;next = l2; <span class="keyword">break</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span> (!l2) &#123;cur-&gt;next = l1; <span class="keyword">break</span>;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            tmp-&gt;val = l1-&gt;val;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            tmp-&gt;val = l2-&gt;val;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur-&gt;next = tmp;</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>做一些修改，重复利用<code>l1</code>, <code>l2</code>中的节点，这样就能够faster than 99%了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ListNode* result = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    ListNode* cur = result;</span><br><span class="line">    <span class="keyword">while</span> (l1 &amp;&amp; l2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            cur-&gt;next = l1;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            cur-&gt;next = l2;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (l1)</span><br><span class="line">    &#123;</span><br><span class="line">        cur-&gt;next = l1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        cur-&gt;next = l2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>l3</code>的第一个节点被浪费了，可以进一步修改</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!l1 || !l2) &#123; <span class="keyword">return</span> l1 ? l1 : l2;&#125;</span><br><span class="line"></span><br><span class="line">    ListNode* result;</span><br><span class="line">    <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val)</span><br><span class="line">    &#123;</span><br><span class="line">        result = l1;</span><br><span class="line">        l1 = l1-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        result = l2;</span><br><span class="line">        l2 = l2-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode* cur = result;</span><br><span class="line">    <span class="keyword">while</span> (l1 &amp;&amp; l2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            cur-&gt;next = l1;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            cur-&gt;next = l2;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (l1)</span><br><span class="line">    &#123;</span><br><span class="line">        cur-&gt;next = l1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        cur-&gt;next = l2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LeetCode上的最优解是用递归</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!l1 || !l2) <span class="keyword">return</span> l1 ? l1 : l2;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">        l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">    l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">    <span class="keyword">return</span> l2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/26/leetcode-21/" data-id="cjyo3n138000umsg2cxhezylt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/24/leetcode-38/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-38</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Fibonacci/" style="font-size: 10px;">Fibonacci</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/26/leetcode-21/">leetcode-21</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/24/leetcode-38/">leetcode-38</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/10/leetcode-1108/">leetcode-1108</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
