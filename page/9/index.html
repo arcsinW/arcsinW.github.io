@@ -62,6 +62,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-codeigniter-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/01/codeigniter-1/" class="article-date">
+  <time datetime="2018-08-01T04:13:52.000Z" itemprop="datePublished">2018-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/01/codeigniter-1/">codeigniter-1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>1.去除url中的<code>index.php</code></p>
+<p><code>Apache24/conf/httpd.conf</code></p>
+<p>去除下面这行的注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule rewrite_module modules/mod_rewrite.so</span><br></pre></td></tr></table></figure>
+<p>改下下面这个部分(原来是<code>AllowOverride None</code>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># AllowOverride controls what directives may be placed in .htaccess files.</span><br><span class="line">    # It can be &quot;All&quot;, &quot;None&quot;, or any combination of the keywords:</span><br><span class="line">    #   AllowOverride FileInfo AuthConfig Limit</span><br><span class="line">    #</span><br><span class="line">    AllowOverride All</span><br></pre></td></tr></table></figure>
+<p><code>system</code>同级目录下的<code>.htaccess</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">RewriteRule ^(.*)$ /index.php/$1 [L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<p>如果不是<code>www</code>或<code>htdocs</code>的根目录就加上项目名，如这里的<code>tutorial</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RewriteRule ^(.*)$ /tutorial/index.php/$1 [L]</span><br></pre></td></tr></table></figure>
+<p><code>application/config/config.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$config[<span class="string">'index_page'</span>] = <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+<p>2.js,css,images的存放路径填写</p>
+<p>3.路由</p>
+<p>4.出现<code>http://[::1]</code></p>
+<p><code>application/config/config.php</code>下的<code>base_url</code>不要设置为空</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$config[<span class="string">'base_url'</span>] = <span class="string">'http://localhost/projectname/'</span>;</span><br><span class="line"></span><br><span class="line">$config[<span class="string">'base_url'</span>] = <span class="string">'http://www.example.com/'</span>;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>连接数据库</li>
+</ol>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><p><a href="https://blog.csdn.net/k8080880/article/details/77451307" target="_blank" rel="noopener">https://blog.csdn.net/k8080880/article/details/77451307</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/yanqianglifei/article/details/54586831" target="_blank" rel="noopener">CI框架中base_url关于[::1]的问题</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/01/codeigniter-1/" data-id="cjyoh9apy000b68g2sloffcxt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-876" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/31/leetcode-876/" class="article-date">
@@ -93,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjyo3n160001umsg2tgsbuax2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjyoh9aso001u68g22d9bdcfu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/30/leetcode-461/" data-id="cjyo3n13n0010msg2xlrzwt20" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/30/leetcode-461/" data-id="cjyoh9ar4001068g2ife6q5hw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjyo3n1260006msg2lko9mpqc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjyoh9apn000768g2s88kfmhi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjyo3n12s000omsg2ifmtk6p8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjyoh9aqm000o68g2fecxo1dp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -351,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjyo3n1430015msg23317kiwn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjyoh9arq001768g2fo7u6k4u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -392,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="cjyo3n15k001rmsg23fsu9klh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="cjyoh9asl001s68g2gypmm4tw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjyo3n12c0008msg2z0el4jlg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjyoh9apt000968g286mqj46s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -473,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjyo3n17b002omsg2ipzggj2r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjyoh9aui002p68g2ng3556mm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -514,48 +577,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjyo3n155001jmsg2wsu0yt5y" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-537" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/20/leetcode-537/" class="article-date">
-  <time datetime="2018-07-20T09:16:01.000Z" itemprop="datePublished">2018-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/leetcode-537/">leetcode-537</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>537. Complex Number Multiplication</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/07/20/leetcode-537/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjyo3n13n0013msg24ewbwrfe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjyoh9as6001j68g2vxi8rem9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -613,6 +635,10 @@
       <ul>
         
           <li>
+            <a href="/2019/07/29/leetcode-824/">leetcode-824</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/26/leetcode-21/">leetcode-21</a>
           </li>
         
@@ -626,10 +652,6 @@
         
           <li>
             <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/17/linux-kernel/">linux-kernel</a>
           </li>
         
       </ul>
