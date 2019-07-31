@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="206. Reverse Linked List">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-08T03:13:34.082Z">
+<meta property="og:updated_time" content="2019-07-30T13:12:50.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-206">
 <meta name="twitter:description" content="206. Reverse Linked List">
@@ -96,8 +96,7 @@
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>反转单链表</p>
 <p>尝试用迭代和递归两种方法来做</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>迭代</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!head)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode* p = head;</span><br><span class="line">    ListNode* q = p-&gt;next;</span><br><span class="line">    <span class="keyword">if</span> (q == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode* r = q-&gt;next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (r != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        q-&gt;next = p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (r != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p = q;</span><br><span class="line">        q = r;</span><br><span class="line">        r = r-&gt;next;</span><br><span class="line">        q-&gt;next = p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (p-&gt;next == q)</span><br><span class="line">    &#123;</span><br><span class="line">        p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    q-&gt;next = p;</span><br><span class="line">    head = q;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Runtime: 8 ms, faster than 93.52% of C++ online submissions for Reverse Linked List.</span><br><span class="line">Memory Usage: 9.4 MB, less than 5.03% of C++ online submissions for Reverse Linked List.`</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ListNode* pre = <span class="literal">NULL</span>;</span><br><span class="line">    ListNode* cur = head;</span><br><span class="line">    ListNode* next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (cur)</span><br><span class="line">    &#123;</span><br><span class="line">        next = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>递归</p>
 <p>找到递归子问题</p>
 <p>对每个单链表，每次将最后两个node的指向反转</p>
@@ -114,7 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="cjyoh9aqu000t68g27va6kfqc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="cjyqya9y7000wh4g28dki8n4r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,6 +185,10 @@
       <ul>
         
           <li>
+            <a href="/2019/07/31/leetcode-155/">leetcode-155</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/29/leetcode-824/">leetcode-824</a>
           </li>
         
@@ -199,10 +202,6 @@
         
           <li>
             <a href="/2019/07/10/leetcode-1108/">leetcode-1108</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/08/harvest-moon/">harvest-moon</a>
           </li>
         
       </ul>
