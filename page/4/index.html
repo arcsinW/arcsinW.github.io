@@ -62,6 +62,249 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-computer-vision" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/18/computer-vision/" class="article-date">
+  <time datetime="2019-03-18T12:56:10.000Z" itemprop="datePublished">2019-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/18/computer-vision/">computer-vision</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th style="text-align:center">工作流程</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">图像分类</td>
+<td style="text-align:center">原始图像</td>
+<td style="text-align:center">每个索引对应每一类的概率</td>
+</tr>
+<tr>
+<td style="text-align:center">物体检测</td>
+<td style="text-align:center">原始图像</td>
+<td style="text-align:center">物体的位置</td>
+</tr>
+<tr>
+<td style="text-align:center">图像分割</td>
+<td style="text-align:center">原始图像</td>
+<td style="text-align:center">分割的每一类图像的叠加，其中各个值表示相应像素属于每一类的概率</td>
+</tr>
+</tbody>
+</table>
+<p>Harris Corner detector</p>
+<p><code>Corner</code> significant change in all directions</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/18/computer-vision/" data-id="cjys3nvj60009bkg225gupnva" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android-backgroundtask" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/09/android-backgroundtask/" class="article-date">
+  <time datetime="2019-03-09T07:08:47.000Z" itemprop="datePublished">2019-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/09/android-backgroundtask/">android-backgroundtask</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/09/android-backgroundtask/" data-id="cjys3nvic0000bkg23ch0pp4b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cuda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/08/cuda/" class="article-date">
+  <time datetime="2019-03-08T00:49:06.000Z" itemprop="datePublished">2019-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/08/cuda/">cuda</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>nvidia-smi 显示GPU信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CPUFunction</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the CPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">GPUFunction</span><span class="params">()</span> <span class="comment">//__global__的返回值为void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the GPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CPUFunction();</span><br><span class="line"></span><br><span class="line">  GPUFunction&lt;&lt;&lt;<span class="number">2</span>, <span class="number">4</span>&gt;&gt;&gt;(); <span class="comment">// 2 blocks, 4 threads / block</span></span><br><span class="line">  cudaDeviceSynchronize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核函数启动方式为<strong>异步</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt; NUMBER_OF_BLOCKS, NUMBER_OF_THREADS_PER_BLOCK&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p><code>gridDim.x</code> grid中的block数量<br><code>blockIdx.x</code> grid中当前block的index（从0开始）<br><code>blockDim.x</code> block中线程数量<br><code>threadIdx.x</code> block中线程的index（从0开始）</p>
+<p>32个线程一个wrap</p>
+<blockquote>
+<p>鉴于 GPU 的硬件特性，所含线程的数量为 32 的倍数的线程块是为理想的选择</p>
+</blockquote>
+<p>动态计算block的数量，<code>N</code>为问题规模</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">size_t</span> number_of_blocks = (N + threads_per_block - <span class="number">1</span>) / threads_per_block;</span><br></pre></td></tr></table></figure>
+<p>grid中的线程数小于问题规模N的情况</p>
+<p>在核函数中加入<code>网格跨度循环</code>, 一个线程完成index, index + threads_per_grid, index + threads_per_grid*2 …的任务</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__<span class="function">global <span class="keyword">void</span> <span class="title">kernel</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> indexWithinTheGrid = threadIdx.x + blockIdx.x * blockDim.x;</span><br><span class="line">  <span class="keyword">int</span> gridStride = gridDim.x * blockDim.x;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = indexWithinTheGrid; i &lt; N; i += gridStride)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// do work on a[i];</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>错误处理</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cudaError_t err;</span><br><span class="line">err = cudaMallocManaged(&amp;a, N)                    <span class="comment">// Assume the existence of `a` and `N`.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (err != cudaSuccess)                           <span class="comment">// `cudaSuccess` is provided by CUDA.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Error: %s\n"</span>, cudaGetErrorString(err)); <span class="comment">// `cudaGetErrorString` is provided by CUDA.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">someKernel&lt;&lt;&lt;<span class="number">1</span>, <span class="number">-1</span>&gt;&gt;&gt;();  <span class="comment">// -1 is not a valid number of threads.</span></span><br><span class="line"></span><br><span class="line">cudaError_t err;</span><br><span class="line">err = cudaGetLastError(); <span class="comment">// `cudaGetLastError` will return the error from above.</span></span><br><span class="line"><span class="keyword">if</span> (err != cudaSuccess)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Error: %s\n"</span>, cudaGetErrorString(err));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>封装成宏</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> cudaError_t <span class="title">checkCuda</span><span class="params">(cudaError_t result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (result != cudaSuccess) &#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"CUDA Runtime Error: %s\n"</span>, cudaGetErrorString(result));</span><br><span class="line">    assert(result == cudaSuccess);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>流</p>
+<p>核函数在流中运行，<br>cuda中有一个默认流和多个非默认流<br>流中的核函数顺序执行，<br>不同的非默认流中的核函数可以同时运行（无法保证顺序）<br>默认流中的核函数不能与其他非默认流的核函数同时运行<br>默认流会受到阻碍，并在其他所有流完成之后方可运行，但其亦会阻碍其他流的运行直至其自身已运行完毕</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cudaStream_t stream;</span><br><span class="line">cudaStreamCreate(&amp;stream);</span><br><span class="line"></span><br><span class="line">kernel&lt;&lt;&lt;number_of_blocks, threads_per_block, bytes_of_shared_memory, stream&gt;&gt;&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// some things to do</span></span><br><span class="line"></span><br><span class="line">cudaStreamDestroy(stream);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">number_of_blocks/threads_per_block</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+<th style="text-align:center">1024</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">256</td>
+<td style="text-align:center">129.34ms</td>
+<td style="text-align:center">106.04ms</td>
+<td style="text-align:center">113.95ms</td>
+</tr>
+<tr>
+<td style="text-align:center">512</td>
+<td style="text-align:center">100.13ms</td>
+<td style="text-align:center">129.93ms</td>
+<td style="text-align:center">109.08ms</td>
+</tr>
+<tr>
+<td style="text-align:center">1024</td>
+<td style="text-align:center">106.67ms</td>
+<td style="text-align:center">102.97ms</td>
+<td style="text-align:center">104.36ms</td>
+</tr>
+<tr>
+<td style="text-align:center">2048</td>
+<td style="text-align:center">100.05ms</td>
+<td style="text-align:center">99.280ms</td>
+<td style="text-align:center">109.68ms</td>
+</tr>
+<tr>
+<td style="text-align:center">4096</td>
+<td style="text-align:center">100.65ms</td>
+<td style="text-align:center">102.35ms</td>
+<td style="text-align:center">113.03ms</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/08/cuda/" data-id="cjys3nvjm000jbkg2ia684xk4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android-listview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/06/android-listview/" class="article-date">
+  <time datetime="2019-03-06T11:14:25.000Z" itemprop="datePublished">2019-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/06/android-listview/">android-listview</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p><code>ArrayAdapter</code></p>
+<blockquote>
+<p>默认情况下，<code>ArrayAdapter</code> 会通过在每个项目上调用 <code>toString()</code> 并将内容放入 <code>TextView</code> 来为每个数组项创建视图</p>
+</blockquote>
+<p><code>BaseAdapter</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/06/android-listview/" data-id="cjys3nvin0002bkg2y31d31yw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-897" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/20/leetcode-897/" class="article-date">
@@ -93,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/leetcode-897/" data-id="cjyqyaa0w001yh4g21ldzyoph" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/leetcode-897/" data-id="cjys3nvm5001zbkg2zibph87v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/28/android/" data-id="cjyqya9wb0003h4g23406zrn3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/28/android/" data-id="cjys3nviq0003bkg2odw8lcmb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/bing-wallpaper-api/" data-id="cjyqya9wd0004h4g28h2oewww" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/26/bing-wallpaper-api/" data-id="cjys3nviv0004bkg2tvi7tbb9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="cjyqya9w60002h4g29hqjhp8c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="cjys3nvik0001bkg2zlh317l0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/leetcode-136/" data-id="cjyqya9y1000sh4g2q83iwapt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/leetcode-136/" data-id="cjys3nvk3000rbkg2cl51rh2g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -297,166 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/24/vim/" data-id="cjyqyaa2g002wh4g2ut7yi6yq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-822" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/23/leetcode-822/" class="article-date">
-  <time datetime="2019-01-23T11:50:58.000Z" itemprop="datePublished">2019-01-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/23/leetcode-822/">leetcode-822 Card Flipping Game</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>822. Card Flipping Game</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/23/leetcode-822/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/23/leetcode-822/" data-id="cjyqyaa0g001rh4g2hbc7r85d" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-922" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/22/leetcode-922/" class="article-date">
-  <time datetime="2019-01-22T14:15:36.000Z" itemprop="datePublished">2019-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/22/leetcode-922/">leetcode-922 Sort Array By Parity II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>922. Sort Array By Parity II</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/22/leetcode-922/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/leetcode-922/" data-id="cjyqyaa130022h4g2c3j3btgm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tree-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/22/tree-1/" class="article-date">
-  <time datetime="2019-01-22T12:16:59.000Z" itemprop="datePublished">2019-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/22/tree-1/">tree-1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/tree-1/" data-id="cjyqyaa2c002th4g2tiejk6fb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-561" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/21/leetcode-561/" class="article-date">
-  <time datetime="2019-01-21T07:02:35.000Z" itemprop="datePublished">2019-01-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/21/leetcode-561/">leetcode-561 Array Partition I</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>561. Array Partition I</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/21/leetcode-561/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/leetcode-561/" data-id="cjyqya9zq001dh4g2e52keuyq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/24/vim/" data-id="cjys3nvne002zbkg24wv8gg47" class="article-share-link">Share</a>
       
       
     </footer>
@@ -469,7 +553,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -482,7 +566,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
     </div>
   </div>
 
@@ -492,7 +576,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Fibonacci/" style="font-size: 10px;">Fibonacci</a>
+      <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a>
     </div>
   </div>
 
@@ -501,7 +585,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -514,23 +598,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/01/stl-vector/">stl-vector</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/stl-queue/">stl-queue</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/31/leetcode-104/">leetcode-104 Maximum Depth of Binary Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/31/leetcode-141/">leetcode-141</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/31/leetcode-155/">leetcode-155</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/29/leetcode-824/">leetcode-824</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/26/leetcode-21/">leetcode-21</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/24/leetcode-38/">leetcode-38</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/10/leetcode-1108/">leetcode-1108</a>
           </li>
         
       </ul>

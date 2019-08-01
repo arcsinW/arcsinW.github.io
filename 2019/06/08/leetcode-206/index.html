@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="206. Reverse Linked List">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-30T13:12:50.686Z">
+<meta property="og:updated_time" content="2019-07-31T08:07:05.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-206">
 <meta name="twitter:description" content="206. Reverse Linked List">
@@ -95,6 +95,8 @@
 <p>A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>反转单链表</p>
 <p>尝试用迭代和递归两种方法来做</p>
+<pre><code>1  -&gt;   2   -&gt; 3 -&gt; 4 -&gt; 5
+</code></pre><p>pre -&gt; cur -&gt; next</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>迭代</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ListNode* pre = <span class="literal">NULL</span>;</span><br><span class="line">    ListNode* cur = head;</span><br><span class="line">    ListNode* next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (cur)</span><br><span class="line">    &#123;</span><br><span class="line">        next = cur-&gt;next;</span><br><span class="line">        cur-&gt;next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pre;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>递归</p>
@@ -113,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="cjyqya9y7000wh4g28dki8n4r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="cjys3nvkp0016bkg2og5h779d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +155,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fibonacci/">Fibonacci</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
     </div>
   </div>
 
@@ -163,7 +165,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Fibonacci/" style="font-size: 10px;">Fibonacci</a>
+      <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a>
     </div>
   </div>
 
@@ -172,7 +174,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -185,23 +187,23 @@
       <ul>
         
           <li>
+            <a href="/2019/08/01/stl-vector/">stl-vector</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/stl-queue/">stl-queue</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/31/leetcode-104/">leetcode-104 Maximum Depth of Binary Tree</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/31/leetcode-141/">leetcode-141</a>
+          </li>
+        
+          <li>
             <a href="/2019/07/31/leetcode-155/">leetcode-155</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/29/leetcode-824/">leetcode-824</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/26/leetcode-21/">leetcode-21</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/24/leetcode-38/">leetcode-38</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/10/leetcode-1108/">leetcode-1108</a>
           </li>
         
       </ul>
