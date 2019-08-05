@@ -62,6 +62,120 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-conway-game-of-life" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/11/conway-game-of-life/" class="article-date">
+  <time datetime="2019-05-11T02:31:48.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/conway-game-of-life/">conway-game-of-life</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Game-of-Life-Processing-edition"><a href="#Game-of-Life-Processing-edition" class="headerlink" title="Game of Life, Processing edition"></a>Game of Life, Processing edition</h1><h2 id="Conway’s-Game-of-Life"><a href="#Conway’s-Game-of-Life" class="headerlink" title="Conway’s Game of Life"></a>Conway’s Game of Life</h2><blockquote>
+<p>The Game of Life is not your typical computer game. It is a ‘cellular automaton’, and was invented by Cambridge mathematician John Conway.</p>
+<p>This game became widely known when it was mentioned in an article published by Scientific American in 1970. It consists of a collection of cells which, based on a few mathematical rules, can live, die or multiply. Depending on the initial conditions, the cells form various patterns throughout the course of the game.</p>
+</blockquote>
+<h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><p>For a space that is ‘populated’:</p>
+<ul>
+<li><p>Each cell with one or no neighbors dies, as if by solitude.</p>
+</li>
+<li><p>Each cell with four or more neighbors dies, as if by overpopulation.</p>
+</li>
+<li><p>Each cell with two or three neighbors survives.</p>
+</li>
+</ul>
+<p>For a space that is ‘empty’ or ‘unpopulated’</p>
+<ul>
+<li>Each cell with three neighbors becomes populated.</li>
+</ul>
+<h2 id="About-Processing"><a href="#About-Processing" class="headerlink" title="About Processing"></a>About Processing</h2><blockquote>
+<p><a href="https://processing.org/" target="_blank" rel="noopener">Processing</a> is a flexible software sketchbook and a language for learning how to code within the context of the visual arts. Since 2001, Processing has promoted software literacy within the visual arts and visual literacy within technology. There are tens of thousands of students, artists, designers, researchers, and hobbyists who use Processing for learning and prototyping.</p>
+<ul>
+<li>Free to download and open source</li>
+<li>Interactive programs with 2D, 3D, PDF, or SVG output</li>
+<li>OpenGL integration for accelerated 2D and 3D</li>
+<li>For GNU/Linux, Mac OS X, Windows, Android, and ARM</li>
+<li>Over 100 libraries extend the core software</li>
+<li>Well documented, with many books available</li>
+</ul>
+</blockquote>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
+<li><a href="https://bitstorm.org/gameoflife/" target="_blank" rel="noopener">John Conway’s Game of Life</a></li>
+<li><a href="https://processing.org/" target="_blank" rel="noopener">Processing.org</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/11/conway-game-of-life/" data-id="cjyxt89al000bgog26poy06gy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-travis-ci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/22/travis-ci/" class="article-date">
+  <time datetime="2019-04-22T13:18:24.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/travis-ci/">travis-ci</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<ol>
+<li><code>Travis.yml ./gradlew : Permission denied</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br><span class="line"></span><br><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">"permission access for travis"</span></span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br></pre></td></tr></table></figure>
+<p>或者在<code>.travis.yml</code>中加入</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet"> -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">gradlew</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied" target="_blank" rel="noopener">https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="cjyxt89ho0036gog2nvvign38" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-1021" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/19/leetcode-1021/" class="article-date">
@@ -93,7 +207,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="cjys3nvk1000qbkg2mjyo68pe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="cjyxt89cy000xgog2wh0xpecb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="cjys3nvln001lbkg2tv330gyk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="cjyxt89fb001xgog2e43kmhaz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="cjys3nvmp002dbkg25xh318f7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="cjyxt89h0002tgog2c3lil84o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="cjys3nvmy002lbkg2pvfeh494" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="cjyxt89hd002zgog2qgk7d279" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="cjys3nvjp000kbkg2ckc98qus" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="cjyxt89b0000igog2vtv3xlin" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="cjys3nvjl000ibkg2x4tuvviw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="cjyxt89b2000jgog2cw52xp1a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="cjys3nvk7000ubkg28ijvk5y0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="cjyxt89cm000rgog2ubrar97b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,89 +490,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/05/leetcode-665/" data-id="cjys3nvlm001kbkg2v56uj75c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android-event-handle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/31/android-event-handle/" class="article-date">
-  <time datetime="2019-03-31T10:56:40.000Z" itemprop="datePublished">2019-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/android-event-handle/">android-event-handle</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Android事件处理</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/03/31/android-event-handle/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/android-event-handle/" data-id="cjys3nvj10007bkg22didfcfn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-logistic-regression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/24/logistic-regression/" class="article-date">
-  <time datetime="2019-03-24T12:44:01.000Z" itemprop="datePublished">2019-03-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/logistic-regression/">logistic-regression</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Logisitic regression</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/03/24/logistic-regression/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/logistic-regression/" data-id="cjys3nvmt002gbkg2azvh6n3p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/05/leetcode-665/" data-id="cjyxt89eo001mgog2w5fhz5wj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -516,6 +548,14 @@
       <ul>
         
           <li>
+            <a href="/2019/08/05/leetcode-169/">leetcode-169 Majority Element</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/leetcode-709/">leetcode-709 To Lower Case</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/01/stl-vector/">stl-vector</a>
           </li>
         
@@ -525,14 +565,6 @@
         
           <li>
             <a href="/2019/07/31/leetcode-104/">leetcode-104 Maximum Depth of Binary Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/31/leetcode-141/">leetcode-141</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/31/leetcode-155/">leetcode-155</a>
           </li>
         
       </ul>
