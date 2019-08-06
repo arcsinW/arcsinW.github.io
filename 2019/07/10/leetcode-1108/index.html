@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="1108. Defanging an IP Address">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-10T03:17:19.918Z">
+<meta property="og:updated_time" content="2019-08-06T03:26:50.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-1108">
 <meta name="twitter:description" content="1108. Defanging an IP Address">
@@ -98,11 +98,15 @@
 <ul>
 <li>The given <code>address</code> is a valid IPv4 address.</li>
 </ul>
-<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>将ip地址中的<code>.</code>替换成<code>[.]</code>, 简单题</p>
+<p>在address上直接replace，或者插入到一个新的字符串里去</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">defangIPaddr</span><span class="params">(<span class="built_in">string</span> address)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; address.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (address[i] == <span class="string">'.'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            address.replace(i, <span class="number">1</span>, <span class="string">"[.]"</span>);</span><br><span class="line">            i+=<span class="number">2</span>; <span class="comment">//使i越过已经replace过的 .</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; address &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">defangIPaddr</span><span class="params">(<span class="built_in">string</span> address)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> result;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; address.length(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (address[i] == <span class="string">'.'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            result += <span class="string">"[.]"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            result += address[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/10/leetcode-1108/" data-id="cjyxt89b6000mgog237mg5wzp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/10/leetcode-1108/" data-id="cjyz9king000oh8g2atlg3jwd" class="article-share-link">Share</a>
       
       
     </footer>

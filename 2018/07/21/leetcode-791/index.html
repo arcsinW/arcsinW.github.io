@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>leetcode-791 | X</title>
+  <title>leetcode-791 Custom Sort String | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="791. Custom Sort String">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-791">
+<meta property="og:title" content="leetcode-791 Custom Sort String">
 <meta property="og:url" content="http://yoursite.com/2018/07/21/leetcode-791/index.html">
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="791. Custom Sort String">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-08T03:20:02.676Z">
+<meta property="og:updated_time" content="2019-08-05T07:17:37.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-791">
+<meta name="twitter:title" content="leetcode-791 Custom Sort String">
 <meta name="twitter:description" content="791. Custom Sort String">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode-791
+      leetcode-791 Custom Sort String
     </h1>
   
 
@@ -88,7 +88,7 @@
       
         <p>791. Custom Sort String</p>
 <a id="more"></a>
-<blockquote>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
 <p>S and T are strings composed of lowercase letters. In S, no letter occurs more than once.</p>
 <p>S was sorted in some custom order previously. We want to permute the characters of T so that they match the order that S was sorted. More specifically, if x occurs before y in S, then x should occur before y in the returned string.</p>
 <p>Return any permutation of T (as a string) that satisfies this property.</p>
@@ -98,7 +98,7 @@
 <p>Note:</p>
 <p>S has length at most 26, and no character is repeated in S.<br>T has length at most 200.<br>S and T consist of lowercase letters only.</p>
 </blockquote>
-<p>将字符串T 按 字符串S中字符的顺序 排序</p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>将字符串T 按 字符串S中字符的顺序 排序</p>
 <p>我的思路是先统计字符串T中各字符的数量，存到一个数组里，然后把在字符串S中存在的字符先拿出来，数量归0，再对这个数组循环一次，把剩下的字符也取出来，时间复杂度为$O(n^2)$</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">customSortString</span><span class="params">(<span class="built_in">string</span> S, <span class="built_in">string</span> T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> div[<span class="number">26</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">char</span> chars[<span class="number">26</span>] = &#123;<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>, <span class="string">'g'</span>, <span class="string">'h'</span>, <span class="string">'i'</span>, <span class="string">'j'</span>, <span class="string">'k'</span>, <span class="string">'l'</span>, <span class="string">'m'</span>, <span class="string">'n'</span>, <span class="string">'o'</span>, <span class="string">'p'</span>, <span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'s'</span>, <span class="string">'t'</span>, <span class="string">'u'</span>, <span class="string">'v'</span>, <span class="string">'w'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T.length(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> index = T[i] - <span class="string">'a'</span>;</span><br><span class="line">        div[index]++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; S.length(); j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> index = S[j] - <span class="string">'a'</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; div[index]; div[index]--)</span><br><span class="line">        &#123;</span><br><span class="line">            result += chars[index];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; <span class="number">26</span>; m++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; div[m]; n++)</span><br><span class="line">        &#123;</span><br><span class="line">            result += chars[m];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>再看看LeetCode上大佬的代码，时间复杂度为$O(n)，$注释是我写的</p>
@@ -107,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjyxt89fo0023gog2c5ruyrlx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjyz9kipb0024h8g2x7q64kve" class="article-share-link">Share</a>
       
       
     </footer>
