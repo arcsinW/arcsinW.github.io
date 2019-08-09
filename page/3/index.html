@@ -62,6 +62,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux-system-call" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/26/linux-system-call/" class="article-date">
+  <time datetime="2019-05-26T03:53:45.000Z" itemprop="datePublished">2019-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/26/linux-system-call/">linux-system-call</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>系统调用向量表 (System call table)</p>
+<p><code>linux-4.10/arch/x86/entry/syscalls/syscall_64.tbl</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;number&gt; &lt;abi&gt; &lt;name&gt; &lt;entry point&gt;</span><br><span class="line">394	64	my_func			sys_my_func</span><br></pre></td></tr></table></figure>
+<p><code>linux-4.10/include/linux/syscalls.h</code></p>
+<p>添加一行函数声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asmlinkage long sys_my_func(int count);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/26/linux-system-call/" data-id="cjz40jial002khkg23wi0oh8l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-conway-game-of-life" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/11/conway-game-of-life/" class="article-date">
@@ -120,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/11/conway-game-of-life/" data-id="cjyz9kin4000mh8g28i4rj7l4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/11/conway-game-of-life/" data-id="cjz40ji7q000lhkg2akzgnens" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="cjyz9kiqv0036h8g28skkqowe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="cjz40jibl0039hkg2yyi3zc77" class="article-share-link">Share</a>
       
       
     </footer>
@@ -207,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="cjyz9kins000rh8g2z76kis2d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="cjz40ji8a000rhkg2fsp2mmm8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="cjyz9kioy001th8g2gq3cslk9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="cjz40ji9j001shkg2f64d7pt0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="cjyz9kiqf002sh8g2613jjufb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="cjz40jiau002rhkg28nwghz2c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="cjyz9kiql002xh8g2f17exipu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="cjz40jib7002zhkg2j9cpugym" class="article-share-link">Share</a>
       
       
     </footer>
@@ -365,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="cjyz9kin2000lh8g2tzfsf3eq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="cjz40ji7p000khkg24r5gwv0h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -404,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="cjyz9kimy000ih8g2om9hzob9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="cjz40ji7j000ghkg2vostpizg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -449,48 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="cjyz9kinq000qh8g2vh9glp2a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-665" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/05/leetcode-665/" class="article-date">
-  <time datetime="2019-04-05T13:29:27.000Z" itemprop="datePublished">2019-04-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/05/leetcode-665/">leetcode-665</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>665. Non-decreasing Array</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/04/05/leetcode-665/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/05/leetcode-665/" data-id="cjyz9kiou001ph8g25ckgc3dz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="cjz40ji7t000nhkg27sg9m73o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -548,6 +549,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/08/leetcode-482/">leetcode-482 License Key Formatting</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/05/leetcode-169/">leetcode-169 Majority Element</a>
           </li>
         
@@ -561,10 +566,6 @@
         
           <li>
             <a href="/2019/08/01/stl-queue/">stl-queue</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/31/leetcode-104/">leetcode-104 Maximum Depth of Binary Tree</a>
           </li>
         
       </ul>

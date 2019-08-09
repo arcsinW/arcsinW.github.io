@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-482 License Key Formatting | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="482. License Key Formatting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-482 License Key Formatting">
+<meta property="og:url" content="http://yoursite.com/2019/08/08/leetcode-482/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="482. License Key Formatting">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-09T11:09:06.670Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-482 License Key Formatting">
+<meta name="twitter:description" content="482. License Key Formatting">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-482" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/08/leetcode-482/" class="article-date">
+  <time datetime="2019-08-08T13:58:44.000Z" itemprop="datePublished">2019-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-482 License Key Formatting
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>482. License Key Formatting</p>
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You are given a license key represented as a string S which consists only alphanumeric character and dashes. The string is separated into N+1 groups by N dashes.</p>
+<p>Given a number K, we would want to reformat the strings such that each group contains exactly K characters, except for the first group which could be shorter than K, but still must contain at least one character. Furthermore, there must be a dash inserted between two groups and all lowercase letters should be converted to uppercase.</p>
+<p>Given a non-empty string S and a number K, format the string according to the rules described above.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;5F3Z-2e-9-w&quot;, K = 4</span><br><span class="line"></span><br><span class="line">Output: &quot;5F3Z-2E9W&quot;</span><br><span class="line"></span><br><span class="line">Explanation: The string S has been split into two parts, each part has 4 characters.</span><br><span class="line">Note that the two extra dashes are not needed and can be removed.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;2-5g-3-J&quot;, K = 2</span><br><span class="line"></span><br><span class="line">Output: &quot;2-5G-3J&quot;</span><br></pre></td></tr></table></figure>
+<p>Explanation: The string S has been split into three parts, each part has 2 characters except the first part as it could be shorter as mentioned above.</p>
+<p><strong>Note:</strong></p>
+<ol>
+<li><p>The length of string S will not exceed 12,000, and K is a positive integer.</p>
+</li>
+<li><p>String S consists only of alphanumerical characters (a-z and/or A-Z and/or 0-9) and dashes(-).</p>
+</li>
+<li><p>String S is non-empty.</p>
+</li>
+</ol>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>序列号格式化，将所有字母变为大写，以<code>K</code>个字母为一组，每组之间以<code>-</code>连接，第一组可以少于<code>K</code>个字母</p>
+<p>如</p>
+<p>Input: S = “2-5g-3-J”, K = 2</p>
+<p>-&gt;</p>
+<p>Output: “2-5G-3J”</p>
+<p>看起来很简单，我写出了下面的代码，逆序遍历输入<code>S</code>，逐个变为大写后插入新的字符串中，每插入<code>K</code>个字母就追加插入一个<code>-</code></p>
+<p>看起来一切正常，然后LeetCode测试的时候输入了一个长度为44153的字符串作为输入<code>S</code>，<code>k</code>=1，爆出Memory Limit Exceeded了，这里我觉得问题出现在字符串的拼接上，每一次<code>result = &quot;-&quot; + result</code>都会产生一个新的对象，造成最后内存超了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">toupper</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="string">'a'</span> &lt;= c &amp;&amp; c &lt;= <span class="string">'z'</span>) ? c^<span class="number">0x20</span> : c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">licenseKeyFormatting</span><span class="params">(<span class="built_in">string</span> S, <span class="keyword">int</span> K)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> result;</span><br><span class="line">    <span class="keyword">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = S.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (S[i] == <span class="string">'-'</span>) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (tmp++ == K)</span><br><span class="line">        &#123;</span><br><span class="line">            result = <span class="string">"-"</span> + result; <span class="comment">// 问题应该来源于这里</span></span><br><span class="line">            tmp = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result = <span class="built_in">toupper</span>(S[i]) + result;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; tmp &lt;&lt; <span class="string">" : "</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新的思路是直接修改<code>result</code>，初始化时将长度设置好，不做字符串拼接，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">toupper</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="string">'a'</span> &lt;= c &amp;&amp; c &lt;= <span class="string">'z'</span>) ? c^<span class="number">0x20</span> : c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">licenseKeyFormatting</span><span class="params">(<span class="built_in">string</span> S, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> s_len = S.size();</span><br><span class="line">    <span class="keyword">int</span> *tag = <span class="keyword">new</span> <span class="keyword">int</span>[s_len]&#123;<span class="number">0</span>&#125;; <span class="comment">// 记录S中有字母或数字的位置</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s_len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (S[i] == <span class="string">'-'</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        S[i] = <span class="built_in">toupper</span>(S[i]);</span><br><span class="line">        len++;</span><br><span class="line">        tag[i] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    len += (len - <span class="number">1</span>) / K;   <span class="comment">// 计算最终结果的长度</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">result</span><span class="params">(len, <span class="string">'-'</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> pivot = len - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> tmp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = s_len - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (tag[j] == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (tmp++ == K)</span><br><span class="line">            &#123;</span><br><span class="line">                pivot--;</span><br><span class="line">                tmp = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            result[pivot--] = S[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Runtime: 8 ms, faster than 97.11% of C++ online submissions for License Key Formatting.</span><br><span class="line"></span><br><span class="line">Memory Usage: 10.9 MB, less than 34.48% of C++ online submissions for License Key Formatting.</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/08/leetcode-482/" data-id="cjz40ji8r0017hkg2dn9683el" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/05/leetcode-169/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-169 Majority Element</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/08/leetcode-482/">leetcode-482 License Key Formatting</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/05/leetcode-169/">leetcode-169 Majority Element</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/leetcode-709/">leetcode-709 To Lower Case</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/stl-vector/">stl-vector</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/01/stl-queue/">stl-queue</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
