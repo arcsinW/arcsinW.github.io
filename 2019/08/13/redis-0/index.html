@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>redis-0 | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="redis的数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis-0">
+<meta property="og:url" content="http://yoursite.com/2019/08/13/redis-0/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="redis的数据结构">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-14T02:48:43.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis-0">
+<meta name="twitter:description" content="redis的数据结构">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-redis-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/13/redis-0/" class="article-date">
+  <time datetime="2019-08-13T03:27:37.000Z" itemprop="datePublished">2019-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      redis-0
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>redis的数据结构</p>
+<a id="more"></a>
+<p>通过key获取或设置value</p>
+<p>SET key value</p>
+<p>GET key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SET server:name <span class="string">"fido"</span></span><br><span class="line"></span><br><span class="line">GET server:name</span><br></pre></td></tr></table></figure>
+<p><code>SETNX</code> : SET-if-not-exists</p>
+<p><code>INCR</code> : +1 原子操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET connections 10</span><br><span class="line">INCR connections =&gt;11</span><br><span class="line"></span><br><span class="line">INCR A =&gt;1</span><br></pre></td></tr></table></figure>
+<p>给key设置过期时间</p>
+<p><code>TTL</code> 获取一个key的存活时间，每次set一个key的value，过期时间将会重置</p>
+<ul>
+<li><code>-2</code> 已过期</li>
+<li><code>-1</code> 永不过期</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SET str <span class="string">"ASD"</span></span><br><span class="line">EXPIRE str 120 <span class="comment"># 120s后过期</span></span><br><span class="line">TTL str <span class="comment"># 获取str的过期时间</span></span><br></pre></td></tr></table></figure>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p><code>RPUSH</code> 插入数据到list末尾</p>
+<p><code>LPUSH</code> 插入数据到list起点</p>
+<p><code>LRANGE</code>  返回<code>list</code>的子集 下标从0开始</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LRANGE friends 0 -1  <span class="comment"># 类似python  返回整个list</span></span><br></pre></td></tr></table></figure>
+<p><code>LLEN</code> 返回<code>list</code>长度</p>
+<p><code>LPOP</code> 删除<code>list</code>第一个元素并返回这个元素（左边是第一个元素）</p>
+<p><code>RPOP</code> 删除<code>list</code>最后一个元素并返回这个元素（右边是最后一个元素）</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>去重的list，无序，由于是无序的所以<strong>没有</strong>srange这个命令，取而代之的是<code>SMEMBERS</code>用于返回所有的数据</p>
+<p><code>SADD</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SADD data_set &quot;aa&apos;</span><br><span class="line">SADD data_set &quot;data1&quot;</span><br></pre></td></tr></table></figure>
+<p><code>SREM</code> 从<code>set</code>中删除指定元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SREM data_set &quot;data1&quot;</span><br></pre></td></tr></table></figure>
+<p><code>SISMEMBER</code> 是否<code>set</code>中元素 1 =&gt; 是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SISMEMBER data_set &quot;aa&quot;</span><br></pre></td></tr></table></figure>
+<p><code>SMEMBERS</code> 返回<code>set</code>所有元素</p>
+<p><code>SUNION</code> 两个或多个<code>set</code>合并并返回所有元素的列表</p>
+<h2 id="zset-有序set"><a href="#zset-有序set" class="headerlink" title="zset 有序set"></a><code>zset</code> 有序set</h2><p>通过一个score来排序</p>
+<p>添加数据的时候要指定一个score，用于排序，排序是redis自动执行的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZADD superheros 1 ironman</span><br><span class="line">ZADD superheros 3 thor</span><br><span class="line">ZADD superheros 2 spiderman</span><br></pre></td></tr></table></figure>
+<p><code>ZRANGE key start stop [WITHSCORES]</code><br>返回<code>key</code>中[start stop] 的数据，按<code>score</code>递增排序,递减排序用<code>ZREVRANGE</code></p>
+<p>加上<code>withscores</code>后会将score也输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; zrange superheros 0 -1</span><br><span class="line">1) &quot;ironman&quot;</span><br><span class="line">2) &quot;spiderman&quot;</span><br><span class="line">3) &quot;thor&quot;</span><br><span class="line"></span><br><span class="line">&gt; zrange superheros 0 -1 withscores</span><br><span class="line">1) &quot;ironman&quot;</span><br><span class="line">2) 1.0</span><br><span class="line">3) &quot;spiderman&quot;</span><br><span class="line">4) 2.0</span><br><span class="line">5) &quot;thor&quot;</span><br><span class="line">6) 3.0</span><br></pre></td></tr></table></figure>
+<p><code>ZREM</code><br>删除<code>zset</code>中一个或多个成员，不存在的被忽略<br>返回成功移除的数量</p>
+<h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HSET key field value</span><br><span class="line">HSET key field1 value1</span><br><span class="line">HMSET key field1 value1 field2 value2 field3 value3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Sets field in the hash stored at key to value. If key does not exist, a new key holding a hash is created. If field already exists in the hash, it is overwritten.</p>
+</blockquote>
+<p>0 变量已存在，值已更新<br>1 变量不存在，已经创建</p>
+<p>理解为key指向了一个对象，这个对象里都是键值对</p>
+<p><code>HINCRBY</code> 为field的value增加指定数值，原子操作，如果field不存在将会新增</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HSET key age 3</span><br><span class="line">HINCRBY key age 2 # age变成5</span><br><span class="line"></span><br><span class="line">HINCRBY key num 1 # num被新建，值设置为1</span><br></pre></td></tr></table></figure>
+<p><code>HDEL</code> 删除key的某个field</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HDEL key age</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://try.redis.io/" target="_blank" rel="noopener">Try Redis</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="cjzanoxhy0030iwg20fyjin7u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/14/redis-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          redis-1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/11/leetcode-661/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-661 Image Smoother</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/14/redis-1/">redis-1</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/redis-0/">redis-0</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/11/leetcode-661/">leetcode-661 Image Smoother</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/10/mysql-1/">mysql-1</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/10/mysql-0/">mysql-0</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

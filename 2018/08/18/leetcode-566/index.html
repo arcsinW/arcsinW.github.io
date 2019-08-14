@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>leetcode-566 | X</title>
+  <title>leetcode-566 Reshape the Matrix | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="566. Reshape the Matrix">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-566">
+<meta property="og:title" content="leetcode-566 Reshape the Matrix">
 <meta property="og:url" content="http://yoursite.com/2018/08/18/leetcode-566/index.html">
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="566. Reshape the Matrix">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-08T03:17:58.504Z">
+<meta property="og:updated_time" content="2019-08-12T01:45:54.154Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-566">
+<meta name="twitter:title" content="leetcode-566 Reshape the Matrix">
 <meta name="twitter:description" content="566. Reshape the Matrix">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode-566
+      leetcode-566 Reshape the Matrix
     </h1>
   
 
@@ -88,7 +88,7 @@
       
         <p>566. Reshape the Matrix</p>
 <a id="more"></a>
-<p>In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data.</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>In MATLAB, there is a very useful function called ‘reshape’, which can reshape a matrix into a new one with different size but keep its original data.</p>
 <p>You’re given a matrix represented by a two-dimensional array, and two <strong>positive</strong> integers <strong>r</strong> and <strong>c</strong> representing the <strong>row</strong> number and <strong>column</strong> number of the wanted reshaped matrix, respectively.</p>
 <p>The reshaped matrix need to be filled with all the elements of the original matrix in the same <strong>row-traversing</strong> order as they were.</p>
 <p>If the ‘reshape’ operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.</p>
@@ -101,17 +101,15 @@
 <li>The height and width of the given matrix is in range [1, 100].</li>
 <li>The given r and c are all positive.</li>
 </ol>
-<hr>
-<p>遍历原二维数组依次取出数据放到新数组中</p>
-<p>看到这道题的时候我想到了这个<a href="https://www.cnblogs.com/arcsinw/p/9447556.html" target="_blank" rel="noopener">[LeetCode] 806. Number of Lines To Write String</a>，于是我用了同样的思路，维护一个<code>col_tmp</code>记录当前的列下标，到了新数组的列数就换行</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; matrixReshape(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; nums, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> row = nums.size();</span><br><span class="line">    <span class="keyword">int</span> col = nums.at(<span class="number">0</span>).size();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (row * col != r * c)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> col_tmp = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (tmp.size() + <span class="number">1</span> &lt; c)</span><br><span class="line">            &#123;</span><br><span class="line">                tmp.push_back(nums.at(i).at(j));</span><br><span class="line">                ++col_tmp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                tmp.push_back(nums.at(i).at(j));</span><br><span class="line">                result.push_back(tmp);</span><br><span class="line">                tmp.clear();</span><br><span class="line">                col_tmp = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>遍历原二维数组依次取出数据放到新数组中，到了新数组的列数就换行</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; matrixReshape(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; nums, <span class="keyword">int</span> r, <span class="keyword">int</span> c)     &#123;</span><br><span class="line">    <span class="keyword">int</span> row = nums.size();</span><br><span class="line">    <span class="keyword">int</span> col = nums.at(<span class="number">0</span>).size();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (row * col != r * c)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (tmp.size() + <span class="number">1</span> &lt; c)</span><br><span class="line">            &#123;</span><br><span class="line">                tmp.push_back(nums.at(i).at(j));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                tmp.push_back(nums.at(i).at(j));</span><br><span class="line">                result.push_back(tmp);</span><br><span class="line">                tmp.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>看看LeetCode上其他代码，利用<code>/</code>和<code>%</code>算出reshape后的下标，简洁明了，厉害</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; matrixReshape(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; nums, <span class="keyword">int</span> r, <span class="keyword">int</span> c) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.empty() || nums[<span class="number">0</span>].empty()) &#123;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">size_t</span> rows = nums.size();</span><br><span class="line">    <span class="keyword">size_t</span> columns = nums[<span class="number">0</span>].size();</span><br><span class="line">    <span class="keyword">size_t</span> input_size = rows * columns;</span><br><span class="line">    <span class="keyword">size_t</span> traversing_size = r * c;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (traversing_size &gt; input_size) &#123;</span><br><span class="line">        <span class="comment">// illegal</span></span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; traversing(r, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(c, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//填满新的二维数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; r; k++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; c; m++) &#123;</span><br><span class="line">            <span class="comment">// 算出在原数组中的下标</span></span><br><span class="line">            <span class="keyword">int</span> linear_address = k * c + m;</span><br><span class="line">            <span class="keyword">int</span> i = linear_address / columns;</span><br><span class="line">            <span class="keyword">int</span> j = linear_address % columns;</span><br><span class="line">            traversing[k][m] = nums[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> traversing;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/18/leetcode-566/" data-id="cjz40ji9d001nhkg2v4optr4b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/18/leetcode-566/" data-id="cjzanoxg0001jiwg2qim2dlci" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,23 +181,23 @@
       <ul>
         
           <li>
-            <a href="/2019/08/08/leetcode-482/">leetcode-482 License Key Formatting</a>
+            <a href="/2019/08/14/redis-1/">redis-1</a>
           </li>
         
           <li>
-            <a href="/2019/08/05/leetcode-169/">leetcode-169 Majority Element</a>
+            <a href="/2019/08/13/redis-0/">redis-0</a>
           </li>
         
           <li>
-            <a href="/2019/08/01/leetcode-709/">leetcode-709 To Lower Case</a>
+            <a href="/2019/08/11/leetcode-661/">leetcode-661 Image Smoother</a>
           </li>
         
           <li>
-            <a href="/2019/08/01/stl-vector/">stl-vector</a>
+            <a href="/2019/08/10/mysql-1/">mysql-1</a>
           </li>
         
           <li>
-            <a href="/2019/08/01/stl-queue/">stl-queue</a>
+            <a href="/2019/08/10/mysql-0/">mysql-0</a>
           </li>
         
       </ul>

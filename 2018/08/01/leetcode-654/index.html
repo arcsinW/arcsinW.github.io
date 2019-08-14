@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>leetcode-654 | X</title>
+  <title>leetcode-654 Maximum Binary Tree | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="654. Maximum Binary Tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-654">
+<meta property="og:title" content="leetcode-654 Maximum Binary Tree">
 <meta property="og:url" content="http://yoursite.com/2018/08/01/leetcode-654/index.html">
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="654. Maximum Binary Tree">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-08T04:38:38.409Z">
+<meta property="og:updated_time" content="2019-08-12T02:10:40.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-654">
+<meta name="twitter:title" content="leetcode-654 Maximum Binary Tree">
 <meta name="twitter:description" content="654. Maximum Binary Tree">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode-654
+      leetcode-654 Maximum Binary Tree
     </h1>
   
 
@@ -88,23 +88,19 @@
       
         <p>654. Maximum Binary Tree</p>
 <a id="more"></a>
-<blockquote>
-<p>Given an integer array with no duplicates. A maximum tree building on this array is defined as follow:</p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an integer array with no duplicates. A maximum tree building on this array is defined as follow:</p>
 <ol>
 <li>The root is the maximum number in the array.</li>
 <li>The left subtree is the maximum tree constructed from left part subarray divided by the maximum number.</li>
 <li>The right subtree is the maximum tree constructed from right part subarray divided by the maximum number.<br>Construct the maximum tree by the given array and output the root node of this tree.</li>
 </ol>
-<p>Example 1:</p>
-</blockquote>
+<p><strong>Example 1:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,2,1,6,0,5]</span><br><span class="line">Output: return the tree root node representing the following tree:</span><br><span class="line"></span><br><span class="line">      6</span><br><span class="line">    /   \</span><br><span class="line">   3     5</span><br><span class="line">    \    /</span><br><span class="line">     2  0</span><br><span class="line">       \</span><br><span class="line">        1</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Note:</p>
+<p><strong>Note:</strong></p>
 <ol>
 <li>The size of the given array will be in the range [1,1000].</li>
 </ol>
-</blockquote>
-<p>最大树：<br>1.根节点是数组中最大值<br>2.左子树是数组中最大值左边部分形成的最大树<br>3.右子树是数组中最大值右边部分形成的最大树</p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>最大树：<br>1.根节点是数组中最大值<br>2.左子树是数组中最大值左边部分形成的最大树<br>3.右子树是数组中最大值右边部分形成的最大树</p>
 <p>看到题就想到了递归</p>
 <p><code>nums</code>的最大数将<code>nums</code>分成了两部分，这两部分作为参数继续调用<code>constructMaximumBinaryTree</code>方法， 把结果拼成一棵二叉树就行了</p>
 <p>代码如下</p>
@@ -112,16 +108,16 @@
 <p>再看看leetcode上其他人的代码</p>
 <p>只需遍历一次</p>
 <p><code>node</code>指向当前最大的节点，也就是根节点</p>
-<p>先把<code>node</code>设为<code>nums</code>的第一个元素，从<code>nums</code>的第二个元素（设为<code>tm</code>p）开始遍历</p>
-<p>如果<code>tmp</code>比当前的<code>node</code>节点大，就将当前的<code>node</code>节点作为新的根节点的左节点，<code>node</code>指向新的根节点</p>
-<p>如果<code>tmp</code>比当前的<code>node</code>节点小，从当前的<code>node</code>节点的右子树找到第一个比<code>tmp</code>大的节点</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> it = nums.begin();</span><br><span class="line">    TreeNode* node = <span class="keyword">new</span> TreeNode(*it);</span><br><span class="line">    TreeNode* tmp = <span class="literal">NULL</span>;</span><br><span class="line">    TreeNode* t = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>( ++it; it != nums.end(); ++it)&#123;</span><br><span class="line">        <span class="keyword">if</span> (*it &gt; node-&gt;val)&#123;</span><br><span class="line">            tmp = node;</span><br><span class="line">            node = <span class="keyword">new</span> TreeNode(*it);</span><br><span class="line">            node-&gt;left = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            tmp = <span class="keyword">new</span> TreeNode(*it);</span><br><span class="line">            t = node;</span><br><span class="line">            <span class="keyword">while</span>(t-&gt;right &amp;&amp; t-&gt;right-&gt;val &gt; tmp-&gt;val)</span><br><span class="line">                t = t-&gt;right;</span><br><span class="line">            tmp-&gt;left = t-&gt;right;</span><br><span class="line">            t-&gt;right = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先把<code>node</code>设为<code>nums</code>的第一个元素，从<code>nums</code>的下一个元素(<code>*it</code>)开始遍历</p>
+<p>如果<code>*it</code>比当前的<code>node</code>节点大，就将当前的<code>node</code>节点作为新的根节点的左节点，<code>node</code>指向新的根节点，<code>tmp</code>指向以前的<code>根节点</code></p>
+<p>如果<code>*it</code>比当前的<code>node</code>节点小，从当前的<code>node</code>节点的右子树找到最后一个比<code>tmp</code>大的节点</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> it = nums.begin();</span><br><span class="line">    TreeNode* node = <span class="keyword">new</span> TreeNode(*it);</span><br><span class="line">    TreeNode* tmp = <span class="literal">NULL</span>;</span><br><span class="line">    TreeNode* t = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">for</span>( ++it; it != nums.end(); ++it)&#123;</span><br><span class="line">        <span class="keyword">if</span> (*it &gt; node-&gt;val)&#123;</span><br><span class="line">            tmp = node;</span><br><span class="line">            node = <span class="keyword">new</span> TreeNode(*it);</span><br><span class="line">            node-&gt;left = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            tmp = <span class="keyword">new</span> TreeNode(*it);</span><br><span class="line">            t = node;</span><br><span class="line">            <span class="keyword">while</span>(t-&gt;right &amp;&amp; t-&gt;right-&gt;val &gt; tmp-&gt;val) <span class="comment">// 从node的右边找到最后一个大于tmp的`节点`</span></span><br><span class="line">                t = t-&gt;right;</span><br><span class="line">            tmp-&gt;left = t-&gt;right;</span><br><span class="line">            t-&gt;right = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">3 2 1 6 0 5</span><br><span class="line"></span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">2在3的右边，所以在右子树，1也是同理</span><br><span class="line">3</span><br><span class="line"> \</span><br><span class="line">  2</span><br><span class="line">   \</span><br><span class="line">    1</span><br><span class="line"></span><br><span class="line">6比3大，3，2，1都在6的左边</span><br><span class="line">    6</span><br><span class="line">   /</span><br><span class="line">  3</span><br><span class="line">   \</span><br><span class="line">    2</span><br><span class="line">     \</span><br><span class="line">      1</span><br><span class="line"></span><br><span class="line">0在6的右边且比0小</span><br><span class="line">    6</span><br><span class="line">   / \</span><br><span class="line">  3   0</span><br><span class="line">   \</span><br><span class="line">    2</span><br><span class="line">     \</span><br><span class="line">      1</span><br><span class="line"></span><br><span class="line">插入5的比较关键，先从根节点6开始向右边找到最后一个比5小的数，也就是0，把0变成5的左节点，再将5变成6的右节点</span><br><span class="line"></span><br><span class="line">     6</span><br><span class="line">   /   \</span><br><span class="line">  3     5</span><br><span class="line">   \   /</span><br><span class="line">    2 0</span><br><span class="line">     \</span><br><span class="line">      1</span><br><span class="line"></span><br><span class="line">多举个例子表明是要找的是最后一个比要插入的值大的节点</span><br><span class="line"></span><br><span class="line">8 6 4 5</span><br><span class="line"></span><br><span class="line">    8</span><br><span class="line">     \</span><br><span class="line">      6</span><br><span class="line">       \</span><br><span class="line">        4</span><br><span class="line"></span><br><span class="line">接下来插入5，根节点8的右子树中最后一个比5大的节点是6，所以5要为6的右节点（最大树中越高的节点越大）</span><br><span class="line">    8</span><br><span class="line">     \</span><br><span class="line">      6   5</span><br><span class="line">       \ /</span><br><span class="line">        4  </span><br><span class="line"></span><br><span class="line">    8</span><br><span class="line">     \</span><br><span class="line">      6</span><br><span class="line">       \</span><br><span class="line">        5</span><br><span class="line">       /</span><br><span class="line">      4</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/leetcode-654/" data-id="cjz40ji9s0021hkg270huf24v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/01/leetcode-654/" data-id="cjzanoxij003jiwg29g66h2rh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,23 +189,23 @@
       <ul>
         
           <li>
-            <a href="/2019/08/08/leetcode-482/">leetcode-482 License Key Formatting</a>
+            <a href="/2019/08/14/redis-1/">redis-1</a>
           </li>
         
           <li>
-            <a href="/2019/08/05/leetcode-169/">leetcode-169 Majority Element</a>
+            <a href="/2019/08/13/redis-0/">redis-0</a>
           </li>
         
           <li>
-            <a href="/2019/08/01/leetcode-709/">leetcode-709 To Lower Case</a>
+            <a href="/2019/08/11/leetcode-661/">leetcode-661 Image Smoother</a>
           </li>
         
           <li>
-            <a href="/2019/08/01/stl-vector/">stl-vector</a>
+            <a href="/2019/08/10/mysql-1/">mysql-1</a>
           </li>
         
           <li>
-            <a href="/2019/08/01/stl-queue/">stl-queue</a>
+            <a href="/2019/08/10/mysql-0/">mysql-0</a>
           </li>
         
       </ul>
