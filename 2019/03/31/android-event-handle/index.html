@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="Android事件处理">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T12:21:02.432Z">
+<meta property="og:updated_time" content="2019-08-19T10:31:33.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android-event-handle">
 <meta name="twitter:description" content="Android事件处理">
@@ -99,7 +99,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EventTest</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">OnCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="keyword">this</span>.setContentView(R.layout.main);</span><br><span class="line"></span><br><span class="line">        Button btn = (Button)findViewById(R.id.button);</span><br><span class="line">        btn.setOnclickListener()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">MyClickListener</span> <span class="keyword">implements</span> <span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span> <span class="params">(View view)</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"onClick"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>外部类<br>将<code>MyClickListener</code>独立出来，这种方式并不方便<br>访问layout中的元素会变麻烦</p>
 <p>匿名内部类<br>少写一些代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">btn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">btn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>使用Activity作为事件监听器<br>Activity要实现对应的接口，事件处理函数可以直接写在Activity里</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EventTest</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">OnCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        <span class="keyword">this</span>.setContentView(R.layout.main);</span><br><span class="line"></span><br><span class="line">        Button btn = (Button)findViewById(R.id.button);</span><br><span class="line">        btn.setOnclickListener()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"onClick"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>xml中指定事件处理函数<br>最方便的做法<br>但事件处理函数的函数签名有要求，根据绑定的事件而定，比如<code>Button</code>的<code>onClick</code>要求返回类型为<code>void</code>，参数为<code>View</code></p>
@@ -116,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/android-event-handle/" data-id="cjzanoxe7000ciwg29c5sccvs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/android-event-handle/" data-id="cjzktwcpx000b0cg2hmsj4umq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,6 +188,14 @@
       <ul>
         
           <li>
+            <a href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/21/c-pointer/">c-pointer</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/14/redis-1/">redis-1</a>
           </li>
         
@@ -197,14 +205,6 @@
         
           <li>
             <a href="/2019/08/11/leetcode-661/">leetcode-661 Image Smoother</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/10/mysql-1/">mysql-1</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/10/mysql-0/">mysql-0</a>
           </li>
         
       </ul>
