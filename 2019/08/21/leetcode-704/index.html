@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="704. Binary Search">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-21T05:38:51.042Z">
+<meta property="og:updated_time" content="2019-08-21T06:16:03.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-704 Binary Search">
 <meta name="twitter:description" content="704. Binary Search">
@@ -102,11 +102,26 @@
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>从一个list里找出一个数，不存在则返回-1</p>
 <p>使用二分查找，每次将问题的规模减半</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> right = nums.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target)</span><br><span class="line">        &#123;</span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">        &#123;</span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>leetcode中最快的方法是调用STL中的<code>lower_bound</code>函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">ForwardIterator</span>, <span class="title">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">ForwardIterator</span> <span class="title">lower_bound</span> (<span class="title">ForwardIterator</span> <span class="title">first</span>, <span class="title">ForwardIterator</span> <span class="title">last</span>, <span class="title">const</span> <span class="title">T</span>&amp; <span class="title">val</span>);</span></span><br></pre></td></tr></table></figure>
+<p><code>lower_bound</code>在[<code>first</code>, <code>last</code>)的左闭右开区间寻找第一个不小于<code>val</code>的元素，采用了二分查找的思想</p>
+<blockquote>
+<p>Returns an iterator pointing to the first element in the range [first,last) which does not compare less than val.</p>
+</blockquote>
+<p>在这个区间找到满足条件的就返回指向这个值的iterator, 否则返回<code>last</code>，</p>
+<blockquote>
+<p>An iterator to the lower bound of val in the range.<br>If all the element in the range compare less than val, the function returns last.</p>
+</blockquote>
+<p>由于<code>lower_bound</code>是左闭右开的搜索，最后一个值未覆盖到，好在如果没找到回直接返回<code>last</code>，对<code>lower_bound</code>返回的值判断一下是否是<code>target</code>就可以覆盖对最后一个元素的搜索</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> fast_io = []() &#123; <span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>); <span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">                                <span class="keyword">return</span> <span class="number">0</span>; &#125;();</span><br><span class="line">    <span class="keyword">auto</span> it = lower_bound(nums.begin(),nums.end(),target);</span><br><span class="line">    <span class="keyword">return</span> (it!=nums.end() &amp;&amp; *it==target) ? it-nums.begin() : <span class="number">-1</span>; <span class="comment">//这里解决了val出现在最后的产生的问题</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://www.cplusplus.com/reference/algorithm/lower_bound/" target="_blank" rel="noopener">lower_bound - C++ Reference</a></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/21/leetcode-704/" data-id="cjzktwcsl001t0cg2dskiarn4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/21/leetcode-704/" data-id="cjzkv6335001xj0g2x7lmut29" class="article-share-link">Share</a>
       
       
     </footer>

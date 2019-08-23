@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="redis的数据结构">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-14T02:48:43.914Z">
+<meta property="og:updated_time" content="2019-08-21T13:16:25.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis-0">
 <meta name="twitter:description" content="redis的数据结构">
@@ -111,13 +111,15 @@
 <p><code>RPOP</code> 删除<code>list</code>最后一个元素并返回这个元素（右边是最后一个元素）</p>
 <h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>去重的list，无序，由于是无序的所以<strong>没有</strong>srange这个命令，取而代之的是<code>SMEMBERS</code>用于返回所有的数据</p>
 <p><code>SADD</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SADD data_set &quot;aa&apos;</span><br><span class="line">SADD data_set &quot;data1&quot;</span><br></pre></td></tr></table></figure>
+<p>重复的元素会插入失败</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SADD data_set &quot;aa&quot;    // 1</span><br><span class="line">SADD data_set &quot;data1&quot; // 1</span><br><span class="line">SADD data_set &quot;aa&quot;    // 0，已经存在aa，插入失败</span><br></pre></td></tr></table></figure>
 <p><code>SREM</code> 从<code>set</code>中删除指定元素</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SREM data_set &quot;data1&quot;</span><br></pre></td></tr></table></figure>
 <p><code>SISMEMBER</code> 是否<code>set</code>中元素 1 =&gt; 是</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SISMEMBER data_set &quot;aa&quot;</span><br></pre></td></tr></table></figure>
 <p><code>SMEMBERS</code> 返回<code>set</code>所有元素</p>
 <p><code>SUNION</code> 两个或多个<code>set</code>合并并返回所有元素的列表</p>
+<p><code>SCARD</code> 返回set长度</p>
 <h2 id="zset-有序set"><a href="#zset-有序set" class="headerlink" title="zset 有序set"></a><code>zset</code> 有序set</h2><p>通过一个score来排序</p>
 <p>添加数据的时候要指定一个score，用于排序，排序是redis自动执行的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZADD superheros 1 ironman</span><br><span class="line">ZADD superheros 3 thor</span><br><span class="line">ZADD superheros 2 spiderman</span><br></pre></td></tr></table></figure>
@@ -142,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="cjzktwcyh003d0cg2f3qwnwhq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="cjzkv635u0038j0g2qb7lkx52" class="article-share-link">Share</a>
       
       
     </footer>

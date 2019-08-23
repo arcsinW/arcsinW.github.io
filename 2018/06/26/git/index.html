@@ -13,7 +13,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/06/26/git/git_1.png">
-<meta property="og:updated_time" content="2019-08-01T03:35:20.625Z">
+<meta property="og:updated_time" content="2019-08-23T12:21:41.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="摘要">
@@ -107,6 +107,8 @@
 <li>将项目与远程仓库关联</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:arcsinW/OpenHelloCDUTUWP.git</span><br></pre></td></tr></table></figure>
+<p>若要修改远程仓库的地址，可以先删除后新建，或者直接修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 先删除后新增</span><br><span class="line">git remote remove origin</span><br><span class="line">git remote add origin https://github.com/arcsinw/OpenHelloCDUTUWP.git</span><br><span class="line"></span><br><span class="line">// 直接修改</span><br><span class="line">git remote set-url origin https://github.com/arcsinw/OpenHelloCDUTUWP.git</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>提交更改</li>
 </ol>
@@ -121,40 +123,28 @@
 <p>处理好冲突后，使用<code>add</code>将该文件标记为已解决状态</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add filename</span><br></pre></td></tr></table></figure>
 <h3 id="2-4-版本控制"><a href="#2-4-版本控制" class="headerlink" title="2.4 版本控制"></a>2.4 版本控制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git rm readme.txt --cahced <span class="comment"># 将文件untrack，--cached不删除文件</span></span><br><span class="line"></span><br><span class="line">git rm readme.txt <span class="comment"># 将文件untrack并删除</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 查看提交日志</span></span><br><span class="line"></span><br><span class="line">git --no-pager <span class="built_in">log</span> <span class="comment"># log不分页</span></span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^ <span class="comment"># 回退到上一commit</span></span><br><span class="line"></span><br><span class="line">git reset --hard [commit_id] <span class="comment"># 回退到指定commit，commit_id只需写前几位，能唯一确定这个commit即可</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3. 其他操作"></a>3. 其他操作</h3><ol>
-<li>refusing to merge unrelated histories</li>
-</ol>
-<p>加上<code>--allow-unrelated-histories</code></p>
+<h2 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3. 其他操作"></a>3. 其他操作</h2><h3 id="1-refusing-to-merge-unrelated-histories"><a href="#1-refusing-to-merge-unrelated-histories" class="headerlink" title="1. refusing to merge unrelated histories"></a>1. refusing to merge unrelated histories</h3><p>加上<code>--allow-unrelated-histories</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>修改提交到远程仓库的commit信息</li>
-</ol>
-<p>查看本地仓库的log信息，找到要修改的commit之前一个commit的id</p>
+<h3 id="2-修改提交到远程仓库的commit信息"><a href="#2-修改提交到远程仓库的commit信息" class="headerlink" title="2. 修改提交到远程仓库的commit信息"></a>2. 修改提交到远程仓库的commit信息</h3><p>查看本地仓库的log信息，找到要修改的commit之前一个commit的id</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">git rebase -i [commit_id]</span><br></pre></td></tr></table></figure>
 <p>将要修改的commit信息前的pick改成edit</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend <span class="comment">#修改commit信息</span></span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br><span class="line">git push -f origin master <span class="comment">#覆盖远程仓库commit信息（也会覆盖其他人的提交，慎用-f）</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>重新添加 .gitignore</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"add .gitignore file"</span></span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>查看版本控制下的文件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>git stash</li>
-</ol>
-<p>当你想切换分支，但工作区还有未提交的代码，而这个代码还没写完不想提交，这时候可以把当前的工作状态暂时存储起来</p>
+<h3 id="3-重新添加-gitignore"><a href="#3-重新添加-gitignore" class="headerlink" title="3. 重新添加 .gitignore"></a>3. 重新添加 .gitignore</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"add .gitignore file"</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-查看版本控制下的文件"><a href="#4-查看版本控制下的文件" class="headerlink" title="4. 查看版本控制下的文件"></a>4. 查看版本控制下的文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
+<h3 id="5-git-stash"><a href="#5-git-stash" class="headerlink" title="5. git stash"></a>5. git stash</h3><p>当你想切换分支，但工作区还有未提交的代码，而这个代码还没写完不想提交，这时候可以把当前的工作状态暂时存储起来</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git stash  // 存储当前的变更</span><br><span class="line"></span><br><span class="line">git status // 工作区此时clean了</span><br><span class="line"></span><br><span class="line">git stash list // 查看所有的stash</span><br><span class="line"></span><br><span class="line">git stash apply stash@&#123;0&#125; // 恢复stash@&#123;0&#125;这个stash(由上一步获得)</span><br><span class="line"></span><br><span class="line">git stash show -p stash@&#123;0&#125; | git apply -R // 取消一个stash</span><br><span class="line"></span><br><span class="line">git stash branch testchanges // 在新分支中查看stash</span><br></pre></td></tr></table></figure>
+<h3 id="6-在Github上发起Pull-Request"><a href="#6-在Github上发起Pull-Request" class="headerlink" title="6. 在Github上发起Pull Request"></a>6. 在Github上发起Pull Request</h3><p><a href="https://www.jianshu.com/p/ac33f0295629" target="_blank" rel="noopener">GitHub 从单机到联机：玩转 Pull Request</a></p>
+<h2 id="4-一些问题的解决方案"><a href="#4-一些问题的解决方案" class="headerlink" title="4. 一些问题的解决方案"></a>4. 一些问题的解决方案</h2><h3 id="4-1-fatal-sha1-file-‘‘-write-error-Broken-pipe"><a href="#4-1-fatal-sha1-file-‘‘-write-error-Broken-pipe" class="headerlink" title="4.1 fatal: sha1 file ‘‘ write error: Broken pipe"></a>4.1 fatal: sha1 file ‘<stdout>‘ write error: Broken pipe</stdout></h3><p>与ssh有关，将remote暂时换成http版本的就能提交成功<br>网上说可以修改服务器上ssh的设置来解决，我没有测试过</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><a href="https://git-scm.com/docs/" target="_blank" rel="noopener">https://git-scm.com/docs/</a></li>
 <li><a href="https://www.jianshu.com/p/94e79e17baf6" target="_blank" rel="noopener">git提交commit后push到远程仓库，如何修改commit信息</a></li>
+<li><a href="https://blog.csdn.net/qq_31803503/article/details/88323527" target="_blank" rel="noopener">git上传远程库错误“fatal: sha1 file ‘’ write error: Broken pipe”解决方案</a></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjzktwcqr000m0cg20gzh5mg3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="cjzkv630f000hj0g2k66vws5s" class="article-share-link">Share</a>
       
       
     </footer>

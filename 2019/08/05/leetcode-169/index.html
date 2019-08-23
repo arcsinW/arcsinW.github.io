@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="169. Majority Element">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-05T03:04:01.831Z">
+<meta property="og:updated_time" content="2019-08-22T07:49:46.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-169 Majority Element">
 <meta name="twitter:description" content="169. Majority Element">
@@ -114,6 +114,7 @@
 <p>直接对vector删除元素很耗时，使用stack来模拟这个删除</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; tony;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> a : nums)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (tony.empty() || a == tony.top())</span><br><span class="line">        &#123;</span><br><span class="line">            tony.push(a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            tony.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tony.top();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Runtime: 8 ms, faster than 99.91% of C++ online submissions for Majority Element.</span><br><span class="line"></span><br><span class="line">Memory Usage: 11.7 MB, less than 5.43% of C++ online submissions for Majority Element.</span><br></pre></td></tr></table></figure>
+<p>第四种方法，分治法，先把数组一分为2，从左右两边获取majority element候选，最终的结果就从这两个候选产生，计算这两个候选出现的次数，出现次数多的为最终的majority element（题目已假定majority element一定存在）</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><a href="https://www.geeksforgeeks.org/c-qsort-vs-c-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/c-qsort-vs-c-sort/</a></li>
 </ol>
@@ -121,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/05/leetcode-169/" data-id="cjzktwcrh000x0cg2ub2evwe1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/05/leetcode-169/" data-id="cjzkv631i000zj0g22ptp4q2m" class="article-share-link">Share</a>
       
       
     </footer>
