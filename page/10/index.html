@@ -62,6 +62,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-the-method-of-programming-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/06/the-method-of-programming-1/" class="article-date">
+  <time datetime="2018-08-06T13:16:54.000Z" itemprop="datePublished">2018-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/06/the-method-of-programming-1/">the-method-of-programming-1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>1.1的举一反三</p>
+<p>单词翻转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input：&quot;I am a student.&quot;</span><br><span class="line">Output: &quot;student. a am I&quot;</span><br></pre></td></tr></table></figure>
+<p>尝试使用<code>三步反转</code>，按空格分词，先对每个词反转再整体反转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I am a student.</span><br><span class="line">I ma a .tneduts</span><br><span class="line">student. a am I</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">reverseWord</span><span class="params">(<span class="built_in">string</span> str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">stringstream</span> <span class="title">ss</span><span class="params">(str)</span></span>;</span><br><span class="line">    <span class="built_in">string</span> tmp;</span><br><span class="line">    <span class="built_in">string</span> result;</span><br><span class="line">    ss &gt;&gt; tmp;</span><br><span class="line">    reverse(tmp.begin(), tmp.end());</span><br><span class="line">    result += tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (ss &gt;&gt; tmp)</span><br><span class="line">    &#123;</span><br><span class="line">        reverse(tmp.begin(), tmp.end());</span><br><span class="line">        result += <span class="string">" "</span>;</span><br><span class="line">        result += tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    reverse(result.begin(), result.end());</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.4</p>
+<p>in a word, 临时变量溢出</p>
+<p>计算机对int溢出的处理</p>
+<p>比如一个4字节的int类型<code>1052254545</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">1052254545</span>;</span><br><span class="line"><span class="keyword">int</span> m = n * <span class="number">10</span>; <span class="comment">//1932610858</span></span><br></pre></td></tr></table></figure>
+<p>正常情况下<code>m</code>应该为<code>10522545450</code>,但这个数的二进制位有34位，int在这里只能保存32位，所以只会保留后32位</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//10522545450</span></span><br><span class="line">‭<span class="number">10</span> <span class="number">0111</span> <span class="number">0011</span> <span class="number">0011</span> <span class="number">0001</span> <span class="number">0100</span> <span class="number">1101</span> <span class="number">0010</span> <span class="number">1010</span>‬</span><br><span class="line"></span><br><span class="line"><span class="comment">//1932610858</span></span><br><span class="line">   <span class="number">0111</span> <span class="number">0011</span> <span class="number">0011</span> <span class="number">0001</span> <span class="number">0100</span> <span class="number">1101</span> <span class="number">0010</span> <span class="number">1010</span>‬</span><br></pre></td></tr></table></figure>
+<p>1.6 Manacher算法</p>
+<p><code>12212321</code></p>
+<p><code>$#1#2#2#1#2#3#2#1#</code></p>
+<p>S[i] # 1 # 2 # 2 # 1 # 2 # 3 # 2 # 1 #<br>P[i] 1 2 1 2 5 2 1 4 1 2 1 6 1 2 1 2 1</p>
+<p>max(P[i] - 1)是原字符串中最长回文子串的长度</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/06/the-method-of-programming-1/" data-id="cjzv492ta003pwkg2735oxb1y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-867" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/05/leetcode-867/" class="article-date">
@@ -93,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/05/leetcode-867/" data-id="cjzkv633v002aj0g2n45j8dhu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/05/leetcode-867/" data-id="cjzv492rv002gwkg2hxors31t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/04/leetcode-728/" data-id="cjzkv633a001zj0g28iviehr1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/04/leetcode-728/" data-id="cjzv492r40020wkg2mi8bd5di" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/03/leetcode-852/" data-id="cjzkv633u0029j0g2gaxh961k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/03/leetcode-852/" data-id="cjzv492rf0026wkg2i6e0b38k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/02/leetcode-617/" data-id="cjzkv632h001nj0g2ph3iquck" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/02/leetcode-617/" data-id="cjzv492qv001vwkg26x3bkku2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/leetcode-654/" data-id="cjzkv632j001oj0g209x7p2op" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/01/leetcode-654/" data-id="cjzv492o9001mwkg2i35q4xl8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -320,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/01/codeigniter-1/" data-id="cjzkv6306000bj0g2nqx0ta93" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/01/codeigniter-1/" data-id="cjzv492mg000cwkg28f9992g6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -361,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjzkv6341002cj0g2x4vk032b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/31/leetcode-876/" data-id="cjzv492rs002ewkg2wb3x0tuu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/30/leetcode-461/" data-id="cjzkv631r0017j0g2hhrfhslz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/30/leetcode-461/" data-id="cjzv492nz001fwkg2tz4ylpxe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -537,52 +592,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjzkv62zq0006j0g2xf9wov5i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cjzv492mh000dwkg2zmm0wppq" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/25/leetcode-1/" class="article-date">
-  <time datetime="2018-07-25T05:31:53.000Z" itemprop="datePublished">2018-07-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/leetcode-1/">leetcode-1 Two Sum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1. Two Sum</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/07/25/leetcode-1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjzkv630x000rj0g2cu0v8bjs" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
-
     </footer>
   </div>
   
@@ -638,6 +650,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/28/leetcode-1137/">leetcode-1137 N-th Tribonacci Number</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
           </li>
         
@@ -651,10 +667,6 @@
         
           <li>
             <a href="/2019/08/13/redis-0/">redis-0</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/11/leetcode-661/">leetcode-661 Image Smoother</a>
           </li>
         
       </ul>

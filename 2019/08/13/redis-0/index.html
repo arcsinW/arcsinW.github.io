@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="redis的数据结构">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-21T13:16:25.170Z">
+<meta property="og:updated_time" content="2019-08-26T12:22:41.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis-0">
 <meta name="twitter:description" content="redis的数据结构">
@@ -88,7 +88,7 @@
       
         <p>redis的数据结构</p>
 <a id="more"></a>
-<p>通过key获取或设置value</p>
+<h2 id="key-value"><a href="#key-value" class="headerlink" title="key-value"></a>key-value</h2><p>通过key获取或设置value</p>
 <p>SET key value</p>
 <p>GET key</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SET server:name <span class="string">"fido"</span></span><br><span class="line"></span><br><span class="line">GET server:name</span><br></pre></td></tr></table></figure>
@@ -120,23 +120,45 @@
 <p><code>SMEMBERS</code> 返回<code>set</code>所有元素</p>
 <p><code>SUNION</code> 两个或多个<code>set</code>合并并返回所有元素的列表</p>
 <p><code>SCARD</code> 返回set长度</p>
-<h2 id="zset-有序set"><a href="#zset-有序set" class="headerlink" title="zset 有序set"></a><code>zset</code> 有序set</h2><p>通过一个score来排序</p>
+<h2 id="zset-有序set"><a href="#zset-有序set" class="headerlink" title="zset (有序set)"></a>zset (有序set)</h2><p>通过一个score来排序</p>
 <p>添加数据的时候要指定一个score，用于排序，排序是redis自动执行的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZADD superheros 1 ironman</span><br><span class="line">ZADD superheros 3 thor</span><br><span class="line">ZADD superheros 2 spiderman</span><br></pre></td></tr></table></figure>
 <p><code>ZRANGE key start stop [WITHSCORES]</code><br>返回<code>key</code>中[start stop] 的数据，按<code>score</code>递增排序,递减排序用<code>ZREVRANGE</code></p>
 <p>加上<code>withscores</code>后会将score也输出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; zrange superheros 0 -1</span><br><span class="line">1) &quot;ironman&quot;</span><br><span class="line">2) &quot;spiderman&quot;</span><br><span class="line">3) &quot;thor&quot;</span><br><span class="line"></span><br><span class="line">&gt; zrange superheros 0 -1 withscores</span><br><span class="line">1) &quot;ironman&quot;</span><br><span class="line">2) 1.0</span><br><span class="line">3) &quot;spiderman&quot;</span><br><span class="line">4) 2.0</span><br><span class="line">5) &quot;thor&quot;</span><br><span class="line">6) 3.0</span><br></pre></td></tr></table></figure>
 <p><code>ZREM</code><br>删除<code>zset</code>中一个或多个成员，不存在的被忽略<br>返回成功移除的数量</p>
-<h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HSET key field value</span><br><span class="line">HSET key field1 value1</span><br><span class="line">HMSET key field1 value1 field2 value2 field3 value3</span><br></pre></td></tr></table></figure>
+<h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><p><code>HSET</code> key field value</p>
+<p>设置key中给定域field的值为value</p>
+<p><code>HMSET</code> key field value field2 value2</p>
+<p>同时设置key的多个域</p>
+<p><code>HGET</code> key field</p>
+<p>获取key的某个域的值</p>
+<p><code>HMGET</code> key field field2</p>
+<p>获取key的多个域的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt; HSET key field value</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; HSET key field1 value1</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; HGET key field</span><br><span class="line">&quot;value&quot;</span><br><span class="line"></span><br><span class="line">HMSET key field1 value1 field2 value2 field3 value3</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">&gt; HMGET key field1 field2 filed3 field4</span><br><span class="line">1) &quot;value1&quot;</span><br><span class="line">2) &quot;value2&quot;</span><br><span class="line">3) &quot;value3&quot;</span><br><span class="line">4) (nil)</span><br></pre></td></tr></table></figure>
+<p><code>HSET</code>的返回值</p>
 <blockquote>
 <p>Sets field in the hash stored at key to value. If key does not exist, a new key holding a hash is created. If field already exists in the hash, it is overwritten.</p>
 </blockquote>
-<p>0 变量已存在，值已更新<br>1 变量不存在，已经创建</p>
+<p>0 变量已存在，值已更新</p>
+<p>1 变量不存在，已经创建</p>
 <p>理解为key指向了一个对象，这个对象里都是键值对</p>
 <p><code>HINCRBY</code> 为field的value增加指定数值，原子操作，如果field不存在将会新增</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HSET key age 3</span><br><span class="line">HINCRBY key age 2 # age变成5</span><br><span class="line"></span><br><span class="line">HINCRBY key num 1 # num被新建，值设置为1</span><br></pre></td></tr></table></figure>
 <p><code>HDEL</code> 删除key的某个field</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HDEL key age</span><br></pre></td></tr></table></figure>
+<p><code>HGETALL</code> 获取key的所有field和value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; HGETALL key</span><br><span class="line">1) &quot;field&quot;</span><br><span class="line">2) &quot;value&quot;</span><br><span class="line">3) &quot;field2&quot;</span><br><span class="line">4) &quot;value2&quot;</span><br></pre></td></tr></table></figure>
+<p><code>HLEN</code> key</p>
+<p>获取给定key中域的数量</p>
+<p><code>HEXISTS</code> key field</p>
+<p>给定域中是否存在域<code>field</code>，返回0（不存在）或1（存在）</p>
+<p><code>HKEYS</code> key</p>
+<p>类似keys，返回key中所有field</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hkeys key</span><br><span class="line">1) &quot;field&quot;</span><br><span class="line">2) &quot;field2&quot;</span><br></pre></td></tr></table></figure>
+<p><code>HVALS</code> key</p>
+<p>返回key中所有value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hvals key</span><br><span class="line">1) &quot;value&quot;</span><br><span class="line">2) &quot;value2&quot;</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><a href="http://try.redis.io/" target="_blank" rel="noopener">Try Redis</a></li>
 </ol>
@@ -144,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="cjzkv635u0038j0g2qb7lkx52" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="cjzv492t7003mwkg2vwit6vs9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,6 +238,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/28/leetcode-1137/">leetcode-1137 N-th Tribonacci Number</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
           </li>
         
@@ -229,10 +255,6 @@
         
           <li>
             <a href="/2019/08/13/redis-0/">redis-0</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/11/leetcode-661/">leetcode-661 Image Smoother</a>
           </li>
         
       </ul>
