@@ -62,6 +62,141 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-bit-operator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/27/bit-operator/" class="article-date">
+  <time datetime="2018-07-27T15:51:53.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/27/bit-operator/">bit-operator</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>0.基础</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center">&amp;</th>
+<th style="text-align:center">\</th>
+<th style="text-align:center"></th>
+<th>^</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>1.变量交换（无临时变量）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">0x10111101</span>;</span><br><span class="line">y = <span class="number">0x00101110</span>;</span><br><span class="line"></span><br><span class="line">x = x ^ y;</span><br><span class="line">y = x ^ y;</span><br><span class="line">x = x ^ y;</span><br></pre></td></tr></table></figure>
+<p>(x ^ y) ^ y = x</p>
+<blockquote>
+<p>Poor at exploiting instruction-level parallelism(ILP)</p>
+</blockquote>
+<p>2.取两数的较小值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x &lt; y)</span><br><span class="line">&#123;</span><br><span class="line">    r = x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    r = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">r = (x &lt; y) ? x : y;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>A mispredicted branch empties the processor pipeline<br>• ~16 cycles on the cloud facility’s Intel Core i7’s.<br>The compiler might be smart enough to avoid the<br>unpredictable branch, but maybe not.</p>
+</blockquote>
+<p>无分支获取取最小值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = y ^ ((x ^ y) &amp; -(x &lt; y));</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>x &lt; y, -(x &lt; y) = -1, -1的二进制的所有位为1，(x ^ y) &amp; -1 = (x ^ y), y ^ (x ^ y) = x</p>
+</li>
+<li><p>x &gt; y, -(x &lt; y) = 0, (x ^ y) &amp; 0 = 0, y ^ 0 = y</p>
+</li>
+</ul>
+<p>3.取模(x + y) mod n</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = (x + y) % n;</span><br><span class="line"></span><br><span class="line">z = x + y;</span><br><span class="line">r = (z &lt; n) ? z : z-n;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">z = x + y;</span><br><span class="line">r = z - (n &amp; -(z &gt;= n)); <span class="comment">//这里用到了上面取较小值类似的思路</span></span><br></pre></td></tr></table></figure>
+<p>4.找到二进制中最后一个1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = x &amp; (-x);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">0010000001010000</td>
+</tr>
+<tr>
+<td style="text-align:center">-x</td>
+<td style="text-align:center">1101111110110000</td>
+</tr>
+<tr>
+<td style="text-align:center">x &amp; (-x)</td>
+<td style="text-align:center">0000000000010000</td>
+</tr>
+</tbody>
+</table>
+<p>5.获取二进制中最后一个1的位置</p>
+<p>可以从右向左看最后一位是不是1，不是就右移一位</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOfLastOne</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; <span class="number">1</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><p><a href="https://www.youtube.com/watch?v=xc9DDSbf0NQ&amp;app=desktop" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (Video)</a></p>
+</li>
+<li><p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2010/video-lectures/lecture-2-bit-hacks/MIT6_172F10_lec02.pdf" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (PPT)</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="ck024o29n000a34g2t8945565" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/25/leetcode-1/" class="article-date">
@@ -93,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="cjzv492ms000lwkg2acep45zd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/25/leetcode-1/" data-id="ck024o2ac000o34g2nkfevfmg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
@@ -136,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="cjzv492o7001lwkg2bs1ayjob" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-520/" data-id="ck024o2bq001k34g26f4jw928" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="cjzv492ry002iwkg28w4fxvce" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/24/leetcode-856/" data-id="ck024o2dq002i34g2v6ufoxyb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cjzv492mb0009wkg22ka7kqyi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="ck024o29d000634g2zg4db221" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cjzv492sv003bwkg29c1s5ces" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="ck024o2gd003c34g2yof8amr1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cjzv492r90023wkg27rbp4gx5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="ck024o2cv002934g2j2m2revi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cjzv492oa001nwkg23xubgpq5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="ck024o2bw001n34g2p0v8og4a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="cjzv492s4002nwkg2oeinre02" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode/" data-id="ck024o2ec002q34g2p84oa76u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -417,48 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cjzv492r80022wkg261vvz8pz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-807" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/19/leetcode-807/" class="article-date">
-  <time datetime="2018-07-19T10:13:16.000Z" itemprop="datePublished">2018-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/leetcode-807/">leetcode_807</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>807. Max Increase to Keep City Skyline</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/07/19/leetcode-807/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="cjzv492rl0029wkg2x8gnvd0x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="ck024o2co002534g2hznyjwdo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +597,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -514,6 +608,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/09/02/leetcode-470/">leetcode-470 Implement Rand10() Using Rand7()</a>
+          </li>
         
           <li>
             <a href="/2019/08/28/leetcode-1137/">leetcode-1137 N-th Tribonacci Number</a>
@@ -529,10 +627,6 @@
         
           <li>
             <a href="/2019/08/14/redis-1/">redis-1</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/13/redis-0/">redis-0</a>
           </li>
         
       </ul>
