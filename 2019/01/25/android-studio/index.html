@@ -5,14 +5,22 @@
   
   <title>android-studio | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="2019年Android Studio配置指北 Android Studio是我学习Android开发路上的第一块绊脚石，新建一个项目，一行代码没动，直接编译不起来 本文讲解在9102年如何在国内网络不通畅的情况下流畅的使用Android Studio  关闭代理  网上能搜索出一堆通过增加国内镜像站的代理来使下载SDK的速度飞快，然而我一个都用不了，建议不要使用代理   改hosts  dl.g">
+<meta property="og:type" content="article">
 <meta property="og:title" content="android-studio">
 <meta property="og:url" content="http://yoursite.com/2019/01/25/android-studio/index.html">
 <meta property="og:site_name" content="X">
+<meta property="og:description" content="2019年Android Studio配置指北 Android Studio是我学习Android开发路上的第一块绊脚石，新建一个项目，一行代码没动，直接编译不起来 本文讲解在9102年如何在国内网络不通畅的情况下流畅的使用Android Studio  关闭代理  网上能搜索出一堆通过增加国内镜像站的代理来使下载SDK的速度飞快，然而我一个都用不了，建议不要使用代理   改hosts  dl.g">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-25T05:26:36.063Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/25/android-studio/android-studio/noproxy.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/25/android-studio/android-studio/sdk_update_sites.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/25/android-studio/android-studio/sdk_platforms.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/25/android-studio/android-studio/enable_maven.png">
+<meta property="og:updated_time" content="2019-09-24T03:16:52.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android-studio">
+<meta name="twitter:description" content="2019年Android Studio配置指北 Android Studio是我学习Android开发路上的第一块绊脚石，新建一个项目，一行代码没动，直接编译不起来 本文讲解在9102年如何在国内网络不通畅的情况下流畅的使用Android Studio  关闭代理  网上能搜索出一堆通过增加国内镜像站的代理来使下载SDK的速度飞快，然而我一个都用不了，建议不要使用代理   改hosts  dl.g">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/25/android-studio/android-studio/noproxy.png">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -83,11 +91,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>2019年Android Studio配置指北</p>
+<p>Android Studio是我学习Android开发路上的第一块绊脚石，新建一个项目，一行代码没动，直接编译不起来</p>
+<p>本文讲解在9102年如何在国内网络不通畅的情况下流畅的使用Android Studio</p>
+<ol>
+<li>关闭代理</li>
+</ol>
+<p>网上能搜索出一堆通过增加国内镜像站的代理来使下载SDK的速度飞快，然而我一个都用不了，建议<strong>不要使用代理</strong></p>
+<p><img src="android-studio/noproxy.png" alt="noproxy.png"></p>
+<ol start="2">
+<li>改hosts</li>
+</ol>
+<p><code>dl.google.com</code>的DNS无法解析，这是导致很多问题的元凶，通过手动在hosts中增加域名和ip的映射来解决这个问题</p>
+<p>在<br><a href="http://ping.chinaz.com/dl.google.com" target="_blank" rel="noopener">多个地点ping[]服务器-网站测速-站长工具</a>中找到一个能在本机ping通的延迟最小的ip，加到本机的hosts中</p>
+<ol start="3">
+<li>Android SDK</li>
+</ol>
+<p>前面的都配置好后，就可以直接在线下载Android SDK了</p>
+<p><img src="android-studio/sdk_update_sites.png" alt="sdk_update_sites.png"><br><img src="android-studio/sdk_platforms.png" alt="sdk_platforms.png"></p>
+<ol>
+<li><p>Gradle</p>
+<p>Gradle本身是可以直接下载下来的，不需要设置</p>
+<p>4.1 使用aliyun的maven仓库</p>
+</li>
+</ol>
+<p><img src="android-studio/enable_maven.png" alt="enable_maven.png"></p>
+<p>修改Project的<code>build.gradle</code>文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">       <span class="comment">// 添加阿里云 maven 地址</span></span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span> &#125;</span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/jcenter'</span> &#125;</span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/google'</span> &#125;</span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin'</span> &#125;</span><br><span class="line"></span><br><span class="line">       google()</span><br><span class="line">       <span class="comment">// jcenter()</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">allprojects</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        <span class="comment">// 添加阿里云 maven 地址</span></span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span> &#125;</span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/jcenter'</span> &#125;</span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/google'</span> &#125;</span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin'</span> &#125;</span><br><span class="line"></span><br><span class="line">        google()</span><br><span class="line">        <span class="comment">// jcenter()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>C:\Users\{用户名}\.gradle\gradle.properties</code>文件中如果设置了gradle的全局代理也要注释掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemProp.http.proxyHost=mirrors.neusoft.edu.cn</span><br><span class="line"># systemProp.http.proxyPort=80</span><br></pre></td></tr></table></figure>
+<p>不要把时间浪费在折腾IDE上，能用就别浪费时间更新了，学的是Android开发，不是IDE填坑</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="ck024o295000334g269azezfi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="ck0x9tbek0001k8g2fehbey9f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,6 +198,14 @@
       <ul>
         
           <li>
+            <a href="/2019/09/05/mysql-3/">mysql-3</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/02/linux-account/">linux-account</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/02/leetcode-470/">leetcode-470 Implement Rand10() Using Rand7()</a>
           </li>
         
@@ -168,14 +215,6 @@
         
           <li>
             <a href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/21/c-pointer/">c-pointer</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/14/redis-1/">redis-1</a>
           </li>
         
       </ul>

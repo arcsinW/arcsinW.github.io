@@ -62,6 +62,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/02/opencv/" class="article-date">
+  <time datetime="2018-07-02T12:03:42.000Z" itemprop="datePublished">2018-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/02/opencv/">opencv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>scaleFactor</code> – Parameter specifying how much the image size is reduced at each image scale.</p>
+</li>
+<li><p><code>minNeighbors</code> – Parameter specifying how many neighbors each candidate rectangle should have to retain it.</p>
+</li>
+<li><p><code>flags</code> – Parameter with the same meaning for an old cascade as in the function cvHaarDetectObjects. It is not used for a new cascade.</p>
+</li>
+<li><p><code>minSize</code> – Minimum possible object size. Objects smaller than that are ignored.</p>
+</li>
+<li><p><code>maxSize</code> – Maximum possible object size. Objects larger than that are ignored.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.HaarDetectObjects(image, cascade, storage, scale_factor=<span class="number">1.1</span>, min_neighbors=<span class="number">3</span>, flags=<span class="number">0</span>, min_size=(<span class="number">0</span>, <span class="number">0</span>)) → detectedObjects</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/02/opencv/" data-id="ck0x9tbjb0032k8g2bse2c22l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spark-intallation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/29/spark-intallation/" class="article-date">
+  <time datetime="2018-06-29T11:06:28.000Z" itemprop="datePublished">2018-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/29/spark-intallation/">spark_intallation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>下载</li>
+</ol>
+<p>下载spark</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://www.apache.org/dyn/closer.lua/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz</span><br></pre></td></tr></table></figure>
+<p>下载 JAVA JDK</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -c --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie"</span> http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>如果解压出错，可能是问下下载的不完整，试试删了重新下载</p>
+<p>安装JDK</p>
+<p>将下载的jdk解压到<code>/usr/java</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr</span><br><span class="line">mkdir java</span><br><span class="line">tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/java</span><br></pre></td></tr></table></figure>
+<p>修改环境变量</p>
+<p>在<code>/etc/profile</code>文件末尾加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Set java environment</span><br><span class="line">JAVA_HOME=/usr/java/jdk1.8.0_171</span><br><span class="line">JRE_HOME=/usr/java/jdk1.8.0_171/jre</span><br><span class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br><span class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</span><br></pre></td></tr></table></figure>
+<p>使配置文件生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>现在java命令能正确相应</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">"1.8.0_171"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_171-b11)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/29/spark-intallation/" data-id="ck0x9tbk1003mk8g2g4o7xtaf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-scrapy" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/27/scrapy/" class="article-date">
@@ -93,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/27/scrapy/" data-id="ck024o2g4003834g2f7holok4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/27/scrapy/" data-id="ck0x9tbjk003ak8g2gvq6l25p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="ck024o2a9000m34g2dg59auh5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="ck0x9tbfn000ik8g23t5lcb3x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -198,7 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="ck024o29a000534g2e0msvbpp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="ck0x9tbed0000k8g257mgmkdr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -256,6 +358,14 @@
       <ul>
         
           <li>
+            <a href="/2019/09/05/mysql-3/">mysql-3</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/02/linux-account/">linux-account</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/02/leetcode-470/">leetcode-470 Implement Rand10() Using Rand7()</a>
           </li>
         
@@ -265,14 +375,6 @@
         
           <li>
             <a href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/21/c-pointer/">c-pointer</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/14/redis-1/">redis-1</a>
           </li>
         
       </ul>

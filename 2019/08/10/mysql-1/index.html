@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="数据库结构">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-10T14:49:35.921Z">
+<meta property="og:updated_time" content="2019-09-05T11:55:02.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-1">
 <meta name="twitter:description" content="数据库结构">
@@ -116,11 +116,13 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> monkey</span><br></pre></td></tr></table></figure>
 <p>查询表</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> description <span class="keyword">from</span> monkey</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> == <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>修改表的AUTO_INCREMENT，使表的自增重新从0开始</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name AUTO_INCREMENT = <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/mysql-1/" data-id="ck024o2f9002z34g2joiryoem" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/10/mysql-1/" data-id="ck0x9tbj80030k8g2ir69u5fx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,6 +194,14 @@
       <ul>
         
           <li>
+            <a href="/2019/09/05/mysql-3/">mysql-3</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/02/linux-account/">linux-account</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/02/leetcode-470/">leetcode-470 Implement Rand10() Using Rand7()</a>
           </li>
         
@@ -201,14 +211,6 @@
         
           <li>
             <a href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/21/c-pointer/">c-pointer</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/14/redis-1/">redis-1</a>
           </li>
         
       </ul>
