@@ -13,7 +13,7 @@
 <meta property="og:description" content="摘要">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/06/26/git/git_1.png">
-<meta property="og:updated_time" content="2019-08-23T12:21:41.117Z">
+<meta property="og:updated_time" content="2019-11-15T06:55:29.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git">
 <meta name="twitter:description" content="摘要">
@@ -90,19 +90,19 @@
       
         <p>摘要</p>
 <a id="more"></a>
-<h2 id="1-配置git客户端"><a href="#1-配置git客户端" class="headerlink" title="1.配置git客户端"></a>1.配置git客户端</h2><h3 id="1-1-安装git-bash"><a href="#1-1-安装git-bash" class="headerlink" title="1.1 安装git bash"></a>1.1 安装git bash</h3><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
-<h3 id="1-2-设置ssh-Key"><a href="#1-2-设置ssh-Key" class="headerlink" title="1.2 设置ssh Key"></a>1.2 设置ssh Key</h3><p>查看是否有ssh key</p>
+<h2 id="1-配置-git-客户端"><a href="#1-配置-git-客户端" class="headerlink" title="1.配置 git 客户端"></a>1.配置 git 客户端</h2><h3 id="1-1-安装-git-bash"><a href="#1-1-安装-git-bash" class="headerlink" title="1.1 安装 git bash"></a>1.1 安装 git bash</h3><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
+<h3 id="1-2-设置-ssh-Key"><a href="#1-2-设置-ssh-Key" class="headerlink" title="1.2 设置 ssh Key"></a>1.2 设置 ssh Key</h3><p>查看是否有 ssh key</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br></pre></td></tr></table></figure>
-<p>没有则生成ssh key</p>
+<p>没有则生成 ssh key</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
-<p>将生成的公钥 (.pub为后缀) 上传到git网站上</p>
+<p>将生成的公钥 (.pub 为后缀) 上传到 git 网站上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">eval $(ssh-agent -s) //确定ssh-agent正在运行</span><br><span class="line"></span><br><span class="line">ssh-add ~/.ssh/id_rsa //添加ssh私钥到客户端</span><br><span class="line"></span><br><span class="line">ssh git@github.com //测试</span><br></pre></td></tr></table></figure>
 <h3 id="1-3-设置用户名和邮箱"><a href="#1-3-设置用户名和邮箱" class="headerlink" title="1.3 设置用户名和邮箱"></a>1.3 设置用户名和邮箱</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;NAME HERE&quot;</span><br><span class="line">git config --global user.email &quot;aaa@qq.com&quot;</span><br></pre></td></tr></table></figure>
 <h2 id="2-管理项目"><a href="#2-管理项目" class="headerlink" title="2.管理项目"></a>2.管理项目</h2><h3 id="2-1-管理本地已有项目"><a href="#2-1-管理本地已有项目" class="headerlink" title="2.1 管理本地已有项目"></a>2.1 管理本地已有项目</h3><ol>
 <li>在项目的目录下执行以下命令（git bash)初始化仓库</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-<p>项目下会多出.git文件夹（默认隐藏）</p>
+<p>项目下会多出.git 文件夹（默认隐藏）</p>
 <ol start="2">
 <li>将项目与远程仓库关联</li>
 </ol>
@@ -117,34 +117,39 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add . <span class="comment"># . 是通配符，代表所有的文件</span></span><br><span class="line">git commit <span class="comment"># 接着在git bash 里的文本编辑器里写Commit message</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-从远程仓库获取项目"><a href="#2-2-从远程仓库获取项目" class="headerlink" title="2.2 从远程仓库获取项目"></a>2.2 从远程仓库获取项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/libgit2/libgit2 //获取master分支</span><br><span class="line"></span><br><span class="line">git clone -b dev https://github.com/libgit2/libgit2 // 获取dev分支</span><br></pre></td></tr></table></figure>
 <h3 id="2-3-分支"><a href="#2-3-分支" class="headerlink" title="2.3 分支"></a>2.3 分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev <span class="comment"># 新建并切换到dev分支</span></span><br><span class="line"></span><br><span class="line">git branch <span class="comment"># 查看本地分支</span></span><br><span class="line"></span><br><span class="line">git branch -a <span class="comment"># 查看远程分支</span></span><br><span class="line"></span><br><span class="line">git checkout master <span class="comment"># 切换到master分支</span></span><br><span class="line"></span><br><span class="line">git merge dev <span class="comment"># 合并dev分支到当前分支</span></span><br><span class="line"></span><br><span class="line">git merge --abort <span class="comment"># 撤销合并</span></span><br><span class="line"></span><br><span class="line">git branch -d dev <span class="comment"># 删除dev分支</span></span><br><span class="line"></span><br><span class="line">git push origin --delete dev <span class="comment"># 删除远程dev分支</span></span><br><span class="line"></span><br><span class="line">git checkout -b dev origin/dev <span class="comment"># 从远程仓库拉取本地不存在的dev分支</span></span><br></pre></td></tr></table></figure>
-<p>下面是在当前分支为signle_edition时执行<br><code>git merge master</code>时出现冲突的情况</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 到 =======的部分是当前分支single_edition的版本</p>
-<p>======= 到 &gt;&gt;&gt;&gt;&gt;&gt;&gt; master是master中的版本<br>处理冲突就是手动选择保存哪个版本的代码<br><!-- ![conflict](git/git_1.png) --><br><img src="/2018/06/26/git/git_1.png" title="a picture of conflict"></p>
+<p>下面是在当前分支为 signle_edition 时执行<br><code>git merge master</code>时出现冲突的情况</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 到 =======的部分是当前分支 single_edition 的版本</p>
+<p>======= 到 &gt;&gt;&gt;&gt;&gt;&gt;&gt; master 是 master 中的版本<br>处理冲突就是手动选择保存哪个版本的代码</p>
+<!-- ![conflict](git/git_1.png) -->
+<img src="/2018/06/26/git/git_1.png" title="a picture of conflict">
 <p>处理好冲突后，使用<code>add</code>将该文件标记为已解决状态</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add filename</span><br></pre></td></tr></table></figure>
 <h3 id="2-4-版本控制"><a href="#2-4-版本控制" class="headerlink" title="2.4 版本控制"></a>2.4 版本控制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git rm readme.txt --cahced <span class="comment"># 将文件untrack，--cached不删除文件</span></span><br><span class="line"></span><br><span class="line">git rm readme.txt <span class="comment"># 将文件untrack并删除</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline <span class="comment"># 查看提交日志</span></span><br><span class="line"></span><br><span class="line">git --no-pager <span class="built_in">log</span> <span class="comment"># log不分页</span></span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^ <span class="comment"># 回退到上一commit</span></span><br><span class="line"></span><br><span class="line">git reset --hard [commit_id] <span class="comment"># 回退到指定commit，commit_id只需写前几位，能唯一确定这个commit即可</span></span><br></pre></td></tr></table></figure>
 <h2 id="3-其他操作"><a href="#3-其他操作" class="headerlink" title="3. 其他操作"></a>3. 其他操作</h2><h3 id="1-refusing-to-merge-unrelated-histories"><a href="#1-refusing-to-merge-unrelated-histories" class="headerlink" title="1. refusing to merge unrelated histories"></a>1. refusing to merge unrelated histories</h3><p>加上<code>--allow-unrelated-histories</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
-<h3 id="2-修改提交到远程仓库的commit信息"><a href="#2-修改提交到远程仓库的commit信息" class="headerlink" title="2. 修改提交到远程仓库的commit信息"></a>2. 修改提交到远程仓库的commit信息</h3><p>查看本地仓库的log信息，找到要修改的commit之前一个commit的id</p>
+<h3 id="2-修改提交到远程仓库的-commit-信息"><a href="#2-修改提交到远程仓库的-commit-信息" class="headerlink" title="2. 修改提交到远程仓库的 commit 信息"></a>2. 修改提交到远程仓库的 commit 信息</h3><p>查看本地仓库的 log 信息，找到要修改的 commit 之前一个 commit 的 id</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">git rebase -i [commit_id]</span><br></pre></td></tr></table></figure>
-<p>将要修改的commit信息前的pick改成edit</p>
+<p>将要修改的 commit 信息前的 pick 改成 reword，保存后将出现修改 commit message 的 vim 窗口，修改后保存即可，此时本地的 log 已经修改成功，强制推送到远程仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master <span class="comment">#覆盖远程仓库commit信息（也会覆盖其他人的提交，慎用-f）</span></span><br></pre></td></tr></table></figure>
+<p>如果要修改的不只是 commit message，就将要修改的 commit 信息前的 pick 改成 edit</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend <span class="comment">#修改commit信息</span></span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br><span class="line">git push -f origin master <span class="comment">#覆盖远程仓库commit信息（也会覆盖其他人的提交，慎用-f）</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-重新添加-gitignore"><a href="#3-重新添加-gitignore" class="headerlink" title="3. 重新添加 .gitignore"></a>3. 重新添加 .gitignore</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"add .gitignore file"</span></span><br></pre></td></tr></table></figure>
 <h3 id="4-查看版本控制下的文件"><a href="#4-查看版本控制下的文件" class="headerlink" title="4. 查看版本控制下的文件"></a>4. 查看版本控制下的文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
 <h3 id="5-git-stash"><a href="#5-git-stash" class="headerlink" title="5. git stash"></a>5. git stash</h3><p>当你想切换分支，但工作区还有未提交的代码，而这个代码还没写完不想提交，这时候可以把当前的工作状态暂时存储起来</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git stash  // 存储当前的变更</span><br><span class="line"></span><br><span class="line">git status // 工作区此时clean了</span><br><span class="line"></span><br><span class="line">git stash list // 查看所有的stash</span><br><span class="line"></span><br><span class="line">git stash apply stash@&#123;0&#125; // 恢复stash@&#123;0&#125;这个stash(由上一步获得)</span><br><span class="line"></span><br><span class="line">git stash show -p stash@&#123;0&#125; | git apply -R // 取消一个stash</span><br><span class="line"></span><br><span class="line">git stash branch testchanges // 在新分支中查看stash</span><br></pre></td></tr></table></figure>
-<h3 id="6-在Github上发起Pull-Request"><a href="#6-在Github上发起Pull-Request" class="headerlink" title="6. 在Github上发起Pull Request"></a>6. 在Github上发起Pull Request</h3><p><a href="https://www.jianshu.com/p/ac33f0295629" target="_blank" rel="noopener">GitHub 从单机到联机：玩转 Pull Request</a></p>
-<h2 id="4-一些问题的解决方案"><a href="#4-一些问题的解决方案" class="headerlink" title="4. 一些问题的解决方案"></a>4. 一些问题的解决方案</h2><h3 id="4-1-fatal-sha1-file-‘‘-write-error-Broken-pipe"><a href="#4-1-fatal-sha1-file-‘‘-write-error-Broken-pipe" class="headerlink" title="4.1 fatal: sha1 file ‘‘ write error: Broken pipe"></a>4.1 fatal: sha1 file ‘<stdout>‘ write error: Broken pipe</stdout></h3><p>与ssh有关，将remote暂时换成http版本的就能提交成功<br>网上说可以修改服务器上ssh的设置来解决，我没有测试过</p>
+<h3 id="6-在-Github-上发起-Pull-Request"><a href="#6-在-Github-上发起-Pull-Request" class="headerlink" title="6. 在 Github 上发起 Pull Request"></a>6. 在 Github 上发起 Pull Request</h3><p><a href="https://www.jianshu.com/p/ac33f0295629" target="_blank" rel="noopener">GitHub 从单机到联机：玩转 Pull Request</a></p>
+<h2 id="4-一些问题的解决方案"><a href="#4-一些问题的解决方案" class="headerlink" title="4. 一些问题的解决方案"></a>4. 一些问题的解决方案</h2><h3 id="4-1-fatal-sha1-file-‘‘-write-error-Broken-pipe"><a href="#4-1-fatal-sha1-file-‘‘-write-error-Broken-pipe" class="headerlink" title="4.1 fatal: sha1 file ‘‘ write error: Broken pipe"></a>4.1 fatal: sha1 file ‘<stdout>‘ write error: Broken pipe</stdout></h3><p>与 ssh 有关，将 remote 暂时换成 http 版本的就能提交成功<br>网上说可以修改服务器上 ssh 的设置来解决，我没有测试过</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><a href="https://git-scm.com/docs/" target="_blank" rel="noopener">https://git-scm.com/docs/</a></li>
-<li><a href="https://www.jianshu.com/p/94e79e17baf6" target="_blank" rel="noopener">git提交commit后push到远程仓库，如何修改commit信息</a></li>
-<li><a href="https://blog.csdn.net/qq_31803503/article/details/88323527" target="_blank" rel="noopener">git上传远程库错误“fatal: sha1 file ‘’ write error: Broken pipe”解决方案</a></li>
+<li><a href="https://www.jianshu.com/p/94e79e17baf6" target="_blank" rel="noopener">git 提交 commit 后 push 到远程仓库，如何修改 commit 信息</a></li>
+<li><a href="https://blog.csdn.net/qq_31803503/article/details/88323527" target="_blank" rel="noopener">git 上传远程库错误“fatal: sha1 file ‘’ write error: Broken pipe”解决方案</a></li>
+<li><a href="https://gitbook.tw/chapters/rewrite-history/change-commit-message.html" target="_blank" rel="noopener">【狀況題】修改歷史訊息 - 為你自己學 Git | 高見龍</a></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="ck0x9tbfn000ik8g23t5lcb3x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="ck2zvuq42000idgg2znx3u11o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +208,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -216,23 +221,23 @@
       <ul>
         
           <li>
-            <a href="/2019/09/05/mysql-3/">mysql-3</a>
+            <a href="/2019/11/13/leetcode-338/">leetcode-338 Counting Bits</a>
           </li>
         
           <li>
-            <a href="/2019/09/02/linux-account/">linux-account</a>
+            <a href="/2019/10/06/android-activity/">android-activity</a>
           </li>
         
           <li>
-            <a href="/2019/09/02/leetcode-470/">leetcode-470 Implement Rand10() Using Rand7()</a>
+            <a href="/2019/10/06/java/">java</a>
           </li>
         
           <li>
-            <a href="/2019/08/28/leetcode-1137/">leetcode-1137 N-th Tribonacci Number</a>
+            <a href="/2019/10/03/design-pattern-observer/">design-pattern-observer</a>
           </li>
         
           <li>
-            <a href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
+            <a href="/2019/10/03/design-pattern-adapter/">design-pattern-adapter</a>
           </li>
         
       </ul>
