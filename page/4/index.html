@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-processing-0" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-stl-vector" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/16/processing-0/" class="article-date">
-  <time datetime="2019-06-16T12:12:35.000Z" itemprop="datePublished">2019-06-16</time>
+    <a href="/2019/08/01/stl-vector/" class="article-date">
+  <time datetime="2019-08-01T03:07:24.000Z" itemprop="datePublished">2019-08-01</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/processing-0/">processing-0</a>
+      <a class="article-title" href="/2019/08/01/stl-vector/">stl-vector</a>
     </h1>
   
 
@@ -84,16 +84,105 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Processing的颜色</p>
+        <h3 id="vector的初始化"><a href="#vector的初始化" class="headerlink" title="vector的初始化"></a><code>vector</code>的初始化</h3><ul>
+<li>通过数组初始化</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(a, a+<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>带初值的初始化</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(<span class="number">10</span>, <span class="number">0</span>); <span class="comment">//10个元素的vector，每个元素都是0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>vector&lt;vector&lt;int&gt;&gt;</code> 的初始化</li>
+</ul>
+<p>和上面一维的一对照就能明白</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vec(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = nums.begin(); it != nums.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    nums.erase(it, it+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://blog.csdn.net/yjunyu/article/details/77728410" target="_blank" rel="noopener">vector的几种初始化及赋值方式</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/01/stl-vector/" data-id="ck5as16il003vhog2znd3l64r" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-stl-queue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/01/stl-queue/" class="article-date">
+  <time datetime="2019-08-01T01:15:29.000Z" itemprop="datePublished">2019-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/01/stl-queue/">stl-queue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/01/stl-queue/" data-id="ck5as16ij003thog244ffgql0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-104" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/31/leetcode-104/" class="article-date">
+  <time datetime="2019-07-31T14:14:01.000Z" itemprop="datePublished">2019-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/31/leetcode-104/">leetcode-104 Maximum Depth of Binary Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>104. Maximum Depth of Binary Tree</p>
         
           <p class="article-more-link">
-            <a href="/2019/06/16/processing-0/#more">Read More</a>
+            <a href="/2019/07/31/leetcode-104/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/processing-0/" data-id="ck2zvuq9v003fdgg29jo63rcd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/leetcode-104/" data-id="ck5as16dy0011hog2pyf5rx0o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -103,10 +192,10 @@
 
 
   
-    <article id="post-cuda-0" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode-141" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/13/cuda-0/" class="article-date">
-  <time datetime="2019-06-13T08:12:58.000Z" itemprop="datePublished">2019-06-13</time>
+    <a href="/2019/07/31/leetcode-141/" class="article-date">
+  <time datetime="2019-07-31T08:44:13.000Z" itemprop="datePublished">2019-07-31</time>
 </a>
     
   </div>
@@ -117,7 +206,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/cuda-0/">cuda-0</a>
+      <a class="article-title" href="/2019/07/31/leetcode-141/">leetcode-141</a>
     </h1>
   
 
@@ -125,121 +214,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>driver’s version work well for games: 388.59</p>
-<p>Table 1. CUDA Toolkit and Compatible Driver Versions</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">CUDA Toolkit</th>
-<th style="text-align:center">Linux x86_64 Driver Version</th>
-<th style="text-align:center">Windows x86_64 Driver Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">CUDA 10.1 (10.1.105 general release, and 10.1.168 Update 1 general release)</td>
-<td style="text-align:center">&gt;= 418.39</td>
-<td style="text-align:center">&gt;= 418.96</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 10.0.130</td>
-<td style="text-align:center">&gt;= 410.48</td>
-<td style="text-align:center">&gt;= 411.31</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.2 (9.2.148 Update 1)</td>
-<td style="text-align:center">&gt;= 396.37</td>
-<td style="text-align:center">&gt;= 398.26</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.2 (9.2.88)</td>
-<td style="text-align:center">&gt;= 396.26</td>
-<td style="text-align:center">&gt;= 397.44</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.1 (9.1.85)</td>
-<td style="text-align:center">&gt;= 390.46</td>
-<td style="text-align:center">&gt;= 391.29</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.0 (9.0.76)</td>
-<td style="text-align:center">&gt;= 384.81</td>
-<td style="text-align:center">&gt;= 385.54</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 8.0 (8.0.61 GA2)</td>
-<td style="text-align:center">&gt;= 375.26</td>
-<td style="text-align:center">&gt;= 376.51</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 8.0 (8.0.44)</td>
-<td style="text-align:center">&gt;= 367.48</td>
-<td style="text-align:center">&gt;= 369.30</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 7.5 (7.5.16)</td>
-<td style="text-align:center">&gt;= 352.31</td>
-<td style="text-align:center">&gt;= 353.66</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 7.0 (7.0.28)</td>
-<td style="text-align:center">&gt;= 346.46</td>
-<td style="text-align:center">&gt;= 347.62</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><p><a href="https://docs.nvidia.com/deploy/cuda-compatibility/" target="_blank" rel="noopener">https://docs.nvidia.com/deploy/cuda-compatibility/</a></p>
-</li>
-<li><p><a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/cuda-0/" data-id="ck2zvuq3t000edgg2pyziz2wn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-206" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/08/leetcode-206/" class="article-date">
-  <time datetime="2019-06-08T12:11:39.000Z" itemprop="datePublished">2019-06-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/08/leetcode-206/">leetcode-206</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>206. Reverse Linked List</p>
+        <p>141/. Linked List Cycle</p>
         
           <p class="article-more-link">
-            <a href="/2019/06/08/leetcode-206/#more">Read More</a>
+            <a href="/2019/07/31/leetcode-141/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="ck2zvuq5h0014dgg2mw7opn15" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/leetcode-141/" data-id="ck5as16eb0017hog2hm7qbmgy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,10 +233,10 @@
 
 
   
-    <article id="post-linux-driver" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-leetcode-155" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/05/linux-driver/" class="article-date">
-  <time datetime="2019-06-05T05:23:25.000Z" itemprop="datePublished">2019-06-05</time>
+    <a href="/2019/07/31/leetcode-155/" class="article-date">
+  <time datetime="2019-07-31T03:15:04.000Z" itemprop="datePublished">2019-07-31</time>
 </a>
     
   </div>
@@ -263,7 +247,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/linux-driver/">linux-driver</a>
+      <a class="article-title" href="/2019/07/31/leetcode-155/">leetcode-155</a>
     </h1>
   
 
@@ -271,316 +255,227 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>kernfs</code><br>内核虚拟文件系统</p>
-<p><code>sysfs/kobject</code><br>设备驱动文件系统</p>
-<p>Linux设备驱动分类</p>
-<ul>
-<li>字符设备</li>
-</ul>
-<p>只能一个字节一个字节读写的设备，不能随机读取设备内存中的某一数据，读取数据需要按照先后数据</p>
-<p>面向流的设备</p>
-<p>常见的字符设备有鼠标，键盘，串口，控制台，LED设备</p>
-<ul>
-<li>块设备</li>
-</ul>
-<p>通过传输固定大小的数据（一般为512byte 或 1k）来访问设备</p>
-<p>块设备通过buffer cache（内存缓存区）访问，可以随机存取</p>
-<p>电脑硬盘，SD卡，U盘，光盘</p>
-<ul>
-<li>网络设备</li>
-</ul>
-<p>任何网络事务都经过一个网络接口形成，即一个能够和其他主机交换数据的设备</p>
-<p>网卡，蓝牙设备</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/linux-driver/" data-id="ck2zvuq8k0035dgg2p1mkq2bb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-gcc" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/04/gcc/" class="article-date">
-  <time datetime="2019-06-04T06:23:04.000Z" itemprop="datePublished">2019-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/04/gcc/">gcc</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>预处理 编译 汇编 链接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c</span><br></pre></td></tr></table></figure>
-<p>生成a.out可执行文件，默认的输出文件都叫<code>a.out</code></p>
-<p><code>-o</code>: output 指定生成文件名或路径</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c -o main</span><br><span class="line">gcc main.c -o ./main</span><br></pre></td></tr></table></figure>
-<p>生成<code>main</code>可执行文件</p>
-<p><code>-c</code>: compile 将.c文件编译为(<code>.o</code>或<code>.obj</code>)中间文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c main.c           // 生成main.o</span><br><span class="line">gcc -c main.c -o a.o    // 生成a.o</span><br></pre></td></tr></table></figure>
-<p>链接 (中间文件 -&gt; 可执行文件)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.o              // 生成main可执行文件</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="http://c.biancheng.net/view/660.html" target="_blank" rel="noopener">http://c.biancheng.net/view/660.html</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/04/gcc/" data-id="ck2zvuq40000hdgg2tcqp2nub" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-makefile" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/02/makefile/" class="article-date">
-  <time datetime="2019-06-02T14:36:44.000Z" itemprop="datePublished">2019-06-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/02/makefile/">makefile</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>$@</code>：目标文件</p>
-<p><code>$&lt;</code>：第一个依赖文件</p>
-<p><code>$^</code>：所有的依赖文件</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/02/makefile/" data-id="ck2zvuq87002ydgg2kfr0jg1k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-system-call" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/26/linux-system-call/" class="article-date">
-  <time datetime="2019-05-26T03:53:45.000Z" itemprop="datePublished">2019-05-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/26/linux-system-call/">linux-system-call</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>系统调用向量表 (System call table)</p>
-<p><code>linux-4.10/arch/x86/entry/syscalls/syscall_64.tbl</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;number&gt; &lt;abi&gt; &lt;name&gt; &lt;entry point&gt;</span><br><span class="line">394	64	my_func			sys_my_func</span><br></pre></td></tr></table></figure>
-<p><code>linux-4.10/include/linux/syscalls.h</code></p>
-<p>添加一行函数声明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asmlinkage long sys_my_func(int count);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/26/linux-system-call/" data-id="ck2zvuq81002udgg26882lqc8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-conway-game-of-life" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/11/conway-game-of-life/" class="article-date">
-  <time datetime="2019-05-11T02:31:48.000Z" itemprop="datePublished">2019-05-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/conway-game-of-life/">conway-game-of-life</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Game-of-Life-Processing-edition"><a href="#Game-of-Life-Processing-edition" class="headerlink" title="Game of Life, Processing edition"></a>Game of Life, Processing edition</h1><h2 id="Conway’s-Game-of-Life"><a href="#Conway’s-Game-of-Life" class="headerlink" title="Conway’s Game of Life"></a>Conway’s Game of Life</h2><blockquote>
-<p>The Game of Life is not your typical computer game. It is a ‘cellular automaton’, and was invented by Cambridge mathematician John Conway.</p>
-<p>This game became widely known when it was mentioned in an article published by Scientific American in 1970. It consists of a collection of cells which, based on a few mathematical rules, can live, die or multiply. Depending on the initial conditions, the cells form various patterns throughout the course of the game.</p>
-</blockquote>
-<h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><p>For a space that is ‘populated’:</p>
-<ul>
-<li><p>Each cell with one or no neighbors dies, as if by solitude.</p>
-</li>
-<li><p>Each cell with four or more neighbors dies, as if by overpopulation.</p>
-</li>
-<li><p>Each cell with two or three neighbors survives.</p>
-</li>
-</ul>
-<p>For a space that is ‘empty’ or ‘unpopulated’</p>
-<ul>
-<li>Each cell with three neighbors becomes populated.</li>
-</ul>
-<h2 id="About-Processing"><a href="#About-Processing" class="headerlink" title="About Processing"></a>About Processing</h2><blockquote>
-<p><a href="https://processing.org/" target="_blank" rel="noopener">Processing</a> is a flexible software sketchbook and a language for learning how to code within the context of the visual arts. Since 2001, Processing has promoted software literacy within the visual arts and visual literacy within technology. There are tens of thousands of students, artists, designers, researchers, and hobbyists who use Processing for learning and prototyping.</p>
-<ul>
-<li>Free to download and open source</li>
-<li>Interactive programs with 2D, 3D, PDF, or SVG output</li>
-<li>OpenGL integration for accelerated 2D and 3D</li>
-<li>For GNU/Linux, Mac OS X, Windows, Android, and ARM</li>
-<li>Over 100 libraries extend the core software</li>
-<li>Well documented, with many books available</li>
-</ul>
-</blockquote>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
-<li><a href="https://bitstorm.org/gameoflife/" target="_blank" rel="noopener">John Conway’s Game of Life</a></li>
-<li><a href="https://processing.org/" target="_blank" rel="noopener">Processing.org</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/11/conway-game-of-life/" data-id="ck2zvuq3q000ddgg2jj5gn1b3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-travis-ci" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/22/travis-ci/" class="article-date">
-  <time datetime="2019-04-22T13:18:24.000Z" itemprop="datePublished">2019-04-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/22/travis-ci/">travis-ci</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<ol>
-<li><code>Travis.yml ./gradlew : Permission denied</code></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br><span class="line"></span><br><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">"permission access for travis"</span></span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br></pre></td></tr></table></figure>
-<p>或者在<code>.travis.yml</code>中加入</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet"> -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">gradlew</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied" target="_blank" rel="noopener">https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="ck2zvuqa7003odgg276rfik24" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-1021" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/19/leetcode-1021/" class="article-date">
-  <time datetime="2019-04-19T03:02:42.000Z" itemprop="datePublished">2019-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1021. Remove Outermost Parentheses</p>
+        <p>155. Min Stack</p>
         
           <p class="article-more-link">
-            <a href="/2019/04/19/leetcode-1021/#more">Read More</a>
+            <a href="/2019/07/31/leetcode-155/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="ck2zvuq4q000udgg2dldt0m6a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/leetcode-155/" data-id="ck5as16e80016hog2aezkmii3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-824" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/29/leetcode-824/" class="article-date">
+  <time datetime="2019-07-29T09:21:54.000Z" itemprop="datePublished">2019-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/29/leetcode-824/">leetcode-824</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>824. Goat Latin</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/07/29/leetcode-824/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/29/leetcode-824/" data-id="ck5as16gr002rhog2fnvkfnr8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-21" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/26/leetcode-21/" class="article-date">
+  <time datetime="2019-07-26T08:26:11.000Z" itemprop="datePublished">2019-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/26/leetcode-21/">leetcode-21 Merge Two Sorted Lists</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>21. Merge Two Sorted Lists</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/07/26/leetcode-21/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/26/leetcode-21/" data-id="ck5as16f0001ohog2vz9jppda" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-38" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/24/leetcode-38/" class="article-date">
+  <time datetime="2019-07-24T02:31:03.000Z" itemprop="datePublished">2019-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/24/leetcode-38/">leetcode-38 Count and Say</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>38. Count and Say</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/07/24/leetcode-38/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/24/leetcode-38/" data-id="ck5as16ep001ihog2iyx1e6r1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-1108" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/10/leetcode-1108/" class="article-date">
+  <time datetime="2019-07-10T03:15:07.000Z" itemprop="datePublished">2019-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/10/leetcode-1108/">leetcode-1108</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1108. Defanging an IP Address</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/07/10/leetcode-1108/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/10/leetcode-1108/" data-id="ck5as16ee0019hog284glcniv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-harvest-moon" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/08/harvest-moon/" class="article-date">
+  <time datetime="2019-07-08T02:31:57.000Z" itemprop="datePublished">2019-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/08/harvest-moon/">harvest-moon</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>牧场物语攻略及金手指</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/07/08/harvest-moon/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/08/harvest-moon/" data-id="ck5as16d6000thog2vr4sczd0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -593,7 +488,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -625,7 +520,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -638,23 +533,23 @@
       <ul>
         
           <li>
-            <a href="/2019/11/13/leetcode-338/">leetcode-338 Counting Bits</a>
+            <a href="/2020/01/12/leetcode-62/">leetcode-62 Unique Paths</a>
           </li>
         
           <li>
-            <a href="/2019/10/06/android-activity/">android-activity</a>
+            <a href="/2019/12/29/linux-user/">linux-user</a>
           </li>
         
           <li>
-            <a href="/2019/10/06/java/">java</a>
+            <a href="/2019/12/29/docker-compose-file/">docker-compose-file</a>
           </li>
         
           <li>
-            <a href="/2019/10/03/design-pattern-observer/">design-pattern-observer</a>
+            <a href="/2019/12/29/docker-1/">docker-1</a>
           </li>
         
           <li>
-            <a href="/2019/10/03/design-pattern-adapter/">design-pattern-adapter</a>
+            <a href="/2019/12/28/docker/">docker</a>
           </li>
         
       </ul>
@@ -669,7 +564,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 ARCSINW<br>
+      &copy; 2020 ARCSINW<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

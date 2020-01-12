@@ -5,14 +5,17 @@
   
   <title>mysql-3 | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="去重  group时取的是id最小的那一条记录 12345678910delete sprint_scorefrom sprint_score,(select min(id) id, user_id, score, create_time, count(*) from sprint_scoreGROUP BY user_id, score, create_timeHAVING count(*)">
+<meta property="og:type" content="article">
 <meta property="og:title" content="mysql-3">
 <meta property="og:url" content="http://yoursite.com/2019/09/05/mysql-3/index.html">
 <meta property="og:site_name" content="X">
+<meta property="og:description" content="去重  group时取的是id最小的那一条记录 12345678910delete sprint_scorefrom sprint_score,(select min(id) id, user_id, score, create_time, count(*) from sprint_scoreGROUP BY user_id, score, create_timeHAVING count(*)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-05T13:13:13.845Z">
+<meta property="og:updated_time" content="2020-01-08T09:06:39.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-3">
+<meta name="twitter:description" content="去重  group时取的是id最小的那一条记录 12345678910delete sprint_scorefrom sprint_score,(select min(id) id, user_id, score, create_time, count(*) from sprint_scoreGROUP BY user_id, score, create_timeHAVING count(*)">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -83,11 +86,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol>
+<li>去重</li>
+</ol>
+<p>group时取的是id最小的那一条记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> sprint_score</span><br><span class="line"><span class="keyword">from</span> sprint_score,</span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">id</span>) <span class="keyword">id</span>, user_id, score, create_time, <span class="keyword">count</span>(*) <span class="keyword">from</span> sprint_score</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> user_id, score, create_time</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>) t2</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">sprint_score.user_id = t2.user_id</span><br><span class="line"><span class="keyword">and</span> sprint_score.score = t2.score</span><br><span class="line"><span class="keyword">and</span> sprint_score.create_time = t2.create_time</span><br><span class="line"><span class="keyword">and</span> sprint_score.id &gt; t2.id</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/05/mysql-3/" data-id="ck2zvuq8w0038dgg2r5tzg24e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/05/mysql-3/" data-id="ck5as16hn003bhog29evi7ctb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +154,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -159,23 +167,23 @@
       <ul>
         
           <li>
-            <a href="/2019/11/13/leetcode-338/">leetcode-338 Counting Bits</a>
+            <a href="/2020/01/12/leetcode-62/">leetcode-62 Unique Paths</a>
           </li>
         
           <li>
-            <a href="/2019/10/06/android-activity/">android-activity</a>
+            <a href="/2019/12/29/linux-user/">linux-user</a>
           </li>
         
           <li>
-            <a href="/2019/10/06/java/">java</a>
+            <a href="/2019/12/29/docker-compose-file/">docker-compose-file</a>
           </li>
         
           <li>
-            <a href="/2019/10/03/design-pattern-observer/">design-pattern-observer</a>
+            <a href="/2019/12/29/docker-1/">docker-1</a>
           </li>
         
           <li>
-            <a href="/2019/10/03/design-pattern-adapter/">design-pattern-adapter</a>
+            <a href="/2019/12/28/docker/">docker</a>
           </li>
         
       </ul>
@@ -190,7 +198,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 ARCSINW<br>
+      &copy; 2020 ARCSINW<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
