@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode-1025 Divisor Game | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1025. Divisor Game">
+<meta name="keywords" content="Dynamic Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-1025 Divisor Game">
+<meta property="og:url" content="http://yoursite.com/2020/01/13/leetcode-1025/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="1025. Divisor Game">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-13T11:36:24.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-1025 Divisor Game">
+<meta name="twitter:description" content="1025. Divisor Game">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-1025" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/13/leetcode-1025/" class="article-date">
+  <time datetime="2020-01-13T07:19:04.000Z" itemprop="datePublished">2020-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-1025 Divisor Game
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1025. Divisor Game</p>
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Alice and Bob take turns playing a game, with Alice starting first.</p>
+<p>Initially, there is a number <code>N</code> on the chalkboard.  On each player’s turn, that player makes a move consisting of:</p>
+<ul>
+<li>Choosing any <code>x</code> with <code>0 &lt; x &lt; N</code> and <code>N % x == 0</code>.</li>
+<li>Replacing the number <code>N</code> on the chalkboard with <code>N - x</code>.<br>Also, if a player cannot make a move, they lose the game.</li>
+</ul>
+<p>Return <code>True</code> if and only if Alice wins the game, assuming both players play optimally.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 2</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Alice chooses 1, and Bob has no more moves.</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: false</span><br><span class="line">Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= N &lt;= 1000</code></li>
+</ol>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>黑板上有个整数<code>N</code>，每个人都作如下两个操作</p>
+<ul>
+<li>选择一个整数<code>x</code>，<code>x</code> 满足 <code>0 &lt; x &lt; N</code> 和 <code>N % x == 0</code></li>
+<li>将<code>N</code> 变成 <code>N - x</code></li>
+</ul>
+<p>无法选择出满足条件的整数<code>x</code>时输</p>
+<p>Alice先手</p>
+<p>两个人作出的选择都是最优的</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><ul>
+<li><p>定义dp[i] 为当<code>N</code>为i，且轮到Alice选择时是否会胜利</p>
+</li>
+<li><p>找出递推关系</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = true    ## 存在x，满足(dp[i - x] == false) &amp;&amp; (N % x == 0) &amp;&amp; (1 &lt; x &lt; N)</span><br><span class="line">        false   ## 其他</span><br></pre></td></tr></table></figure>
+<p>给出初值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dp[0] = false</span><br><span class="line"></span><br><span class="line">dp[1] = true</span><br></pre></td></tr></table></figure>
+<p>最终代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">divisorGame</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> dp[N+<span class="number">1</span>] = &#123;<span class="literal">false</span>&#125;; <span class="comment">// 用false初始化为长度为N+1的dp数组</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">1</span>; x &lt; i; x++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i % x == <span class="number">0</span>) &#123;   <span class="comment">// N % x == 0 ?</span></span><br><span class="line">                dp[i] = dp[i] || !dp[i-x];  <span class="comment">// dp[i - x] == false ?</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[N];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="找规律"><a href="#找规律" class="headerlink" title="找规律"></a>找规律</h3><p>对这道题来说，只有<code>N</code>一个输入，且<code>N</code>定义的是dp的长度，dp的值对于所有的<code>N</code>来说都是一样的，可以先手动算几个，这里计算<code>N=6</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">N</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">结果</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">x</td>
+<td style="text-align:center">√</td>
+</tr>
+</tbody>
+</table>
+<p>N=2时，Alice选择x=1，胜</p>
+<p>N=3时，Alice选择x=1，败</p>
+<p>N=4时，Alice选择x=1，Bob面对N=3的情况，Alice胜，这里Alice如果选择2的话就输了（但题目说玩家做出的选择都是最优的）</p>
+<p>N=5时，Alice选择x=1，Bob面对N=4的情况，Bob胜，Alice败</p>
+<p>N=6时，Alice选择x=1，Bob面对N=5的情况，Bob败，Alice胜</p>
+<p>看出规律，只要轮到Alice的时候N是偶数，Alice就赢定了</p>
+<p>用位运算 (N &amp; 1) == 0 来判断奇偶</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">divisorGame</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (N &amp; <span class="number">1</span>) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单的证明</p>
+<ul>
+<li><p>谁拿1谁就输</p>
+</li>
+<li><p>N为奇数时，Alice必输<br>奇数的因子也是奇的，无论Alice选什么，剩下的N-x为偶数，x &lt; N，N-x至少为2，Bob再选1，N-x又变成了奇数，重复这个操作，最后Alice会拿到1</p>
+</li>
+<li><p>N为偶数时，Alice必胜<br>Alice每次选1，Bob就拿到了奇数，Alice胜</p>
+</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href="https://leetcode.com/problems/divisor-game/discuss/474056/Proof-of-returning-N-2-0" target="_blank" rel="noopener">Proof of returning N % 2 == 0</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/13/leetcode-1025/" data-id="ck8vdam6s000zqwg23iqdbqch" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/30/leetcode-72/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          leetcode-72 Edit Distance
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/12/leetcode-64/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-64 Minimum Path Sum</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/11/windows-cmd/">windows-cmd</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/05/leetcode-283/">leetcode-283 Move Zeroes</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/23/netty-1/">netty-1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/24/linux-softwares/">linux-softwares</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/30/leetcode-72/">leetcode-72 Edit Distance</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

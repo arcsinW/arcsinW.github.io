@@ -62,6 +62,347 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-206" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/08/leetcode-206/" class="article-date">
+  <time datetime="2019-06-08T12:11:39.000Z" itemprop="datePublished">2019-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/08/leetcode-206/">leetcode-206</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>206. Reverse Linked List</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/06/08/leetcode-206/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="ck8vdam7p001mqwg2oxotpakb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-driver" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/05/linux-driver/" class="article-date">
+  <time datetime="2019-06-05T05:23:25.000Z" itemprop="datePublished">2019-06-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/05/linux-driver/">linux-driver</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>kernfs</code><br>内核虚拟文件系统</p>
+<p><code>sysfs/kobject</code><br>设备驱动文件系统</p>
+<p>Linux设备驱动分类</p>
+<ul>
+<li>字符设备</li>
+</ul>
+<p>只能一个字节一个字节读写的设备，不能随机读取设备内存中的某一数据，读取数据需要按照先后数据</p>
+<p>面向流的设备</p>
+<p>常见的字符设备有鼠标，键盘，串口，控制台，LED设备</p>
+<ul>
+<li>块设备</li>
+</ul>
+<p>通过传输固定大小的数据（一般为512byte 或 1k）来访问设备</p>
+<p>块设备通过buffer cache（内存缓存区）访问，可以随机存取</p>
+<p>电脑硬盘，SD卡，U盘，光盘</p>
+<ul>
+<li>网络设备</li>
+</ul>
+<p>任何网络事务都经过一个网络接口形成，即一个能够和其他主机交换数据的设备</p>
+<p>网卡，蓝牙设备</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/05/linux-driver/" data-id="ck8vdamen003lqwg20fixe6ai" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-gcc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/gcc/" class="article-date">
+  <time datetime="2019-06-04T06:23:04.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/gcc/">gcc</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>预处理 编译 汇编 链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c</span><br></pre></td></tr></table></figure>
+<p>生成a.out可执行文件，默认的输出文件都叫<code>a.out</code></p>
+<p><code>-o</code>: output 指定生成文件名或路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c -o main</span><br><span class="line">gcc main.c -o ./main</span><br></pre></td></tr></table></figure>
+<p>生成<code>main</code>可执行文件</p>
+<p><code>-c</code>: compile 将.c文件编译为(<code>.o</code>或<code>.obj</code>)中间文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c main.c           // 生成main.o</span><br><span class="line">gcc -c main.c -o a.o    // 生成a.o</span><br></pre></td></tr></table></figure>
+<p>链接 (中间文件 -&gt; 可执行文件)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.o              // 生成main可执行文件</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://c.biancheng.net/view/660.html" target="_blank" rel="noopener">http://c.biancheng.net/view/660.html</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/gcc/" data-id="ck8vdam5w000nqwg28daq9719" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-makefile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/02/makefile/" class="article-date">
+  <time datetime="2019-06-02T14:36:44.000Z" itemprop="datePublished">2019-06-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/02/makefile/">makefile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>$@</code>：目标文件</p>
+<p><code>$&lt;</code>：第一个依赖文件</p>
+<p><code>$^</code>：所有的依赖文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/02/makefile/" data-id="ck8vdameg003fqwg2q3avgdtm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-system-call" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/26/linux-system-call/" class="article-date">
+  <time datetime="2019-05-26T03:53:45.000Z" itemprop="datePublished">2019-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/26/linux-system-call/">linux-system-call</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>系统调用向量表 (System call table)</p>
+<p><code>linux-4.10/arch/x86/entry/syscalls/syscall_64.tbl</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;number&gt; &lt;abi&gt; &lt;name&gt; &lt;entry point&gt;</span><br><span class="line">394	64	my_func			sys_my_func</span><br></pre></td></tr></table></figure>
+<p><code>linux-4.10/include/linux/syscalls.h</code></p>
+<p>添加一行函数声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">asmlinkage long sys_my_func(int count);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/26/linux-system-call/" data-id="ck8vdame10039qwg2rzgseylf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-conway-game-of-life" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/11/conway-game-of-life/" class="article-date">
+  <time datetime="2019-05-11T02:31:48.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/conway-game-of-life/">conway-game-of-life</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Game-of-Life-Processing-edition"><a href="#Game-of-Life-Processing-edition" class="headerlink" title="Game of Life, Processing edition"></a>Game of Life, Processing edition</h1><h2 id="Conway’s-Game-of-Life"><a href="#Conway’s-Game-of-Life" class="headerlink" title="Conway’s Game of Life"></a>Conway’s Game of Life</h2><blockquote>
+<p>The Game of Life is not your typical computer game. It is a ‘cellular automaton’, and was invented by Cambridge mathematician John Conway.</p>
+<p>This game became widely known when it was mentioned in an article published by Scientific American in 1970. It consists of a collection of cells which, based on a few mathematical rules, can live, die or multiply. Depending on the initial conditions, the cells form various patterns throughout the course of the game.</p>
+</blockquote>
+<h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><p>For a space that is ‘populated’:</p>
+<ul>
+<li><p>Each cell with one or no neighbors dies, as if by solitude.</p>
+</li>
+<li><p>Each cell with four or more neighbors dies, as if by overpopulation.</p>
+</li>
+<li><p>Each cell with two or three neighbors survives.</p>
+</li>
+</ul>
+<p>For a space that is ‘empty’ or ‘unpopulated’</p>
+<ul>
+<li>Each cell with three neighbors becomes populated.</li>
+</ul>
+<h2 id="About-Processing"><a href="#About-Processing" class="headerlink" title="About Processing"></a>About Processing</h2><blockquote>
+<p><a href="https://processing.org/" target="_blank" rel="noopener">Processing</a> is a flexible software sketchbook and a language for learning how to code within the context of the visual arts. Since 2001, Processing has promoted software literacy within the visual arts and visual literacy within technology. There are tens of thousands of students, artists, designers, researchers, and hobbyists who use Processing for learning and prototyping.</p>
+<ul>
+<li>Free to download and open source</li>
+<li>Interactive programs with 2D, 3D, PDF, or SVG output</li>
+<li>OpenGL integration for accelerated 2D and 3D</li>
+<li>For GNU/Linux, Mac OS X, Windows, Android, and ARM</li>
+<li>Over 100 libraries extend the core software</li>
+<li>Well documented, with many books available</li>
+</ul>
+</blockquote>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
+<li><a href="https://bitstorm.org/gameoflife/" target="_blank" rel="noopener">John Conway’s Game of Life</a></li>
+<li><a href="https://processing.org/" target="_blank" rel="noopener">Processing.org</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/11/conway-game-of-life/" data-id="ck8vdam5i000fqwg23esblmlf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-travis-ci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/22/travis-ci/" class="article-date">
+  <time datetime="2019-04-22T13:18:24.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/travis-ci/">travis-ci</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<ol>
+<li><code>Travis.yml ./gradlew : Permission denied</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br><span class="line"></span><br><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">"permission access for travis"</span></span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br></pre></td></tr></table></figure>
+<p>或者在<code>.travis.yml</code>中加入</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet"> -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">gradlew</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied" target="_blank" rel="noopener">https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="ck8vdamfi0047qwg2y616s5z8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-1021" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/19/leetcode-1021/" class="article-date">
@@ -93,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="ck5as16dx0010hog25hmds7jy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="ck8vdam6u0011qwg2sj9e33vh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="ck5as16g7002ehog200z4636x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="ck8vdamcn002jqwg287q1fndu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,290 +516,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="ck5as16i1003hhog2hafiuf71" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-reservoir-sampling" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/10/reservoir-sampling/" class="article-date">
-  <time datetime="2019-04-10T06:25:20.000Z" itemprop="datePublished">2019-04-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/10/reservoir-sampling/">reservoir-sampling</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="ck5as16if003qhog2s6bxph5p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-html-3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/08/html-3/" class="article-date">
-  <time datetime="2019-04-08T12:55:21.000Z" itemprop="datePublished">2019-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/08/html-3/">html-3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>bootstrap的modal垂直居中</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://www.abeautifulsite.net/vertically-centering-bootstrap-modals" target="_blank" rel="noopener">https://www.abeautifulsite.net/vertically-centering-bootstrap-modals</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="ck5as16d8000uhog2sf3hmmta" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-html-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/08/html-2/" class="article-date">
-  <time datetime="2019-04-08T07:51:23.000Z" itemprop="datePublished">2019-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/08/html-2/">html-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>获取<code>select</code>选择的值</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"level_select"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"3"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"4"</span>&gt;</span>4<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>通过<code>selectedIndex</code>从<code>select</code>的<code>options</code>数组中取值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> level_select = <span class="built_in">document</span>.getElementById(<span class="string">'level_select'</span>);</span><br><span class="line"><span class="keyword">var</span> selectedIndex = level_select.selectedIndex;</span><br><span class="line"><span class="keyword">var</span> level = level_select.options[selectedIndex].value; <span class="comment">//通过text获取选中的文本值</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="ck5as16d1000rhog2w978t1bw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-latex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/07/latex/" class="article-date">
-  <time datetime="2019-04-07T14:29:32.000Z" itemprop="datePublished">2019-04-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/07/latex/">latex</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>数学符号的输入</p>
-<h2 id="插入矩阵"><a href="#插入矩阵" class="headerlink" title="插入矩阵"></a>插入矩阵</h2><h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><h3 id="插入单张图片"><a href="#插入单张图片" class="headerlink" title="插入单张图片"></a>插入单张图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[h]%%图</span><br><span class="line">    \centering  %插入的图片居中表示</span><br><span class="line">    \includegraphics[width=0.7\linewidth]&#123;figures/mcmthesis-logo&#125;  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下</span><br><span class="line">    \caption&#123;this is a figure.&#125;  %图片的名称</span><br><span class="line">    \label&#123;fig:mcmthesis-logo&#125;   %标签，用作引用</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="多张图片并排"><a href="#多张图片并排" class="headerlink" title="多张图片并排"></a>多张图片并排</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[h]%%图</span><br><span class="line">    \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;%并排放两张图片，每张占行的0.4</span><br><span class="line">        \centering</span><br><span class="line">        \includegraphics[width=1.2\textwidth]&#123;a.png&#125;</span><br><span class="line">        \caption&#123;母图&#125;</span><br><span class="line">    \end&#123;minipage&#125;</span><br><span class="line">    \hfill</span><br><span class="line">    \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;</span><br><span class="line">        \centering  %插入的图片居中表示</span><br><span class="line">        \includegraphics[width=1.2\textwidth]&#123;b.png&#125;  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下</span><br><span class="line">        \caption&#123;子图&#125;  %图片的名称</span><br><span class="line">        \label&#123;fig:mcmthesis-logo&#125;   %标签，用作引用</span><br><span class="line">    \end&#123;minipage&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">    \centering</span><br><span class="line">    \subfigure[]&#123;</span><br><span class="line">        \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;</span><br><span class="line">        \centering</span><br><span class="line">        \includegraphics[width=0.8\linewidth]&#123;28_a.png&#125;</span><br><span class="line">        \end&#123;minipage&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    \subfigure[pic2.]&#123;</span><br><span class="line">        \begin&#123;minipage&#125;[t]&#123;0.4\linewidth&#125;</span><br><span class="line">        \centering</span><br><span class="line">        \includegraphics[width=0.8\linewidth]&#123;28_b.png&#125;</span><br><span class="line">        \end&#123;minipage&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    \centering</span><br><span class="line">    \caption&#123;&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
-<p>equation公式跨页</p>
-<p>改用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;align*&#125;</span><br><span class="line">\end&#123;align*&#125;</span><br></pre></td></tr></table></figure>
-<p>顶部增加 <code>\allowdisplaybreaks[4]</code></p>
-<p><a href="https://www.geogebra.org/graphing" target="_blank" rel="noopener">https://www.geogebra.org/graphing</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="ck5as16e00013hog2ywy2jdyb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-665" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/05/leetcode-665/" class="article-date">
-  <time datetime="2019-04-05T13:29:27.000Z" itemprop="datePublished">2019-04-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/05/leetcode-665/">leetcode-665</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>665. Non-decreasing Array</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/04/05/leetcode-665/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/05/leetcode-665/" data-id="ck5as16g1002ahog2yj8hjm1x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android-event-handle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/31/android-event-handle/" class="article-date">
-  <time datetime="2019-03-31T10:56:40.000Z" itemprop="datePublished">2019-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/android-event-handle/">android-event-handle</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Android事件处理</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/03/31/android-event-handle/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/android-event-handle/" data-id="ck5as16bo000dhog2n7z4x7vi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-logistic-regression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/24/logistic-regression/" class="article-date">
-  <time datetime="2019-03-24T12:44:01.000Z" itemprop="datePublished">2019-03-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/logistic-regression/">logistic-regression</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Logisitic regression</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/03/24/logistic-regression/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/logistic-regression/" data-id="ck5as16hi0038hog2393gochr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="ck8vdameh003gqwg2xbvc1wxa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -471,7 +529,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -484,7 +542,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
     </div>
   </div>
 
@@ -494,7 +552,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a>
+      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a>
     </div>
   </div>
 
@@ -503,7 +561,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -516,23 +574,23 @@
       <ul>
         
           <li>
-            <a href="/2020/01/12/leetcode-62/">leetcode-62 Unique Paths</a>
+            <a href="/2020/04/11/windows-cmd/">windows-cmd</a>
           </li>
         
           <li>
-            <a href="/2019/12/29/linux-user/">linux-user</a>
+            <a href="/2020/04/05/leetcode-283/">leetcode-283 Move Zeroes</a>
           </li>
         
           <li>
-            <a href="/2019/12/29/docker-compose-file/">docker-compose-file</a>
+            <a href="/2020/03/23/netty-1/">netty-1</a>
           </li>
         
           <li>
-            <a href="/2019/12/29/docker-1/">docker-1</a>
+            <a href="/2020/02/24/linux-softwares/">linux-softwares</a>
           </li>
         
           <li>
-            <a href="/2019/12/28/docker/">docker</a>
+            <a href="/2020/01/30/leetcode-72/">leetcode-72 Edit Distance</a>
           </li>
         
       </ul>
