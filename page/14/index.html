@@ -62,6 +62,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-c" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/22/c/" class="article-date">
+  <time datetime="2018-07-22T05:56:00.000Z" itemprop="datePublished">2018-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/22/c/">c++</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>split</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> _split(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s, <span class="keyword">char</span> delim,</span><br><span class="line">                   <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;elems) &#123;</span><br><span class="line">    <span class="function"><span class="built_in">stringstream</span> <span class="title">ss</span><span class="params">(s)</span></span>;</span><br><span class="line">    <span class="built_in">string</span> item;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (getline(ss, item, delim)) &#123;</span><br><span class="line">        elems.push_back(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; split(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s, <span class="keyword">char</span> delim) &#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; elems;</span><br><span class="line">    _split(s, delim, elems);</span><br><span class="line">    <span class="keyword">return</span> elems;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/22/c/" data-id="cka0n89h5000ddgg2y0kz2iaa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-sql" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/21/sql/" class="article-date">
@@ -93,7 +133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="ck8vdamfa0041qwg2g7dz4i1e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/sql/" data-id="cka0n89nb0047dgg208ou4dot" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="ck8vdamcu002mqwg2zxqnmi23" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/21/leetcode-791/" data-id="cka0n89l0002pdgg2gwb4md0u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="ck8vdamaw0021qwg294f3fhmt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-537/" data-id="cka0n89jz001ydgg2mkqwtepk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="ck8vdamd3002pqwg2prglhlo3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/20/leetcode-804/" data-id="cka0n89kx002ndgg2yeq6w83c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="ck8vdamd4002rqwg2eqycb95f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/19/leetcode-807/" data-id="cka0n89l5002rdgg2yfxcqqu0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/php-2/" data-id="ck8vdamez003tqwg2lcxq08fa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/php-2/" data-id="cka0n89na0046dgg2if7pugss" class="article-share-link">Share</a>
       
       
     </footer>
@@ -365,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/13/Ubuntu-1/" data-id="ck8vdam4t0002qwg2465998ci" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/13/Ubuntu-1/" data-id="cka0n89ha000gdgg2dj33jhq4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="ck8vdamev003qqwg2bmwu0y13" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/11/php-1/" data-id="cka0n89mm003pdgg2dygeawvx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -442,66 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/10/numpy/" data-id="ck8vdameo003mqwg2mwcvsyke" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-neural-network" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/09/neural-network/" class="article-date">
-  <time datetime="2018-07-09T15:22:00.000Z" itemprop="datePublished">2018-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/09/neural-network/">neural_network</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<h1 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h1><h2 id="1-Variables’-definitions"><a href="#1-Variables’-definitions" class="headerlink" title="1. Variables’ definitions"></a>1. Variables’ definitions</h2><p>$a_i^{(j)}$ : “activation” of unit $i$ in layer $j$</p>
-<p>$\theta^{(j)}$ : matrix mapping from layer $j$ to layer $j+1$, with size of $S_{j+1}$ x $(S_j + 1)$</p>
-<p>$L$ : layers’ count</p>
-<p>$S_l$ : count of units (exclude bias count) in layer $l$</p>
-<p>$\delta_j^{l}$ : error of unit $j$ in layer $l$</p>
-<p>sigmoid function : $g(z) = \frac{1}{1 + e^{-z}}$</p>
-<p>$J(\theta)$: cost function</p>
-<p><img src="neural-network/neural_network.png" alt="a neural network picture here"></p>
-<h3 id="Forward-propagation"><a href="#Forward-propagation" class="headerlink" title="Forward propagation"></a>Forward propagation</h3><p>$a_1^{(2)} = g(\theta_{10}^{(1)}x_0 + \theta_{11}^{(1)}x_1 + \theta_{12}^{(1)}x_2 + \theta_{13}^{(1)}x_3)$</p>
-<p>$a_2^{(2)} = g(\theta_{20}^{(1)}x_0 + \theta_{21}^{(1)}x_1 + \theta_{22}^{(1)}x_2 + \theta_{23}^{(1)}x_3)$</p>
-<p>$a_3^{(2)} = g(\theta_{30}^{(1)}x_0 + \theta_{31}^{(1)}x_1 + \theta_{32}^{(1)}x_2 + \theta_{33}^{(1)}x_3)$</p>
-<p>$h_\theta(x) = a_1^{(3)} = g(\theta_{10}^{(2)}a_0^{(2)} + \theta_{11}^{(2)}a_1^{(2)} + \theta_{12}^{(2)}a_2^{(2)} + \theta_{13}^{(2)}a_3^{(2)})$</p>
-<p>$z^{(2)} = \theta^{(1)}x$</p>
-<p>$\theta^{(1)}$ is a matrix $S_{j+1}$x$(S_j+1)$  (bias unit for +1)</p>
-<p>$$J(\theta) = \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K [-y^{(i)}<em>k log((h</em>\theta(x^{(i)}))_k) - (1 - y^{(i)}<em>k) log(1 - (h</em>\theta(x^{(i)}))<em>k)] + \frac{\lambda}{2m} \sum</em>{l=1}^{l-1} \sum_{i=1}^{S_l} \sum_{j=1}^{S_{l+1}} (\theta_{ji}^{(l)})^2$$</p>
-<p>find $\theta$ to minimize $J(\theta)$</p>
-<p>$$\frac{\partial J(\theta)}{\partial \theta} = a_j^{(l)} \zeta_i^{(l+1)}$$</p>
-<h3 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h3><p>$$\delta_j = a_j - y_j$$</p>
-<p>for example</p>
-<p>$\delta_j^{(4)} = a_j^{(4)} - y_i$</p>
-<p>$\delta_j^{(3)} = (\theta^{(3)})^T\delta^{(4)}.*g’(z^{(3)})$</p>
-<p>$\delta_j^{(2)} = (\theta^{(2)})^T\delta^{(3)}.*g’(z^{(2)})$</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/09/neural-network/" data-id="ck8vdames003oqwg2ygwatijh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/10/numpy/" data-id="cka0n89mi003mdgg2chomrsnu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -546,7 +527,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -557,6 +538,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/05/09/cryptography/">cryptography</a>
+          </li>
         
           <li>
             <a href="/2020/04/11/windows-cmd/">windows-cmd</a>
@@ -572,10 +557,6 @@
         
           <li>
             <a href="/2020/02/24/linux-softwares/">linux-softwares</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/30/leetcode-72/">leetcode-72 Edit Distance</a>
           </li>
         
       </ul>

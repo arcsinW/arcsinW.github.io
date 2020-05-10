@@ -62,6 +62,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cuda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/08/cuda/" class="article-date">
+  <time datetime="2019-03-08T00:49:06.000Z" itemprop="datePublished">2019-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/08/cuda/">cuda</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>nvidia-smi 显示GPU信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CPUFunction</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the CPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">GPUFunction</span><span class="params">()</span> <span class="comment">//__global__的返回值为void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"This function is defined to run on the GPU.\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  CPUFunction();</span><br><span class="line"></span><br><span class="line">  GPUFunction&lt;&lt;&lt;<span class="number">2</span>, <span class="number">4</span>&gt;&gt;&gt;(); <span class="comment">// 2 blocks, 4 threads / block</span></span><br><span class="line">  cudaDeviceSynchronize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核函数启动方式为<strong>异步</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt; NUMBER_OF_BLOCKS, NUMBER_OF_THREADS_PER_BLOCK&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p><code>gridDim.x</code> grid中的block数量<br><code>blockIdx.x</code> grid中当前block的index（从0开始）<br><code>blockDim.x</code> block中线程数量<br><code>threadIdx.x</code> block中线程的index（从0开始）</p>
+<p>32个线程一个wrap</p>
+<blockquote>
+<p>鉴于 GPU 的硬件特性，所含线程的数量为 32 的倍数的线程块是为理想的选择</p>
+</blockquote>
+<p>动态计算block的数量，<code>N</code>为问题规模</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">size_t</span> number_of_blocks = (N + threads_per_block - <span class="number">1</span>) / threads_per_block;</span><br></pre></td></tr></table></figure>
+<p>grid中的线程数小于问题规模N的情况</p>
+<p>在核函数中加入<code>网格跨度循环</code>, 一个线程完成index, index + threads_per_grid, index + threads_per_grid*2 …的任务</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">__<span class="function">global <span class="keyword">void</span> <span class="title">kernel</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> indexWithinTheGrid = threadIdx.x + blockIdx.x * blockDim.x;</span><br><span class="line">  <span class="keyword">int</span> gridStride = gridDim.x * blockDim.x;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = indexWithinTheGrid; i &lt; N; i += gridStride)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">// do work on a[i];</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>错误处理</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cudaError_t err;</span><br><span class="line">err = cudaMallocManaged(&amp;a, N)                    <span class="comment">// Assume the existence of `a` and `N`.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (err != cudaSuccess)                           <span class="comment">// `cudaSuccess` is provided by CUDA.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Error: %s\n"</span>, cudaGetErrorString(err)); <span class="comment">// `cudaGetErrorString` is provided by CUDA.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">someKernel&lt;&lt;&lt;<span class="number">1</span>, <span class="number">-1</span>&gt;&gt;&gt;();  <span class="comment">// -1 is not a valid number of threads.</span></span><br><span class="line"></span><br><span class="line">cudaError_t err;</span><br><span class="line">err = cudaGetLastError(); <span class="comment">// `cudaGetLastError` will return the error from above.</span></span><br><span class="line"><span class="keyword">if</span> (err != cudaSuccess)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Error: %s\n"</span>, cudaGetErrorString(err));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>封装成宏</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> cudaError_t <span class="title">checkCuda</span><span class="params">(cudaError_t result)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (result != cudaSuccess) &#123;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"CUDA Runtime Error: %s\n"</span>, cudaGetErrorString(result));</span><br><span class="line">    assert(result == cudaSuccess);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>流</p>
+<p>核函数在流中运行，<br>cuda中有一个默认流和多个非默认流<br>流中的核函数顺序执行，<br>不同的非默认流中的核函数可以同时运行（无法保证顺序）<br>默认流中的核函数不能与其他非默认流的核函数同时运行<br>默认流会受到阻碍，并在其他所有流完成之后方可运行，但其亦会阻碍其他流的运行直至其自身已运行完毕</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cudaStream_t stream;</span><br><span class="line">cudaStreamCreate(&amp;stream);</span><br><span class="line"></span><br><span class="line">kernel&lt;&lt;&lt;number_of_blocks, threads_per_block, bytes_of_shared_memory, stream&gt;&gt;&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// some things to do</span></span><br><span class="line"></span><br><span class="line">cudaStreamDestroy(stream);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">number_of_blocks/threads_per_block</th>
+<th style="text-align:center">256</th>
+<th style="text-align:center">512</th>
+<th style="text-align:center">1024</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">256</td>
+<td style="text-align:center">129.34ms</td>
+<td style="text-align:center">106.04ms</td>
+<td style="text-align:center">113.95ms</td>
+</tr>
+<tr>
+<td style="text-align:center">512</td>
+<td style="text-align:center">100.13ms</td>
+<td style="text-align:center">129.93ms</td>
+<td style="text-align:center">109.08ms</td>
+</tr>
+<tr>
+<td style="text-align:center">1024</td>
+<td style="text-align:center">106.67ms</td>
+<td style="text-align:center">102.97ms</td>
+<td style="text-align:center">104.36ms</td>
+</tr>
+<tr>
+<td style="text-align:center">2048</td>
+<td style="text-align:center">100.05ms</td>
+<td style="text-align:center">99.280ms</td>
+<td style="text-align:center">109.68ms</td>
+</tr>
+<tr>
+<td style="text-align:center">4096</td>
+<td style="text-align:center">100.65ms</td>
+<td style="text-align:center">102.35ms</td>
+<td style="text-align:center">113.03ms</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/08/cuda/" data-id="cka0n89hl000mdgg2hdf04x1g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-android-listview" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/06/android-listview/" class="article-date">
@@ -94,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/06/android-listview/" data-id="ck8vdam5a000bqwg2l20xxfi7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/06/android-listview/" data-id="cka0n89gn0005dgg2d85cwcbj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/leetcode-897/" data-id="ck8vdamdn0033qwg25v5wav3j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/leetcode-897/" data-id="cka0n89lg002ydgg2gshr4ls0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/28/android/" data-id="ck8vdam4w0004qwg2u4z90tba" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/28/android/" data-id="cka0n89gk0003dgg2706e14yr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -213,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/26/bing-wallpaper-api/" data-id="ck8vdam61000pqwg29wtuld5m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/26/bing-wallpaper-api/" data-id="cka0n89h7000edgg26zkags15" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="ck8vdam4y0006qwg2unv7rpdk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="cka0n89gz000adgg26wtx4w3d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/leetcode-136/" data-id="ck8vdam6y0014qwg2n4owx4nc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/leetcode-136/" data-id="cka0n89im0013dgg2fexzxvnw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/24/vim/" data-id="ck8vdamfr004cqwg2egdsfmau" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/24/vim/" data-id="cka0n89o9004hdgg2an9czc6y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -396,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/23/leetcode-822/" data-id="ck8vdamd9002vqwg2l2rn3kgm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/23/leetcode-822/" data-id="cka0n89la002tdgg2vekfwnq3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -437,43 +538,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/leetcode-922/" data-id="ck8vdamdw0037qwg2v0gmqpk3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tree-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/22/tree-1/" class="article-date">
-  <time datetime="2019-01-22T12:16:59.000Z" itemprop="datePublished">2019-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/22/tree-1/">tree-1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/tree-1/" data-id="ck8vdamfj0048qwg26wcco1hs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/leetcode-922/" data-id="cka0n89lj0031dgg2k8fr9kh7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -518,7 +583,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -529,6 +594,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/05/09/cryptography/">cryptography</a>
+          </li>
         
           <li>
             <a href="/2020/04/11/windows-cmd/">windows-cmd</a>
@@ -544,10 +613,6 @@
         
           <li>
             <a href="/2020/02/24/linux-softwares/">linux-softwares</a>
-          </li>
-        
-          <li>
-            <a href="/2020/01/30/leetcode-72/">leetcode-72 Edit Distance</a>
           </li>
         
       </ul>
