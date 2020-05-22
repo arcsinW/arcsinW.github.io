@@ -5,17 +5,17 @@
   
   <title>vector | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
+  <meta name="description" content="std::vector">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vector">
 <meta property="og:url" content="http://yoursite.com/2018/08/15/vector/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
+<meta property="og:description" content="std::vector">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-05T13:23:04.630Z">
+<meta property="og:updated_time" content="2020-05-22T12:40:26.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vector">
-<meta name="twitter:description" content="vector的初始化 通过数组初始化  12int a[3] = &amp;#123;1, 2, 3&amp;#125;;vector&amp;lt;int&amp;gt; vec(a, a+3);  带初值的初始化  1vector&amp;lt;int&amp;gt; vec(10, 0); //10个元素的vector，每个元素都是0  vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; 的初始化  和上面一维的一对照就能明白">
+<meta name="twitter:description" content="std::vector">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
   
@@ -86,7 +86,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="vector的初始化"><a href="#vector的初始化" class="headerlink" title="vector的初始化"></a><code>vector</code>的初始化</h3><ul>
+        <p>std::vector</p>
+<a id="more"></a>
+<p>使用连续的内存来存储数据，大小可以动态改变</p>
+<p>扩容是个耗时操作，vector会预先分配额外的空间</p>
+<h2 id="一维vector"><a href="#一维vector" class="headerlink" title="一维vector"></a>一维vector</h2><h3 id="vector的初始化"><a href="#vector的初始化" class="headerlink" title="vector的初始化"></a><code>vector</code>的初始化</h3><ul>
 <li>通过数组初始化</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(a, a+<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
@@ -99,15 +103,21 @@
 </ul>
 <p>和上面一维的一对照就能明白</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vec(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = nums.begin(); it != nums.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    nums.erase(it, it+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : v) &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = nums.begin(); it != nums.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    nums.erase(it, it+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二维vector-lt-vector-lt-gt-gt"><a href="#二维vector-lt-vector-lt-gt-gt" class="headerlink" title="二维vector&lt;vector&lt;&gt;&gt;"></a>二维vector&lt;vector&lt;&gt;&gt;</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h3 id="遍历-1"><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h3><p>迭代器遍历</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; v;</span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;::iterator iter = v.begin(); iter != v.end(); ++iter) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = iter-&gt;begin(); it != iter-&gt;end(); ++it) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *it;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下标遍历</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; v;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; v[i].size(); ++j) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; v[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; v;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.size(); ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> value : v[i]) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="增加，删除"><a href="#增加，删除" class="headerlink" title="增加，删除"></a>增加，删除</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><a href="https://blog.csdn.net/yjunyu/article/details/77728410" target="_blank" rel="noopener">vector的几种初始化及赋值方式</a></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/vector/" data-id="cka287iw4004154g2xbj632er" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/vector/" data-id="ckaieu75m0044oog2vvisot06" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,23 +189,23 @@
       <ul>
         
           <li>
+            <a href="/2020/05/22/code4offer-1/">code4offer-1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/18/network-service-ports/">network-service-ports</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/17/leetcode-53/">leetcode-53 Maximum Subarray</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/09/cryptography/">cryptography</a>
           </li>
         
           <li>
             <a href="/2020/04/11/windows-cmd/">windows-cmd</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/05/leetcode-283/">leetcode-283 Move Zeroes</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/23/netty-1/">netty-1</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/24/linux-softwares/">linux-softwares</a>
           </li>
         
       </ul>

@@ -62,6 +62,134 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-travis-ci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/22/travis-ci/" class="article-date">
+  <time datetime="2019-04-22T13:18:24.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/travis-ci/">travis-ci</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<ol>
+<li><code>Travis.yml ./gradlew : Permission denied</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br><span class="line"></span><br><span class="line">git update-index --chmod=+x gradlew</span><br><span class="line"></span><br><span class="line">git commit -m <span class="string">"permission access for travis"</span></span><br><span class="line"></span><br><span class="line">git ls-tree HEAD</span><br></pre></td></tr></table></figure>
+<p>或者在<code>.travis.yml</code>中加入</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">before_install:</span></span><br><span class="line"><span class="bullet"> -</span> <span class="string">chmod</span> <span class="string">+x</span> <span class="string">gradlew</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied" target="_blank" rel="noopener">https://stackoverflow.com/questions/33820638/travis-yml-gradlew-permission-denied</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="ckaieu759003xoog2j3zk6kis" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-1021" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/19/leetcode-1021/" class="article-date">
+  <time datetime="2019-04-19T03:02:42.000Z" itemprop="datePublished">2019-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/19/leetcode-1021/">leetcode-1021</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1021. Remove Outermost Parentheses</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/04/19/leetcode-1021/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="ckaieu71q0010oog2cxeriy5d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-724" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/13/leetcode-724/" class="article-date">
+  <time datetime="2019-04-13T14:32:05.000Z" itemprop="datePublished">2019-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/13/leetcode-724/">leetcode-724</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>724. Find Pivot Index</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/04/13/leetcode-724/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="ckaieu73g002goog24hnl8gm2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-matlab" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/12/matlab/" class="article-date">
@@ -93,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="cka287ivb003754g24oil1bst" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="ckaieu74i0036oog2zfy769z9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="cka287ivp003m54g2odtgyb5j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="ckaieu752003poog2hv4o5ytq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="cka287ish000w54g2yfnxri8e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="ckaieu71i000uoog2e4aweatk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="cka287isg000v54g2z1qlelio" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="ckaieu71h000toog2ijxp9yc5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -253,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="cka287isk000y54g2q2kr51g1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/07/latex/" data-id="ckaieu71s0011oog2mt4i7umc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -294,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/05/leetcode-665/" data-id="cka287itz002254g2c83ia2cm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/05/leetcode-665/" data-id="ckaieu7370027oog26sjpxmnh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,148 +463,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/android-event-handle/" data-id="cka287irh000454g2z1uwqsv4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-logistic-regression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/24/logistic-regression/" class="article-date">
-  <time datetime="2019-03-24T12:44:01.000Z" itemprop="datePublished">2019-03-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/24/logistic-regression/">logistic-regression</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Logisitic regression</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/03/24/logistic-regression/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/logistic-regression/" data-id="cka287iv6003354g20v70u3u6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-computer-vision" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/18/computer-vision/" class="article-date">
-  <time datetime="2019-03-18T12:56:10.000Z" itemprop="datePublished">2019-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/18/computer-vision/">computer-vision</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th style="text-align:center">工作流程</th>
-<th style="text-align:center">输入</th>
-<th style="text-align:center">输出</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">图像分类</td>
-<td style="text-align:center">原始图像</td>
-<td style="text-align:center">每个索引对应每一类的概率</td>
-</tr>
-<tr>
-<td style="text-align:center">物体检测</td>
-<td style="text-align:center">原始图像</td>
-<td style="text-align:center">物体的位置</td>
-</tr>
-<tr>
-<td style="text-align:center">图像分割</td>
-<td style="text-align:center">原始图像</td>
-<td style="text-align:center">分割的每一类图像的叠加，其中各个值表示相应像素属于每一类的概率</td>
-</tr>
-</tbody>
-</table>
-<p>Harris Corner detector</p>
-<p><code>Corner</code> significant change in all directions</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/computer-vision/" data-id="cka287is0000g54g2mcz77ioo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-android-backgroundtask" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/09/android-backgroundtask/" class="article-date">
-  <time datetime="2019-03-09T07:08:47.000Z" itemprop="datePublished">2019-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/09/android-backgroundtask/">android-backgroundtask</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/android-backgroundtask/" data-id="cka287irg000354g2idxne4jp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/android-event-handle/" data-id="ckaieu70n000aoog2eh3wdvnx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -489,7 +476,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -534,23 +521,23 @@
       <ul>
         
           <li>
+            <a href="/2020/05/22/code4offer-1/">code4offer-1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/18/network-service-ports/">network-service-ports</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/17/leetcode-53/">leetcode-53 Maximum Subarray</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/09/cryptography/">cryptography</a>
           </li>
         
           <li>
             <a href="/2020/04/11/windows-cmd/">windows-cmd</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/05/leetcode-283/">leetcode-283 Move Zeroes</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/23/netty-1/">netty-1</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/24/linux-softwares/">linux-softwares</a>
           </li>
         
       </ul>
