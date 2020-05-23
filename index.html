@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/22/code4offer-1/">code4offer-1</a>
+      <a class="article-title" href="/2020/05/22/code4offer-1/">code4offer-1 二维数组的查找</a>
     </h1>
   
 
@@ -86,26 +86,24 @@
       
         <a id="more"></a>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>抛开二维数组的有序性质，直接遍历二维数组找是否含有一个数，算法复杂度为$O(n)$</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>抛开二维数组的有序性质，直接遍历二维数组找是否含有一个数，算法复杂度为$O(n^2)$</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">array</span>.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> val :<span class="built_in">array</span>[i])&#123;</span><br><span class="line">            <span class="keyword">if</span>(val == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>二位数组的每一行都是递增的，可以对每一行进行二分查找，算法复杂度为$O(nlogn)$</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">array</span>.size(); i++) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = <span class="built_in">array</span>[i].size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (low + high) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (target == <span class="built_in">array</span>[i][mid])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; <span class="built_in">array</span>[i][mid]) &#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>考虑到二维数组的列也是有序的，选择一个初始点，与target比较</p>
 <ol>
-<li><blockquote>
-<p>target, target在该元素左上</p>
-</blockquote>
-</li>
-<li>&lt; target, target在该元素右下</li>
+<li>> target, 则target在该初始点左上</li>
+<li>&lt; target, 则target在该初始点右下</li>
 </ol>
-<p>只有左下和右上两个点才能作为起始点，其他点会导致移动的方向不确定（如以v[0][0]为初始点时，如v[0][0] &lt; target，target可能在同一行右边，也可能在下面的某行中）</p>
+<p>只有左下和右上两个点才能作为起始点，其他点会导致移动的方向不确定（如以v[0][0]为初始点时，当v[0][0] &lt; target，target可能在同一行右边，也可能在下面的某行中）</p>
 <p><img src="./code4offer-1/corner_select.png" alt="初始点选择"></p>
+<p>用这种方法，每次可以使问题的规模减少一行或者一列，找到array[p][q]需要p+q+1次</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> row = <span class="built_in">array</span>.size()- <span class="number">1</span>, col = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (row &gt;= <span class="number">0</span> &amp;&amp; col &lt; <span class="built_in">array</span>[<span class="number">0</span>].size()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">array</span>[row][col] == target)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">array</span>[row][col] &gt; target) &#123;</span><br><span class="line">            --row;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ++col;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/code4offer-1/" data-id="ckaieu70o000boog2civg4kn9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/code4offer-1/" data-id="ckaj1rs6v000bfog2riq82a58" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/network-service-ports/" data-id="ckaieu74m003aoog2360xt52d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/network-service-ports/" data-id="ckaj1rsd5003afog2dhuer6ui" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/leetcode-53/" data-id="ckaieu72g001roog2qlufamte" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/leetcode-53/" data-id="ckaj1rsb7001yfog2jeg2d7w7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="ckaieu71j000voog2dwy1w0gi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="ckaj1rs79000hfog2345hp90v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -305,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/windows-cmd/" data-id="ckaieu75f0042oog2tmu9c6zz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/windows-cmd/" data-id="ckaj1rse00041fog24k9cn4wr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/05/leetcode-283/" data-id="ckaieu721001joog22nx8vs2y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/05/leetcode-283/" data-id="ckaj1rsaf001efog2wp7rkwl6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -382,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/netty-1/" data-id="ckaieu74l0039oog2zz4mm6ml" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/netty-1/" data-id="ckaj1rsd00038fog281y3yv1m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -435,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/24/linux-softwares/" data-id="ckaieu74r003goog2xp2setkm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/24/linux-softwares/" data-id="ckaj1rsd9003ffog2npahxlme" class="article-share-link">Share</a>
       
       
     </footer>
@@ -476,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/30/leetcode-72/" data-id="ckaieu7370028oog2du3odo3d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/30/leetcode-72/" data-id="ckaj1rsb70028fog20uznqhuh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -517,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/13/leetcode-1025/" data-id="ckaieu71t0012oog28gzx3biu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/13/leetcode-1025/" data-id="ckaj1rs9q000zfog2um66a0q7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li></ul>
@@ -577,7 +575,7 @@
       <ul>
         
           <li>
-            <a href="/2020/05/22/code4offer-1/">code4offer-1</a>
+            <a href="/2020/05/22/code4offer-1/">code4offer-1 二维数组的查找</a>
           </li>
         
           <li>
