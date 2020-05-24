@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>binary-encoding | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原码机器数的最高位表示符号，其余位为数的绝对值 纯小数的原码定义$$ [x]原= \left{        \begin{array}{lcr}            x &amp;amp; 1 &amp;gt; x \geq 0 \            &amp;amp;&amp;amp; ([x]原是机器数原码，x是真值) \            1 - x = 1 + |x| &amp;amp; 0 \geq x   -1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="binary-encoding">
+<meta property="og:url" content="http://yoursite.com/2020/05/24/binary-encoding/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="原码机器数的最高位表示符号，其余位为数的绝对值 纯小数的原码定义$$ [x]原= \left{        \begin{array}{lcr}            x &amp;amp; 1 &amp;gt; x \geq 0 \            &amp;amp;&amp;amp; ([x]原是机器数原码，x是真值) \            1 - x = 1 + |x| &amp;amp; 0 \geq x   -1">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-24T06:15:51.924Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="binary-encoding">
+<meta name="twitter:description" content="原码机器数的最高位表示符号，其余位为数的绝对值 纯小数的原码定义$$ [x]原= \left{        \begin{array}{lcr}            x &amp;amp; 1 &amp;gt; x \geq 0 \            &amp;amp;&amp;amp; ([x]原是机器数原码，x是真值) \            1 - x = 1 + |x| &amp;amp; 0 \geq x   -1">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-binary-encoding" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/24/binary-encoding/" class="article-date">
+  <time datetime="2020-05-24T05:57:25.000Z" itemprop="datePublished">2020-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      binary-encoding
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>机器数的最高位表示符号，其余位为数的绝对值</p>
+<h3 id="纯小数的原码定义"><a href="#纯小数的原码定义" class="headerlink" title="纯小数的原码定义"></a>纯小数的原码定义</h3><p>$$ [x]<em>原=<br> \left{<br>        \begin{array}{lcr}<br>            x &amp; 1 &gt; x \geq 0 \<br>            &amp;&amp; ([x]</em>原是机器数原码，x是真值) \<br>            1 - x = 1 + |x| &amp; 0 \geq x   -1 \<br>        \end{array}<br>    \right.<br>$$</p>
+<h3 id="纯整数的原码定义"><a href="#纯整数的原码定义" class="headerlink" title="纯整数的原码定义"></a>纯整数的原码定义</h3><p>$$ [x]_原=<br> \left{<br>        \begin{array}{l}<br>            0x &amp; 2^n &gt; x \geq 0 \<br>            &amp;&amp; (x是真值，n是整数位数) \<br>            2^n - x = 2 ^n + |x| &amp;  0 \geq x &gt; -2^n \<br>        \end{array}<br>    \right.<br>$$</p>
+<p>$x_1$的真值为+14, $x_2$的真值为-14</p>
+<p>$x_1 = +1110$, $x_2 = -1110$</p>
+<p>$[x_1]_原 = 00001110$, $[x_2]_原 = 10001110$ （<strong>仅当以原码表示时是这样</strong>）</p>
+<p>原码表示法在字长为n时的表示范围为 $[-(2^{n-1} - 1), (2^{n-1} - 1)]$</p>
+<p>(最高位用于符号位，有两种0的表示方法 $[+0]<em>原$ = 0000 0000, $[-0]</em>原$ = 1000 0000)</p>
+<p>原码表示法表示数比较简单，但作加减法时复杂，需先对比两个数的绝对值，然后用绝对值大的减绝对值小的，给结果选择合适的符号</p>
+<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p>由原码得到：</p>
+<ul>
+<li>正数的反码 与原码相同</li>
+<li>负数的反码 符号位不变，其他位取反</li>
+</ul>
+<p>反码作为 由原码求补码 或 由补码求原码的中间过渡</p>
+<h3 id="纯小数的反码定义"><a href="#纯小数的反码定义" class="headerlink" title="纯小数的反码定义"></a>纯小数的反码定义</h3><p>$$ [x]_反=<br> \left{<br>        \begin{array}{l}<br>            x &amp; 1 &gt; x \geq 0 \<br>            &amp;&amp;\pmod{2 - 2^{-n}} \<br>            (2 - 2^{-n}) + x &amp; 0 \geq x &gt; -1 \<br>        \end{array}<br>    \right.<br>$$</p>
+<h3 id="纯整数的反码定义"><a href="#纯整数的反码定义" class="headerlink" title="纯整数的反码定义"></a>纯整数的反码定义</h3><p>$$ [x]_反=<br> \left{<br>        \begin{array}{l}<br>            0x &amp; 2^n &gt; x \geq 0 \<br>            &amp;&amp; \pmod{2^{n+1} - 1} \<br>            (2^{n+1} - 1) + x &amp;  0 \geq x &gt; -2^n \<br>        \end{array}<br>    \right.<br>$$</p>
+<p>$x_1$的真值为+14, $x_2$的真值为-14</p>
+<p>$x_1 = +1110$, $x_2 = -1110$</p>
+<p>$[x_1]_反 = 00001110$, $[x_2]_反 = 1111 1111 - 00001110 = 1111 0001$ （<strong>仅当以反码表示时是这样</strong>）</p>
+<p>反码表示法在字长为n时的表示范围为 $[-(2^{n-1} - 1), (2^{n-1} - 1)]$</p>
+<p>(最高位用于符号位，有两种0的表示方法 $[+0]<em>反$ = 0111 1111, $[-0]</em>反$ = 1111 1111)</p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>使用补码，计算机中的加减法可以统一用加法实现</p>
+<p>求补码：<br>正数 与原码相同<br>负数 原码符号位不变，数值部分按位取反+1（反码+1）</p>
+<h3 id="纯小数的补码定义"><a href="#纯小数的补码定义" class="headerlink" title="纯小数的补码定义"></a>纯小数的补码定义</h3><p>$$ [x]_补=<br> \left{<br>        \begin{array}{l}<br>            x &amp; 1 &gt; x \geq 0 \<br>            &amp;&amp;\pmod 2 \<br>            2 + x = 2 - |x| &amp; 0 &gt; x \geq -1 \<br>        \end{array}<br>    \right.<br>$$</p>
+<h3 id="纯整数的补码定义"><a href="#纯整数的补码定义" class="headerlink" title="纯整数的补码定义"></a>纯整数的补码定义</h3><p>$$ [x]_补=<br> \left{<br>        \begin{array}{l}<br>            0x &amp; 2^n &gt; x \geq 0 \<br>            &amp;&amp; \pmod{2^{n+1}} \<br>            2^{n+1} + x = 2 ^ {n+1} - |x| &amp;  0 \geq x &gt; -2^n \<br>        \end{array}<br>    \right.<br>$$</p>
+<p>$x_1$的真值为+14, $x_2$的真值为-14</p>
+<p>$x_1 = +1110$, $x_2 = -1110$</p>
+<p>$[x_1]_补 = 00001110$, $[x_2]_补 = 1 0000 0000 - 00001110 = 1111 0010$ （<strong>仅当以反码表示时是这样</strong>）</p>
+<p>反码表示法在字长为n时的表示范围为 $[-(2^{n-1} - 1), (2^{n-1} - 1)]$</p>
+<p>(最高位用于符号位，有两种0的表示方法 $[+0]<em>反$ = 0111 1111, $[-0]</em>反$ = 1111 1111)</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href>王道论坛. 2019年计算机组成原理联考复习指导(王道考研系列)[M]. 电子工业出版社, 2018.</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/24/binary-encoding/" data-id="ckakxaunh0006t4g243el6ec8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/24/code4offer-5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          code4offer-5
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/24/code4offer-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">code4offer-4 二进制中1的个数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit/">bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/bit/" style="font-size: 10px;">bit</a> <a href="/tags/剑指Offer/" style="font-size: 15px;">剑指Offer</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/24/code4offer-6/">code4offer-6 旋转数组的最小数字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/code4offer-5/">code4offer-5</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/binary-encoding/">binary-encoding</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/code4offer-4/">code4offer-4 二进制中1的个数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/code4offer-3/">code4offer-3 从尾到头打印链表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

@@ -62,6 +62,325 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cnn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/07/cnn/" class="article-date">
+  <time datetime="2018-07-07T03:17:04.000Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/07/cnn/">cnn</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h2><blockquote>
+<p>Convolutional neural networks (CNNs) are the current state-of-the-art model architecture for image classification tasks. CNNs apply a series of filters to the raw pixel data of an image to extract and learn higher-level features, which the model can then use for classification.</p>
+</blockquote>
+<p>卷积神经网络是目前图片分类任务中最先进的模型架构，卷积神经网络对图片的原始像素数据应用一系列的过滤器来提取和学习更高级的特征，而这正是模型作分类时要用到的</p>
+<h2 id="Layers"><a href="#Layers" class="headerlink" title="Layers"></a>Layers</h2><h3 id="1-input-layer"><a href="#1-input-layer" class="headerlink" title="1. input layer"></a>1. input layer</h3><p>原始的图片数据</p>
+<h3 id="2-Convolutional-layers-卷积层"><a href="#2-Convolutional-layers-卷积层" class="headerlink" title="2. Convolutional layers (卷积层)"></a>2. Convolutional layers (卷积层)</h3><p>将原始的图片数据提取成<code>feature map</code></p>
+<p>对图片作卷积操作，常常会加上一个ReLU激活函数对卷积层的输出进行一个非线性映射</p>
+<p>$$f(x) = max(x, 0)$$</p>
+<p>一个卷积核对应一个<code>feature map</code></p>
+<p>in tensorflow <code>tf.layers.conv2d()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">tf.layers.conv2d(</span><br><span class="line">    inputs,</span><br><span class="line">    filters,</span><br><span class="line">    kernel_size,</span><br><span class="line">    strides=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    padding=<span class="string">'valid'</span>,</span><br><span class="line">    data_format=<span class="string">'channels_last'</span>,</span><br><span class="line">    dilation_rate=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    activation=<span class="keyword">None</span>,</span><br><span class="line">    use_bias=<span class="keyword">True</span>,</span><br><span class="line">    kernel_initializer=<span class="keyword">None</span>,</span><br><span class="line">    bias_initializer=tf.zeros_initializer(),</span><br><span class="line">    kernel_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    bias_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    activity_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    kernel_constraint=<span class="keyword">None</span>,</span><br><span class="line">    bias_constraint=<span class="keyword">None</span>,</span><br><span class="line">    trainable=<span class="keyword">True</span>,</span><br><span class="line">    name=<span class="keyword">None</span>,</span><br><span class="line">    reuse=<span class="keyword">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>inputs:</li>
+<li>filters: filter的数量</li>
+<li>kernel_size: 卷积窗口大小（感受视野？）</li>
+<li>strides:  步长，(高，宽) (纵向，横向)</li>
+<li>padding: <code>valid</code> or <code>same</code></li>
+<li>data_format:</li>
+</ul>
+<p><code>channels_last</code>: shape(batch_size, height, width, channels)<br><code>channels_first</code>: shape(batch_size, channels, height, width)</p>
+<ul>
+<li>activation: 激活函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">keras.layers.convolutional.Convolution2D(</span><br><span class="line">    nb_filter,</span><br><span class="line">    nb_row,</span><br><span class="line">    nb_col,</span><br><span class="line">    init=<span class="string">'glorot_uniform'</span>,</span><br><span class="line">    activation=<span class="keyword">None</span>,</span><br><span class="line">    weights=<span class="keyword">None</span>,</span><br><span class="line">    border_mode=<span class="string">'valid'</span>,</span><br><span class="line">    subsample=(<span class="number">1</span>, <span class="number">1</span>),</span><br><span class="line">    dim_ordering=<span class="string">'default'</span>,</span><br><span class="line">    W_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    b_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    activity_regularizer=<span class="keyword">None</span>,</span><br><span class="line">    W_constraint=<span class="keyword">None</span>,</span><br><span class="line">    b_constraint=<span class="keyword">None</span>,</span><br><span class="line">    bias=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>dim_ordering</code>: ‘th’ or ‘tf’. In ‘th’ mode, the channels dimension (the depth) is at index 1, in ‘tf’ mode is it at index 3. It defaults to the image_dim_ordering value found in your Keras config file at ~/.keras/keras.json. If you never set it, then it will be “tf”.</li>
+</ul>
+<h3 id="3-Pooling-layers-池化层"><a href="#3-Pooling-layers-池化层" class="headerlink" title="3. Pooling layers (池化层)"></a>3. Pooling layers (池化层)</h3><p>in tensorflow <code>tf.layers.max_pooling2d()</code></p>
+<p>将<code>feature map</code>降维以减少处理时间</p>
+<p>池化层有与卷积层视野大小类似的东西，在tensorflow中叫pool_size</p>
+<ul>
+<li><p>max pooling</p>
+</li>
+<li><p>average pooling</p>
+</li>
+</ul>
+<h3 id="4-Dense-fully-connected-layers-全连接层"><a href="#4-Dense-fully-connected-layers-全连接层" class="headerlink" title="4. Dense (fully connected) layers(全连接层)"></a>4. Dense (fully connected) layers(全连接层)</h3><p>in tensorflow <code>tf.layers.dense()</code></p>
+<p>通常，CNN由一堆提取特征的卷积模块组成，每个卷积模块包括一个<code>卷积层</code>和紧接着的一个<code>池化层</code>，最后一个卷积模块后跟着一个或多个<code>全连接层</code>，CNN中的最后一个<code>全连接层</code>可以用来预测</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://blog.csdn.net/cxmscb/article/details/71023576" target="_blank" rel="noopener">https://blog.csdn.net/cxmscb/article/details/71023576</a></li>
+</ol>
+<p>2.<a href="https://www.tensorflow.org/tutorials/layers?hl=zh-cn" target="_blank" rel="noopener">https://www.tensorflow.org/tutorials/layers?hl=zh-cn</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/07/cnn/" data-id="ckakxaunr000bt4g2tnfx2udr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-tensorflow-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/04/tensorflow-1/" class="article-date">
+  <time datetime="2018-07-04T12:23:20.000Z" itemprop="datePublished">2018-07-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/04/tensorflow-1/">tensorflow_1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow</span><br></pre></td></tr></table></figure>
+<p>显示tensorflow的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">tf.__version__</span><br></pre></td></tr></table></figure>
+<p>##</p>
+<p><code>tf.constant</code> 定义常量<br><code>tf.Variable</code> 定义变量<br><code>tf.placeholder</code> 占位符，用于填充数据</p>
+<ul>
+<li><p>定义一个矩阵</p>
+</li>
+<li><p>sigmoid</p>
+</li>
+</ul>
+<h2 id="Tensorboard"><a href="#Tensorboard" class="headerlink" title="Tensorboard"></a>Tensorboard</h2><ol>
+<li>把计算过程用<code>tf.name_scope</code>包装起来</li>
+<li>使用<code>tf.summary.FileWriter</code>输出到目标文件夹</li>
+<li>启动Tensorboard</li>
+</ol>
+<p>如果一个op中只有直接的赋值，那么这个op不会显示在Tensorboard中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir=/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">'TF_CPP_MIN_LOG_LEVEL'</span>] = <span class="string">'2'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    const_A = tf.constant(<span class="number">10</span>, name = <span class="string">'const_A'</span>, dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    const_B = tf.constant(<span class="number">20</span>, name = <span class="string">'const_B'</span>, dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    placeholder_C = tf.placeholder(dtype = tf.int64)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.name_scope(<span class="string">'Add'</span>):</span><br><span class="line">        _sum = const_A + const_B</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> session:</span><br><span class="line">        session.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line">        const_sum = session.run(_sum)</span><br><span class="line">        print(const_sum)</span><br><span class="line"></span><br><span class="line">    train_writer = tf.summary.FileWriter(<span class="string">'/test'</span>, session.graph)</span><br><span class="line">    train_writer.close()</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="https://dotblogs.com.tw/shaynling/2017/11/14/173025" target="_blank" rel="noopener">https://dotblogs.com.tw/shaynling/2017/11/14/173025</a></p>
+<p>2.<a href="https://www.tensorflow.org/api_docs/python/tf/matmul" target="_blank" rel="noopener">https://www.tensorflow.org/api_docs/python/tf/matmul</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/04/tensorflow-1/" data-id="ckakxauwy004bt4g2jyr97puk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-opencv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/02/opencv/" class="article-date">
+  <time datetime="2018-07-02T12:03:42.000Z" itemprop="datePublished">2018-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/02/opencv/">opencv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv2.CascadeClassifier.detectMultiScale(image[, scaleFactor[, minNeighbors[, flags[, minSize[, maxSize]]]]]) → objects</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>scaleFactor</code> – Parameter specifying how much the image size is reduced at each image scale.</p>
+</li>
+<li><p><code>minNeighbors</code> – Parameter specifying how many neighbors each candidate rectangle should have to retain it.</p>
+</li>
+<li><p><code>flags</code> – Parameter with the same meaning for an old cascade as in the function cvHaarDetectObjects. It is not used for a new cascade.</p>
+</li>
+<li><p><code>minSize</code> – Minimum possible object size. Objects smaller than that are ignored.</p>
+</li>
+<li><p><code>maxSize</code> – Maximum possible object size. Objects larger than that are ignored.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv.HaarDetectObjects(image, cascade, storage, scale_factor=<span class="number">1.1</span>, min_neighbors=<span class="number">3</span>, flags=<span class="number">0</span>, min_size=(<span class="number">0</span>, <span class="number">0</span>)) → detectedObjects</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/02/opencv/" data-id="ckakxauwm003xt4g2m6ahtxn9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spark-intallation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/29/spark-intallation/" class="article-date">
+  <time datetime="2018-06-29T11:06:28.000Z" itemprop="datePublished">2018-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/29/spark-intallation/">spark_intallation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>下载</li>
+</ol>
+<p>下载spark</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://www.apache.org/dyn/closer.lua/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz</span><br></pre></td></tr></table></figure>
+<p>下载 JAVA JDK</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -c --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie"</span> http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>如果解压出错，可能是问下下载的不完整，试试删了重新下载</p>
+<p>安装JDK</p>
+<p>将下载的jdk解压到<code>/usr/java</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr</span><br><span class="line">mkdir java</span><br><span class="line">tar -zxvf jdk-8u171-linux-x64.tar.gz -C /usr/java</span><br></pre></td></tr></table></figure>
+<p>修改环境变量</p>
+<p>在<code>/etc/profile</code>文件末尾加上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Set java environment</span><br><span class="line">JAVA_HOME=/usr/java/jdk1.8.0_171</span><br><span class="line">JRE_HOME=/usr/java/jdk1.8.0_171/jre</span><br><span class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br><span class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</span><br></pre></td></tr></table></figure>
+<p>使配置文件生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>现在java命令能正确相应</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># java -version</span></span><br><span class="line">java version <span class="string">"1.8.0_171"</span></span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_171-b11)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/29/spark-intallation/" data-id="ckakxauwq0042t4g2so9z8qrm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-scrapy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/27/scrapy/" class="article-date">
+  <time datetime="2018-06-27T13:02:03.000Z" itemprop="datePublished">2018-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/scrapy/">scrapy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>使用scrapy提交一个表单</p>
+<p>一些登录界面提交的参数除了用户名和密码还有一些参数是隐藏的，如<br><code>&lt;input type=&quot;hidden&quot; value = &quot;aaa&quot;&gt;</code>，通过<code>FormRequest.from_response</code>可以自动提取要提交的参数，再添加上用户名和密码</p>
+<p>如官网文档中的例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'example.com'</span></span><br><span class="line">    start_urls = [<span class="string">'http://www.example.com/users/login.php'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> scrapy.FormRequest.from_response(</span><br><span class="line">            response,</span><br><span class="line">            formdata=&#123;<span class="string">'username'</span>: <span class="string">'john'</span>, <span class="string">'password'</span>: <span class="string">'secret'</span>&#125;,</span><br><span class="line">            callback=self.after_login</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_login</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># check login succeed before going on</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"authentication failed"</span> <span class="keyword">in</span> response.body:</span><br><span class="line">            self.logger.error(<span class="string">"Login failed"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># continue scraping with authenticated session...</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/27/scrapy/" data-id="ckakxauwz004ct4g22ffvtznv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/26/git/" class="article-date">
+  <time datetime="2018-06-26T04:53:41.000Z" itemprop="datePublished">2018-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/git/">git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>摘要</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/06/26/git/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="ckakxausn0011t4g2zmy7w0jh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="[page]-Octave" class="article article-type-[page]" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/07/Octave/" class="article-date">
@@ -116,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="ckaj1rs6d0002fog2gt3slbvw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="ckakxaun90002t4g2u5wqdkpv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +461,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit/">bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
     </div>
   </div>
 
@@ -152,7 +471,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a>
+      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/bit/" style="font-size: 10px;">bit</a> <a href="/tags/剑指Offer/" style="font-size: 15px;">剑指Offer</a>
     </div>
   </div>
 
@@ -174,23 +493,23 @@
       <ul>
         
           <li>
-            <a href="/2020/05/22/code4offer-1/">code4offer-1 二维数组的查找</a>
+            <a href="/2020/05/24/code4offer-6/">code4offer-6 旋转数组的最小数字</a>
           </li>
         
           <li>
-            <a href="/2020/05/18/network-service-ports/">network-service-ports</a>
+            <a href="/2020/05/24/code4offer-5/">code4offer-5</a>
           </li>
         
           <li>
-            <a href="/2020/05/17/leetcode-53/">leetcode-53 Maximum Subarray</a>
+            <a href="/2020/05/24/binary-encoding/">binary-encoding</a>
           </li>
         
           <li>
-            <a href="/2020/05/09/cryptography/">cryptography</a>
+            <a href="/2020/05/24/code4offer-4/">code4offer-4 二进制中1的个数</a>
           </li>
         
           <li>
-            <a href="/2020/04/11/windows-cmd/">windows-cmd</a>
+            <a href="/2020/05/23/code4offer-3/">code4offer-3 从尾到头打印链表</a>
           </li>
         
       </ul>
@@ -229,6 +548,23 @@
 
 <script src="/js/script.js"></script>
 
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
