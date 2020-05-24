@@ -62,6 +62,136 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-stl-vector" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/01/stl-vector/" class="article-date">
+  <time datetime="2019-08-01T03:07:24.000Z" itemprop="datePublished">2019-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/01/stl-vector/">stl-vector</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="vector的初始化"><a href="#vector的初始化" class="headerlink" title="vector的初始化"></a><code>vector</code>的初始化</h3><ul>
+<li>通过数组初始化</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(a, a+<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>带初值的初始化</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(<span class="number">10</span>, <span class="number">0</span>); <span class="comment">//10个元素的vector，每个元素都是0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>vector&lt;vector&lt;int&gt;&gt;</code> 的初始化</li>
+</ul>
+<p>和上面一维的一对照就能明白</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vec(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = nums.begin(); it != nums.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    nums.erase(it, it+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="https://blog.csdn.net/yjunyu/article/details/77728410" target="_blank" rel="noopener">vector的几种初始化及赋值方式</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/01/stl-vector/" data-id="ckal7fdcc0044j4g2mzlqks5v" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-stl-queue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/01/stl-queue/" class="article-date">
+  <time datetime="2019-08-01T01:15:29.000Z" itemprop="datePublished">2019-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/01/stl-queue/">stl-queue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/01/stl-queue/" data-id="ckal7fdcc0043j4g2hcfgcmj2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-104" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/31/leetcode-104/" class="article-date">
+  <time datetime="2019-07-31T14:14:01.000Z" itemprop="datePublished">2019-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/31/leetcode-104/">leetcode-104 Maximum Depth of Binary Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>104. Maximum Depth of Binary Tree</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/07/31/leetcode-104/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/31/leetcode-104/" data-id="ckal7fd9h001cj4g2p8bdigp1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-141" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/07/31/leetcode-141/" class="article-date">
@@ -93,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/31/leetcode-141/" data-id="ckakxautd001it4g2qfaec023" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/leetcode-141/" data-id="ckal7fd9n001hj4g2qerwmhcd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/31/leetcode-155/" data-id="ckakxautm001ot4g2flzar7tl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/leetcode-155/" data-id="ckal7fd9o001ij4g2x1e0shar" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
@@ -177,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/29/leetcode-824/" data-id="ckakxauvm0031t4g20vb539yx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/29/leetcode-824/" data-id="ckal7fdax002rj4g24lv76aa7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -218,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/26/leetcode-21/" data-id="ckakxautz001wt4g28dgusj0d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/26/leetcode-21/" data-id="ckal7fd9u001oj4g2rtlpsvok" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
@@ -261,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/24/leetcode-38/" data-id="ckakxautw001ut4g29f7mhfxp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/24/leetcode-38/" data-id="ckal7fda0001tj4g2gu92ar8r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
@@ -304,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/10/leetcode-1108/" data-id="ckakxauta001ht4g2satiug1w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/10/leetcode-1108/" data-id="ckal7fd9i001dj4g2jtiueumy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,189 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/08/harvest-moon/" data-id="ckakxauss0015t4g2e4gs4idh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-kernel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/17/linux-kernel/" class="article-date">
-  <time datetime="2019-06-17T14:28:26.000Z" itemprop="datePublished">2019-06-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/17/linux-kernel/">linux-kernel</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/17/linux-kernel/" data-id="ckakxauw4003ft4g2fsn5c5f7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-processing-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/16/processing-0/" class="article-date">
-  <time datetime="2019-06-16T12:12:35.000Z" itemprop="datePublished">2019-06-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/processing-0/">processing-0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Processing的颜色</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/06/16/processing-0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/processing-0/" data-id="ckakxauwr0043t4g2gzqneapo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cuda-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/13/cuda-0/" class="article-date">
-  <time datetime="2019-06-13T08:12:58.000Z" itemprop="datePublished">2019-06-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/cuda-0/">cuda-0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>driver’s version work well for games: 388.59</p>
-<p>Table 1. CUDA Toolkit and Compatible Driver Versions</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">CUDA Toolkit</th>
-<th style="text-align:center">Linux x86_64 Driver Version</th>
-<th style="text-align:center">Windows x86_64 Driver Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">CUDA 10.1 (10.1.105 general release, and 10.1.168 Update 1 general release)</td>
-<td style="text-align:center">&gt;= 418.39</td>
-<td style="text-align:center">&gt;= 418.96</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 10.0.130</td>
-<td style="text-align:center">&gt;= 410.48</td>
-<td style="text-align:center">&gt;= 411.31</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.2 (9.2.148 Update 1)</td>
-<td style="text-align:center">&gt;= 396.37</td>
-<td style="text-align:center">&gt;= 398.26</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.2 (9.2.88)</td>
-<td style="text-align:center">&gt;= 396.26</td>
-<td style="text-align:center">&gt;= 397.44</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.1 (9.1.85)</td>
-<td style="text-align:center">&gt;= 390.46</td>
-<td style="text-align:center">&gt;= 391.29</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 9.0 (9.0.76)</td>
-<td style="text-align:center">&gt;= 384.81</td>
-<td style="text-align:center">&gt;= 385.54</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 8.0 (8.0.61 GA2)</td>
-<td style="text-align:center">&gt;= 375.26</td>
-<td style="text-align:center">&gt;= 376.51</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 8.0 (8.0.44)</td>
-<td style="text-align:center">&gt;= 367.48</td>
-<td style="text-align:center">&gt;= 369.30</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 7.5 (7.5.16)</td>
-<td style="text-align:center">&gt;= 352.31</td>
-<td style="text-align:center">&gt;= 353.66</td>
-</tr>
-<tr>
-<td style="text-align:center">CUDA 7.0 (7.0.28)</td>
-<td style="text-align:center">&gt;= 346.46</td>
-<td style="text-align:center">&gt;= 347.62</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><p><a href="https://docs.nvidia.com/deploy/cuda-compatibility/" target="_blank" rel="noopener">https://docs.nvidia.com/deploy/cuda-compatibility/</a></p>
-</li>
-<li><p><a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/13/cuda-0/" data-id="ckakxausq0014t4g2vmlphqvn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/08/harvest-moon/" data-id="ckal7fd980013j4g2jms7glwx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -585,23 +533,23 @@
       <ul>
         
           <li>
+            <a href="/2020/05/24/code4offer-9/">code4offer-9 不用加减乘除做加法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/code4offer-8/">code4offer-8 数组中重复的数字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/code4offer-7/">code4offer-7 数值的整数次方</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/24/code4offer-6/">code4offer-6 旋转数组的最小数字</a>
           </li>
         
           <li>
             <a href="/2020/05/24/code4offer-5/">code4offer-5</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/24/binary-encoding/">binary-encoding</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/24/code4offer-4/">code4offer-4 二进制中1的个数</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/23/code4offer-3/">code4offer-3 从尾到头打印链表</a>
           </li>
         
       </ul>

@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="重建二叉树">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-24T07:24:23.208Z">
+<meta property="og:updated_time" content="2020-05-24T15:12:51.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="code4offer-5">
 <meta name="twitter:description" content="重建二叉树">
@@ -90,12 +90,13 @@
         <p>重建二叉树</p>
 <a id="more"></a>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reConstructBinaryTree</span><span class="params">(self, pre, tin)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (len(pre) == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">if</span> (len(pre) == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">return</span> TreeNode(pre[<span class="number">0</span>])</span><br><span class="line">    root = TreeNode(pre[<span class="number">0</span>])</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tin:</span><br><span class="line">        <span class="keyword">if</span> i != pre[<span class="number">0</span>]:</span><br><span class="line">            left = left + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    root.left = self.reConstructBinaryTree(pre[<span class="number">1</span>:left+<span class="number">1</span>], tin[<span class="number">0</span>:left])</span><br><span class="line">    root.right = self.reConstructBinaryTree(pre[left+<span class="number">1</span>:], tin[left+<span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>用递归</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reConstructBinaryTree</span><span class="params">(self, pre, tin)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (len(pre) == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">if</span> (len(pre) == <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">return</span> TreeNode(pre[<span class="number">0</span>])</span><br><span class="line">    root = TreeNode(pre[<span class="number">0</span>])</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tin:</span><br><span class="line">        <span class="keyword">if</span> i != pre[<span class="number">0</span>]:</span><br><span class="line">            left = left + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    root.left = self.reConstructBinaryTree(pre[<span class="number">1</span>:left+<span class="number">1</span>], tin[<span class="number">0</span>:left])</span><br><span class="line">    root.right = self.reConstructBinaryTree(pre[left+<span class="number">1</span>:], tin[left+<span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/24/code4offer-5/" data-id="ckakxauo1000gt4g2zvj9772q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/24/code4offer-5/" data-id="ckal7fd8e000jj4g2247q0jlv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
@@ -169,23 +170,23 @@
       <ul>
         
           <li>
+            <a href="/2020/05/24/code4offer-9/">code4offer-9 不用加减乘除做加法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/code4offer-8/">code4offer-8 数组中重复的数字</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/code4offer-7/">code4offer-7 数值的整数次方</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/24/code4offer-6/">code4offer-6 旋转数组的最小数字</a>
           </li>
         
           <li>
             <a href="/2020/05/24/code4offer-5/">code4offer-5</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/24/binary-encoding/">binary-encoding</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/24/code4offer-4/">code4offer-4 二进制中1的个数</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/23/code4offer-3/">code4offer-3 从尾到头打印链表</a>
           </li>
         
       </ul>
