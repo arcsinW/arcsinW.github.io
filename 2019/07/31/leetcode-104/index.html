@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="104. Maximum Depth of Binary Tree">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T03:20:51.595Z">
+<meta property="og:updated_time" content="2020-05-28T02:10:13.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-104 Maximum Depth of Binary Tree">
 <meta name="twitter:description" content="104. Maximum Depth of Binary Tree">
@@ -98,14 +98,14 @@
 <h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><p>计算二叉树的高度，很基础的问题</p>
 <p>两种思路：递归和层序遍历</p>
 <p>层序遍历的时候需要一个queue辅助，每次进while循环的时候queue里是树的一层的节点，出队列后将下一层的节点入队列，需要记录每一层有几个节点来区分不同层的节点</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">    que.push(root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> depth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> layer_count = que.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; layer_count; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            TreeNode* tmp = que.front();</span><br><span class="line">            que.pop();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (tmp-&gt;left) &#123; que.push(tmp-&gt;left); &#125;</span><br><span class="line">            <span class="keyword">if</span> (tmp-&gt;right) &#123; que.push(tmp-&gt;right); &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ++depth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> depth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">    que.push(root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> depth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!que.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> layer_count = que.size();</span><br><span class="line">        <span class="keyword">while</span> (layer_count-- &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            TreeNode* tmp = que.front();</span><br><span class="line">            que.pop();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (tmp-&gt;left) &#123; que.push(tmp-&gt;left); &#125;</span><br><span class="line">            <span class="keyword">if</span> (tmp-&gt;right) &#123; que.push(tmp-&gt;right); &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ++depth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> depth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>更好的办法是用递归做，但我没想到，贴一个leetcode上大佬的代码，递归两行解决问题，递归也太强了</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root==<span class="literal">NULL</span>)&#123;<span class="keyword">return</span> <span class="number">0</span>;&#125;</span><br><span class="line">    <span class="keyword">return</span> max(maxDepth(root-&gt;left), maxDepth(root-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/31/leetcode-104/" data-id="ckapgb4hf001nhcg24llyz3le" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/leetcode-104/" data-id="ckasa7rbh001qtog233cmanc7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,6 +177,14 @@
       <ul>
         
           <li>
+            <a href="/2020/05/28/code4offer-16/">code4offer-16</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/28/bubble-sort/">bubble-sort</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/27/binary-tree/">binary-tree</a>
           </li>
         
@@ -186,14 +194,6 @@
         
           <li>
             <a href="/2020/05/26/code4offer-15/">code4offer-15 二叉搜索树的后序遍历序列</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/quick-sort/">quick-sort</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/stl-map/">stl-map</a>
           </li>
         
       </ul>

@@ -62,6 +62,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-scrapy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/27/scrapy/" class="article-date">
+  <time datetime="2018-06-27T13:02:03.000Z" itemprop="datePublished">2018-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/scrapy/">scrapy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<p>使用scrapy提交一个表单</p>
+<p>一些登录界面提交的参数除了用户名和密码还有一些参数是隐藏的，如<br><code>&lt;input type=&quot;hidden&quot; value = &quot;aaa&quot;&gt;</code>，通过<code>FormRequest.from_response</code>可以自动提取要提交的参数，再添加上用户名和密码</p>
+<p>如官网文档中的例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'example.com'</span></span><br><span class="line">    start_urls = [<span class="string">'http://www.example.com/users/login.php'</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> scrapy.FormRequest.from_response(</span><br><span class="line">            response,</span><br><span class="line">            formdata=&#123;<span class="string">'username'</span>: <span class="string">'john'</span>, <span class="string">'password'</span>: <span class="string">'secret'</span>&#125;,</span><br><span class="line">            callback=self.after_login</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_login</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="comment"># check login succeed before going on</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">"authentication failed"</span> <span class="keyword">in</span> response.body:</span><br><span class="line">            self.logger.error(<span class="string">"Login failed"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># continue scraping with authenticated session...</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/27/scrapy/" data-id="ckasa7rem004atog221f16gzg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/26/git/" class="article-date">
+  <time datetime="2018-06-26T04:53:41.000Z" itemprop="datePublished">2018-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/git/">git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>摘要</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/06/26/git/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/26/git/" data-id="ckasa7rb7001gtog25m62mwb4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="[page]-Octave" class="article article-type-[page]" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/07/Octave/" class="article-date">
@@ -116,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="ckapgb4er0005hcg2pcdq1ze2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/07/Octave/" data-id="ckasa7r8t0002tog2y9d5bc22" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,6 +256,14 @@
       <ul>
         
           <li>
+            <a href="/2020/05/28/code4offer-16/">code4offer-16</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/28/bubble-sort/">bubble-sort</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/27/binary-tree/">binary-tree</a>
           </li>
         
@@ -183,14 +273,6 @@
         
           <li>
             <a href="/2020/05/26/code4offer-15/">code4offer-15 二叉搜索树的后序遍历序列</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/quick-sort/">quick-sort</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/stl-map/">stl-map</a>
           </li>
         
       </ul>

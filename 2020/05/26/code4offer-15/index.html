@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="二叉搜索树的后序遍历序列">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-27T14:35:28.337Z">
+<meta property="og:updated_time" content="2020-05-28T03:50:23.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="code4offer-15 二叉搜索树的后序遍历序列">
 <meta name="twitter:description" content="二叉搜索树的后序遍历序列">
@@ -89,14 +89,17 @@
       
         <p>二叉搜索树的后序遍历序列</p>
 <a id="more"></a>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>递归</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设<strong>输入的数组的任意两个数字都互不相同</strong>。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>二叉搜索树的左子树 &lt; 根节点， 右子树 &gt; 根节点</p>
+<p>判断是否是二叉搜索树的后序遍历序列可以看 序列是否能分为两段 前一段 &lt; 根节点，后一段 &gt; 根节点（也可能出现 只有左子树 或 只有 右子树的情况）</p>
+<p>如果在大于根节点的元素后面出现了小于根节点的元素，则不是二叉搜索树的后序遍历序列</p>
+<p>后序遍历（左右根）序列的最后一个元素为根节点的值，根据二叉搜索树的性质，可以从序列中分离出左子树和右子树，递归地对两个子树判断是否是二叉搜索树的后序遍历序列</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">Verify</span><span class="params">(<span class="keyword">int</span>[] sequence, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span> <span class="keyword">true</span>; <span class="comment">// 无右子树时 left &gt;= right</span></span><br><span class="line">    <span class="keyword">int</span> root = sequence[right];</span><br><span class="line">    <span class="keyword">int</span> i = left, j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (sequence[i] &lt; root) ++i;</span><br><span class="line">    j = i;</span><br><span class="line">    <span class="keyword">while</span> (j++ &lt; right) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sequence[j] &lt; root) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">boolean</span> leftV = Verify(sequence, left, i-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">boolean</span> rightV = Verify(sequence, i, right-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> leftV &amp; rightV;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">VerifySquenceOfBST</span><span class="params">(<span class="keyword">int</span> [] sequence)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = sequence.length;</span><br><span class="line">    <span class="keyword">if</span> (len == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (len &lt;= <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Verify(sequence, <span class="number">0</span>, len - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/26/code4offer-15/" data-id="ckapgb4fm000khcg2miiofwe3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/26/code4offer-15/" data-id="ckasa7r9x000jtog2a1g9c2ut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
@@ -170,6 +173,14 @@
       <ul>
         
           <li>
+            <a href="/2020/05/28/code4offer-16/">code4offer-16</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/28/bubble-sort/">bubble-sort</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/27/binary-tree/">binary-tree</a>
           </li>
         
@@ -179,14 +190,6 @@
         
           <li>
             <a href="/2020/05/26/code4offer-15/">code4offer-15 二叉搜索树的后序遍历序列</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/quick-sort/">quick-sort</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/stl-map/">stl-map</a>
           </li>
         
       </ul>

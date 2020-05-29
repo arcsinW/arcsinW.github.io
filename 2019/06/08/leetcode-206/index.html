@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="206. Reverse Linked List">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-13T07:51:17.969Z">
+<meta property="og:updated_time" content="2020-05-29T12:21:03.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-206">
 <meta name="twitter:description" content="206. Reverse Linked List">
@@ -102,19 +102,13 @@
 <p>找到递归子问题</p>
 <p>对每个单链表，每次将最后两个 node 的指向反转</p>
 <p>举个例子</p>
-<p>第一次递归</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-&gt;2-&gt;3-&gt;4-&gt;5</span><br><span class="line"></span><br><span class="line">1-&gt;2-&gt;3-&gt;4&lt;-5</span><br></pre></td></tr></table></figure>
-<p>第二次递归</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-&gt;2-&gt;3-&gt;4&lt;-5</span><br><span class="line"></span><br><span class="line">1-&gt;2-&gt;3&lt;-4&lt;-5</span><br></pre></td></tr></table></figure>
-<p>第三次递归</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-&gt;2-&gt;3&lt;-4&lt;-5</span><br><span class="line"></span><br><span class="line">1-&gt;2&lt;-3&lt;-4&lt;-5</span><br></pre></td></tr></table></figure>
-<p>第四次递归</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-&gt;2&lt;-3&lt;-4&lt;-5</span><br><span class="line"></span><br><span class="line">1&lt;-2&lt;-3&lt;-4&lt;-5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-&gt;2-&gt;3-&gt;4-&gt;5</span><br><span class="line">1-&gt;2-&gt;3-&gt;4&lt;-5</span><br><span class="line">1-&gt;2-&gt;3&lt;-4&lt;-5</span><br><span class="line">1-&gt;2&lt;-3&lt;-4&lt;-5</span><br><span class="line">1&lt;-2&lt;-3&lt;-4&lt;-5</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode cur = reverseList(head.next);</span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cur;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="ckapgb4hp001xhcg2j2wva7f0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="ckasa7rbm001utog2z71zf0e0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,6 +180,14 @@
       <ul>
         
           <li>
+            <a href="/2020/05/28/code4offer-16/">code4offer-16</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/28/bubble-sort/">bubble-sort</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/27/binary-tree/">binary-tree</a>
           </li>
         
@@ -195,14 +197,6 @@
         
           <li>
             <a href="/2020/05/26/code4offer-15/">code4offer-15 二叉搜索树的后序遍历序列</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/quick-sort/">quick-sort</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/stl-map/">stl-map</a>
           </li>
         
       </ul>
