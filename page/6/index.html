@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/05/mysql-3/" class="article-date">
+  <time datetime="2019-09-05T13:13:13.000Z" itemprop="datePublished">2019-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/mysql-3/">mysql-3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>去重</li>
+</ol>
+<p>group时取的是id最小的那一条记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> sprint_score</span><br><span class="line"><span class="keyword">from</span> sprint_score,</span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">id</span>) <span class="keyword">id</span>, user_id, score, create_time, <span class="keyword">count</span>(*) <span class="keyword">from</span> sprint_score</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> user_id, score, create_time</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>) t2</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">sprint_score.user_id = t2.user_id</span><br><span class="line"><span class="keyword">and</span> sprint_score.score = t2.score</span><br><span class="line"><span class="keyword">and</span> sprint_score.create_time = t2.create_time</span><br><span class="line"><span class="keyword">and</span> sprint_score.id &gt; t2.id</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/05/mysql-3/" data-id="ckat5pbpb004igog2fu16flld" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-linux-account" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/09/02/linux-account/" class="article-date">
@@ -96,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/02/linux-account/" data-id="ckasa7rdr003htog2rnocpy4j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/02/linux-account/" data-id="ckat5pbox0042gog2g4ztjwm3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/02/leetcode-470/" data-id="ckasa7rc8002ctog2mt8tl2r7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/02/leetcode-470/" data-id="ckat5pbj20027gog2gpngk5qv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/28/leetcode-1137/" data-id="ckasa7rbc001ltog2zkso4hts" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/28/leetcode-1137/" data-id="ckat5pbih001mgog25kndunx1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/21/leetcode-704/" data-id="ckasa7rct002ptog2iighjkdf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/21/leetcode-704/" data-id="ckat5pbnv002zgog2dl11ltaz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/21/c-pointer/" data-id="ckasa7r9b000atog22808lfpe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/21/c-pointer/" data-id="ckat5pbgw0009gog28teftikc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -295,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/14/redis-1/" data-id="ckasa7rej0048tog26uxmyez6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/14/redis-1/" data-id="ckat5pbpr0050gog26bmtnr8z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="ckasa7reg0044tog2twdpgkqa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="ckat5pbpq004ygog2tq5zmnfu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -377,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/11/leetcode-661/" data-id="ckasa7rcs002otog225mu5hdn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/11/leetcode-661/" data-id="ckat5pbnq002tgog20kcs4s4e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -418,46 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/mysql-1/" data-id="ckasa7re6003wtog2p1en169s" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mysql-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/10/mysql-0/" class="article-date">
-  <time datetime="2019-08-10T13:04:13.000Z" itemprop="datePublished">2019-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/mysql-0/">mysql-0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>创建用户</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/mysql-0/" data-id="ckasa7rdz003otog220jbc8m7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/10/mysql-1/" data-id="ckat5pbpm004tgog2l1n7l78b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -483,7 +485,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary-tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit/">bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary-tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit/">bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员面试金典/">程序员面试金典</a></li></ul>
     </div>
   </div>
 
@@ -493,7 +495,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary-tree</a> <a href="/tags/bit/" style="font-size: 10px;">bit</a> <a href="/tags/剑指Offer/" style="font-size: 20px;">剑指Offer</a>
+      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary-tree</a> <a href="/tags/bit/" style="font-size: 10px;">bit</a> <a href="/tags/剑指Offer/" style="font-size: 20px;">剑指Offer</a> <a href="/tags/程序员面试金典/" style="font-size: 10px;">程序员面试金典</a>
     </div>
   </div>
 
@@ -515,6 +517,10 @@
       <ul>
         
           <li>
+            <a href="/2020/05/30/coding-interview-1/">coding-interview-1</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/28/code4offer-16/">code4offer-16</a>
           </li>
         
@@ -528,10 +534,6 @@
         
           <li>
             <a href="/2020/05/26/leetcode-189/">leetcode-189 Rotate Array</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/code4offer-15/">code4offer-15 二叉搜索树的后序遍历序列</a>
           </li>
         
       </ul>
