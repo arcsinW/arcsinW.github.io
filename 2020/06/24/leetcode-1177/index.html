@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>leetcode-1177 构建回文串检测 | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1177. 构建回文串检测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-1177 构建回文串检测">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/leetcode-1177/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="1177. 构建回文串检测">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-24T14:37:05.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-1177 构建回文串检测">
+<meta name="twitter:description" content="1177. 构建回文串检测">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-1177" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/24/leetcode-1177/" class="article-date">
+  <time datetime="2020-06-24T13:44:38.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode-1177 构建回文串检测
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1177. 构建回文串检测</p>
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一个字符串 <code>s</code>，请你对 <code>s</code> 的子串进行检测。</p>
+<p>每次检测，待检子串都可以表示为 <code>queries[i] = [left, right, k]</code>。我们可以 <strong>重新排列</strong> 子串 <code>s[left], ..., s[right]</code>，并从中选择 最多 k 项替换成任何小写英文字母。</p>
+<p>如果在上述检测过程中，子串可以变成回文形式的字符串，那么检测结果为 <code>true</code>，否则结果为 <code>false</code>。</p>
+<p>返回答案数组 <code>answer[]</code>，其中 <code>answer[i]</code> 是第 <code>i</code> 个待检子串 <code>queries[i]</code> 的检测结果。</p>
+<p>注意：在替换时，子串中的每个字母都必须作为 独立的 项进行计数，也就是说，如果 s[left..right] = “aaa” 且 k = 2，我们只能替换其中的两个字母。（另外，任何检测都不会修改原始字符串 s，可以认为每次检测都是独立的）</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;abcda&quot;, queries = [[3,3,0],[1,2,0],[0,3,1],[0,3,2],[0,4,1]]</span><br><span class="line">输出 ：[true,false,false,true,true]</span><br><span class="line">解释：</span><br><span class="line">queries[0] : 子串 = &quot;d&quot;，回文。</span><br><span class="line">queries[1] : 子串 = &quot;bc&quot;，不是回文。</span><br><span class="line">queries[2] : 子串 = &quot;abcd&quot;，只替换 1 个字符是变不成回文串的。</span><br><span class="line">queries[3] : 子串 = &quot;abcd&quot;，可以变成回文的 &quot;abba&quot;。 也可以变成 &quot;baab&quot;，先重新排序变成 &quot;bacd&quot;，然后把 &quot;cd&quot; 替换为 &quot;ab&quot;。</span><br><span class="line">queries[4] : 子串 = &quot;abcda&quot;，可以变成回文的 &quot;abcba&quot;。</span><br></pre></td></tr></table></figure>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= s.length, queries.length &lt;= 10^5</code></li>
+<li><code>0 &lt;= queries[i][0] &lt;= queries[i][1] &lt; s.length</code></li>
+<li><code>0 &lt;= queries[i][2] &lt;= s.length</code></li>
+<li><code>s</code> 中只有小写英文字母</li>
+</ul>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/can-make-palindrome-from-substring" target="_blank" rel="noopener">https://leetcode-cn.com/problems/can-make-palindrome-from-substring</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>取出来的[left, right]</p>
+<ul>
+<li>长度为奇数，可以接受有一个落单的字符，仍为回文字符串</li>
+<li>为偶数，要为回文字符串不允许出现落单字符</li>
+</ul>
+<p>题目中允许修改<code>k</code>个字符，如果 k &gt;= 落单字符的数量，则字符串可以变成回文串</p>
+<p>如果有oddNum个落单字符，至少需要修改其中的一半，当区间长度为奇数时，有一个落单字符可以不用改，考虑到奇偶，所以需要更改的字符数是<code>(oddNum - (len % 2)) &gt;&gt; 1</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Boolean&gt; <span class="title">canMakePaliQueries</span><span class="params">(String s, <span class="keyword">int</span>[][] queries)</span> </span>&#123;</span><br><span class="line">    List&lt;Boolean&gt; result = <span class="keyword">new</span> ArrayList&lt;Boolean&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span>[] a : queries) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = a[<span class="number">0</span>], right = a[<span class="number">1</span>], k = a[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">if</span>(left == right) &#123;</span><br><span class="line">            result.add(<span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对每个[left, right]范围，计算其中落单字符数量</span></span><br><span class="line">        Map&lt;Character, Integer&gt; countMap = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = left; j &lt;= right; j++) &#123;</span><br><span class="line">            countMap.put(s.charAt(j), countMap.getOrDefault(s.charAt(j), <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> oddNumber = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Character, Integer&gt; entry : countMap.entrySet()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (entry.getValue() % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                oddNumber++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len = right - left + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (oddNumber == <span class="number">0</span> || k &gt;= (oddNumber - (len % <span class="number">2</span>)) &gt;&gt; <span class="number">1</span>) &#123;</span><br><span class="line">            result.add(<span class="keyword">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.add(<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LeetCode题解里我觉得最简洁的做法</p>
+<p>需要更改的字符数可以忽略区间长度带来的影响，<code>(oddNum - (len % 2)) &gt;&gt; 1</code>，oddNum减不减1对结果无影响，优化为<code>oddNum / 2</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Boolean&gt; <span class="title">canMakePaliQueries</span><span class="params">(String s, <span class="keyword">int</span>[][] queries)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = s.length();</span><br><span class="line">    List&lt;Boolean&gt; result = <span class="keyword">new</span> ArrayList&lt;Boolean&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[] states = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        cur = cur ^ (<span class="number">1</span> &lt;&lt; (s.charAt(i) - <span class="string">'a'</span> - <span class="number">0</span>)); <span class="comment">// % 2 = 0 或 1</span></span><br><span class="line">        states[i] = cur;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span>[] a : queries) &#123;</span><br><span class="line">        <span class="keyword">int</span> left = a[<span class="number">0</span>], right = a[<span class="number">1</span>], k = a[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">if</span>(left == right) &#123;</span><br><span class="line">            result.add(<span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算[left, right] 中落单字符的个数</span></span><br><span class="line">        <span class="keyword">int</span> oddNumber = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> start_state = left &gt; <span class="number">0</span> ? states[left-<span class="number">1</span>] : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> state = states[right] ^ start_state; <span class="comment">// 相当于是减</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (state != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((state &amp; <span class="number">1</span>) == <span class="number">1</span>) &#123;</span><br><span class="line">                ++oddNumber;</span><br><span class="line">            &#125;</span><br><span class="line">            state = state &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (oddNumber / <span class="number">2</span> &lt;= k) &#123; <span class="comment">// 不需要分奇偶</span></span><br><span class="line">            result.add(<span class="keyword">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.add(<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/24/leetcode-1177/" data-id="ckbtgm7ni001ltog2347oj51k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/30/coding-interview-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">coding-interview-1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary-tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit/">bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员面试金典/">程序员面试金典</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary-tree</a> <a href="/tags/bit/" style="font-size: 10px;">bit</a> <a href="/tags/剑指Offer/" style="font-size: 20px;">剑指Offer</a> <a href="/tags/程序员面试金典/" style="font-size: 10px;">程序员面试金典</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/30/coding-interview-1/">coding-interview-1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/28/code4offer-16/">code4offer-16</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/28/bubble-sort/">bubble-sort</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/27/binary-tree/">binary-tree</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

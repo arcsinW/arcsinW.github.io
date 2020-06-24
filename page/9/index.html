@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-gcc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/04/gcc/" class="article-date">
+  <time datetime="2019-06-04T06:23:04.000Z" itemprop="datePublished">2019-06-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/gcc/">gcc</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>预处理 编译 汇编 链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c</span><br></pre></td></tr></table></figure>
+<p>生成a.out可执行文件，默认的输出文件都叫<code>a.out</code></p>
+<p><code>-o</code>: output 指定生成文件名或路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c -o main</span><br><span class="line">gcc main.c -o ./main</span><br></pre></td></tr></table></figure>
+<p>生成<code>main</code>可执行文件</p>
+<p><code>-c</code>: compile 将.c文件编译为(<code>.o</code>或<code>.obj</code>)中间文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -c main.c           // 生成main.o</span><br><span class="line">gcc -c main.c -o a.o    // 生成a.o</span><br></pre></td></tr></table></figure>
+<p>链接 (中间文件 -&gt; 可执行文件)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.o              // 生成main可执行文件</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://c.biancheng.net/view/660.html" target="_blank" rel="noopener">http://c.biancheng.net/view/660.html</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/04/gcc/" data-id="ckbtgm7mq0017tog2akwrqk5h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-makefile" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/02/makefile/" class="article-date">
@@ -91,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/02/makefile/" data-id="ckat5pbp8004egog22szkwf00" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/02/makefile/" data-id="ckbtgm7rf003ptog29duqntc0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/26/linux-system-call/" data-id="ckat5pbp40049gog26pxl3pwr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/26/linux-system-call/" data-id="ckbtgm7r9003mtog2pnu7u82g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/11/conway-game-of-life/" data-id="ckat5pbhy0011gog2rprd6lom" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/11/conway-game-of-life/" data-id="ckbtgm7ms0018tog2exdzteab" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="ckat5pbq7005dgog2t15f0por" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/22/travis-ci/" data-id="ckbtgm7si004ktog2u6elluwj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="ckat5pbif001kgog24sal40dr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/19/leetcode-1021/" data-id="ckbtgm7nk001mtog2tqitmgdn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -329,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="ckat5pbo00031gog2gia6o2qc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/leetcode-724/" data-id="ckbtgm7pu002vtog2fk0kreyf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -370,7 +419,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="ckat5pbpa004hgog26nznft8u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/matlab/" data-id="ckbtgm7ri003rtog2hdmohkkm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="ckat5pbpt0052gog29p637ha5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/10/reservoir-sampling/" data-id="ckbtgm7s6004atog24ru4ig7e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -446,46 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="ckat5pbi9001dgog2xpea1eu7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-html-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/08/html-2/" class="article-date">
-  <time datetime="2019-04-08T07:51:23.000Z" itemprop="datePublished">2019-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/08/html-2/">html-2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>获取<code>select</code>选择的值</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"level_select"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"3"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"4"</span>&gt;</span>4<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>通过<code>selectedIndex</code>从<code>select</code>的<code>options</code>数组中取值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> level_select = <span class="built_in">document</span>.getElementById(<span class="string">'level_select'</span>);</span><br><span class="line"><span class="keyword">var</span> selectedIndex = level_select.selectedIndex;</span><br><span class="line"><span class="keyword">var</span> level = level_select.options[selectedIndex].value; <span class="comment">//通过text获取选中的文本值</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/html-2/" data-id="ckat5pbi8001cgog2hlh8bi4d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/html-3/" data-id="ckbtgm7mz001ctog26pbhchm8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -530,7 +540,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -541,6 +551,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+          </li>
         
           <li>
             <a href="/2020/05/30/coding-interview-1/">coding-interview-1</a>
@@ -556,10 +570,6 @@
         
           <li>
             <a href="/2020/05/27/binary-tree/">binary-tree</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/leetcode-189/">leetcode-189 Rotate Array</a>
           </li>
         
       </ul>

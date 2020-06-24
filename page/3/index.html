@@ -62,6 +62,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-binary-encoding" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/24/binary-encoding/" class="article-date">
+  <time datetime="2020-05-24T05:57:25.000Z" itemprop="datePublished">2020-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/24/binary-encoding/">binary-encoding</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>机器数的最高位表示符号，其余位为数的绝对值</p>
+<h3 id="纯小数的原码定义"><a href="#纯小数的原码定义" class="headerlink" title="纯小数的原码定义"></a>纯小数的原码定义</h3><p>$$ [x]<em>原=<br> \left{<br>        \begin{array}{lcr}<br>            x &amp; 1 &gt; x \geq 0 \<br>            &amp;&amp; ([x]</em>原是机器数原码，x是真值) \<br>            1 - x = 1 + |x| &amp; 0 \geq x   -1 \<br>        \end{array}<br>    \right.<br>$$</p>
+<p>$x_1 = +0.1110$, $x_2 = -0.1110$，字长为8位</p>
+<p>$[x_1]_原 = 0.111000$, $[x_2]_原 = 1 - (-0.1110) = 1.1110000$ （<strong>仅当以原码表示时是这样</strong>）</p>
+<h3 id="纯整数的原码定义"><a href="#纯整数的原码定义" class="headerlink" title="纯整数的原码定义"></a>纯整数的原码定义</h3><p>$$ [x]_原=<br> \left{<br>        \begin{array}{l}<br>            0x &amp; 2^n &gt; x \geq 0 \<br>            &amp;&amp; (x是真值，n是整数位数) \<br>            2^n - x = 2 ^n + |x| &amp;  0 \geq x &gt; -2^n \<br>        \end{array}<br>    \right.<br>$$</p>
+<p>$x_1$的真值为+14, $x_2$的真值为-14</p>
+<p>$x_1 = +1110$, $x_2 = -1110$</p>
+<p>$[x_1]_原 = 00001110$, $[x_2]_原 = 10001110$ （<strong>仅当以原码表示时是这样</strong>）</p>
+<p>原码表示法在字长为n+1时的表示范围为 $[-(2^n - 1), (2^n - 1)]$</p>
+<p>(最高位用于符号位，有两种0的表示方法 $[+0]<em>原$ = 0000 0000, $[-0]</em>原$ = 1000 0000)</p>
+<p>原码表示法表示数比较简单，但作加减法时复杂，需先对比两个数的绝对值，然后用绝对值大的减绝对值小的，给结果选择合适的符号</p>
+<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p>由原码得到：</p>
+<ul>
+<li>正数的反码 与原码相同</li>
+<li>负数的反码 符号位不变，其他位取反</li>
+</ul>
+<p>反码作为 由原码求补码 或 由补码求原码的中间过渡</p>
+<h3 id="纯小数的反码定义"><a href="#纯小数的反码定义" class="headerlink" title="纯小数的反码定义"></a>纯小数的反码定义</h3><p>$$ [x]_反=<br> \left{<br>        \begin{array}{l}<br>            x &amp; 1 &gt; x \geq 0 \<br>            &amp;&amp;\pmod{2 - 2^{-n}} \<br>            (2 - 2^{-n}) + x &amp; 0 \geq x &gt; -1 \<br>        \end{array}<br>    \right.<br>$$</p>
+<h3 id="纯整数的反码定义"><a href="#纯整数的反码定义" class="headerlink" title="纯整数的反码定义"></a>纯整数的反码定义</h3><p>$$ [x]_反=<br> \left{<br>        \begin{array}{l}<br>            0x &amp; 2^n &gt; x \geq 0 \<br>            &amp;&amp; \pmod{2^{n+1} - 1} \<br>            (2^{n+1} - 1) + x &amp;  0 \geq x &gt; -2^n \<br>        \end{array}<br>    \right.<br>$$</p>
+<p>$x_1$的真值为+14, $x_2$的真值为-14</p>
+<p>$x_1 = +1110$, $x_2 = -1110$</p>
+<p>$[x_1]_反 = 00001110$, $[x_2]_反 = 1111 1111 - 00001110 = 1111 0001$ （<strong>仅当以反码表示时是这样</strong>）</p>
+<p>反码表示法在字长为n时的表示范围为 $[-(2^{n-1} - 1), (2^{n-1} - 1)]$</p>
+<p>(最高位用于符号位，有两种0的表示方法 $[+0]<em>反$ = 0111 1111, $[-0]</em>反$ = 1111 1111)</p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>使用补码，计算机中的加减法可以统一用加法实现</p>
+<p>求补码：<br>正数 与原码相同<br>负数 原码符号位不变，数值部分按位取反+1（反码+1）</p>
+<h3 id="纯小数的补码定义"><a href="#纯小数的补码定义" class="headerlink" title="纯小数的补码定义"></a>纯小数的补码定义</h3><p>$$ [x]_补=<br> \left{<br>        \begin{array}{l}<br>            x &amp; 1 &gt; x \geq 0 \<br>            &amp;&amp;\pmod 2 \<br>            2 + x = 2 - |x| &amp; 0 &gt; x \geq -1 \<br>        \end{array}<br>    \right.<br>$$</p>
+<h3 id="纯整数的补码定义"><a href="#纯整数的补码定义" class="headerlink" title="纯整数的补码定义"></a>纯整数的补码定义</h3><p>$$ [x]_补=<br> \left{<br>        \begin{array}{l}<br>            0x &amp; 2^n &gt; x \geq 0 \<br>            &amp;&amp; \pmod{2^{n+1}} \<br>            2^{n+1} + x = 2 ^ {n+1} - |x| &amp;  0 \geq x &gt; -2^n \<br>        \end{array}<br>    \right.<br>$$</p>
+<p>$x_1$的真值为+14, $x_2$的真值为-14</p>
+<p>$x_1 = +1110$, $x_2 = -1110$</p>
+<p>$[x_1]_补 = 00001110$, $[x_2]_补 = 1 0000 0000 - 00001110 = 1111 0010$ （<strong>仅当以反码表示时是这样</strong>）</p>
+<p>补码表示法在字长为n时的表示范围为 $[-(2^{n-1} - 1), (2^{n-1} - 1)]$</p>
+<p>(最高位用于符号位，有两种0的表示方法 $[+0]<em>反$ = 0111 1111, $[-0]</em>反$ = 1111 1111)</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href>王道论坛. 2019年计算机组成原理联考复习指导(王道考研系列)[M]. 电子工业出版社, 2018.</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/24/binary-encoding/" data-id="ckbtgm7kq0008tog2hc30cjcw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-code4offer-4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/24/code4offer-4/" class="article-date">
@@ -93,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/24/code4offer-4/" data-id="ckat5pbhk000pgog2g8xpz1lt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/24/code4offer-4/" data-id="ckbtgm7m3000vtog26t47zmra" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
@@ -136,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/23/code4offer-3/" data-id="ckat5pbho000sgog2e76nii1x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/23/code4offer-3/" data-id="ckbtgm7lr000ptog24vwzpsea" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
@@ -179,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/23/code4offer-2/" data-id="ckat5pbhj000ogog2nsx379uw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/23/code4offer-2/" data-id="ckbtgm7lo000ntog23u6j4jcz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
@@ -232,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/code4offer-1/" data-id="ckat5pbh6000egog2ki6scy0d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/code4offer-1/" data-id="ckbtgm7li000jtog2e03vbw1d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li></ul>
@@ -316,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/network-service-ports/" data-id="ckat5pbph004ngog2l91iiqrr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/network-service-ports/" data-id="ckbtgm7rp003xtog2lervt0eg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -357,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/leetcode-53/" data-id="ckat5pbnb002egog2bkl46cel" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/leetcode-53/" data-id="ckbtgm7ov002ftog2jd4lu0gj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -398,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="ckat5pbhx0010gog2g9d563ct" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="ckbtgm7me0010tog231h8ldog" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,7 +507,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/windows-cmd/" data-id="ckat5pbqe005jgog2eyzuuezd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/windows-cmd/" data-id="ckbtgm7sw004stog2quyhxz39" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,43 +548,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/05/leetcode-283/" data-id="ckat5pbix0022gog20eaqvqgo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-netty-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/23/netty-1/" class="article-date">
-  <time datetime="2020-03-23T04:01:55.000Z" itemprop="datePublished">2020-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/23/netty-1/">netty-1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/netty-1/" data-id="ckat5pbpe004kgog2uyjnmns0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/05/leetcode-283/" data-id="ckbtgm7oo002atog2biqgnkx2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -556,7 +593,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -567,6 +604,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+          </li>
         
           <li>
             <a href="/2020/05/30/coding-interview-1/">coding-interview-1</a>
@@ -582,10 +623,6 @@
         
           <li>
             <a href="/2020/05/27/binary-tree/">binary-tree</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/26/leetcode-189/">leetcode-189 Rotate Array</a>
           </li>
         
       </ul>
