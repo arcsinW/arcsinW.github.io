@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="1177. 构建回文串检测">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-24T14:37:05.877Z">
+<meta property="og:updated_time" content="2020-06-24T14:39:32.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-1177 构建回文串检测">
 <meta name="twitter:description" content="1177. 构建回文串检测">
@@ -92,7 +92,7 @@
 <p>每次检测，待检子串都可以表示为 <code>queries[i] = [left, right, k]</code>。我们可以 <strong>重新排列</strong> 子串 <code>s[left], ..., s[right]</code>，并从中选择 最多 k 项替换成任何小写英文字母。</p>
 <p>如果在上述检测过程中，子串可以变成回文形式的字符串，那么检测结果为 <code>true</code>，否则结果为 <code>false</code>。</p>
 <p>返回答案数组 <code>answer[]</code>，其中 <code>answer[i]</code> 是第 <code>i</code> 个待检子串 <code>queries[i]</code> 的检测结果。</p>
-<p>注意：在替换时，子串中的每个字母都必须作为 独立的 项进行计数，也就是说，如果 s[left..right] = “aaa” 且 k = 2，我们只能替换其中的两个字母。（另外，任何检测都不会修改原始字符串 s，可以认为每次检测都是独立的）</p>
+<p>注意：在替换时，子串中的每个字母都必须作为 独立的 项进行计数，也就是说，如果 <code>s[left..right] = &quot;aaa&quot;</code> 且 <code>k = 2</code>，我们只能替换其中的两个字母。（另外，任何检测都不会修改原始字符串 <code>s</code>，可以认为每次检测都是独立的）</p>
 <p><strong>示例：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;abcda&quot;, queries = [[3,3,0],[1,2,0],[0,3,1],[0,3,2],[0,4,1]]</span><br><span class="line">输出 ：[true,false,false,true,true]</span><br><span class="line">解释：</span><br><span class="line">queries[0] : 子串 = &quot;d&quot;，回文。</span><br><span class="line">queries[1] : 子串 = &quot;bc&quot;，不是回文。</span><br><span class="line">queries[2] : 子串 = &quot;abcd&quot;，只替换 1 个字符是变不成回文串的。</span><br><span class="line">queries[3] : 子串 = &quot;abcd&quot;，可以变成回文的 &quot;abba&quot;。 也可以变成 &quot;baab&quot;，先重新排序变成 &quot;bacd&quot;，然后把 &quot;cd&quot; 替换为 &quot;ab&quot;。</span><br><span class="line">queries[4] : 子串 = &quot;abcda&quot;，可以变成回文的 &quot;abcba&quot;。</span><br></pre></td></tr></table></figure>
 <p><strong>提示：</strong></p>
@@ -118,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/24/leetcode-1177/" data-id="ckbtgm7ni001ltog2347oj51k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/24/leetcode-1177/" data-id="ckc2spiwn001mrcg2fba3fb5w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,6 +126,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/06/28/leetcode-140/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          leetcode-140
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/30/coding-interview-1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -168,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
     </div>
   </div>
 
@@ -181,23 +190,23 @@
       <ul>
         
           <li>
+            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/30/coding-interview-1/">coding-interview-1</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/28/code4offer-16/">code4offer-16</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/28/bubble-sort/">bubble-sort</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/27/binary-tree/">binary-tree</a>
           </li>
         
       </ul>
