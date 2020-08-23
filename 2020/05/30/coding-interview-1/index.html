@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="面试题 08.06. 汉诺塔问题">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-30T04:49:49.754Z">
+<meta property="og:updated_time" content="2020-07-16T03:05:36.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coding-interview-1">
 <meta name="twitter:description" content="面试题 08.06. 汉诺塔问题">
@@ -112,12 +112,12 @@
 <li>如果n&gt;=2，先将n-1个圆盘移动到B，再将剩下的一个圆盘移动到c</li>
 <li>将B的n-1个圆盘 通过A 移动到C</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A -&gt; C</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span> </span>&#123;</span><br><span class="line">    move(A.size(), A, B, C);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 将n个圆盘 从A 在B辅助下 移动到C</span></span><br><span class="line"><span class="comment">* n 要移动的个数</span></span><br><span class="line"><span class="comment">* A source</span></span><br><span class="line"><span class="comment">* B 辅助柱子</span></span><br><span class="line"><span class="comment">* C destination</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) &#123; <span class="comment">// 只有一个，直接移动到C</span></span><br><span class="line">        C.push_back(A.back());</span><br><span class="line">        A.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        move(n<span class="number">-1</span>, A, C, B); <span class="comment">// 先将 n-1个圆盘从A 经过C 移动到 辅助柱子B，再将1个圆盘移动到C</span></span><br><span class="line">        C.push_back(A.back());</span><br><span class="line">        A.pop_back();</span><br><span class="line"></span><br><span class="line">        move(n<span class="number">-1</span>, B, A, C); <span class="comment">// 将B的n-1个圆盘 通过A 移动到C</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A -&gt; C</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanota</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span> </span>&#123;</span><br><span class="line">    move(A.size(), A, B, C);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 将n个圆盘 从A 在B辅助下 移动到C</span></span><br><span class="line"><span class="comment">* n 要移动的个数</span></span><br><span class="line"><span class="comment">* A source</span></span><br><span class="line"><span class="comment">* B 辅助柱子</span></span><br><span class="line"><span class="comment">* C destination</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; B, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; C)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) &#123; <span class="comment">// 只有一个，直接移动到C</span></span><br><span class="line">        C.push_back(A.back());</span><br><span class="line">        A.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        move(n<span class="number">-1</span>, A, C, B); <span class="comment">// 先将 n-1个圆盘从A 经过C 移动到 辅助柱子B，</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将1个圆盘移动到C</span></span><br><span class="line">        C.push_back(A.back());</span><br><span class="line">        A.pop_back();</span><br><span class="line"></span><br><span class="line">        move(n<span class="number">-1</span>, B, A, C); <span class="comment">// 将B的n-1个圆盘 通过A 移动到C</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/30/coding-interview-1/" data-id="ckc2spiwr001prcg2vizqn8ti" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/30/coding-interview-1/" data-id="cke778hg50010wcg2rs7sxuuo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序员面试金典/">程序员面试金典</a></li></ul>
@@ -191,23 +191,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
           </li>
         
           <li>
-            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
           </li>
         
           <li>
-            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
           </li>
         
       </ul>

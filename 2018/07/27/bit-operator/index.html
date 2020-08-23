@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="0.基础      &amp;amp; \  ^     0 0 0 0 0   0 1 0 1 1   1 0 0 1 1   1 1 1 1 0    1.变量交换（无临时变量） 123456x = 0x10111101;y = 0x00101110;x = x ^ y;y = x ^ y;x = x ^ y; (x ^ y) ^ y = x  Poor at exploiting instruct">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-24T04:05:39.848Z">
+<meta property="og:updated_time" content="2020-07-06T10:34:42.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bit-operator">
 <meta name="twitter:description" content="0.基础      &amp;amp; \  ^     0 0 0 0 0   0 1 0 1 1   1 0 0 1 1   1 1 1 1 0    1.变量交换（无临时变量） 123456x = 0x10111101;y = 0x00101110;x = x ^ y;y = x ^ y;x = x ^ y; (x ^ y) ^ y = x  Poor at exploiting instruct">
@@ -180,6 +180,16 @@
 <p>5.获取二进制中最后一个1的位置</p>
 <p>可以从右向左看最后一位是不是1，不是就右移一位</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOfLastOne</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x &amp; <span class="number">1</span> == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        ++index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>比n大的最小2次幂</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextPowerOf2</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// First n in the below  </span></span><br><span class="line">    <span class="comment">// condition is for the  </span></span><br><span class="line">    <span class="comment">// case where n is 0</span></span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">0</span> &amp;&amp; (n &amp; (n - <span class="number">1</span>)) == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(n != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        count += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> &lt;&lt; count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>比n小的最大2次幂</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">highestPowerof2SmallerThanN</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// If i is a power of 2</span></span><br><span class="line">        <span class="keyword">if</span> ((i &amp; (i - <span class="number">1</span>)) == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者直接logn/log2 取整</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">highestPowerof2</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> p = (<span class="keyword">int</span>)(Math.log(n) / Math.log(<span class="number">2</span>));</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, p);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li><p><a href="https://www.youtube.com/watch?v=xc9DDSbf0NQ&amp;app=desktop" target="_blank" rel="noopener">Lec 2 | MIT 6.172 Performance Engineering of Software Systems, Fall 2010 (Video)</a></p>
 </li>
@@ -192,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="ckc2spiv4000frcg2rn1tdxow" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/07/27/bit-operator/" data-id="cke778hf9000ewcg2tr6igmta" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bit/">bit</a></li></ul>
@@ -266,23 +276,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
           </li>
         
           <li>
-            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
           </li>
         
           <li>
-            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
           </li>
         
       </ul>

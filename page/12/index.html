@@ -62,6 +62,230 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-bing-wallpaper-api" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/26/bing-wallpaper-api/" class="article-date">
+  <time datetime="2019-01-26T05:32:52.000Z" itemprop="datePublished">2019-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/26/bing-wallpaper-api/">bing-wallpaper-api</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1&amp;mkt=zh-cn</span><br></pre></td></tr></table></figure>
+<p>idx: index 默认为0（今天）  -1~18<br>n：数量</p>
+<p>mkt: 地区<br>zh-CN<br>en-US<br>ja-JP<br>en-CA<br>de-DE</p>
+<p>一个获取图片的示例链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://www.bing.com/&#123;baseUrl&#125;_&#123;resolution&#125;.jpg</span><br><span class="line"></span><br><span class="line">https://www.bing.com/az/hprichbg/rb/FortRajgad_ZH-CN7621203821_1080x1920.jpg</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/26/bing-wallpaper-api/" data-id="cke778hfb000gwcg2ia9txkpd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-android-studio" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/25/android-studio/" class="article-date">
+  <time datetime="2019-01-25T05:26:36.000Z" itemprop="datePublished">2019-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/25/android-studio/">android-studio</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2019年Android Studio配置指北</p>
+<p>Android Studio是我学习Android开发路上的第一块绊脚石，新建一个项目，一行代码没动，直接编译不起来</p>
+<p>本文讲解在9102年如何在国内网络不通畅的情况下流畅的使用Android Studio</p>
+<h2 id="1-关闭代理"><a href="#1-关闭代理" class="headerlink" title="1. 关闭代理"></a>1. 关闭代理</h2><p>网上能搜索出一堆通过增加国内镜像站的代理来使下载SDK的速度飞快，然而我一个都用不了，建议<strong>不要使用代理</strong></p>
+<p><img src="android-studio/noproxy.png" alt="noproxy.png"></p>
+<h3 id="2-改hosts"><a href="#2-改hosts" class="headerlink" title="2. 改hosts"></a>2. 改hosts</h3><p><code>dl.google.com</code>的DNS无法解析，这是导致很多问题的元凶，通过手动在hosts中增加域名和ip的映射来解决这个问题</p>
+<p>在<br><a href="http://ping.chinaz.com/dl.google.com" target="_blank" rel="noopener">多个地点ping[]服务器-网站测速-站长工具</a>中找到一个能在本机ping通的延迟最小的ip，加到本机的hosts中</p>
+<h3 id="3-Android-SDK"><a href="#3-Android-SDK" class="headerlink" title="3. Android SDK"></a>3. Android SDK</h3><p>前面的都配置好后，就可以直接在线下载Android SDK了</p>
+<p><img src="android-studio/sdk_update_sites.png" alt="sdk_update_sites.png"><br><img src="android-studio/sdk_platforms.png" alt="sdk_platforms.png"></p>
+<h3 id="4-Gradle"><a href="#4-Gradle" class="headerlink" title="4. Gradle"></a>4. Gradle</h3><p>   Gradle本身是可以直接下载下来的，不需要设置</p>
+<h4 id="4-1-使用aliyun的maven仓库"><a href="#4-1-使用aliyun的maven仓库" class="headerlink" title="4.1 使用aliyun的maven仓库"></a>4.1 使用aliyun的maven仓库</h4><p><img src="android-studio/enable_maven.png" alt="enable_maven.png"></p>
+<p>修改Project的<code>build.gradle</code>文件</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repositories</span> &#123;</span><br><span class="line">       <span class="comment">// 添加阿里云 maven 地址</span></span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span> &#125;</span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/jcenter'</span> &#125;</span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/google'</span> &#125;</span><br><span class="line">       maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin'</span> &#125;</span><br><span class="line"></span><br><span class="line">       google()</span><br><span class="line">       <span class="comment">// jcenter()</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">allprojects</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        <span class="comment">// 添加阿里云 maven 地址</span></span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span> &#125;</span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/jcenter'</span> &#125;</span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/google'</span> &#125;</span><br><span class="line">        maven &#123; url <span class="string">'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin'</span> &#125;</span><br><span class="line"></span><br><span class="line">        google()</span><br><span class="line">        <span class="comment">// jcenter()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>C:\Users\{用户名}\.gradle\gradle.properties</code>文件中如果设置了gradle的全局代理也要注释掉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemProp.http.proxyHost=mirrors.neusoft.edu.cn</span><br><span class="line"># systemProp.http.proxyPort=80</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/25/android-studio/" data-id="cke778heo0005wcg2sxg8rgwf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-136" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/25/leetcode-136/" class="article-date">
+  <time datetime="2019-01-25T02:40:28.000Z" itemprop="datePublished">2019-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/25/leetcode-136/">leetcode-136 Single Number</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>136. Single Number</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/01/25/leetcode-136/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/25/leetcode-136/" data-id="cke778hhh0022wcg2mlj8c4v1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vim" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/24/vim/" class="article-date">
+  <time datetime="2019-01-24T01:04:55.000Z" itemprop="datePublished">2019-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/24/vim/">vim</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>在vim保存时获得sudo权限</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w !sudo tee %</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>命令:w !{cmd}，让 vim 执行一个外部命令{cmd}，然后把当前缓冲区的内容从 stdin 传入。</p>
+<p>tee 是一个把 stdin 保存到文件的小工具。</p>
+<p>而 %，是vim当中一个只读寄存器的名字，总保存着当前编辑文件的文件路径。</p>
+<p>所以执行这个命令，就相当于从vim外部修改了当前编辑的文件。</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://blogread.cn/it/article/7395?f=wb_blogread" target="_blank" rel="noopener">在vim保存时获得sudo权限</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/24/vim/" data-id="cke778hlb0052wcg2m788ud0e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-822" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/23/leetcode-822/" class="article-date">
+  <time datetime="2019-01-23T11:50:58.000Z" itemprop="datePublished">2019-01-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/23/leetcode-822/">leetcode-822 Card Flipping Game</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>822. Card Flipping Game</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/01/23/leetcode-822/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/23/leetcode-822/" data-id="cke778hiy003bwcg216uuu8pj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-922" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/22/leetcode-922/" class="article-date">
@@ -93,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/leetcode-922/" data-id="ckc2spiyz003grcg2ev94ft1j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/leetcode-922/" data-id="cke778hjk003owcg2q9eeckj3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/22/tree-1/" data-id="ckc2spj0d004rrcg2hw535pi6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/22/tree-1/" data-id="cke778hl5004wwcg22t6ny630" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/leetcode-561/" data-id="ckc2spixv002ircg2f7py3dw7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/leetcode-561/" data-id="cke778hi9002qwcg2dxu7sq7r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/leetcode-965/" data-id="ckc2spiz5003mrcg2op57xsvq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/leetcode-965/" data-id="cke778hjp003qwcg2kzmhpecg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -252,209 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/21/leetcode-977/" data-id="ckc2spiz6003nrcg2j9usecie" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-961" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/18/leetcode-961/" class="article-date">
-  <time datetime="2019-01-18T13:33:06.000Z" itemprop="datePublished">2019-01-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/18/leetcode-961/">leetcode-961 N-Repeated Element in Size 2N Array</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>961. N-Repeated Element in Size 2N Array</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/18/leetcode-961/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/18/leetcode-961/" data-id="ckc2spiz1003ircg2yi09t89z" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-701" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/18/leetcode-701/" class="article-date">
-  <time datetime="2019-01-18T01:57:55.000Z" itemprop="datePublished">2019-01-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/18/leetcode-701/">leetcode-701 Insert into a Binary Search Tree</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>701. Insert into a Binary Search Tree</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/18/leetcode-701/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/18/leetcode-701/" data-id="ckc2spiy8002vrcg24q0wkmvn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-509" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/17/leetcode-509/" class="article-date">
-  <time datetime="2019-01-17T01:47:54.000Z" itemprop="datePublished">2019-01-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/17/leetcode-509/">leetcode-509 Fibonacci Number</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>509. Fibonacci Number</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/17/leetcode-509/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/leetcode-509/" data-id="ckc2spixo002crcg2o8mohedy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tensorflow-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/16/tensorflow-0/" class="article-date">
-  <time datetime="2019-01-16T12:01:47.000Z" itemprop="datePublished">2019-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/16/tensorflow-0/">tensorflow-0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/tensorflow-0/" data-id="ckc2spj08004nrcg2k4cwaa9k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-938" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/16/leetcode-938/" class="article-date">
-  <time datetime="2019-01-16T07:27:34.000Z" itemprop="datePublished">2019-01-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/16/leetcode-938/">leetcode-938</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>938. Range Sum of BST</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/16/leetcode-938/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/16/leetcode-938/" data-id="ckc2spiz2003jrcg242k9hca3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/21/leetcode-977/" data-id="cke778hjr003twcg2d8ktdhd2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -467,7 +489,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/11/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/11/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -512,23 +534,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
           </li>
         
           <li>
-            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
           </li>
         
           <li>
-            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
           </li>
         
       </ul>

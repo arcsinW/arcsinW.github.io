@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>code4offer-51 数组中的逆序对 | X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="剑指 Offer 51. 数组中的逆序对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="code4offer-51 数组中的逆序对">
+<meta property="og:url" content="http://yoursite.com/2020/07/01/code4offer-51/index.html">
+<meta property="og:site_name" content="X">
+<meta property="og:description" content="剑指 Offer 51. 数组中的逆序对">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-01T07:52:19.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="code4offer-51 数组中的逆序对">
+<meta name="twitter:description" content="剑指 Offer 51. 数组中的逆序对">
+  
+    <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">X</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-code4offer-51" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/01/code4offer-51/" class="article-date">
+  <time datetime="2020-07-01T03:35:13.000Z" itemprop="datePublished">2020-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      code4offer-51 数组中的逆序对
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>剑指 Offer 51. 数组中的逆序对</p>
+<a id="more"></a>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。</p>
+<p><strong>示例 1:</strong></p>
+<p>输入: [7,5,6,4]<br>输出: 5</p>
+<p><strong>限制：</strong></p>
+<p><code>0 &lt;= 数组长度 &lt;= 50000</code></p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h2 id="Analyse"><a href="#Analyse" class="headerlink" title="Analyse"></a>Analyse</h2><h3 id="回溯法（超时）"><a href="#回溯法（超时）" class="headerlink" title="回溯法（超时）"></a>回溯法（超时）</h3><p>生成所有的长度为2的子序列，再计算其中逆序对的数量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 找出所有长度为2的子序列，找出其中的逆序对</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        helper(nums, <span class="keyword">new</span> ArrayList&lt;Integer&gt;(), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span>[] nums, List&lt;Integer&gt; cur, <span class="keyword">int</span> len, <span class="keyword">int</span> startPos)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cur.get(<span class="number">0</span>) &gt; cur.get(<span class="number">1</span>)) &#123; <span class="comment">// 判断是否逆序</span></span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (startPos &gt;= nums.length) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// recursive case</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = startPos; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="comment">// choose it</span></span><br><span class="line">            cur.add(nums[i]);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// explore</span></span><br><span class="line">            helper(nums, cur, len + <span class="number">1</span>, i + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// unchoose it</span></span><br><span class="line">            cur.remove(cur.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="归并排序1（超时）"><a href="#归并排序1（超时）" class="headerlink" title="归并排序1（超时）"></a>归并排序1（超时）</h3><p>在归并排序的合并阶段计算逆序数</p>
+<p>178  456<br>7比4大，是逆序对，7后面的所有元素（8）也和4是逆序对</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 找出所有长度为2的子序列</span></span><br><span class="line">    <span class="comment">// 找出其中的逆序对</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        mergeSort(nums, <span class="number">0</span>, len - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (low &gt;= high) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">        mergeSort(nums, <span class="number">0</span>, mid);</span><br><span class="line">        mergeSort(nums, mid + <span class="number">1</span>, high);</span><br><span class="line"></span><br><span class="line">        merge(nums, low, mid, high);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = low, q = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span>[] tmpNums = <span class="keyword">new</span> <span class="keyword">int</span>[high - low + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p &lt;= mid &amp;&amp; q &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[p] &gt; nums[q]) &#123; <span class="comment">// 逆序</span></span><br><span class="line">                count += (mid - p + <span class="number">1</span>);</span><br><span class="line">                tmpNums[index++] = nums[q++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                tmpNums[index++] = nums[p++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (p &lt;= mid) &#123;</span><br><span class="line">            tmpNums[index++] = nums[p++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (q &lt;= high) &#123;</span><br><span class="line">            tmpNums[index++] = nums[q++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.arraycopy(tmpNums, <span class="number">0</span>, nums, low, high - low + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="归并排序2（通过）"><a href="#归并排序2（通过）" class="headerlink" title="归并排序2（通过）"></a>归并排序2（通过）</h3><p>同样是归并排序，这个为什么可以通过而上一个不行？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 找出所有长度为2的子序列</span></span><br><span class="line">    <span class="comment">// 找出其中的逆序对</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] tempNums = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line"></span><br><span class="line">        System.arraycopy(nums, <span class="number">0</span>, tempNums, <span class="number">0</span>, len);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> mergeSort(nums, <span class="number">0</span>, len - <span class="number">1</span>, tempNums);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span>[] temp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (low &gt;= high) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> left = mergeSort(nums, low, mid, temp);</span><br><span class="line">        <span class="keyword">int</span> right = mergeSort(nums, mid + <span class="number">1</span>, high, temp);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nums[mid] &lt;= nums[mid + <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> left + right;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cross = merge(nums, low, mid, high, temp);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> left + right + cross;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 双指针法，将nums[low:mid] 通过 tmpNums临时空间 合并</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> low, <span class="keyword">int</span> mid, <span class="keyword">int</span> high, <span class="keyword">int</span>[] tmpNums)</span> </span>&#123;</span><br><span class="line">        System.arraycopy(nums, low, tmpNums, low, high - low + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> p = low, q = mid + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = low;</span><br><span class="line">        <span class="keyword">while</span> (p &lt;= mid &amp;&amp; q &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">if</span> (tmpNums[p] &gt; tmpNums[q]) &#123;</span><br><span class="line">                count += (mid - p + <span class="number">1</span>);</span><br><span class="line">                nums[index++] = tmpNums[q++];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                nums[index++] = tmpNums[p++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (p &lt;= mid) &#123;</span><br><span class="line">            nums[index++] = tmpNums[p++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (q &lt;= high) &#123;</span><br><span class="line">            nums[index++] = tmpNums[q++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/01/code4offer-51/" data-id="cke778hg0000wwcg26hlla6ig" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/03/code4offer-13-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          code4offer-13 机器人的运动范围
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/01/leetcode-88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode-88 合并两个有序数组</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programming/">Dynamic Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary-tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bit/">bit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剑指Offer/">剑指Offer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员面试金典/">程序员面试金典</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dynamic-Programming/" style="font-size: 10px;">Dynamic Programming</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary-tree</a> <a href="/tags/bit/" style="font-size: 10px;">bit</a> <a href="/tags/剑指Offer/" style="font-size: 20px;">剑指Offer</a> <a href="/tags/程序员面试金典/" style="font-size: 10px;">程序员面试金典</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 ARCSINW<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

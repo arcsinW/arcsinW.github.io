@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="206. Reverse Linked List">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-05-29T12:21:03.886Z">
+<meta property="og:updated_time" content="2020-07-16T03:05:36.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-206">
 <meta name="twitter:description" content="206. Reverse Linked List">
@@ -103,12 +103,12 @@
 <p>对每个单链表，每次将最后两个 node 的指向反转</p>
 <p>举个例子</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-&gt;2-&gt;3-&gt;4-&gt;5</span><br><span class="line">1-&gt;2-&gt;3-&gt;4&lt;-5</span><br><span class="line">1-&gt;2-&gt;3&lt;-4&lt;-5</span><br><span class="line">1-&gt;2&lt;-3&lt;-4&lt;-5</span><br><span class="line">1&lt;-2&lt;-3&lt;-4&lt;-5</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ListNode cur = reverseList(head.next);</span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cur;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// lastNode是未逆序的最后一个节点</span></span><br><span class="line">        ListNode lastNode = reverseList(head.next);</span><br><span class="line">        <span class="comment">// 此时的head是lastNode前面一个节点</span></span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> lastNode;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="ckc2spix6001zrcg2bn47g697" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/08/leetcode-206/" data-id="cke778hhj0025wcg2i7470cl1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,23 +180,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
           </li>
         
           <li>
-            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
           </li>
         
           <li>
-            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
           </li>
         
       </ul>

@@ -5,18 +5,32 @@
   
   <title>cryptography | X</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="现代密码学概论">
+  <meta name="description" content="现代密码学复习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cryptography">
 <meta property="og:url" content="http://yoursite.com/2020/05/09/cryptography/index.html">
 <meta property="og:site_name" content="X">
-<meta property="og:description" content="现代密码学概论">
+<meta property="og:description" content="现代密码学复习">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/cryptography_communication_model.png">
-<meta property="og:updated_time" content="2020-05-10T05:50:47.783Z">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/LSFR.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_ip.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_IP_1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_IP_2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_round_structure.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_round_function.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_frk.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_s_box_1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_s_box.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_round_key.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_double_des.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_middle_attack.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_triple_des.jpg">
+<meta property="og:updated_time" content="2020-08-23T14:40:16.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cryptography">
-<meta name="twitter:description" content="现代密码学概论">
+<meta name="twitter:description" content="现代密码学复习">
 <meta name="twitter:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/cryptography_communication_model.png">
   
     <link rel="alternate" href="/atom.xml" title="X" type="application/atom+xml">
@@ -88,9 +102,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>现代密码学概论</p>
+        <p>现代密码学复习</p>
 <a id="more"></a>
-<h3 id="密码学学科分支"><a href="#密码学学科分支" class="headerlink" title="密码学学科分支"></a>密码学学科分支</h3><ul>
+<h1 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h1><h2 id="密码学学科分支"><a href="#密码学学科分支" class="headerlink" title="密码学学科分支"></a>密码学学科分支</h2><ul>
 <li>密码编码学（新思想，新结构）</li>
 <li>密码分析学（新方法，新手段）<ul>
 <li>恢复密文相应的明文</li>
@@ -98,18 +112,18 @@
 </ul>
 </li>
 </ul>
-<h3 id="信息安全的基本属性"><a href="#信息安全的基本属性" class="headerlink" title="信息安全的基本属性"></a>信息安全的基本属性</h3><ul>
+<h2 id="信息安全的基本属性"><a href="#信息安全的基本属性" class="headerlink" title="信息安全的基本属性"></a>信息安全的基本属性</h2><ul>
 <li>机密性</li>
 <li>认证</li>
 <li>完整性</li>
 <li>不可否认性</li>
 </ul>
-<h3 id="保密通信系统模型"><a href="#保密通信系统模型" class="headerlink" title="保密通信系统模型"></a>保密通信系统模型</h3><p><img src="cryptography/cryptography_communication_model.png" alt="保密通信系统模型"></p>
+<h2 id="保密通信系统模型"><a href="#保密通信系统模型" class="headerlink" title="保密通信系统模型"></a>保密通信系统模型</h2><p><img src="cryptography/cryptography_communication_model.png" alt="保密通信系统模型"></p>
 <ul>
 <li>主动攻击：破坏双方的通信，比如插入、删除、修改通信的内容</li>
 <li>被动攻击：收集通信内容</li>
 </ul>
-<h3 id="密码算法的分类"><a href="#密码算法的分类" class="headerlink" title="密码算法的分类"></a>密码算法的分类</h3><ul>
+<h2 id="密码算法的分类"><a href="#密码算法的分类" class="headerlink" title="密码算法的分类"></a>密码算法的分类</h2><ul>
 <li>按功能<ul>
 <li>加密算法（机密性）</li>
 <li>杂凑算法（完整性）</li>
@@ -170,11 +184,132 @@
 </ul>
 </li>
 </ul>
-
+<h1 id="流密码"><a href="#流密码" class="headerlink" title="流密码"></a>流密码</h1><p>利用种子密钥<code>k</code>产生一个密钥流$z = z_0z_1z_2…$<br>对明文串$x=x_0x_1x_2…$加密<br>$$y=y_0y_1y_2…=E_{z_0}(x_0)E_{z_1}(x_1)E_{z_2}(x_2)…$$</p>
+<h2 id="线性反馈移位寄存器-Linear-Feedback-Shift-Register"><a href="#线性反馈移位寄存器-Linear-Feedback-Shift-Register" class="headerlink" title="线性反馈移位寄存器 Linear Feedback Shift Register"></a>线性反馈移位寄存器 Linear Feedback Shift Register</h2><h2 id="密钥流序列应具有的性质"><a href="#密钥流序列应具有的性质" class="headerlink" title="密钥流序列应具有的性质"></a>密钥流序列应具有的性质</h2><ul>
+<li>极大的周期</li>
+<li>良好的统计特性</li>
+<li>抗线性分析</li>
+</ul>
+<p><img src="cryptography/LSFR.png" alt="LSFR 线性反馈移位寄存器"></p>
+<h2 id="LFSR性质"><a href="#LFSR性质" class="headerlink" title="LFSR性质"></a>LFSR性质</h2><p>LFSR中的c不能全为0，否则$f(a_1, a_2, …, a_n) = 0$</p>
+<p>n级LSFR状态数：$2^n$</p>
+<p>n级LSFR状态周期：$\leq 2^n - 1$（不能全为0）</p>
+<p>输出序列的周期 = 状态周期 $\leq 2^n - 1$</p>
+<p>使周期达到最大值的序列成为<code>m序列</code></p>
+<h2 id="RC4"><a href="#RC4" class="headerlink" title="RC4"></a>RC4</h2><h3 id="密钥调度算法"><a href="#密钥调度算法" class="headerlink" title="密钥调度算法"></a>密钥调度算法</h3><p>初始化数据表S，S[i] = i (0 &lt;= i &lt;= 255)，通过种子密钥来随机化数据表S</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化S表，长度为256</span></span><br><span class="line">S[i] = i (<span class="number">0</span> &lt;= i &lt;= <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用种子密钥填充一个K表，长度为256，密钥长度不足时，重复使用密钥，如密钥为123，则K表为&#123;1,2,3,1,2,3,...&#125;</span></span><br><span class="line">j = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">255</span>; i++) &#123;</span><br><span class="line">  j = (j + S[i] + K[i]) % <span class="number">256</span>; <span class="comment">// 将K表加入，增加随机性</span></span><br><span class="line">  swap(S[i], S[j]); <span class="comment">// 打乱S表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="伪随机数生成算法"><a href="#伪随机数生成算法" class="headerlink" title="伪随机数生成算法"></a>伪随机数生成算法</h3><p>随机选取S表中的一个数，反复进行选取，直到生成的二进制位数量等于明文比特位数量（足够用于加密）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">0</span>; j = <span class="number">0</span>;</span><br><span class="line">i = (i+<span class="number">1</span>) % <span class="number">256</span>;</span><br><span class="line">j = (i + S[i]) % <span class="number">256</span>;</span><br><span class="line">swap(S[i], S[j]);</span><br><span class="line">t = (S[i] + S[j]) % <span class="number">256</span>;</span><br><span class="line">k = S[t];</span><br><span class="line"># 输出k</span><br></pre></td></tr></table></figure>
+<h1 id="分组密码"><a href="#分组密码" class="headerlink" title="分组密码"></a>分组密码</h1><p>找到一种算法，在密钥控制下，从一个足够大且足够好的置换子集中，简单迅速低选出一个置换，用来对输入的明文进行加密变换</p>
+<p>##　安全性设计原则</p>
+<ul>
+<li><p>混淆（Confusion）<br>将密文，明文，密钥三者之间的统计关系和代数关系变得尽可能复杂</p>
+</li>
+<li><p>扩散<br>将明文的统计规律和结构规律散射到相当长的一段统计中去</p>
+<p>明文的每一个位影响密文中尽可能多的位</p>
+</li>
+</ul>
+<h2 id="分组密码算法应满足的要求："><a href="#分组密码算法应满足的要求：" class="headerlink" title="分组密码算法应满足的要求："></a>分组密码算法应满足的要求：</h2><ul>
+<li><p>分组长度n要足够大（每一个分组的长度）</p>
+<p>防止明文穷举攻击</p>
+</li>
+<li><p>密钥量要足够大</p>
+<p>消除弱密钥，防止密钥穷举攻击</p>
+</li>
+<li><p>由密钥确定置换的算法要足够复杂</p>
+<p>充分实现明文和密钥的扩散和混淆</p>
+</li>
+<li><p>加密和解密运算简单</p>
+<p>易于软件和硬件实现</p>
+</li>
+<li><p>数据扩展</p>
+<p>一般无数据扩展（密文和明文一样长）</p>
+</li>
+<li><p>差错传播尽可能小</p>
+<p>一个密文分组和错误尽可能少的影响其他密文分组的解密</p>
+</li>
+</ul>
+<h2 id="DES-Data-Encryption-Standard"><a href="#DES-Data-Encryption-Standard" class="headerlink" title="DES (Data Encryption Standard)"></a>DES (Data Encryption Standard)</h2><p>明文分组长度 64bit<br>密文分组长度 64bit<br>密钥长度64bit，8bit奇偶校验，有效密钥长度56bit</p>
+<p><img src="cryptography/des.png" alt="DES"></p>
+<ol>
+<li>先对明文进行初始置换，打乱明文的顺序</li>
+</ol>
+<p><img src="cryptography/des_ip.png" alt="初始置换和逆初始置换"></p>
+<p><img src="cryptography/des_IP_1.png" alt="初始置换表"></p>
+<p><img src="cryptography/des_IP_2.png" alt="逆初始置换表"></p>
+<ol start="2">
+<li>将明文分为两组L和R，每组32bit</li>
+</ol>
+<ol start="3">
+<li>16轮的轮变换</li>
+</ol>
+<p>DES轮结构</p>
+<p><img src="cryptography/des_round_structure.png" alt="DES轮结构"></p>
+<p>通过初始的密钥K生成16个轮密钥（48bit）</p>
+<p><img src="cryptography/des_round_function.png" alt="DES轮函数"></p>
+<p>$L_i = R_{i-1}$</p>
+<p>$R_i = L_{i-1} \oplus F(R_{i-1}, Ki)$</p>
+<h3 id="DES轮函数-F-R-i-1-Ki"><a href="#DES轮函数-F-R-i-1-Ki" class="headerlink" title="DES轮函数  $F(R_{i-1}, Ki)$"></a>DES轮函数  $F(R_{i-1}, Ki)$</h3><p>输入32位的消息</p>
+<p>先扩展成48位</p>
+<p>与48位的轮密钥异或后，通过S盒变成32位</p>
+<p>S盒共有8个，每个S盒接受6bit的输入，输出4bit</p>
+<p>48位的输入，分为8组，输出4*8=32位</p>
+<p>再通过P盒置换，输出32bit的最终结果</p>
+<p><img src="cryptography/des_frk.png" alt="DES函数F(R, k)"></p>
+<h3 id="S盒"><a href="#S盒" class="headerlink" title="S盒"></a>S盒</h3><p>6bit输入，第1和第6bit作为行号，剩下4bit作为列号，输出S盒对应位置的数据的二进制</p>
+<p><img src="cryptography/des_s_box_1.png" alt="DES S盒"></p>
+<p><img src="cryptography/des_s_box.png" alt="DES S盒"></p>
+<h3 id="P盒置换（打乱位置）"><a href="#P盒置换（打乱位置）" class="headerlink" title="P盒置换（打乱位置）"></a>P盒置换（打乱位置）</h3><p>经过S盒变换后的32bit数据再进行P盒置换，置换后得到的32bit就是<br>f函数的输出</p>
+<p>特点</p>
+<ul>
+<li>每一行都来自于不同的输入块（S盒）</li>
+<li>各输入块的4bit都分配到不同的输出快中</li>
+<li>第t输出块的4个比特都不来自第t输入块</li>
+</ul>
+<h3 id="轮密钥生成"><a href="#轮密钥生成" class="headerlink" title="轮密钥生成"></a>轮密钥生成</h3><p><img src="cryptography/des_round_key.png" alt="DES轮密钥生成"></p>
+<p>输入64bit的密钥（其中8位为奇偶校验位，56位为有效密钥）</p>
+<p>经过置换选择变成56bit，去除了8位奇偶校验位</p>
+<p>56bit分成C、D两部分，各28bit</p>
+<p>C、D两部分各循环左移16次，每次左移的位数都有规定（查移位次数表）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第i次迭代           1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16</span><br><span class="line">循环左移次数     1  1  2  2  2  2  2  2  1    2    2    2    2    2    2   1</span><br></pre></td></tr></table></figure>
+<p>C、D两部分再经过一次置换选择（丢弃8bit），最终生成16 个 48bit的轮密钥</p>
+<h3 id="DES密钥特点"><a href="#DES密钥特点" class="headerlink" title="DES密钥特点"></a>DES密钥特点</h3><ul>
+<li><p>互补性</p>
+<p>$y=DES_k(x)$</p>
+<p>对明文逐位取补，对k逐位取补，则最后密文也是对原密文的逐位取补，导致密码破译工作量减半，影响安全性</p>
+<p>$\overline{y} = DES_{\overline{k}}(\overline{x})$</p>
+</li>
+<li><p>弱密钥</p>
+<p>初始密钥导致每轮生成的轮密钥都相同，则为弱密钥</p>
+<p>DES存在4个弱密钥</p>
+<p>轮密钥生成时，将56位的密钥分成C、D两部分，各28bit做循环左移位，当C、D全1或全0时，循环移位生成的轮密钥是相同的，所以有4个弱密钥</p>
+<p>$E_k  E_k = I$</p>
+<p>使用同一个密钥加密两次后变成明文</p>
+<p>$DES_k(DES_k(x)) = x$</p>
+</li>
+</ul>
+<h3 id="双重DES"><a href="#双重DES" class="headerlink" title="双重DES"></a>双重DES</h3><p><img src="cryptography/des_double_des.png" alt="双重DES"></p>
+<p>中间相遇攻击</p>
+<p><img src="cryptography/des_middle_attack.png" alt="双重DES 中间相遇攻击"></p>
+<p>如果已知明文和对应的密文 $(x_1, y_1)$<br>可以同时获得$k_1$, $k_2$</p>
+<p>以$k_1$的$2^56$种取值加密$x_1$，将密文z存在一个表中</p>
+<p>以$k_2$的$2^56$种取值解密$y_1$，每次解密结果在上述表中查找匹配的值，如果找到了就可以同时确定$k_1$, $k_2$</p>
+<p>再找一个明文和密文验证就可以知道$k_1$, $k_2$是否正确</p>
+<p>破解双重DES需要加密$2^56 + 2^56 = 2^57$，说明双重DES密钥空间为57位</p>
+<h3 id="三重DES"><a href="#三重DES" class="headerlink" title="三重DES"></a>三重DES</h3><p><img src="cryptography/des_triple_des.jpg" alt="三重DES"></p>
+<p>加密：$C=E_{k1}[D_{k2}[E_{k1}[P]]]$</p>
+<p>$K_1$加密，$K_2$解密，$K_1$加密</p>
+<p>解密：$P=D_{k1}[E_{k2}[D_{k1}[C]]]$</p>
+<p>$K_1$解密，$K_2$加密，$K_1$解密</p>
+<p>密钥空间为 112位</p>
+<h2 id="分组密码的工作模式"><a href="#分组密码的工作模式" class="headerlink" title="分组密码的工作模式"></a>分组密码的工作模式</h2><h3 id="ECB-Electronic-Codebook-Book-电码本模式"><a href="#ECB-Electronic-Codebook-Book-电码本模式" class="headerlink" title="ECB (Electronic Codebook Book) 电码本模式"></a>ECB (Electronic Codebook Book) 电码本模式</h3><p>  将明文分组，分别加密成密文，合并成一段长密文<br>  解密时先分组，再解密</p>
+<p>  可并行执行<br>  相同明文对应相同密文分组，易受重放，替换攻击</p>
+<p>  可用于随机数的加密保护<br>  单分组明文的加密</p>
+<h3 id="CBC-Cipher-Block-Chaining-密码分组链接模式"><a href="#CBC-Cipher-Block-Chaining-密码分组链接模式" class="headerlink" title="CBC (Cipher Block Chaining) 密码分组链接模式"></a>CBC (Cipher Block Chaining) 密码分组链接模式</h3><h3 id="CFB-Cipher-Feedback-密码反馈模式"><a href="#CFB-Cipher-Feedback-密码反馈模式" class="headerlink" title="CFB (Cipher Feedback) 密码反馈模式"></a>CFB (Cipher Feedback) 密码反馈模式</h3><h3 id="OFB-Output-Feedback-输出反馈模式"><a href="#OFB-Output-Feedback-输出反馈模式" class="headerlink" title="OFB (Output Feedback) 输出反馈模式"></a>OFB (Output Feedback) 输出反馈模式</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="ckc2spiwe001ercg2o3jqp2ka" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="cke778hgg0019wcg2dantyaf1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,23 +381,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
           </li>
         
           <li>
-            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
           </li>
         
           <li>
-            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
           </li>
         
       </ul>

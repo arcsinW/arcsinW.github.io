@@ -62,6 +62,214 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/05/mysql-3/" class="article-date">
+  <time datetime="2019-09-05T13:13:13.000Z" itemprop="datePublished">2019-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/mysql-3/">mysql-3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>去重</li>
+</ol>
+<p>group时取的是id最小的那一条记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> sprint_score</span><br><span class="line"><span class="keyword">from</span> sprint_score,</span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">id</span>) <span class="keyword">id</span>, user_id, score, create_time, <span class="keyword">count</span>(*) <span class="keyword">from</span> sprint_score</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> user_id, score, create_time</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>) t2</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">sprint_score.user_id = t2.user_id</span><br><span class="line"><span class="keyword">and</span> sprint_score.score = t2.score</span><br><span class="line"><span class="keyword">and</span> sprint_score.create_time = t2.create_time</span><br><span class="line"><span class="keyword">and</span> sprint_score.id &gt; t2.id</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/05/mysql-3/" data-id="cke778hjy0041wcg2wqqgbz3w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-account" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/02/linux-account/" class="article-date">
+  <time datetime="2019-09-02T14:46:37.000Z" itemprop="datePublished">2019-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/linux-account/">linux-account</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>查看所有的用户</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cat /etc/passwd</span></span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>查看所有的用户组</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cat /etc/group</span></span><br><span class="line">root:x:0:</span><br><span class="line">bin:x:1:</span><br><span class="line">daemon:x:2:</span><br><span class="line">sys:x:3:</span><br><span class="line">adm:x:4:</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/02/linux-account/" data-id="cke778hji003mwcg2nljhxr6q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-470" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/02/leetcode-470/" class="article-date">
+  <time datetime="2019-09-02T07:01:58.000Z" itemprop="datePublished">2019-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/leetcode-470/">leetcode-470 Implement Rand10() Using Rand7()</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>470. Implement Rand10() Using Rand7()</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/02/leetcode-470/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/02/leetcode-470/" data-id="cke778hhu002ewcg2udhco43w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-1137" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/28/leetcode-1137/" class="article-date">
+  <time datetime="2019-08-28T06:06:40.000Z" itemprop="datePublished">2019-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/28/leetcode-1137/">leetcode-1137 N-th Tribonacci Number</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1137. N-th Tribonacci Number</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/28/leetcode-1137/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/28/leetcode-1137/" data-id="cke778hgy001pwcg2v6iuyb6d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-704" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/21/leetcode-704/" class="article-date">
+  <time datetime="2019-08-21T05:28:55.000Z" itemprop="datePublished">2019-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/21/leetcode-704/">leetcode-704 Binary Search</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>704. Binary Search</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/21/leetcode-704/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/21/leetcode-704/" data-id="cke778hil0031wcg26fzc2xq6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-c-pointer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/21/c-pointer/" class="article-date">
@@ -90,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/21/c-pointer/" data-id="ckc2spiv1000drcg2llu43zi7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/21/c-pointer/" data-id="cke778hf8000dwcg2o1zn3pey" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/14/redis-1/" data-id="ckc2spizv004drcg2j95ba7ju" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/14/redis-1/" data-id="cke778hkf004gwcg2g419fdk2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +377,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="ckc2spizy004grcg2oik0vhc3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="cke778hky004rwcg2ha0987am" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/11/leetcode-661/" data-id="ckc2spiy3002qrcg2x3f3e56g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/11/leetcode-661/" data-id="cke778hih002wwcg2n8hbke9y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,222 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/mysql-1/" data-id="ckc2spizi0040rcg2uujpf68w" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mysql-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/10/mysql-0/" class="article-date">
-  <time datetime="2019-08-10T13:04:13.000Z" itemprop="datePublished">2019-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/10/mysql-0/">mysql-0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>创建用户</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/10/mysql-0/" data-id="ckc2spizd003urcg2cfat9vyc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-482" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/08/leetcode-482/" class="article-date">
-  <time datetime="2019-08-08T13:58:44.000Z" itemprop="datePublished">2019-08-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/leetcode-482/">leetcode-482 License Key Formatting</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>482. License Key Formatting</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/08/08/leetcode-482/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/08/leetcode-482/" data-id="ckc2spixz002mrcg2fvu6i7y9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-169" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/05/leetcode-169/" class="article-date">
-  <time datetime="2019-08-05T01:40:53.000Z" itemprop="datePublished">2019-08-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/05/leetcode-169/">leetcode-169 Majority Element</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>169. Majority Element</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/08/05/leetcode-169/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/05/leetcode-169/" data-id="ckc2spix3001wrcg2tv1p76xj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-709" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/01/leetcode-709/" class="article-date">
-  <time datetime="2019-08-01T05:39:39.000Z" itemprop="datePublished">2019-08-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/01/leetcode-709/">leetcode-709 To Lower Case</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>709. To Lower Case</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/08/01/leetcode-709/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/01/leetcode-709/" data-id="ckc2spiy9002wrcg2xqpe4xil" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-stl-vector" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/01/stl-vector/" class="article-date">
-  <time datetime="2019-08-01T03:07:24.000Z" itemprop="datePublished">2019-08-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/01/stl-vector/">stl-vector</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="vector的初始化"><a href="#vector的初始化" class="headerlink" title="vector的初始化"></a><code>vector</code>的初始化</h3><ul>
-<li>通过数组初始化</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(a, a+<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>带初值的初始化</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec(<span class="number">10</span>, <span class="number">0</span>); <span class="comment">//10个元素的vector，每个元素都是0</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>vector&lt;vector&lt;int&gt;&gt;</code> 的初始化</li>
-</ul>
-<p>和上面一维的一对照就能明白</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; vec(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="删除vector中的元素"><a href="#删除vector中的元素" class="headerlink" title="删除vector中的元素"></a>删除vector中的元素</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = nums.begin(); it != nums.end(); it++)</span><br><span class="line">&#123;</span><br><span class="line">    nums.erase(it, it+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
-<li><a href="https://blog.csdn.net/yjunyu/article/details/77728410" target="_blank" rel="noopener">vector的几种初始化及赋值方式</a></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/01/stl-vector/" data-id="ckc2spj05004lrcg28ks6ioq3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/10/mysql-1/" data-id="cke778hk20044wcg2ywldqimh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -479,7 +472,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/8/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -524,23 +517,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
           </li>
         
           <li>
-            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
           </li>
         
           <li>
-            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
           </li>
         
       </ul>

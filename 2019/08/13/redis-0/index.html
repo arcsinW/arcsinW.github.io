@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="X">
 <meta property="og:description" content="redis的数据结构">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-26T12:22:41.889Z">
+<meta property="og:updated_time" content="2020-07-26T11:15:56.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis-0">
 <meta name="twitter:description" content="redis的数据结构">
@@ -94,7 +94,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SET server:name <span class="string">"fido"</span></span><br><span class="line"></span><br><span class="line">GET server:name</span><br></pre></td></tr></table></figure>
 <p><code>SETNX</code> : SET-if-not-exists</p>
 <p><code>INCR</code> : +1 原子操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET connections 10</span><br><span class="line">INCR connections =&gt;11</span><br><span class="line"></span><br><span class="line">INCR A =&gt;1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SET connections 10</span><br><span class="line">INCR connections # =&gt;11</span><br><span class="line"></span><br><span class="line">INCR A #  =&gt;1</span><br></pre></td></tr></table></figure>
 <p>给key设置过期时间</p>
 <p><code>TTL</code> 获取一个key的存活时间，每次set一个key的value，过期时间将会重置</p>
 <ul>
@@ -166,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="ckc2spizy004grcg2oik0vhc3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/13/redis-0/" data-id="cke778hky004rwcg2ha0987am" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,23 +238,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/01/leetcode-88/">leetcode-88 合并两个有序数组</a>
+            <a href="/2020/07/26/java-hashmap/">java-hashmap</a>
           </li>
         
           <li>
-            <a href="/2020/06/29/merge-sort/">merge-sort</a>
+            <a href="/2020/07/11/wellknown-ports/">wellknown-ports</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-1470/">leetcode-1470</a>
+            <a href="/2020/07/05/code4offer-23/">code4offer-23</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/leetcode-140/">leetcode-140</a>
+            <a href="/2020/07/03/code4offer-13-1/">code4offer-13 机器人的运动范围</a>
           </li>
         
           <li>
-            <a href="/2020/06/24/leetcode-1177/">leetcode-1177 构建回文串检测</a>
+            <a href="/2020/07/01/code4offer-51/">code4offer-51 数组中的逆序对</a>
           </li>
         
       </ul>
