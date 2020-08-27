@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_cfb.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/09/cryptography/cryptography/des_ofb.png">
 <meta property="og:image" content="http://yoursite.com/source/_posts/cryptography/aes_structure.png">
-<meta property="og:updated_time" content="2020-08-24T15:57:00.445Z">
+<meta property="og:updated_time" content="2020-08-27T14:15:32.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cryptography">
 <meta name="twitter:description" content="现代密码学复习">
@@ -330,8 +330,8 @@
 <p>解密</p>
 <p>$$m_i = D_k(C_i) \oplus C_{i-1}$$</p>
 <p>  由于初始化向量$IV$的选择不同，相同的明文加密会得到不同的明文</p>
-<p>  各密文块不仅与当前明文块有关</p>
-<p>  错误传播最多影响2个分组</p>
+<p>  各密文块不仅与当前明文块有关，还与前一个密文块有关</p>
+<p>  一个密文块错误传播最多影响2个密文块（自身和下一个密文块）</p>
 <h3 id="CFB-Cipher-Feedback-密码反馈模式"><a href="#CFB-Cipher-Feedback-密码反馈模式" class="headerlink" title="CFB (Cipher Feedback) 密码反馈模式"></a>CFB (Cipher Feedback) 密码反馈模式</h3><p><img src="cryptography/des_cfb.png" alt="CFB 密码反馈模式"></p>
 <p>上面的模式分组大小都必须是64bit，也就是说明文必须64bit为一组加密，如果想要更改加密分组的大小就要使用CFB模式</p>
 <p>可实现加密消息按j比特加密</p>
@@ -367,11 +367,73 @@
 <h4 id="列混淆（最后一轮没有）"><a href="#列混淆（最后一轮没有）" class="headerlink" title="列混淆（最后一轮没有）"></a>列混淆（最后一轮没有）</h4><p>对状态矩阵的每一列 乘一个矩阵（多项式乘法），结果放回原位置</p>
 <p>$$\begin{bmatrix}<br>  02 &amp; 03 &amp; 01 &amp; 01 \<br>  01 &amp; 02 &amp; 03 &amp; 01 \<br>  01 &amp; 01 &amp; 02 &amp; 03 \<br>  03 &amp; 01 &amp; 01 &amp; 02 \<br>\end{bmatrix}$$</p>
 <h3 id="密钥编排"><a href="#密钥编排" class="headerlink" title="密钥编排"></a>密钥编排</h3><p>通过初始密钥矩阵生成每一轮需要的密钥矩阵</p>
-
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2><h3 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h3><p>密钥生成</p>
+<ol>
+<li>随机选取两个大素数$p$, $q$，计算$n = p \times q$，计算$\phi(n) = (p - 1)(q - 1)$</li>
+<li>随机选取一个整数e，满足 $1 &lt; e &lt; \phi(n)$，且 $gcd(e, n) = 1$</li>
+<li>计算 $ed \equiv 1 \pmod {\phi(n)}$</li>
+<li>e为公钥，d为私钥</li>
+</ol>
+<p>加密</p>
+<p>$$c = m^e \pmod n$$</p>
+<p>解密</p>
+<p>$$m = c^d \pmod n$$</p>
+<h3 id="ElGamal"><a href="#ElGamal" class="headerlink" title="ElGamal"></a>ElGamal</h3><p>密钥生成</p>
+<p>选择一个素数p，以及小于p的随机数x，g是$Z_p$的原根</p>
+<p>$y = g^x \pmod p$<br>x为私钥，y为公钥</p>
+<p>加密</p>
+<p>取一个随机整数k，$1 \leq k \leq p-2$</p>
+<p>$c_1 = g^k \pmod p$，$c_2 = my^k \pmod p$</p>
+<p>解密</p>
+<p>$$m = c_2 / c_1^x \pmod p$$</p>
+<p>$$$$</p>
+<h3 id="Rabin"><a href="#Rabin" class="headerlink" title="Rabin"></a>Rabin</h3><p>密钥生成</p>
+<p>取两个大素数p, q, 满足$p \equiv q \equiv 3 \pmod 4$，</p>
+<p>计算 $n = p \times q$</p>
+<p>公钥为n，私钥为 $(p, q)$</p>
+<p>加密</p>
+<p>$$c = m^2 \pmod n$$</p>
+<p>解密</p>
+<p>利用中国剩余定理求解同余方程组</p>
+<blockquote>
+<p>中国剩余定理</p>
+<p>$x \equiv b1 \pmod {m1}$</p>
+<p>$x \equiv b2 \pmod {m2}$</p>
+<p>$x \equiv b3 \pmod {m3}$</p>
+<p>$x \equiv b4 \pmod {m4}$</p>
+<p>解法：<br>$m = m1 \times m2 \times … \times m_k$</p>
+<p>$m = M_im_i$</p>
+<p>$M’$是$M$模$m_i$的逆元，$MM’ \equiv 1 \pmod m_i$</p>
+<p>$x \equiv b1M_1M’_1 + b2M_2M’_2 + … + b_kM_kM’_k \pmod m$</p>
+</blockquote>
+<p>$M_1 = c^{(p+1)/4} \pmod p$</p>
+<p>$M_2 = p - c^{(p+1)/4} \pmod p$</p>
+<p>$M_3 = c^{(q+1)/4} \pmod q$</p>
+<p>$M_4 = q - c^{(q+1)/4} \pmod q$</p>
+<p>选择整数 $a = q \times (q^{-1} \pmod p)$，$b = p \times (p^{-1} \pmod q$</p>
+<p>四个可能的解为：</p>
+<p>$m_1 = (aM_1 + bM_3) \pmod n$</p>
+<p>$m_2 = (aM_1 + bM_4) \pmod n$</p>
+<p>$m_3 = (aM_2 + bM_3) \pmod n$</p>
+<p>$m_4 = (aM_2 + bM_4) \pmod n$</p>
+<h2 id="椭圆曲线密码"><a href="#椭圆曲线密码" class="headerlink" title="椭圆曲线密码"></a>椭圆曲线密码</h2><h3 id="P-Q的计算方法"><a href="#P-Q的计算方法" class="headerlink" title="P + Q的计算方法"></a>P + Q的计算方法</h3><p>$$\lambda = \begin{cases}<br>  \frac{3x_1^2 + a}{2y_1}, P = Q \<br>  \frac{y_2 - y_1}{x_2 - x_1}, P \neq Q \<br>\end{cases}$$</p>
+<p>$x_3 = \lambda - x_1 - x_2$</p>
+<p>$y_3 = \lambda(x_1 - x_3) - y_1$</p>
+<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><h3 id="RSA签名"><a href="#RSA签名" class="headerlink" title="RSA签名"></a>RSA签名</h3><p>私钥加密，公钥解密</p>
+<h4 id="密钥生成"><a href="#密钥生成" class="headerlink" title="密钥生成"></a>密钥生成</h4><ol>
+<li>随机选取两个大素数$p$, $q$，计算$n = p \times q$，计算$\phi(n) = (p - 1)(q - 1)$</li>
+<li>随机选取一个整数e，满足 $1 &lt; e &lt; \phi(n)$，且 $gcd(e, n) = 1$</li>
+<li>计算 $ed \equiv 1 \pmod {\phi(n)}$</li>
+<li>e为公钥，d为私钥</li>
+</ol>
+<h4 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h4><p>$$s = m^d \pmod n$$</p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>收到的签名是(m, s)</p>
+<p>如果<br>$$m \equiv s^e \pmod n$$<br>则s是m的签名</p>
+<h3 id="DSS"><a href="#DSS" class="headerlink" title="DSS"></a>DSS</h3><h3 id="ElGamal-1"><a href="#ElGamal-1" class="headerlink" title="ElGamal"></a>ElGamal</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="cke8pei3c0016n8g2p9wswqad" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/cryptography/" data-id="ckecw3zfk001348g2h3o48gem" class="article-share-link">Share</a>
       
       
     </footer>
